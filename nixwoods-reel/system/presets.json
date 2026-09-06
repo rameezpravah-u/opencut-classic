@@ -576,6 +576,14 @@
       "amber",
       "green"
      ]
+    },
+    "status": {
+     "_note": "fidelity gate: an asset marked rejected is never cut in; Build falls back to the real product footage. Approve only after comparing against the design reference (rubik-reels/src/REFERENCE.md).",
+     "hands": "rejected — glass rendered as a lifted cube; the real block is an 8x8x3 in slab that turns on its base (Rameez, 6 Sep)",
+     "k01": "rejected — same frame animated"
+    },
+    "clip_status": {
+     "hands": "rejected"
     }
    },
    "video_cx": 0.28,

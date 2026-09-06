@@ -149,13 +149,20 @@ class Build:
         dur = min(dur, (prod["state_max"][key] - offset) / float(self.b.get("stretch", 1.0)))
         return self._add("video", self.path(self.b["assets"]["video"]), ss, dur, xfade, kw, key="_video")
 
+    def rejected(self, kind, key):
+        st = self.b["assets"].get("status" if kind == "stills" else "clip_status", {}).get(key, "")
+        return str(st).lower().startswith("rejected")
+
     def still(self, key, dur, xfade=None, **kw):
         for k in self.VIDEO_ONLY: kw.pop(k, None)
+        if self.rejected("stills", key):
+            # fidelity gate: fall back to the real product footage (the hand-turn state)
+            return self.state("hand", dur, xfade, slow=1.2, cam=kw.get("cam") or self.cam("hold"))
         return self._add("still", self.path(self.b["assets"]["stills"][key]), 0, dur, xfade, kw, key=key)
 
     def clip(self, key, dur, xfade=None, fallback=None, **kw):
         """Higgsfield/Kling image-to-video clip if present, else the still it was made from"""
-        if self.has("clips", key):
+        if self.has("clips", key) and not self.rejected("clips", key):
             kw.pop("crop_cx", None); kw.pop("crop_cy", None)
             cap = 4.6 / float(self.b.get("stretch", 1.0))
             return self._add("video", self.path(self.b["assets"]["clips"][key]), 0, min(dur, cap), xfade, kw, key=key)
