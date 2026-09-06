@@ -721,8 +721,7 @@
      "unbox": "hf/sh07-grain-endcap.png",
      "diwali": "hf/sh00-console-lit.png",
      "dutch_green": "hf/sh06-angled-channel.png",
-     "hands": "hf/sh03-angled-wash.jpg",
-     "room_before": "hf/sh04-unlit-real.jpg"
+     "hands": "hf/sh03-angled-wash.jpg"
     },
     "clips": {},
     "sfx": {
@@ -734,7 +733,6 @@
      "hero_off": "contain",
      "room": "contain",
      "entry": "contain",
-     "room_before": "contain",
      "diwali": "contain",
      "bedside_red": "contain",
      "desk_green": "contain"
@@ -766,8 +764,7 @@
      "unbox": "low",
      "diwali": "low",
      "dutch_green": "low",
-     "hands": "low",
-     "room_before": "low"
+     "hands": "low"
     },
     "ai_generated": [
      "entry"
@@ -788,8 +785,7 @@
      "unbox": "approved 6 Sep — real Shopify product photography, matches the live PDP",
      "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
      "dutch_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "room_before": "approved 6 Sep — real Shopify product photography, matches the live PDP"
+     "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP"
     },
     "clip_status": {},
     "clip_colours": {}
@@ -866,7 +862,6 @@
      "diwali": "hf/sh04-warm-grass.jpg",
      "hands": "hf/sh06-led-underside.jpg",
      "hero_off": "hf/sh05-daylight-oval.jpg",
-     "room_before": "hf/sh05-daylight-oval.jpg",
      "entry": "hf/sh03-front-fluted.png"
     },
     "clips": {},
@@ -880,7 +875,6 @@
      "backlit": "contain",
      "entry": "contain",
      "hero_off": "contain",
-     "room_before": "contain",
      "diwali": "contain"
     },
     "crops": {
@@ -908,7 +902,6 @@
      "diwali": "low",
      "hands": "low",
      "hero_off": "low",
-     "room_before": "low",
      "entry": "low"
     },
     "ai_generated": [],
@@ -926,7 +919,6 @@
      "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
      "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP",
      "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "room_before": "approved 6 Sep — real Shopify product photography, matches the live PDP",
      "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP"
     },
     "clip_status": {},
@@ -1004,7 +996,6 @@
      "diwali": "hf/sh00-marble-dining.jpg",
      "hands": "hf/sh01-underside-twin.jpg",
      "hero_off": "hf/sh05-canopy-cables.jpg",
-     "room_before": "hf/sh05-canopy-cables.jpg",
      "entry": "hf/sh01-underside-twin.jpg"
     },
     "clips": {},
@@ -1016,7 +1007,6 @@
      "flatlay": "contain",
      "unbox": "contain",
      "hero_off": "contain",
-     "room_before": "contain",
      "entry": "contain",
      "hands": "contain"
     },
@@ -1042,7 +1032,6 @@
      "diwali": "low",
      "hands": "low",
      "hero_off": "low",
-     "room_before": "low",
      "entry": "low"
     },
     "ai_generated": [],
@@ -1060,7 +1049,6 @@
      "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
      "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP",
      "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "room_before": "approved 6 Sep — real Shopify product photography, matches the live PDP",
      "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP"
     },
     "clip_status": {},
