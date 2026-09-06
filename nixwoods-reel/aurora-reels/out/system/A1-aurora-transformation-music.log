@@ -1,160 +1,0 @@
--filter_complex_script is deprecated, use -/filter_complex /home/user/opencut-classic/nixwoods-reel/aurora-reels/out/system/A1-aurora-transformation-music.graph instead
-Input #0, image2, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/hf/sh04-unlit-real.jpg':
-  Duration: 00:00:00.04, start: 0.000000, bitrate: 124474 kb/s
-  Stream #0:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 2625x2625, 25 fps, 25 tbr, 25 tbn
-Input #1, image2, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/hf/sh00-console-lit.png':
-  Duration: 00:00:00.04, start: 0.000000, bitrate: 26224 kb/s
-  Stream #1:0: Video: mjpeg (Progressive), yuvj444p(pc, bt470bg/unknown/unknown), 1023x1023, 25 fps, 25 tbr, 25 tbn
-Input #2, image2, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/hf/sh00-console-lit.png':
-  Duration: 00:00:00.04, start: 0.000000, bitrate: 26224 kb/s
-  Stream #2:0: Video: mjpeg (Progressive), yuvj444p(pc, bt470bg/unknown/unknown), 1023x1023, 25 fps, 25 tbr, 25 tbn
-Input #3, image2, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/hf/sh01-bedroom-headboard.jpg':
-  Duration: 00:00:00.04, start: 0.000000, bitrate: 48610 kb/s
-  Stream #3:0: Video: mjpeg (Progressive), yuvj444p(pc, bt470bg/unknown/unknown), 1254x1254, 25 fps, 25 tbr, 25 tbn
-Input #4, image2, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/hf/sh02-entryway.jpg':
-  Duration: 00:00:00.04, start: 0.000000, bitrate: 41148 kb/s
-  Stream #4:0: Video: mjpeg (Progressive), yuvj444p(pc, bt470bg/unknown/unknown), 1254x1254, 25 fps, 25 tbr, 25 tbn
-Input #5, image2, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/hf/sh03-angled-wash.jpg':
-  Duration: 00:00:00.04, start: 0.000000, bitrate: 53911 kb/s
-  Stream #5:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 1969x1970, 25 fps, 25 tbr, 25 tbn
-Input #6, image2, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/hf/sh03-angled-wash.jpg':
-  Duration: 00:00:00.04, start: 0.000000, bitrate: 53911 kb/s
-  Stream #6:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 1969x1970, 25 fps, 25 tbr, 25 tbn
-Input #7, png_pipe, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/out/system/A1-aurora-transformation-end.png':
-  Duration: N/A, bitrate: N/A
-  Stream #7:0: Video: png, rgba(pc, gbr/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
-Input #8, png_pipe, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/out/system/A1-aurora-transformation-c00.png':
-  Duration: N/A, bitrate: N/A
-  Stream #8:0: Video: png, rgba(pc, gbr/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
-Input #9, png_pipe, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/out/system/A1-aurora-transformation-c01.png':
-  Duration: N/A, bitrate: N/A
-  Stream #9:0: Video: png, rgba(pc, gbr/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
-Input #10, png_pipe, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/out/system/A1-aurora-transformation-c02.png':
-  Duration: N/A, bitrate: N/A
-  Stream #10:0: Video: png, rgba(pc, gbr/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
-Input #11, png_pipe, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/out/system/A1-aurora-transformation-c03.png':
-  Duration: N/A, bitrate: N/A
-  Stream #11:0: Video: png, rgba(pc, gbr/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
-Input #12, png_pipe, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/out/system/A1-aurora-transformation-c04.png':
-  Duration: N/A, bitrate: N/A
-  Stream #12:0: Video: png, rgba(pc, gbr/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
-Input #13, png_pipe, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/out/system/A1-aurora-transformation-c05.png':
-  Duration: N/A, bitrate: N/A
-  Stream #13:0: Video: png, rgba(pc, gbr/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
-Input #14, png_pipe, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/out/system/A1-aurora-transformation-c06.png':
-  Duration: N/A, bitrate: N/A
-  Stream #14:0: Video: png, rgba(pc, gbr/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
-Input #15, mp3, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/audio/sfx-turn.mp3':
-  Metadata:
-    encoder         : Lavf60.16.101
-  Duration: 00:00:04.05, start: 0.025057, bitrate: 162 kb/s
-  Stream #15:0: Audio: mp3 (mp3float), 44100 Hz, stereo, fltp, 128 kb/s
-      Metadata:
-        encoder         : Lavf
-Input #16, mp3, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/audio/sfx-turn.mp3':
-  Metadata:
-    encoder         : Lavf60.16.101
-  Duration: 00:00:04.05, start: 0.025057, bitrate: 162 kb/s
-  Stream #16:0: Audio: mp3 (mp3float), 44100 Hz, stereo, fltp, 128 kb/s
-      Metadata:
-        encoder         : Lavf
-Input #17, mp3, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/audio/sfx-turn.mp3':
-  Metadata:
-    encoder         : Lavf60.16.101
-  Duration: 00:00:04.05, start: 0.025057, bitrate: 162 kb/s
-  Stream #17:0: Audio: mp3 (mp3float), 44100 Hz, stereo, fltp, 128 kb/s
-      Metadata:
-        encoder         : Lavf
-Input #18, mp3, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/audio/sfx-whoosh.mp3':
-  Metadata:
-    encoder         : Lavf60.16.101
-  Duration: 00:00:02.04, start: 0.025057, bitrate: 195 kb/s
-  Stream #18:0: Audio: mp3 (mp3float), 44100 Hz, stereo, fltp, 128 kb/s
-      Metadata:
-        encoder         : Lavf
-Input #19, mp3, from '/home/user/opencut-classic/nixwoods-reel/aurora-reels/audio/music5-3040.mp3':
-  Metadata:
-    encoder         : Lavf60.16.101
-  Duration: 00:00:30.02, start: 0.023021, bitrate: 196 kb/s
-  Stream #19:0: Audio: mp3 (mp3float), 48000 Hz, stereo, fltp, 192 kb/s
-      Metadata:
-        encoder         : Lavf
-Stream mapping:
-  Stream #0:0 (mjpeg) -> split:default
-  Stream #1:0 (mjpeg) -> split:default
-  Stream #2:0 (mjpeg) -> split:default
-  Stream #3:0 (mjpeg) -> split:default
-  Stream #4:0 (mjpeg) -> split:default
-  Stream #5:0 (mjpeg) -> scale:default
-  Stream #6:0 (mjpeg) -> scale:default
-  Stream #7:0 (png) -> scale:default
-  Stream #8:0 (png) -> format:default
-  Stream #9:0 (png) -> format:default
-  Stream #10:0 (png) -> format:default
-  Stream #11:0 (png) -> format:default
-  Stream #12:0 (png) -> format:default
-  Stream #13:0 (png) -> format:default
-  Stream #14:0 (png) -> format:default
-  Stream #15:0 (mp3float) -> aformat:default
-  Stream #16:0 (mp3float) -> aformat:default
-  Stream #17:0 (mp3float) -> aformat:default
-  Stream #18:0 (mp3float) -> aformat:default
-  Stream #19:0 (mp3float) -> aformat:default
-  format:default -> Stream #0:0 (libx264)
-  loudnorm:default -> Stream #0:1 (aac)
-Press [q] to stop, [?] for help
-[swscaler @ 0x7f8089b85040] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f8089f33a80] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f808abbe680] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f808aff4640] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f808bd942c0] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f901d21c0] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f90f75140] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f913b7d40] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f9216aa00] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f925ad600] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f93361800] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f0c0bc200] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f8089ecfd40] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f8089edcd00] deprecated pixel format used, make sure you did set range correctly
-    Last message repeated 1 times
-[swscaler @ 0x7f808a112040] deprecated pixel format used, make sure you did set range correctly
-    Last message repeated 2 times
-[swscaler @ 0x7f808afbf800] deprecated pixel format used, make sure you did set range correctly
-    Last message repeated 2 times
-[swscaler @ 0x7f808b23f380] deprecated pixel format used, make sure you did set range correctly
-    Last message repeated 2 times
-[swscaler @ 0x7f7f9019d380] deprecated pixel format used, make sure you did set range correctly
-    Last message repeated 2 times
-[swscaler @ 0x7f7f9041cf00] deprecated pixel format used, make sure you did set range correctly
-    Last message repeated 2 times
-[swscaler @ 0x7f7f9106c280] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f9122f100] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f9121c480] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f91606e00] deprecated pixel format used, make sure you did set range correctly
-    Last message repeated 2 times
-[swscaler @ 0x7f7f92411d40] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f924249c0] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f924fcac0] deprecated pixel format used, make sure you did set range correctly
-[swscaler @ 0x7f7f925c7580] deprecated pixel format used, make sure you did set range correctly
-    Last message repeated 2 times
-[swscaler @ 0x7f7f936f9bc0] deprecated pixel format used, make sure you did set range correctly
-    Last message repeated 2 times
-[swscaler @ 0x7f7f0c466900] deprecated pixel format used, make sure you did set range correctly
-    Last message repeated 2 times
-[libx264 @ 0x41890380] using SAR=1/1
-[libx264 @ 0x41890380] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
-[libx264 @ 0x41890380] profile High, level 4.0, 4:2:0, 8-bit
-[libx264 @ 0x41890380] 264 - core 164 r3191 4613ac3 - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=18.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
-Output #0, mp4, to '/home/user/opencut-classic/nixwoods-reel/aurora-reels/out/system/A1-aurora-transformation-music.mp4':
-  Metadata:
-    encoder         : Lavf61.1.100
-  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 1080x1920 [SAR 1:1 DAR 9:16], q=2-31, 25 fps, 12800 tbn
-      Metadata:
-        encoder         : Lavc61.3.100 libx264
-      Side data:
-        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
-  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 192 kb/s
-      Metadata:
-        encoder         : Lavc61.3.100 aac
-frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    frame=    2 fps=0.1 q=23.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x    frame=    5 fps=0.2 q=23.0 size=     256KiB time=00:00:00.12 bitrate=17479.5kbits/s speed=0.006x    frame=    6 fps=0.3 q=23.0 size=     256KiB time=00:00:00.16 bitrate=13109.6kbits/s speed=0.0078x    frame=    6 fps=0.3 q=23.0 size=     256KiB time=00:00:00.16 bitrate=13109.6kbits/s speed=0.00761x    frame=    7 fps=0.3 q=23.0 size=     256KiB time=00:00:00.20 bitrate=10487.7kbits/s speed=0.0093x    frame=   11 fps=0.5 q=23.0 size=     256KiB time=00:00:00.36 bitrate=5826.5kbits/s speed=0.0164x    frame=   11 fps=0.5 q=23.0 size=     256KiB time=00:00:00.36 bitrate=5826.5kbits/s speed=0.016x    frame=   17 fps=0.7 q=23.0 size=     256KiB time=00:00:00.60 bitrate=3495.9kbits/s speed=0.0261x    frame=   25 fps=1.1 q=23.0 size=     512KiB time=00:00:00.92 bitrate=4559.4kbits/s speed=0.0391x    frame=   29 fps=1.2 q=23.0 size=     512KiB time=00:00:01.08 bitrate=3884.0kbits/s speed=0.045x    frame=   30 fps=1.2 q=23.0 size=     512KiB time=00:00:01.12 bitrate=3745.3kbits/s speed=0.0457x    frame=   30 fps=1.2 q=23.0 size=     512KiB time=00:00:01.12 bitrate=3745.3kbits/s speed=0.0448x    frame=   30 fps=1.2 q=23.0 size=     512KiB time=00:00:01.12 bitrate=3745.3kbits/s speed=0.0439x    frame=   34 fps=1.3 q=23.0 size=     768KiB time=00:00:01.28 bitrate=4915.5kbits/s speed=0.0492x    frame=   34 fps=1.3 q=23.0 size=     768KiB time=00:00:01.28 bitrate=4915.5kbits/s speed=0.0483x    frame=   37 fps=1.4 q=23.0 size=     768KiB time=00:00:01.40 bitrate=4494.2kbits/s speed=0.0518x    frame=   48 fps=1.7 q=23.0 size=     768KiB time=00:00:01.84 bitrate=3419.5kbits/s speed=0.0669x    frame=   48 fps=1.7 q=23.0 size=     768KiB time=00:00:01.84 bitrate=3419.5kbits/s speed=0.0657x    frame=   53 fps=1.9 q=23.0 size=    1024KiB time=00:00:02.04 bitrate=4112.3kbits/s speed=0.0715x    frame=   55 fps=1.9 q=23.0 size=    1024KiB time=00:00:02.12 bitrate=3957.1kbits/s speed=0.0731x    frame=   57 fps=1.9 q=23.0 size=    1280KiB time=00:00:02.20 bitrate=4766.4kbits/s speed=0.0745x    frame=   63 fps=2.1 q=23.0 size=    1280KiB time=00:00:02.44 bitrate=4297.6kbits/s speed=0.0813x    frame=   66 fps=2.2 q=23.0 size=    1280KiB time=00:00:02.56 bitrate=4096.1kbits/s speed=0.0839x    frame=   66 fps=2.1 q=23.0 size=    1280KiB time=00:00:02.56 bitrate=4096.1kbits/s speed=0.0825x    frame=   71 fps=2.3 q=23.0 size=    1280KiB time=00:00:02.76 bitrate=3799.3kbits/s speed=0.0876x    frame=   74 fps=2.3 q=23.0 size=    1280KiB time=00:00:02.88 bitrate=3641.0kbits/s speed=0.0899x    frame=   74 fps=2.3 q=23.0 size=    1280KiB time=00:00:02.88 bitrate=3641.0kbits/s speed=0.0885x    frame=   81 fps=2.5 q=23.0 size=    1536KiB time=00:00:03.16 bitrate=3982.1kbits/s speed=0.0957x    frame=   84 fps=2.5 q=23.0 size=    1536KiB time=00:00:03.28 bitrate=3836.4kbits/s speed=0.0978x    frame=   84 fps=2.5 q=23.0 size=    1536KiB time=00:00:03.28 bitrate=3836.4kbits/s speed=0.0964x    frame=   84 fps=2.4 q=23.0 size=    1536KiB time=00:00:03.28 bitrate=3836.4kbits/s speed=0.095x    frame=   84 fps=2.4 q=23.0 size=    1536KiB time=00:00:03.28 bitrate=3836.4kbits/s speed=0.0936x    frame=   84 fps=2.4 q=23.0 size=    1536KiB time=00:00:03.28 bitrate=3836.4kbits/s speed=0.0923x    frame=   91 fps=2.5 q=23.0 size=    1536KiB time=00:00:03.56 bitrate=3534.6kbits/s speed=0.0988x    frame=  102 fps=2.8 q=23.0 size=    1792KiB time=00:00:04.00 bitrate=3670.1kbits/s speed=0.109x    frame=  103 fps=2.8 q=23.0 size=    1792KiB time=00:00:04.04 bitrate=3633.8kbits/s speed=0.109x    frame=  103 fps=2.7 q=23.0 size=    1792KiB time=00:00:04.04 bitrate=3633.8kbits/s speed=0.108x    frame=  110 fps=2.9 q=23.0 size=    2048KiB time=00:00:04.32 bitrate=3883.7kbits/s speed=0.114x    frame=  111 fps=2.9 q=23.0 size=    2048KiB time=00:00:04.36 bitrate=3848.1kbits/s speed=0.113x    frame=  115 fps=2.9 q=23.0 size=    2048KiB time=00:00:04.52 bitrate=3711.9kbits/s speed=0.116x    frame=  119 fps=3.0 q=23.0 size=    2048KiB time=00:00:04.68 bitrate=3585.0kbits/s speed=0.118x    frame=  119 fps=3.0 q=23.0 size=    2048KiB time=00:00:04.68 bitrate=3585.0kbits/s speed=0.117x    frame=  119 fps=2.9 q=23.0 size=    2048KiB time=00:00:04.68 bitrate=3585.0kbits/s speed=0.115x    frame=  126 fps=3.1 q=23.0 size=    2304KiB time=00:00:04.96 bitrate=3805.4kbits/s speed=0.121x    frame=  126 fps=3.0 q=23.0 size=    2304KiB time=00:00:04.96 bitrate=3805.4kbits/s speed=0.119x    frame=  126 fps=3.0 q=23.0 size=    2304KiB time=00:00:04.96 bitrate=3805.4kbits/s speed=0.118x    frame=  128 fps=3.0 q=23.0 size=    2304KiB time=00:00:05.04 bitrate=3745.0kbits/s speed=0.118x    frame=  130 fps=3.0 q=23.0 size=    2304KiB time=00:00:05.12 bitrate=3686.5kbits/s speed=0.119x    frame=  133 fps=3.1 q=23.0 size=    2304KiB time=00:00:05.24 bitrate=3602.1kbits/s speed=0.12x    frame=  135 fps=3.1 q=23.0 size=    2304KiB time=00:00:05.32 bitrate=3547.9kbits/s speed=0.121x    frame=  138 fps=3.1 q=23.0 size=    2304KiB time=00:00:05.44 bitrate=3469.6kbits/s speed=0.122x    frame=  141 fps=3.1 q=23.0 size=    2304KiB time=00:00:05.56 bitrate=3394.7kbits/s speed=0.123x    frame=  141 fps=3.1 q=23.0 size=    2304KiB time=00:00:05.56 bitrate=3394.7kbits/s speed=0.122x    frame=  141 fps=3.1 q=23.0 size=    2304KiB time=00:00:05.56 bitrate=3394.7kbits/s speed=0.121x    frame=  141 fps=3.0 q=23.0 size=    2304KiB time=00:00:05.56 bitrate=3394.7kbits/s speed=0.119x    frame=  141 fps=3.0 q=23.0 size=    2304KiB time=00:00:05.56 bitrate=3394.7kbits/s speed=0.118x    frame=  147 fps=3.1 q=23.0 size=    2304KiB time=00:00:05.80 bitrate=3254.3kbits/s speed=0.122x    frame=  159 fps=3.3 q=23.0 size=    2560KiB time=00:00:06.28 bitrate=3339.5kbits/s speed=0.131x    frame=  163 fps=3.4 q=23.0 size=    2560KiB time=00:00:06.44 bitrate=3256.5kbits/s speed=0.133x    frame=  163 fps=3.3 q=23.0 size=    2560KiB time=00:00:06.44 bitrate=3256.5kbits/s speed=0.131x    frame=  168 fps=3.4 q=23.0 size=    2560KiB time=00:00:06.64 bitrate=3158.4kbits/s speed=0.134x    frame=  168 fps=3.4 q=23.0 size=    2560KiB time=00:00:06.64 bitrate=3158.4kbits/s speed=0.133x    frame=  173 fps=3.4 q=23.0 size=    2816KiB time=00:00:06.84 bitrate=3372.7kbits/s speed=0.135x    frame=  174 fps=3.4 q=23.0 size=    2816KiB time=00:00:06.88 bitrate=3353.1kbits/s speed=0.135x    frame=  174 fps=3.4 q=23.0 size=    2816KiB time=00:00:06.88 bitrate=3353.1kbits/s speed=0.133x    frame=  176 fps=3.4 q=23.0 size=    2816KiB time=00:00:06.96 bitrate=3314.5kbits/s speed=0.134x    frame=  178 fps=3.4 q=23.0 size=    2816KiB time=00:00:07.04 bitrate=3276.9kbits/s speed=0.134x    frame=  181 fps=3.4 q=23.0 size=    2816KiB time=00:00:07.16 bitrate=3221.9kbits/s speed=0.135x    frame=  183 fps=3.4 q=23.0 size=    2816KiB time=00:00:07.24 bitrate=3186.3kbits/s speed=0.135x    frame=  184 fps=3.4 q=23.0 size=    2816KiB time=00:00:07.28 bitrate=3168.8kbits/s speed=0.135x    frame=  189 fps=3.5 q=23.0 size=    5376KiB time=00:00:07.48 bitrate=5887.8kbits/s speed=0.137x    frame=  190 fps=3.5 q=23.0 size=    5632KiB time=00:00:07.52 bitrate=6135.3kbits/s speed=0.137x    frame=  193 fps=3.5 q=23.0 size=    6912KiB time=00:00:07.64 bitrate=7411.5kbits/s speed=0.138x    frame=  193 fps=3.4 q=23.0 size=    6912KiB time=00:00:07.64 bitrate=7411.5kbits/s speed=0.136x    frame=  199 fps=3.5 q=23.0 size=    6912KiB time=00:00:07.88 bitrate=7185.7kbits/s speed=0.139x    frame=  203 fps=3.6 q=23.0 size=    7168KiB time=00:00:08.04 bitrate=7303.6kbits/s speed=0.141x    frame=  206 fps=3.6 q=23.0 size=    7168KiB time=00:00:08.16 bitrate=7196.2kbits/s speed=0.142x    frame=  209 fps=3.6 q=23.0 size=    7168KiB time=00:00:08.28 bitrate=7091.9kbits/s speed=0.143x    frame=  212 fps=3.6 q=23.0 size=    7168KiB time=00:00:08.40 bitrate=6990.6kbits/s speed=0.143x    frame=  214 fps=3.6 q=23.0 size=    7424KiB time=00:00:08.48 bitrate=7171.9kbits/s speed=0.144x    frame=  218 fps=3.7 q=23.0 size=    7424KiB time=00:00:08.64 bitrate=7039.1kbits/s speed=0.145x    frame=  221 fps=3.7 q=23.0 size=    7424KiB time=00:00:08.76 bitrate=6942.7kbits/s speed=0.146x    frame=  221 fps=3.6 q=23.0 size=    7424KiB time=00:00:08.76 bitrate=6942.7kbits/s speed=0.145x    frame=  226 fps=3.7 q=23.0 size=    7424KiB time=00:00:08.96 bitrate=6787.7kbits/s speed=0.147x    frame=  231 fps=3.8 q=23.0 size=    8704KiB time=00:00:09.16 bitrate=7784.2kbits/s speed=0.149x    frame=  237 fps=3.8 q=23.0 size=   10496KiB time=00:00:09.40 bitrate=9147.2kbits/s speed=0.151x    frame=  249 fps=4.0 q=23.0 size=   11264KiB time=00:00:09.88 bitrate=9339.6kbits/s speed=0.158x    frame=  252 fps=4.0 q=23.0 size=   11264KiB time=00:00:10.00 bitrate=9227.5kbits/s speed=0.159x    frame=  263 fps=4.1 q=23.0 size=   11520KiB time=00:00:10.44 bitrate=9039.5kbits/s speed=0.164x    frame=  269 fps=4.2 q=23.0 size=   11520KiB time=00:00:10.68 bitrate=8836.4kbits/s speed=0.167x    frame=  281 fps=4.4 q=23.0 size=   11776KiB time=00:00:11.16 bitrate=8644.2kbits/s speed=0.173x    frame=  292 fps=4.5 q=23.0 size=   12032KiB time=00:00:11.60 bitrate=8497.1kbits/s speed=0.178x    frame=  302 fps=4.6 q=23.0 size=   12032KiB time=00:00:12.00 bitrate=8213.9kbits/s speed=0.183x    frame=  312 fps=4.7 q=23.0 size=   12288KiB time=00:00:12.40 bitrate=8118.0kbits/s speed=0.188x    frame=  323 fps=4.9 q=23.0 size=   12288KiB time=00:00:12.84 bitrate=7839.9kbits/s speed=0.193x    frame=  328 fps=4.9 q=23.0 size=   12288KiB time=00:00:13.04 bitrate=7719.6kbits/s speed=0.194x    frame=  337 fps=5.0 q=23.0 size=   12288KiB time=00:00:13.40 bitrate=7512.2kbits/s speed=0.198x    

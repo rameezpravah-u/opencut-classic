@@ -1,2 +1,9 @@
 __pycache__/
 *.pyc
+# ffmpeg build artifacts — never wanted in the repo
+*.graph
+*.log
+# in-progress renders: outputs are committed deliberately once reviewed, not mid-build
+*-ba.mp4
+*-tri.mp4
+*-tri2.mp4
