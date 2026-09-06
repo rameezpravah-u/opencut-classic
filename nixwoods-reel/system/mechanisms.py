@@ -477,11 +477,18 @@ def m_vo_story(b):
     B.still("flatlay", 1.8, cam=B.cam("drift"))
     B.clip("room", 2.4, xfade=TRANS["dissolve"], cam=B.cam("push"))
     B.card([c["name"]], f'{c["price"]}  ·  {c["url"]}', dur=2.6)
+    size = b.get("caption_size", 62)
     for i, (s, e, cap, key) in enumerate(lines):
         cap = [cap] if isinstance(cap, str) else cap
         colors = _col(cap[0], key) if key else None
         start = min(s + o, 0.25) if i == 0 else s + o      # the first caption is the visual hook: on screen by 0.3 s
-        B.cue(start, e + o, st.headline(cap, y_top=b.get("caption_y", 1330), size=b.get("caption_size", 62), colors=colors))
+        # place each caption off the product of the shot that is on screen when it appears
+        mid = (start + e + o) / 2
+        sh = next((x for x in B.shots if x["start"] <= mid < x["end"]), B.shots[-1])
+        bh = int(len(cap) * size * 1.25 + 40)
+        y = b.get("caption_y") or B.slot(sh, block_h=bh)
+        bx = B.auto_box(sh, y, bh)
+        B.cue(start, e + o, st.headline(cap, y_top=y, size=size, colors=colors, box=bx, box_pad=(24, 12)))
     B.sound(vo, o, 0)
     B.music(gain=-13, fi=0.5, fo=2.0)
     B.sfx("turn", hd["start"] + 0.3, -12)
