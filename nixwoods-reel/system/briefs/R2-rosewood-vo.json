@@ -11,15 +11,15 @@
  "cover_t": 1.2,
  "vo": "audio/vo-meaning.mp3",
  "vo_offset": 0.6,
- "caption_y": 1380,
- "caption_size": 60,
+ "caption_y": 1300,
+ "caption_size": 56,
  "vo_lines": [
   [
    0.0,
    1.55,
    [
-    "Most dining lights",
-    "hang in the way."
+    "Your dining light is",
+    "in the wrong place."
    ],
    null
   ],
@@ -100,7 +100,7 @@
   ]
  ],
  "copy": {
-  "hook": "Most dining lights hang in the way."
+  "hook": "Your dining light is in the wrong place."
  },
  "notes": "Convincer. NOTE: reuses the Rubik's VO audio as a timing scaffold — record the R2 script from system/scripts/product-scripts.md before this one ships.",
  "name": "R2-rosewood-vo"
