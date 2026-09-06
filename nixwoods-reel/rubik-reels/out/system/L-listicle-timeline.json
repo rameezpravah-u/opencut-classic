@@ -33,7 +33,7 @@
   },
   {
    "kind": "video",
-   "src": "hf/k01-hands-turn.mp4",
+   "src": "hf/k05-hands-turn-v2.mp4",
    "ss": 0,
    "start": 4.76,
    "end": 7.76,
@@ -155,7 +155,7 @@
   "uses_generated_frames": true,
   "colours": [
    "amber",
-   "green"
+   "red"
   ],
   "hypothesis": [
    "H2"
@@ -165,7 +165,7 @@
    {
     "check": "rules · at least two colours shown",
     "ok": true,
-    "detail": "amber, green"
+    "detail": "amber, red"
    },
    {
     "check": "rules · no dispatch-time claim while backlogged",
