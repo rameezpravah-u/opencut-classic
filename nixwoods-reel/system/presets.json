@@ -530,7 +530,7 @@
      "hero": "hf/hf00-hero-lowangle.jpg",
      "flatlay": "hf/hf01-flatlay.jpg",
      "macro": "hf/hf02-macro-corner.jpg",
-     "hands": "hf/hf03-hands-turning.jpg",
+     "hands": "hf/hf14-hands-turn-v2.jpg",
      "room": "hf/hf04-wide-bluehour.jpg",
      "bedside_red": "hf/hf05-bedside-red.jpg",
      "desk_green": "hf/hf06-desk-green.jpg",
@@ -540,14 +540,17 @@
      "diwali": "hf/hf10-console-diwali.jpg",
      "dutch_green": "hf/hf11-dutch-green.jpg",
      "hero_off": "hf/hf12-hero-off.jpg",
-     "room_before": "hf/hf13-room-tubelight.jpg"
+     "room_before": "hf/hf13-room-tubelight.jpg",
+     "hands_v1": "hf/hf03-hands-turning.jpg",
+     "hands_console": "hf/hf15-hands-console-v2.jpg"
     },
     "clips": {
      "hero": "hf/k00-hero-dolly.mp4",
-     "hands": "hf/k01-hands-turn.mp4",
+     "hands": "hf/k05-hands-turn-v2.mp4",
      "room": "hf/k02-room-dolly.mp4",
      "backlit": "hf/k03-backlit-arc.mp4",
-     "diwali": "hf/k04-diwali-push.mp4"
+     "diwali": "hf/k04-diwali-push.mp4",
+     "hands_v1": "hf/k01-hands-turn.mp4"
     },
     "sfx": {
      "turn": "audio/sfx-turn.mp3",
@@ -569,21 +572,42 @@
      "backlit": "upper",
      "bedside_red": "lower",
      "desk_green": "lower",
-     "_note": "named slot per asset key (stills and clips share keys); video_slot applies to the product video states. auto_slot is the fallback."
+     "_note": "named slot per asset key (stills and clips share keys); video_slot applies to the product video states. auto_slot is the fallback.",
+     "hands_console": "top",
+     "hands_v1": "top"
     },
     "clip_colours": {
      "hands": [
       "amber",
-      "green"
+      "red"
      ]
     },
     "status": {
-     "_note": "fidelity gate: an asset marked rejected is never cut in; Build falls back to the real product footage. Approve only after comparing against the design reference (rubik-reels/src/REFERENCE.md).",
-     "hands": "rejected — glass rendered as a lifted cube; the real block is an 8x8x3 in slab that turns on its base (Rameez, 6 Sep)",
-     "k01": "rejected — same frame animated"
+     "_note": "fidelity gate: an asset marked rejected is never cut in; Build falls back to the real product footage. Approve only after comparing against the design reference (rubik-reels/ref/REFERENCE.md).",
+     "hands_v1": "rejected — glass rendered as a lifted cube; the real block is an 8x8x3 in slab that turns on its base (Rameez, 6 Sep)",
+     "hands": "approved 6 Sep — checked against ref/ref-14-1-14.8s.jpg: slab seated on the base, hand on the top edge, red edge showing",
+     "hands_console": "approved 6 Sep — two hands on the top corners, amber→green, slab on the base",
+     "hero": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "flatlay": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "macro": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "room": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "bedside_red": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "desk_green": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "unbox": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "backlit": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "mirror": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "diwali": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "dutch_green": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "hero_off": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+     "room_before": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque"
     },
     "clip_status": {
-     "hands": "rejected"
+     "hands_v1": "rejected — animated from the rejected still",
+     "hands": "approved 6 Sep — slab rotates on its base through the edge-on view, amber → red, never lifted",
+     "hero": "approved 6 Sep — checked on the frame strips: product unchanged through the move",
+     "room": "approved 6 Sep — checked on the frame strips: product unchanged through the move",
+     "backlit": "approved 6 Sep — checked on the frame strips: product unchanged through the move",
+     "diwali": "approved 6 Sep — checked on the frame strips: product unchanged through the move"
     }
    },
    "video_cx": 0.28,

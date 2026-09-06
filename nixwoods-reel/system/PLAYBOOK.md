@@ -180,6 +180,23 @@ Measure: hook rate (3-s views ÷ plays), hold (completion), shares, saves, then 
 
 ---
 
+## 8. Quality gates (what the system refuses to do)
+
+Every reel passes six gates before it exists as an mp4. The first five run in code; the sixth is you.
+
+| Gate | Runs where | Refuses | Why it exists |
+|---|---|---|---|
+| **1. Asset fidelity** | `presets.json → assets.status / clip_status`, enforced in `mechanisms.Build` | any generated still or clip marked `rejected`; falls back to the real product footage | 6 Sep: a generated "hands turning" frame showed the glass as a loose cube lifted off the base. The product is an 8×8×3 in slab that turns *on* its base. `qa.py` puts every generated asset next to the real reference frames in `rubik-reels/ref/`; nothing enters a cut until it is compared and marked approved. For hands shots, give the model a real frame of the gesture as a second reference, not just the packshot. |
+| **2. Copy lint** | `make_reel.lint` | banned words, more than 12 words on a screen; warns on the trademark | brand voice (NixWoods-Master.md), AD-COPY.md trademark rule |
+| **3. Hook gates** | `hooks.py` | prints the Gap / Truth / Pull result and a /12 score on every render; `--rank` orders briefs by it | Growth System layer 3 |
+| **4. Placement** | `reelkit.auto_slot` + per-asset slot overrides + `make_reel.check_cues` | text on the lamp, text outside the safe zone, a hook later than 0.3 s or shorter than 1.2 s | the captions-on-the-lamp note from the first Rubik's set; Instagram UI overlays |
+| **5. Ads pre-flight** | `make_reel.preflight` → `<name>-timeline.json` | nothing (it reports): ≥2 colours, dispatch claims, trademark, AI disclosure, length bucket, plus the manual boxes (landing, visual confirmation, control, kill threshold) | Ads Engine §7 six checks; the 3 Sep H1 ads were created PAUSED for exactly the checks this sheet now fills in |
+| **6. Visual confirmation** | you, on the mp4 | anything the contact sheet cannot show: motion, pacing, sound | the locked rule: never deploy a creative that hasn't been watched |
+
+Sources, registered not typed: `sources.py` scans any product video for its red / green / amber / warm segments and writes them into `presets.json`, so a new clip (the campaign video, a new shoot) becomes cut-ready without hand-timed timestamps. On the hero clip it reproduces the hand-timed states within 0.25 s.
+
+---
+
 ## Sources
 
 Own data: Meta ad account 9020821008043944 (ads_get_ad_entities, last 90 days). Meta Ad Library search, India, "wooden lamp", "table lamp". Sites: ikarihomes.com, phanash.com, nixwoods.com/products/rubiks-cube-table-lamp-sheesham-wood.

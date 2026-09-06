@@ -54,3 +54,10 @@ Decorate a function in `mechanisms.py` with `@mechanism(name, funnel, note)`; us
 - Every render's `<name>-timeline.json` now carries `preflight`: the ad name, the colours shown (the ≥2-colour rule), the hook score, whether generated frames are used (AI disclosure), and the ten checks with the automatic ones filled in.
 - Brief keys added: `tags`, `pillar`, `hypothesis`, `channel`, `stretch` (1.5 turns an 18 s cut into a 27 s ad cut), `copy.name_ad`.
 - Style `social`: Fraunces 600 + Inter, espresso / warm bone / amber glow, per the Social Master Playbook.
+
+## Quality gates (added 6 Sep, after the hands-frame miss)
+
+- `qa.py --root <root> --out qa-sheet.jpg`: every generated still/clip beside the real reference frame with its status; `presets.json → assets.status / clip_status` is where approval lives, and `mechanisms.Build` refuses anything rejected (falls back to the real footage).
+- `sources.py <video> [--write rubik]`: finds the colour states of any product video and registers them.
+- `make_reel.py briefs --all --root <root>`: renders every brief and prints one summary line each (length, hook score, pre-flight counts, checks).
+- `rubik-reels/ref/REFERENCE.md`: the product's true form, the real reference frames, the campaign video record and how to get the file into the system.

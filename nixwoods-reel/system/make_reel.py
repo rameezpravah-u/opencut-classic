@@ -119,7 +119,25 @@ def main():
     ap.add_argument("--force", action="store_true", help="render even if the copy lint fails")
     ap.add_argument("--dry", action="store_true", help="build + checks only, no render")
     ap.add_argument("--rank", action="store_true", help="brief is a directory: rank its briefs by tag index × hook score (Growth System layer 3 order)")
+    ap.add_argument("--all", action="store_true", help="brief is a directory: render every brief in it and print a summary table")
     a = ap.parse_args()
+
+    if a.all:
+        import subprocess as sp
+        table = []
+        for f in sorted(os.listdir(a.brief)):
+            if not f.endswith(".json"):
+                continue
+            cmd = [sys.executable, os.path.abspath(__file__), os.path.join(a.brief, f), "--root", a.root, "--audio", a.audio] + (["--out", a.out] if a.out else []) + (["--dry"] if a.dry else []) + (["--no-sheet"] if a.no_sheet else [])
+            r = sp.run(cmd, capture_output=True, text=True)
+            out = r.stdout + r.stderr
+            name = f[:-5]
+            hook = re.search(r"HOOK (\d+)/12", out); pre = re.findall(r"(✓|✗|□) ", out.split("PREFLIGHT")[-1]) if "PREFLIGHT" in out else []
+            dur = re.search(r"built \S+: ([\d.]+)s", out)
+            status = "ok" if r.returncode == 0 else "FAILED: " + out.strip().splitlines()[-1][:70]
+            table.append((name, dur.group(1) if dur else "-", hook.group(1) if hook else "-", pre.count("✓"), pre.count("✗"), pre.count("□"), len(re.findall(r"^CHECK", out, re.M)), status))
+            print(f"{name:26s} {table[-1][1]:>6}s hook {table[-1][2]:>2}/12  preflight ✓{table[-1][3]} ✗{table[-1][4]} □{table[-1][5]}  checks {table[-1][6]}  {status}", flush=True)
+        return
 
     if a.rank:
         E = MX.PRESETS["engine"]; idx = E["tag_index"]

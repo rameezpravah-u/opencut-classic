@@ -27,7 +27,9 @@ Disclose AI imagery when these run as paid ads (Meta's AI-generated-media flag).
 | hf00-hero-lowangle | low angle from table height, apartment at dusk, blue-hour window behind | amber | 35 mm f/2.8, dust in the beam, folded newspaper + ceramic cup |
 | hf01-flatlay | top-down on linen, morning window light | off | 50 mm f/5.6 overhead, sketchbook, espresso cup, eucalyptus, reading glasses |
 | hf02-macro-corner | 100 mm macro on the glass/base corner, dark room | amber | thin 4500K rim light, dust, matte table reflection |
-| hf03-hands-turning | 85 mm closeup, Indian woman's hands mid-turn, sage wall | amber → green | ring, natural skin, no full face |
+| hf03-hands-turning | **REJECTED 6 Sep** — the glass came out as a cube lifted off the base; the real product is an 8×8×3 in slab turned on its base | – | kept only as the example of what the fidelity gate refuses |
+| hf14-hands-turn-v2 | 85 mm closeup, one hand on the top edge turning the slab on its base (two references: packshot + a real hand-turn frame) | amber, red edge | approved against `ref/ref-14-1-14.8s.jpg` |
+| hf15-hands-console-v2 | three-quarter, two hands on the top corners, walnut console at dusk | amber → green | approved |
 | hf04-wide-bluehour | 24 mm wide living room, lamp is the only light | amber | linen sofa, plant, jute rug, framed print catching the glow |
 | hf05-bedside-red | bedside from bed height, movie-night | red | 85 mm f/2, linen bedding foreground, glass of water with red highlights |
 | hf06-desk-green | home-office desk, seated three-quarter | green | closed laptop, notebook with handwriting, fern, warm 3200K desk fill |
@@ -44,10 +46,13 @@ Disclose AI imagery when these run as paid ads (Meta's AI-generated-media flag).
 | file | from | camera / motion prompt |
 |---|---|---|
 | k00-hero-dolly | hf00 | slow dolly push-in rising slightly from table height; dust motes drift; curtain sways; dusk still |
-| k01-hands-turn | hf03 | hands rotate the block a quarter turn and set it down; glow shifts amber → green; gentle push-in |
+| k01-hands-turn | hf03 | **REJECTED** with its still |
+| k05-hands-turn-v2 | hf14 | the hand rotates the slab a few degrees on its base, glow shifts amber → red, slab never leaves the base |
 | k02-room-dolly | hf04 | slow forward dolly across the room with parallax between plant, sofa and window; glow breathes |
 | k03-backlit-arc | hf08 | slow lateral arc left → right; curtain breathes in a draft; city bokeh drifts with parallax |
 | k04-diwali-push | hf10 | diya flames flicker, marigold petals fall, slow push-in with a slight tilt up |
+
+**Fidelity rule learned the hard way**: a single packshot reference is not enough for a hands shot; the model invents a loose cube. Give it a real frame of the gesture as a second `image_references` input and say in words that the slab stays on the base. Compare every result with `../ref/` before it enters `presets.json`.
 
 Every prompt ended with: "The lamp, its wooden base and the small NX plaque stay exactly as in the image, no new objects, no text." When Higgsfield answers with a preset recommendation instead of a job, resubmit with `declined_preset_id`.
 
