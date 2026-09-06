@@ -536,7 +536,8 @@
      "desk_green": "lower",
      "_note": "named slot per asset key (stills and clips share keys); video_slot applies to the product video states. auto_slot is the fallback."
     }
-   }
+   },
+   "video_cx": 0.28
   }
  }
 }

@@ -315,23 +315,24 @@ def m_triptych(b):
     B = Build(b); c = b["copy"]; st = B.st
     V = B.path(b["assets"]["video"]); S_ = b["_product"]["states"]; stills = b["assets"]["stills"]
     pre = os.path.join(B.out, f"{B.name}-tri.mp4")
-    rk.render_triptych([(V, S_["red"], "video"), (V, S_["amber"], "video"), (V, S_["green"], "video")], pre, 2.4)
+    vx = b["_product"].get("video_cx", 0.5)          # lamp is left of centre in the product clip
+    rk.render_triptych([(V, S_["red"], "video", vx), (V, S_["amber"], "video", vx), (V, S_["green"], "video", vx)], pre, 2.4)
     tri = B.pre(pre, 2.4)
     hd = B.clip("hands", 3.0, xfade=TRANS["whip"], cam=B.cam("hold"))
     pre2 = os.path.join(B.out, f"{B.name}-tri2.mp4")
-    rk.render_triptych([(B.path(stills["bedside_red"]), 0, "still"), (B.path(stills["hero"]), 0, "still"),
-                        (B.path(stills["desk_green"]), 0, "still")], pre2, 2.4)
+    rk.render_triptych([(B.path(stills["bedside_red"]), 0, "still", 0.6), (B.path(stills["hero"]), 0, "still", 0.45),
+                        (B.path(stills["desk_green"]), 0, "still", 0.5)], pre2, 2.4)
     tri2 = B.pre(pre2, 2.4, xfade=TRANS["whip"])
     hero = B.clip("hero", 2.6, xfade=TRANS["whip"], cam=B.cam("push"))
     B.card([c.get("hook", "3 moods. 1 turn.")], f'{c["name"]} · {c["price"]} · {c["url"]}')
     sw = (1080 - 12) // 3
     for i, (name, col) in enumerate((("Red", COL["red"]), ("Amber", COL["amber"]), ("Green", COL["green"]))):
-        x = i * (sw + 6) + 80
+        x = i * (sw + 6) + 96
         for sh in (tri, tri2):
-            B.cue(sh["start"] + 0.15, sh["end"] - 0.1, T([name], y_top=SLOTS["top"], size=40, fontfile=st.d["support_font"],
-                                                         color=col, align="left", x_left=x, shadow_blur=10))
+            B.cue(sh["start"] + 0.15, sh["end"] - 0.1, T([name], y_top=SLOTS["top"], size=44, fontfile=st.d["headline_font"],
+                                                         color=col, align="left", x_left=x, shadow_blur=14, shadow_alpha=240))
     B.cue(0.25, tri["end"] - 0.1, st.headline([c.get("hook", "3 moods. 1 turn.")], y_top=SLOTS["upper"]))
-    B.say(hd, _wrap(c.get("mechanism", "No app. Just turn it."), 20))
+    B.say(hd, _wrap(c.get("mechanism", "No app. Just turn it."), 24))
     B.cue(tri2["start"] + 0.2, tri2["end"] - 0.1, st.headline([c.get("line2", "Bedside. Console. Desk.")], y_top=SLOTS["upper"]))
     B.say(hero, _wrap(c.get("line3", "One lamp. Three rooms' worth of mood."), 22))
     for sh in (hd, tri2, hero):

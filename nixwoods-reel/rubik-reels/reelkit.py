@@ -460,18 +460,20 @@ M = merge_layers
 
 # --- multi-frame compositions (rendered as their own pre-clips) ---------
 def render_triptych(clips, out_path, dur, labels=None, gap=6, bg=(10, 8, 6), label_style=None):
-    """three vertical strips side by side, each a (path, ss, kind) tuple. Produces an mp4 usable as a segment."""
+    """three vertical strips side by side, each a (path, ss, kind[, crop_cx]) tuple. Produces an mp4 usable as a segment."""
     n = len(clips)
     sw = (W - gap * (n - 1)) // n
     cmd = ["ffmpeg", "-hide_banner", "-y"]
     fc = []
-    for i, (p, ss, kind) in enumerate(clips):
+    for i, clip in enumerate(clips):
+        p, ss, kind = clip[:3]
+        cx = clip[3] if len(clip) > 3 else 0.5        # where the strip sits on the source (0 = left edge, 1 = right)
         if kind == "video":
             cmd += ["-ss", f"{ss:.3f}", "-t", f"{dur + 0.3:.3f}", "-i", p]
         else:
             cmd += ["-loop", "1", "-framerate", str(FPS), "-t", f"{dur + 0.3:.3f}", "-i", p]
-        # crop a vertical strip from the centre of each source, scaled to full height
-        fc.append(f"[{i}:v]scale=-2:{H}:flags=lanczos,crop={sw}:{H}:(iw-{sw})/2:0,fps={FPS},setsar=1,format=yuv420p[c{i}]")
+        # crop a vertical strip from each source, scaled to full height
+        fc.append(f"[{i}:v]scale=-2:{H}:flags=lanczos,crop={sw}:{H}:(iw-{sw})*{cx}:0,fps={FPS},setsar=1,format=yuv420p[c{i}]")
     fc.append(f"color=c=0x{bg[0]:02x}{bg[1]:02x}{bg[2]:02x}:s={W}x{H}:r={FPS}:d={dur:.3f}[bg]")
     cur = "bg"
     for i in range(n):
