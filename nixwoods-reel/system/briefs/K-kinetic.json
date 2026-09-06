@@ -1,0 +1,18 @@
+{
+ "name": "K-kinetic",
+ "mechanism": "kinetic",
+ "product": "rubik",
+ "style": "genz",
+ "music": "audio/music4-genz.mp3",
+ "music_offset": -26.6,
+ "music_gain": -2,
+ "cover_t": 0.9,
+ "per_word": 0.16,
+ "copy": {
+  "hook": "nobody guesses how the colour changes.",
+  "mechanism": "there's no switch. you turn it.",
+  "line3": "real glass. real wood.",
+  "cta": "link in bio"
+ },
+ "notes": "Top of funnel, Gen-Z. Curiosity-gap hook, word-by-word."
+}

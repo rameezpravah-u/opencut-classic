@@ -1,0 +1,13 @@
+{
+ "name": "UGC-pov",
+ "mechanism": "ugc_pov",
+ "product": "rubik",
+ "style": "ugc",
+ "music": "audio/music4-genz.mp3",
+ "music_offset": -26.6,
+ "cover_t": 0.5,
+ "copy": {
+  "cta_line": "turn the block."
+ },
+ "notes": "Reach. Raw phone-camera register; pov hook. Post Fri."
+}

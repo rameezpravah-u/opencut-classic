@@ -1,0 +1,14 @@
+{
+ "name": "TESTI-testimonial",
+ "mechanism": "testimonial",
+ "product": "rubik",
+ "style": "broad",
+ "music": "audio/music2-meaning.mp3",
+ "cover_t": 1.0,
+ "copy": {
+  "quote": "",
+  "who": "",
+  "mechanism": "Turn the block. Three colours."
+ },
+ "notes": "Bottom funnel. NEEDS A REAL QUOTE: paste the customer's words into copy.quote and their first name + city into copy.who. The runner refuses to render without them."
+}

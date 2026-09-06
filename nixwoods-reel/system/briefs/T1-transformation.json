@@ -1,0 +1,18 @@
+{
+ "name": "T1-transformation",
+ "mechanism": "transformation",
+ "product": "rubik",
+ "style": "broad",
+ "music": "audio/music3-design.mp3",
+ "music_offset": -8.0,
+ "music_gain": -3,
+ "cover_t": 2.6,
+ "copy": {
+  "hook": "Still lit by one tubelight?",
+  "turn": "Watch the room change.",
+  "kicker": "one turn · three colours",
+  "mechanism": "No app. No remote. Just turn it.",
+  "proof_line": "Solid sheesham. Hand-painted glass."
+ },
+ "notes": "Top of funnel. Hook = pattern interrupt (dark → flash → on). Post Mon."
+}

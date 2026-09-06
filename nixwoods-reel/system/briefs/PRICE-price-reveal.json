@@ -1,0 +1,14 @@
+{
+ "name": "PRICE-price-reveal",
+ "mechanism": "price_reveal",
+ "product": "rubik",
+ "style": "3040",
+ "music": "audio/music5-3040.mp3",
+ "cover_t": 1.0,
+ "copy": {
+  "hook": "Everyone asks about it. Nobody guesses the price.",
+  "terms": "Free shipping across India. COD available.",
+  "cta_line": "Turn the block."
+ },
+ "notes": "Bottom funnel / retargeting. Price late."
+}

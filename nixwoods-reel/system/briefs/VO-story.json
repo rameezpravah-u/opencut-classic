@@ -1,0 +1,100 @@
+{
+ "name": "VO-story",
+ "mechanism": "vo_story",
+ "product": "rubik",
+ "style": "broad",
+ "music": "audio/music2-meaning.mp3",
+ "vo": "audio/vo-meaning.mp3",
+ "vo_offset": 0.6,
+ "cover_t": 1.2,
+ "vo_lines": [
+  [
+   0.0,
+   1.55,
+   [
+    "Most lamps give you",
+    "one light."
+   ],
+   null
+  ],
+  [
+   2.0,
+   3.6,
+   [
+    "This one gives you three."
+   ],
+   null
+  ],
+  [
+   3.8,
+   6.4,
+   [
+    "Amber.",
+    "The workday winds down."
+   ],
+   "amber"
+  ],
+  [
+   6.6,
+   8.5,
+   [
+    "Green.",
+    "A slow evening."
+   ],
+   "green"
+  ],
+  [
+   8.6,
+   10.2,
+   [
+    "Red.",
+    "Movie night."
+   ],
+   "red"
+  ],
+  [
+   10.3,
+   12.4,
+   [
+    "No app. No remote.",
+    "You just turn the block."
+   ],
+   null
+  ],
+  [
+   12.5,
+   14.2,
+   [
+    "Solid sheesham."
+   ],
+   null
+  ],
+  [
+   14.2,
+   15.8,
+   [
+    "Hand-painted glass."
+   ],
+   null
+  ],
+  [
+   15.85,
+   17.3,
+   [
+    "Made in India."
+   ],
+   null
+  ],
+  [
+   17.35,
+   21.3,
+   [
+    "One lamp, for every",
+    "version of your evening."
+   ],
+   null
+  ]
+ ],
+ "copy": {},
+ "notes": "Narrator register. Same script as R2, new visuals (Higgsfield stills + Kling clips) so it is not a duplicate upload."
+}

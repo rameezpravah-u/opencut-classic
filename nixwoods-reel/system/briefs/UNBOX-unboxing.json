@@ -1,0 +1,15 @@
+{
+ "name": "UNBOX-unboxing",
+ "mechanism": "unboxing",
+ "product": "rubik",
+ "style": "festive",
+ "music": "audio/music5-3040.mp3",
+ "cover_t": 1.0,
+ "copy": {
+  "hook": "The gift they'll actually remember.",
+  "line4": "Made in India. Ready for Diwali.",
+  "gift_line": "The gift they'll actually remember.",
+  "delivery": "₹2,999 · delivered in 5–7 days · nixwoods.com"
+ },
+ "notes": "Festive Sept–Nov. Swap 'Diwali' for 'the wedding' in Dec–Feb."
+}

@@ -1,0 +1,97 @@
+{
+  "canvas": {"w": 1080, "h": 1920, "fps": 25},
+  "safe": {"top": 230, "bottom": 1500, "left": 70, "right": 950,
+           "note": "Instagram 2026: top ~220px and bottom ~400px are covered by UI, right ~130px by the action rail"},
+  "slots": {"top": 300, "upper": 560, "centre": 880, "lower": 1200, "low": 1330, "bottom": 1420},
+  "sizes": {"headline": [64, 88], "box": [66, 84], "secondary": [36, 44], "kicker": [28, 30], "minimum": 36,
+            "max_words_per_screen": 12, "max_lines": 3},
+  "hook": {"on_screen_by": 0.3, "hold_at_least": 1.2, "max_words": 12},
+  "banned_words": ["discover", "elevate", "luxury", "premium", "exquisite", "journey", "curated", "unlock", "stunning", "delve", "realm"],
+
+  "colors": {"amber": [242, 180, 78], "green": [90, 205, 140], "red": [232, 90, 80], "warm": [244, 234, 219],
+             "ivory": [244, 234, 219], "honey": [227, 165, 82], "espresso": [20, 17, 14]},
+
+  "styles": {
+    "aesthetic": {"label": "editorial / share-for-taste", "audience": "design-led 22-35, saves and shares",
+      "headline_font": "Cormorant_Garamond-500-i.ttf", "headline_size": 62, "support_font": "DM_Sans-500.ttf", "support_size": 34,
+      "case": "lower", "align": "left", "x_left": 96, "tracking": 2, "line_gap": 6, "shadow_blur": 10,
+      "palette": {"text": [239, 230, 216], "accent": [226, 178, 168], "card": [20, 17, 14]},
+      "grade": "eq=contrast=0.97:brightness=0.015:saturation=0.94,vignette=angle=PI/4.6:mode=forward,noise=alls=5:allf=t+u",
+      "music": "audio/music1-aesthetic.mp3", "cut": 1.766, "transition": "dissolve"},
+    "broad": {"label": "broad 28-45 / voice-over", "audience": "women 35-64 first, matches existing NixWoods reels",
+      "headline_font": "Playfair_Display-600.ttf", "headline_size": 68, "support_font": "DM_Sans-500.ttf", "support_size": 40,
+      "case": "as-is", "align": "center", "shadow_blur": 14,
+      "palette": {"text": [244, 234, 219], "accent": [227, 165, 82], "card": [20, 17, 14]},
+      "grade": "eq=contrast=1.04:saturation=1.05,vignette=angle=PI/5:mode=forward",
+      "music": "audio/music2-meaning.mp3", "cut": 2.4, "transition": "cut"},
+    "design": {"label": "design crowd / product-page register", "audience": "architects, design followers, 25-40",
+      "headline_font": "Space_Grotesk-700.ttf", "headline_size": 60, "support_font": "Inter-300.ttf", "support_size": 38,
+      "price_font": "Space_Grotesk-700.ttf", "case": "as-is", "align": "left", "x_left": 96, "tracking": 0, "shadow_blur": 12,
+      "palette": {"text": [245, 245, 242], "accent": [232, 162, 74], "card": [12, 12, 12], "rule": [200, 200, 196]},
+      "grade": "eq=contrast=1.12:saturation=0.96",
+      "music": "audio/music3-design.mp3", "cut": 2.4, "transition": "whip"},
+    "genz": {"label": "Gen-Z caption boxes", "audience": "18-26, fast, lowercase, neon",
+      "headline_font": "Archivo_Black-400.ttf", "headline_size": 66, "support_font": "Space_Grotesk-500.ttf", "support_size": 40,
+      "price_font": "Space_Grotesk-700.ttf", "case": "lower", "align": "center", "shadow_blur": 0,
+      "box": [255, 197, 66, 255], "price_box": [61, 255, 143, 255],
+      "palette": {"text": [10, 10, 10], "accent": [61, 255, 143], "card": [10, 10, 10], "on_card": [242, 242, 242]},
+      "grade": "eq=contrast=1.08:saturation=1.28", "shake": 3, "punch": 0.09,
+      "music": "audio/music4-genz.mp3", "cut": 1.714, "transition": "cut"},
+    "3040": {"label": "30-40 trust", "audience": "first-home, considered purchase, gifts",
+      "headline_font": "Playfair_Display-600.ttf", "headline_size": 66, "support_font": "DM_Sans-500.ttf", "support_size": 40,
+      "price_font": "Playfair_Display-700.ttf", "price_box": [94, 40, 58, 255], "case": "as-is", "align": "center", "shadow_blur": 14,
+      "palette": {"text": [244, 234, 219], "accent": [217, 160, 91], "card": [20, 17, 14], "price": [244, 234, 219]},
+      "grade": "eq=contrast=1.05:saturation=1.06,vignette=angle=PI/5:mode=forward",
+      "music": "audio/music5-3040.mp3", "cut": 2.526, "transition": "cut"},
+    "festive": {"label": "Diwali / wedding season gifting", "audience": "family buyers, Sept-Nov",
+      "headline_font": "Playfair_Display-700.ttf", "headline_size": 66, "support_font": "DM_Sans-600.ttf", "support_size": 40,
+      "price_font": "Playfair_Display-700.ttf", "price_box": [120, 26, 40, 255], "case": "as-is", "align": "center", "shadow_blur": 14,
+      "palette": {"text": [250, 238, 214], "accent": [240, 150, 50], "card": [60, 18, 28], "price": [250, 238, 214]},
+      "grade": "eq=contrast=1.05:saturation=1.12,vignette=angle=PI/5:mode=forward",
+      "music": "audio/music5-3040.mp3", "cut": 2.526, "transition": "dissolve"},
+    "ugc": {"label": "phone-camera POV", "audience": "reach; raw beats polished in India small-brand data",
+      "headline_font": "DM_Sans-600.ttf", "headline_size": 56, "support_font": "DM_Sans-500.ttf", "support_size": 38,
+      "price_font": "DM_Sans-600.ttf", "case": "lower", "align": "center", "shadow_blur": 0,
+      "box": [0, 0, 0, 215], "price_box": [0, 0, 0, 215],
+      "palette": {"text": [255, 255, 255], "accent": [255, 255, 255], "card": [10, 10, 10]},
+      "grade": "eq=contrast=1.06:saturation=1.15,noise=alls=8:allf=t+u", "shake": 3, "punch": 0.06,
+      "music": "audio/music4-genz.mp3", "cut": 1.714, "transition": "cut"}
+  },
+
+  "camera": {
+    "push":     {"z0": 1.0,  "z1": 1.12},
+    "push_hard":{"z0": 1.0,  "z1": 1.18},
+    "pull":     {"z0": 1.12, "z1": 1.0},
+    "drift":    {"z0": 1.12, "z1": 1.12, "px0": -0.3, "px1": 0.3},
+    "drift_back":{"z0": 1.12, "z1": 1.12, "px0": 0.3, "px1": -0.3},
+    "tilt_up":  {"z0": 1.05, "z1": 1.12, "py0": 0.3,  "py1": -0.1},
+    "tilt_down":{"z0": 1.05, "z1": 1.12, "py0": -0.3, "py1": 0.1},
+    "hero":     {"z0": 1.0,  "z1": 1.15, "py0": 0.15, "py1": -0.05},
+    "hold":     {"z0": 1.08, "z1": 1.08}
+  },
+  "transitions": ["cut", "dissolve", "fade", "flash", "dip", "zoom", "whip", "whip_up", "circle", "slide"],
+
+  "products": {
+    "rubik": {
+      "name": "Rubik's Cube Lamp", "price": "₹2,999", "compare": "₹4,199", "url": "nixwoods.com",
+      "copy": {"name": "Rubik's Cube Lamp", "price": "₹2,999", "compare": "₹4,199", "url": "nixwoods.com",
+               "cta": "Turn the block. nixwoods.com", "proof": ["Solid sheesham", "Hand-painted glass", "3-year wood warranty", "Free shipping · COD"],
+               "colors": {"amber": "Amber. The workday winds down.", "green": "Green. A slow evening.", "red": "Red. Movie night."}},
+      "states": {"green": 0.0, "red": 3.25, "amber": 5.65, "warm": 8.7, "hand": 13.0},
+      "state_max": {"green": 3.2, "red": 2.4, "amber": 3.0, "warm": 4.3, "hand": 3.4},
+      "assets": {
+        "video": "src/14-1.mp4",
+        "stills": {
+          "hero": "hf/hf00-hero-lowangle.jpg", "flatlay": "hf/hf01-flatlay.jpg", "macro": "hf/hf02-macro-corner.jpg",
+          "hands": "hf/hf03-hands-turning.jpg", "room": "hf/hf04-wide-bluehour.jpg", "bedside_red": "hf/hf05-bedside-red.jpg",
+          "desk_green": "hf/hf06-desk-green.jpg", "unbox": "hf/hf07-gift-unbox.jpg", "backlit": "hf/hf08-backlit-silhouette.jpg",
+          "mirror": "hf/hf09-mirror.jpg", "diwali": "hf/hf10-console-diwali.jpg", "dutch_green": "hf/hf11-dutch-green.jpg",
+          "hero_off": "hf/hf12-hero-off.jpg", "room_before": "hf/hf13-room-tubelight.jpg"
+        },
+        "clips": {"hero": "hf/k00-hero-dolly.mp4", "hands": "hf/k01-hands-turn.mp4", "room": "hf/k02-room-dolly.mp4",
+                  "backlit": "hf/k03-backlit-arc.mp4", "diwali": "hf/k04-diwali-push.mp4"},
+        "sfx": {"turn": "audio/sfx-turn.mp3", "whoosh": "audio/sfx-whoosh.mp3"}
+      }
+    }
+  }
+}

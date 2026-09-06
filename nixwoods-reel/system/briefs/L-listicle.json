@@ -1,0 +1,27 @@
+{
+ "name": "L-listicle",
+ "mechanism": "listicle",
+ "product": "rubik",
+ "style": "broad",
+ "music": "audio/music5-3040.mp3",
+ "cover_t": 0.8,
+ "copy": {
+  "hook": "3 reasons this isn't plastic.",
+  "items": [
+   [
+    "It's real glass on solid sheesham.",
+    "macro"
+   ],
+   [
+    "Three colours. No app. Just turn.",
+    "hands"
+   ],
+   [
+    "Three-year warranty on the wood.",
+    "hero"
+   ]
+  ],
+  "cta_line": "Turn the block."
+ },
+ "notes": "Mid funnel. Listicle with counter."
+}

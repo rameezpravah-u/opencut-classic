@@ -1,0 +1,16 @@
+{
+ "name": "TRI-triptych",
+ "mechanism": "triptych",
+ "product": "rubik",
+ "style": "design",
+ "music": "audio/music3-design.mp3",
+ "music_offset": -8.0,
+ "cover_t": 0.8,
+ "copy": {
+  "hook": "3 moods. 1 turn.",
+  "mechanism": "No app. Just turn it.",
+  "line2": "Bedside. Console. Desk.",
+  "line3": "One lamp. Three rooms' worth of mood."
+ },
+ "notes": "Two colour states in one frame = strongest static on the account; here all three, moving."
+}

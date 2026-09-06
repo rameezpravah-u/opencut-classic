@@ -1,0 +1,14 @@
+{
+ "name": "SPEC-spec-sheet",
+ "mechanism": "spec_sheet",
+ "product": "rubik",
+ "style": "design",
+ "music": "audio/music3-design.mp3",
+ "music_offset": -8.0,
+ "cover_t": 0.8,
+ "copy": {
+  "hook": "A lamp, not a gadget.",
+  "mechanism": "Turn. That's the whole interface."
+ },
+ "notes": "Design crowd. Numbers only; pairs with the Spec-fast VO in scripts/vo-scripts.md."
+}

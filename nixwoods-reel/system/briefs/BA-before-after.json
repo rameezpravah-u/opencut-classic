@@ -1,0 +1,17 @@
+{
+ "name": "BA-before-after",
+ "mechanism": "before_after",
+ "product": "rubik",
+ "style": "3040",
+ "music": "audio/music5-3040.mp3",
+ "cover_t": 3.4,
+ "copy": {
+  "hook": "Same room. One lamp.",
+  "before": "before · tubelight",
+  "after": "after · rubik's cube lamp",
+  "line1": "Not brighter. Warmer.",
+  "mechanism": "Turn the block. The colour changes.",
+  "cta_line": "Same room. One lamp."
+ },
+ "notes": "Mid funnel. Before/After beats plain product shots by 60–80% in engagement."
+}

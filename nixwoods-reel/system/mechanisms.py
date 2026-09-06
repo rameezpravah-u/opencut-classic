@@ -1,0 +1,558 @@
+"""mechanisms.py — the twelve reel mechanisms from PLAYBOOK §6.
+
+Each mechanism is a function that takes a *resolved* brief (product + style presets merged in)
+and returns a reelkit.Reel ready to render. Use build():
+
+    from mechanisms import build
+    reel = build(brief_dict, root="dir with src/ audio/ hf/", out="out/system")
+    reel.render("-music")
+
+Every mechanism follows the same grammar: shots get a virtual camera move (2x supersampled
+zoompan), text is auto-placed off the product with reelkit.auto_slot, the hook is on screen by
+0.3 s, colour words take the lamp's real colour, and the price gets its own screen.
+"""
+import os, sys, json
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(HERE), "rubik-reels"))
+import reelkit as rk
+from reelkit import text_layer as T, merge_layers as M, logo_layer, solid_card, rule_layer, TRANS, SLOTS, SAFE
+
+PRESETS = json.load(open(os.path.join(HERE, "presets.json"), encoding="utf-8"))
+CAM = PRESETS["camera"]
+COL = {k: tuple(v) for k, v in PRESETS["colors"].items()}
+MECHANISMS = {}
+
+
+def mechanism(name, funnel, note):
+    def deco(fn):
+        fn.mech = dict(name=name, funnel=funnel, note=note)
+        MECHANISMS[name] = fn
+        return fn
+    return deco
+
+
+def cam(name, **over):
+    d = dict(CAM[name]); d.update(over); return d
+
+
+def _wrap(text, maxc=20):
+    """greedy wrap to max characters per line (headline sizes: ~18 chars at 66 px, ~22 at 54 px)"""
+    lines, cur = [], ""
+    for w in text.split():
+        if cur and len(cur) + 1 + len(w) > maxc:
+            lines.append(cur); cur = w
+        else:
+            cur = (cur + " " + w).strip()
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+# --------------------------------------------------------------------------
+# style: fonts / palette / case for one audience (presets.json → styles)
+# --------------------------------------------------------------------------
+class Style:
+    def __init__(self, d):
+        self.d = d
+        self.pal = {k: tuple(v) for k, v in d["palette"].items()}
+
+    def _case(self, lines):
+        c = self.d.get("case", "as-is")
+        return [l.lower() if c == "lower" else l.upper() if c == "upper" else l for l in lines]
+
+    def headline(self, lines, y_top, size=None, color=None, colors=None, **kw):
+        d = self.d
+        lines = [lines] if isinstance(lines, str) else lines
+        args = dict(y_top=y_top, size=size or d["headline_size"], fontfile=d["headline_font"],
+                    color=color or self.pal["text"], align=d.get("align", "center"), x_left=d.get("x_left", 90),
+                    tracking=d.get("tracking", 0), shadow_blur=d.get("shadow_blur", 12), line_gap=d.get("line_gap", 10))
+        if d.get("box"):
+            args["box"] = tuple(d["box"]); args["box_pad"] = (28, 16)
+        if colors:
+            args["colors"] = {k: tuple(v) for k, v in colors.items()}
+        args.update(kw)
+        return T(self._case(lines), **args)
+
+    def support(self, lines, y_top, size=None, color=None, **kw):
+        d = self.d
+        lines = [lines] if isinstance(lines, str) else lines
+        args = dict(y_top=y_top, size=size or d["support_size"], fontfile=d["support_font"], color=color or self.pal["accent"],
+                    align=d.get("align", "center"), x_left=d.get("x_left", 90), tracking=d.get("support_tracking", 1), shadow_blur=10)
+        args.update(kw)
+        return T(lines, **args)
+
+    def kicker(self, text, y_top, **kw):
+        args = dict(y_top=y_top, size=self.d.get("kicker_size", 30), fontfile=self.d.get("kicker_font", "DM_Sans-600.ttf"),
+                    color=self.pal["accent"], tracking=6, align=self.d.get("align", "center"), x_left=self.d.get("x_left", 90), shadow_blur=10)
+        args.update(kw)
+        return T([text.upper()], **args)
+
+    def price(self, text, y_top, size=None, **kw):
+        """Archivo Black has no ₹ glyph, so styles name a price_font"""
+        args = dict(y_top=y_top, size=size or self.d["headline_size"], fontfile=self.d.get("price_font", self.d["headline_font"]),
+                    color=self.pal.get("price", self.pal["text"]), align="center", shadow_blur=8)
+        if self.d.get("price_box"):
+            args["box"] = tuple(self.d["price_box"]); args["box_pad"] = (34, 18)
+        args.update(kw)
+        return T([text], **args)
+
+    def endcard(self, path, lines, sub):
+        card = solid_card(self.pal["card"], glow=self.pal["accent"], glow_cy=820)
+        card = M(card, logo_layer(300, 800),
+                 T(self._case(lines), y_top=1010, size=min(self.d["headline_size"], 66), fontfile=self.d["headline_font"],
+                   color=self.pal.get("on_card", self.pal["text"]), shadow_blur=0),
+                 T([sub], y_top=1150, size=40, fontfile=self.d["support_font"], color=self.pal["accent"], shadow_blur=0))
+        card.save(path)
+        return path
+
+
+# --------------------------------------------------------------------------
+# Build: a running timeline of shots, cues and sounds → reelkit.Reel
+# --------------------------------------------------------------------------
+class Build:
+    VIDEO_ONLY = ("slow", "speed", "reverse")
+
+    def __init__(self, b):
+        self.b = b; self.st = b["_style"]; self.sd = b["_style"].d
+        self.out = b["_out"]; self.name = b["name"]
+        self.shots, self.cues, self.sounds, self.t = [], [], [], 0.0
+
+    # --- assets -------------------------------------------------------
+    def path(self, rel):
+        return rel if os.path.isabs(rel) else os.path.join(self.b["_root"], rel)
+
+    def has(self, kind, key):
+        p = self.b["assets"].get(kind, {}).get(key)
+        return bool(p) and os.path.exists(self.path(p))
+
+    def cam(self, name, **over):
+        d = cam(name, **over)
+        if self.sd.get("punch") and "punch" not in over: d["punch"] = self.sd["punch"]
+        if self.sd.get("shake") and "shake" not in over: d["shake"] = self.sd["shake"]
+        return d
+
+    def _add(self, kind, path, ss, dur, xfade, kw):
+        xfade = xfade if self.shots else None
+        start = self.t - (xfade[1] if xfade else 0.0)
+        sh = dict(kind=kind, path=path, ss=ss, dur=dur, xfade=xfade, kw=kw, start=start, end=start + dur)
+        self.shots.append(sh); self.t = sh["end"]
+        return sh
+
+    def state(self, key, dur, xfade=None, offset=0.0, **kw):
+        """a colour state of the real product video (presets → products.states)"""
+        prod = self.b["_product"]
+        ss = prod["states"][key] + offset
+        dur = min(dur, prod["state_max"][key] - offset)
+        return self._add("video", self.path(self.b["assets"]["video"]), ss, dur, xfade, kw)
+
+    def still(self, key, dur, xfade=None, **kw):
+        for k in self.VIDEO_ONLY: kw.pop(k, None)
+        return self._add("still", self.path(self.b["assets"]["stills"][key]), 0, dur, xfade, kw)
+
+    def clip(self, key, dur, xfade=None, fallback=None, **kw):
+        """Higgsfield/Kling image-to-video clip if present, else the still it was made from"""
+        if self.has("clips", key):
+            kw.pop("crop_cx", None); kw.pop("crop_cy", None)
+            return self._add("video", self.path(self.b["assets"]["clips"][key]), 0, min(dur, 4.6), xfade, kw)
+        return self.still(fallback or key, dur, xfade, **kw)
+
+    def pre(self, path, dur, xfade=None, **kw):
+        """a pre-rendered composition (triptych, before/after) used as a segment"""
+        return self._add("video", path, 0, dur, xfade, kw)
+
+    def card(self, lines, sub, dur=2.4, xfade=("fade", 0.5)):
+        p = os.path.join(self.out, f"{self.name}-end.png")
+        self.st.endcard(p, lines, sub)
+        return self._add("still", p, 0, dur, xfade, {})
+
+    # --- text ---------------------------------------------------------
+    def cue(self, a, b, layer, **o):
+        self.cues.append((a, b, layer, o))
+
+    def slot(self, sh, t_local=0.5, block_h=260, prefer=("lower", "low", "upper", "centre", "top")):
+        """first named slot that does not cover the bright product band of this shot"""
+        try:
+            t = sh["ss"] + (t_local if sh["kind"] == "video" else 0.0)
+            return rk.auto_slot(sh["path"], t, block_h, prefer)
+        except Exception:
+            return SLOTS["low"]
+
+    def say(self, sh, lines, pad=0.2, y=None, block_h=None, fade=None, rise=None, prefer=None, **kw):
+        """headline over one shot, auto-placed off the product, inside the shot's window"""
+        lines = [lines] if isinstance(lines, str) else lines
+        size = kw.get("size") or self.sd["headline_size"]
+        bh = block_h or int(len(lines) * size * 1.25 + (90 if kw.get("kicker") else 40))
+        if y is None:
+            y = self.slot(sh, block_h=bh, prefer=prefer) if prefer else self.slot(sh, block_h=bh)
+        o = {}
+        if fade is not None: o["fade_in"] = o["fade_out"] = fade
+        if rise is not None: o["rise"] = rise
+        self.cue(sh["start"] + pad, sh["end"] - pad, self.st.headline(lines, y_top=y, **kw), **o)
+        return y
+
+    # --- audio --------------------------------------------------------
+    def sound(self, path, start=0.0, gain=0.0, fi=0.0, fo=0.0, music=False, duck=None):
+        self.sounds.append(dict(path=self.path(path), start=start, gain=gain, fi=fi, fo=fo, music=music, duck=duck))
+
+    def music(self, gain=-3, fi=0.3, fo=1.8, duck=None):
+        m = self.b.get("music") or self.sd.get("music")
+        if m and os.path.exists(self.path(m)):
+            self.sound(m, self.b.get("music_offset", 0.0), self.b.get("music_gain", gain), fi, fo, music=True, duck=duck)
+
+    def sfx(self, key, t, gain=-10):
+        p = self.b["assets"].get("sfx", {}).get(key)
+        if p and os.path.exists(self.path(p)) and self.b.get("sfx", True):
+            self.sound(p, max(0.0, t), gain)
+
+    # --- finish -------------------------------------------------------
+    def reel(self):
+        r = rk.Reel(self.name, self.out, round(self.t, 3), self.b.get("grade", self.sd.get("grade", "")))
+        for sh in self.shots:
+            if sh["kind"] == "video":
+                r.video(sh["path"], sh["ss"], sh["dur"], xfade=sh["xfade"], **sh["kw"])
+            else:
+                r.still(sh["path"], sh["dur"], xfade=sh["xfade"], **sh["kw"])
+        for a, b_, layer, o in self.cues:
+            r.cue(a, min(b_, self.t - 0.05), layer, **o)
+        for s in self.sounds:
+            r.sound(s["path"], s["start"], s["gain"], s["fi"], s["fo"], music=s["music"], duck=s["duck"])
+        r.shots = self.shots
+        return r
+
+
+def _col(word_line, key):
+    """colour the first word of 'Red. Movie night.' with the lamp colour"""
+    return {word_line.split(".")[0].split()[0]: COL[key]}
+
+
+# ==========================================================================
+# the twelve mechanisms
+# ==========================================================================
+@mechanism("transformation", "top", "dark room → flash → lamp on → colour cycle")
+def m_transformation(b):
+    B = Build(b); c = b["copy"]; st = B.st
+    off = B.still("hero_off", 2.2, cam=B.cam("push", z1=1.06), post="eq=brightness=-0.04") if B.has("stills", "hero_off") \
+        else B.still("hero", 2.2, cam=B.cam("push", z1=1.06), post="eq=brightness=-0.35:saturation=0.3")
+    on = B.clip("hero", 3.2, xfade=TRANS["flash"], cam=B.cam("push"))
+    am = B.state("amber", 2.4, cam=B.cam("drift"))
+    rd = B.still("bedside_red", 2.2, xfade=TRANS["dissolve"], cam=B.cam("push_hard"))
+    gr = B.still("desk_green", 2.2, xfade=TRANS["dissolve"], cam=B.cam("tilt_up"))
+    hd = B.clip("hands", 3.0, cam=B.cam("hold"))
+    mc = B.still("macro", 2.0, cam=B.cam("pull"))
+    B.card([c["name"]], f'{c["price"]}  ·  {c["url"]}')
+    B.cue(0.25, off["end"] - 0.1, st.headline(_wrap(c.get("hook", "Still lit by one tubelight?"), 20), y_top=B.slot(off, block_h=200)))
+    B.say(on, c.get("turn", "Watch the room change."), pad=0.3, kicker=c.get("kicker", "one turn · three colours"))
+    for sh, key in ((am, "amber"), (rd, "red"), (gr, "green")):
+        line = c["colors"][key]
+        B.say(sh, _wrap(line, 22), colors=_col(line, key))
+        B.sfx("turn", sh["start"], -10)
+    B.say(hd, _wrap(c.get("mechanism", "No app. No remote. Just turn it."), 20))
+    B.say(mc, _wrap(c.get("proof_line", "Solid sheesham. Hand-painted glass."), 22), size=50)
+    B.sfx("whoosh", on["start"] - 0.25, -12)
+    B.music()
+    return B.reel()
+
+
+@mechanism("colour_loop", "top", "seamless amber → green → red → amber loop; no CTA until the last second")
+def m_colour_loop(b):
+    B = Build(b); c = b["copy"]; st = B.st
+    cut = b.get("cut", 2.6); xf = TRANS["dissolve"]
+    a1 = B.state("amber", cut, cam=B.cam("push"))
+    B.state("green", cut, xfade=xf, cam=B.cam("drift"))
+    dg = B.still("desk_green", cut, xfade=xf, cam=B.cam("tilt_up"))
+    B.state("red", cut, xfade=xf, cam=B.cam("push_hard"))
+    br = B.still("bedside_red", cut, xfade=xf, cam=B.cam("drift_back"))
+    hd = B.state("hand", cut + 0.6, xfade=xf, slow=1.3, cam=B.cam("hold"))
+    B.clip("backlit", cut, xfade=xf, cam=B.cam("push"))
+    a2 = B.state("amber", cut, xfade=xf, cam=B.cam("pull"))       # ends near the opening frame → loops
+    for sh, s in zip((a1, dg, br), c.get("captions", ["9:40 pm", "10:15 pm", "11:58 pm"])):
+        B.say(sh, s, size=60)
+    B.say(hd, _wrap(c.get("line", "the lamp that knows what time it is."), 22), size=60)
+    B.cue(a2["start"] + 0.4, a2["end"] - 0.2, M(st.headline([c["name"]], y_top=1355, size=58), st.support([c["url"]], y_top=1428, size=34)))
+    B.sfx("turn", hd["start"] + 0.3)
+    B.music(gain=-2, fo=1.2)
+    return B.reel()
+
+
+@mechanism("before_after", "mid", "cold overhead-lit room wipes to the lamp-lit room")
+def m_before_after(b):
+    B = Build(b); c = b["copy"]; st = B.st
+    stills, clips = b["assets"]["stills"], b["assets"].get("clips", {})
+    before = B.path(stills["room_before"]) if B.has("stills", "room_before") else B.path(stills["room"])
+    before_kind = "still"
+    if B.has("clips", "room"):
+        after, after_kind = B.path(clips["room"]), "video"
+    else:
+        after, after_kind = B.path(stills["room"]), "still"
+    pre = os.path.join(B.out, f"{B.name}-ba.mp4")
+    rk.render_before_after(before, after, pre, dur=4.4, wipe_start=1.4, wipe_dur=1.3, kind_b=before_kind, kind_a=after_kind,
+                           vertical=b.get("vertical_wipe", False))
+    ba = B.pre(pre, 4.4, post=("" if B.has("stills", "room_before") else "eq=saturation=0.35:contrast=0.9:brightness=0.08"))
+    hero = B.clip("hero", 2.8, cam=B.cam("push"))
+    hd = B.clip("hands", 2.8, xfade=TRANS["dissolve"], cam=B.cam("hold"))
+    rd = B.still("bedside_red", 2.0, cam=B.cam("push_hard"))
+    gr = B.still("desk_green", 2.0, cam=B.cam("tilt_up"))
+    B.card([c.get("cta_line", "Same room. One lamp.")], f'{c["name"]} · {c["price"]} · {c["url"]}')
+    B.cue(0.25, 1.55, st.headline(_wrap(c.get("hook", "Same room. One lamp."), 20), y_top=SLOTS["upper"]))
+    B.cue(0.25, 1.35, st.kicker(c.get("before", "before · tubelight"), y_top=SLOTS["top"]))
+    B.cue(2.75, ba["end"] - 0.15, st.kicker(c.get("after", "after · rubik's cube lamp"), y_top=SLOTS["top"]))
+    B.say(hero, c.get("line1", "Not brighter. Warmer."))
+    B.say(hd, _wrap(c.get("mechanism", "Turn the block. The colour changes."), 20))
+    B.say(rd, _wrap(c["colors"]["red"], 22), colors=_col(c["colors"]["red"], "red"))
+    B.say(gr, _wrap(c["colors"]["green"], 22), colors=_col(c["colors"]["green"], "green"))
+    B.sfx("whoosh", 1.3, -12); B.sfx("turn", hd["start"] + 0.4)
+    B.music()
+    return B.reel()
+
+
+@mechanism("triptych", "top/mid", "three colour states side by side, all moving")
+def m_triptych(b):
+    B = Build(b); c = b["copy"]; st = B.st
+    V = B.path(b["assets"]["video"]); S_ = b["_product"]["states"]; stills = b["assets"]["stills"]
+    pre = os.path.join(B.out, f"{B.name}-tri.mp4")
+    rk.render_triptych([(V, S_["red"], "video"), (V, S_["amber"], "video"), (V, S_["green"], "video")], pre, 2.4)
+    tri = B.pre(pre, 2.4)
+    hd = B.clip("hands", 3.0, xfade=TRANS["whip"], cam=B.cam("hold"))
+    pre2 = os.path.join(B.out, f"{B.name}-tri2.mp4")
+    rk.render_triptych([(B.path(stills["bedside_red"]), 0, "still"), (B.path(stills["hero"]), 0, "still"),
+                        (B.path(stills["desk_green"]), 0, "still")], pre2, 2.4)
+    tri2 = B.pre(pre2, 2.4, xfade=TRANS["whip"])
+    hero = B.clip("hero", 2.6, xfade=TRANS["whip"], cam=B.cam("push"))
+    B.card([c.get("hook", "3 moods. 1 turn.")], f'{c["name"]} · {c["price"]} · {c["url"]}')
+    sw = (1080 - 12) // 3
+    for i, (name, col) in enumerate((("Red", COL["red"]), ("Amber", COL["amber"]), ("Green", COL["green"]))):
+        x = i * (sw + 6) + 80
+        for sh in (tri, tri2):
+            B.cue(sh["start"] + 0.15, sh["end"] - 0.1, T([name], y_top=SLOTS["top"], size=40, fontfile=st.d["support_font"],
+                                                         color=col, align="left", x_left=x, shadow_blur=10))
+    B.cue(0.25, tri["end"] - 0.1, st.headline([c.get("hook", "3 moods. 1 turn.")], y_top=SLOTS["low"]))
+    B.say(hd, _wrap(c.get("mechanism", "No app. Just turn it."), 20))
+    B.cue(tri2["start"] + 0.2, tri2["end"] - 0.1, st.headline([c.get("line2", "Bedside. Console. Desk.")], y_top=SLOTS["low"]))
+    B.say(hero, _wrap(c.get("line3", "One lamp. Three rooms' worth of mood."), 22))
+    for sh in (hd, tri2, hero):
+        B.sfx("whoosh", sh["start"] - 0.2, -12)
+    B.music()
+    return B.reel()
+
+
+@mechanism("kinetic", "top", "word-by-word pop over a static hero; one claim")
+def m_kinetic(b):
+    B = Build(b); c = b["copy"]; st = B.st
+    hero = B.clip("backlit", 3.4, cam=B.cam("push", z1=1.08))
+    words = c.get("hook", "nobody guesses how the colour changes.").split()
+    n, per = len(words), b.get("per_word", 0.16)
+    y = B.slot(hero, block_h=320, prefer=("upper", "lower", "low", "centre"))
+    acc = []
+    for i, w in enumerate(words):
+        acc.append(w)
+        s = 0.3 + i * per
+        e = 0.3 + (i + 1) * per if i < n - 1 else hero["end"] - 0.15
+        B.cue(s, e, st.headline(_wrap(" ".join(acc), 18), y_top=y), fade_in=0.05, fade_out=0.05, rise=6)
+    hd = B.state("hand", 2.4, xfade=TRANS["flash"], speed=1.3, cam=B.cam("hold"))
+    rd = B.state("red", 1.7, cam=B.cam("push_hard"))
+    gr = B.state("green", 1.7, cam=B.cam("drift"))
+    dg = B.still("dutch_green", 1.7, cam=B.cam("pull"))
+    B.say(hd, _wrap(c.get("mechanism", "there's no switch. you turn it."), 18), fade=0.06, rise=6)
+    B.say(rd, "red.", size=84, fade=0.06, rise=6); B.say(gr, "green.", size=84, fade=0.06, rise=6)
+    B.say(dg, _wrap(c.get("line3", "real glass. real wood."), 18), fade=0.06, rise=6)
+    pr = B.still("mirror", 2.2, xfade=TRANS["dip"], cam=B.cam("push"))
+    B.cue(pr["start"] + 0.2, pr["end"] - 0.1, M(st.price(c["price"], y_top=SLOTS["lower"], size=96),
+                                                 st.support([c.get("cta", "link in bio")], y_top=SLOTS["lower"] + 160)))
+    B.card([c["name"]], c["url"], dur=2.0)
+    B.sfx("whoosh", hd["start"] - 0.2, -10); B.sfx("turn", hd["start"] + 0.2)
+    B.sfx("turn", rd["start"], -10); B.sfx("turn", gr["start"], -10)
+    B.music(gain=-2, fi=0.0, fo=0.8)
+    return B.reel()
+
+
+@mechanism("listicle", "mid", "numbered '3 reasons', counter + caption")
+def m_listicle(b):
+    B = Build(b); c = b["copy"]; st = B.st; each = b.get("cut", 3.0)
+    items = c.get("items", [["It's real glass and solid sheesham.", "macro"], ["Three colours. No app.", "hands"],
+                            ["Three-year warranty on the wood.", "hero"]])
+    hook = B.state("warm", 2.2, cam=B.cam("push"))
+    B.cue(0.25, hook["end"] - 0.1, st.headline(_wrap(c.get("hook", "3 reasons this isn't plastic."), 20), y_top=B.slot(hook, block_h=200)))
+    for i, (txt, key) in enumerate(items):
+        sh = B.clip(key, each, xfade=TRANS["whip"], fallback=key, cam=B.cam(("push", "hold", "tilt_up")[i % 3]))
+        y = B.slot(sh, block_h=270, prefer=("lower", "upper", "low"))
+        lay = M(T([str(i + 1)], y_top=y, size=110, fontfile=st.d.get("price_font", st.d["headline_font"]),
+                  color=st.pal["accent"], align="left", x_left=100, shadow_blur=12),
+                st.headline(_wrap(txt, 24), y_top=y + 122, size=48, align="left", x_left=100))
+        B.cue(sh["start"] + 0.2, sh["end"] - 0.2, lay)
+        B.sfx("whoosh", sh["start"] - 0.2, -12)
+    B.card([c.get("cta_line", "Turn the block.")], f'{c["name"]} · {c["price"]} · {c["url"]}')
+    B.music()
+    return B.reel()
+
+
+@mechanism("spec_sheet", "mid", "design-notes callouts with rules; numbers only")
+def m_spec_sheet(b):
+    B = Build(b); c = b["copy"]; st = B.st; each = b.get("cut", 2.4)
+    specs = c.get("specs", [["8 × 8 in", "candy glass · hand-painted faces", "flatlay"], ["Solid sheesham", "one-of-a-kind grain", "macro"],
+                            ["2700–3000K", "warm LED · 25,000 h", "mirror"], ["3 faces", "red · green · amber — turn to change", "dutch_green"]])
+    hero = B.still("hero", 2.2, cam=B.cam("push"))
+    B.cue(0.25, hero["end"] - 0.1, st.headline(_wrap(c.get("hook", "A lamp, not a gadget."), 20), y_top=B.slot(hero, block_h=180)))
+    for i, (big, small, key) in enumerate(specs):
+        sh = B.still(key, each, xfade=TRANS["whip"] if i else TRANS["dissolve"], cam=B.cam(("drift", "push", "pull", "tilt_up")[i % 4]))
+        y = B.slot(sh, block_h=220, prefer=("lower", "upper", "low", "top"))
+        lay = M(rule_layer(y - 24, 100, 520, tuple(st.pal.get("rule", st.pal["accent"])), 160, 2),
+                st.headline([big], y_top=y, size=64, align="left", x_left=100),
+                st.support([small], y_top=y + 92, size=36, align="left", x_left=102))
+        B.cue(sh["start"] + 0.2, sh["end"] - 0.2, lay, rise=10)
+        B.sfx("whoosh", sh["start"] - 0.2, -14)
+    hd = B.clip("hands", 2.6, xfade=TRANS["whip"], cam=B.cam("hold"))
+    B.say(hd, _wrap(c.get("mechanism", "Turn. That's the whole interface."), 22), size=54)
+    B.card([c["name"]], f'{c["price"]}   ·   {c["url"]}')
+    B.sfx("turn", hd["start"] + 0.3)
+    B.music(gain=-3, fi=0.3)
+    return B.reel()
+
+
+@mechanism("vo_story", "mid", "narrator reel; captions are the 3–6 word version of each VO line")
+def m_vo_story(b):
+    B = Build(b); c = b["copy"]; st = B.st
+    vo, o, lines = b.get("vo"), b.get("vo_offset", 0.6), b.get("vo_lines")
+    if not vo or not lines:
+        raise SystemExit("vo_story needs brief.vo (mp3 path) and brief.vo_lines [[start, end, caption, colour|null], ...]")
+    hero = B.clip("hero", 2.8, cam=B.cam("push"))
+    hd = B.clip("hands", 2.0, cam=B.cam("hold"))
+    B.state("amber", 2.6, cam=B.cam("drift"))
+    B.still("desk_green", 2.2, cam=B.cam("tilt_up"))
+    B.still("bedside_red", 1.8, cam=B.cam("push_hard"))
+    B.state("hand", 2.4, slow=1.2, cam=B.cam("hold"))
+    B.still("macro", 1.8, xfade=TRANS["dissolve"], cam=B.cam("pull"))
+    B.still("flatlay", 1.8, cam=B.cam("drift"))
+    B.clip("room", 2.4, xfade=TRANS["dissolve"], cam=B.cam("push"))
+    B.card([c["name"]], f'{c["price"]}  ·  {c["url"]}', dur=2.6)
+    for i, (s, e, cap, key) in enumerate(lines):
+        cap = [cap] if isinstance(cap, str) else cap
+        colors = _col(cap[0], key) if key else None
+        start = min(s + o, 0.25) if i == 0 else s + o      # the first caption is the visual hook: on screen by 0.3 s
+        B.cue(start, e + o, st.headline(cap, y_top=b.get("caption_y", 1330), size=b.get("caption_size", 62), colors=colors))
+    B.sound(vo, o, 0)
+    B.music(gain=-13, fi=0.5, fo=2.0)
+    B.sfx("turn", hd["start"] + 0.3, -12)
+    return B.reel()
+
+
+@mechanism("ugc_pov", "top", "handheld, lowercase caption boxes, 'pov:' hook")
+def m_ugc_pov(b):
+    B = Build(b); c = b["copy"]; st = B.st; cut = b.get("cut", 1.714)
+    g1 = B.state("green", cut, cam=B.cam("hold", z0=1.14, z1=1.16))
+    hd = B.state("hand", cut, speed=1.3, cam=B.cam("hold"))
+    rd = B.state("red", cut, offset=0.1, cam=B.cam("push_hard", px0=0.2, px1=-0.2))
+    bd = B.still("bedside_red", cut, cam=B.cam("push"))
+    un = B.still("unbox", cut, cam=B.cam("pull"))
+    hd2 = B.state("hand", cut, offset=1.2, speed=1.3, cam=B.cam("hold"))
+    dk = B.still("desk_green", cut, cam=B.cam("tilt_up"))
+    mr = B.still("mirror", cut, cam=B.cam("push"))
+    caps = c.get("captions", ["pov: guests keep asking about the lamp", "it's glass. on real wood.", "you just turn it", "red = movie night",
+                              "came like this. no assembly.", "green = slow evening", "no app. nothing to charge.", "₹2,999 · link in bio"])
+    for sh, cap in zip((g1, hd, rd, bd, un, hd2, dk, mr), caps):
+        if "₹" in cap:
+            B.cue(sh["start"] + 0.1, sh["end"] - 0.05, st.price(cap, y_top=B.slot(sh, block_h=120), size=56), fade_in=0.05, fade_out=0.05, rise=6)
+        else:
+            B.say(sh, _wrap(cap, 24), pad=0.08, fade=0.05, rise=6)
+    B.card([c.get("cta_line", "turn the block.")], f'{c["name"]} · {c["url"]}', dur=1.8, xfade=None)
+    for sh in (hd, hd2): B.sfx("turn", sh["start"], -8)
+    for sh in (rd, un, dk): B.sfx("whoosh", sh["start"] - 0.2, -12)
+    B.music(gain=-2, fi=0.0, fo=0.8)
+    return B.reel()
+
+
+@mechanism("price_reveal", "bottom", "value stack → big price → COD / warranty")
+def m_price_reveal(b):
+    B = Build(b); c = b["copy"]; st = B.st; each = b.get("cut", 1.8)
+    hook = B.clip("hero", 2.4, cam=B.cam("push"))
+    B.cue(0.25, hook["end"] - 0.1, st.headline(_wrap(c.get("hook", "Everyone asks about it. Nobody guesses the price."), 22), y_top=B.slot(hook, block_h=260)))
+    stack = c.get("stack", [["Real glass.", "macro"], ["Solid sheesham.", "flatlay"], ["Three colours. One turn.", "hands"], ["3-year wood warranty.", "mirror"]])
+    ticks = []
+    for i, (txt, key) in enumerate(stack):
+        sh = B.clip(key, each, xfade=TRANS["slide"] if i else None, fallback=key, cam=B.cam(("push", "drift", "hold", "pull")[i % 4]))
+        ticks.append(txt)
+        y = B.slot(sh, block_h=200, prefer=("lower", "upper", "low"))
+        B.cue(sh["start"] + 0.15, sh["end"] - 0.1, st.headline(ticks[-3:], y_top=y, size=50, align="left", x_left=100), rise=8)
+        B.sfx("whoosh", sh["start"] - 0.15, -14)
+    pr = B.still("bedside_red", 2.6, xfade=TRANS["dip"], cam=B.cam("push_hard"))
+    B.cue(pr["start"] + 0.25, pr["end"] - 0.1, M(st.price(c["price"], y_top=SLOTS["centre"] - 40, size=110),
+                                                 st.support([f'was {c["compare"]}'], y_top=SLOTS["centre"] + 130, size=40)))
+    B.sfx("turn", pr["start"], -8)
+    cod = B.still("unbox", 2.2, cam=B.cam("pull"))
+    B.say(cod, _wrap(c.get("terms", "Free shipping across India. COD available."), 22), size=52)
+    B.card([c.get("cta_line", "Turn the block.")], f'{c["name"]} · {c["price"]} · {c["url"]}')
+    B.music()
+    return B.reel()
+
+
+@mechanism("unboxing", "bottom / festive", "kraft box, tissue, reveal, gift line")
+def m_unboxing(b):
+    B = Build(b); c = b["copy"]; st = B.st
+    un = B.still("unbox", 3.0, cam=B.cam("push"))
+    fl = B.still("flatlay", 2.2, xfade=TRANS["dissolve"], cam=B.cam("drift"))
+    hd = B.clip("hands", 3.0, xfade=TRANS["dissolve"], cam=B.cam("hold"))
+    on = B.clip("hero", 2.6, xfade=TRANS["flash"], cam=B.cam("push"))
+    fest = B.clip("diwali", 3.0, xfade=TRANS["dissolve"], cam=B.cam("tilt_up"))
+    rd = B.still("bedside_red", 2.0, cam=B.cam("push_hard"))
+    B.card([c.get("gift_line", "The gift they'll actually remember.")], c.get("delivery", f'{c["price"]} · delivered in 5–7 days · {c["url"]}'), dur=2.6)
+    B.cue(0.25, un["end"] - 0.1, st.headline(_wrap(c.get("hook", "The gift they'll actually remember."), 20), y_top=B.slot(un, block_h=260)))
+    B.say(fl, _wrap(c.get("line1", "Real glass. Solid sheesham. No assembly."), 22), size=52)
+    B.say(hd, _wrap(c.get("mechanism", "Turn it. The colour changes."), 20))
+    B.say(on, c.get("line3", "Warm by default."))
+    B.say(fest, _wrap(c.get("line4", "Made in India. Ready for Diwali."), 22))
+    B.say(rd, _wrap(c["colors"]["red"], 22), colors=_col(c["colors"]["red"], "red"))
+    B.sfx("whoosh", on["start"] - 0.2, -12); B.sfx("turn", hd["start"] + 0.4)
+    B.music()
+    return B.reel()
+
+
+@mechanism("testimonial", "bottom", "a real review over night footage — needs a real quote and name")
+def m_testimonial(b):
+    B = Build(b); c = b["copy"]; st = B.st
+    q, who = c.get("quote"), c.get("who")
+    if not q or not who:
+        raise SystemExit("testimonial: brief.copy.quote and brief.copy.who are required — never invent a review")
+    bd = B.still("bedside_red", 3.4, cam=B.cam("push"))
+    hero = B.clip("hero", 3.2, xfade=TRANS["dissolve"], cam=B.cam("push"))
+    hd = B.clip("hands", 2.6, xfade=TRANS["dissolve"], cam=B.cam("hold"))
+    room = B.clip("room", 2.8, xfade=TRANS["dissolve"], cam=B.cam("push"))
+    B.card([c["name"]], f'{c["price"]} · {c["url"]}')
+    lines = _wrap("“" + q + "”", 24)
+    y = SLOTS["upper"]
+    B.cue(0.3, hero["end"] - 0.2, M(st.headline(lines, y_top=y, size=56, fontfile="Cormorant_Garamond-500-i.ttf"),
+                                    st.support(["— " + who], y_top=y + 68 * len(lines) + 30, size=36)))
+    B.say(hd, _wrap(c.get("mechanism", "Turn the block. Three colours."), 20))
+    if c.get("proof_line"):
+        B.say(room, c["proof_line"])
+    B.music(gain=-4)
+    return B.reel()
+
+
+# ==========================================================================
+# brief → reel
+# ==========================================================================
+def resolve(brief, root, out):
+    prod = PRESETS["products"][brief.get("product", "rubik")]
+    style = dict(PRESETS["styles"][brief.get("style", "broad")]); style.update(brief.get("style_overrides", {}))
+    b = dict(brief)
+    b["_product"], b["_style"], b["_root"], b["_out"] = prod, Style(style), root, out
+    b["copy"] = {**prod["copy"], **brief.get("copy", {})}
+    a = json.loads(json.dumps(prod["assets"]))
+    for k, v in brief.get("assets", {}).items():
+        if isinstance(v, dict):
+            a.setdefault(k, {}).update(v)
+        else:
+            a[k] = v
+    b["assets"] = a
+    return b
+
+
+def build(brief, root=".", out="out"):
+    if brief.get("mechanism") not in MECHANISMS:
+        raise SystemExit(f"unknown mechanism {brief.get('mechanism')!r}; choose from {sorted(MECHANISMS)}")
+    os.makedirs(out, exist_ok=True)
+    return MECHANISMS[brief["mechanism"]](resolve(brief, root, out))
+
+
+if __name__ == "__main__":
+    for k, fn in MECHANISMS.items():
+        print(f"{k:14s} {fn.mech['funnel']:14s} {fn.mech['note']}")

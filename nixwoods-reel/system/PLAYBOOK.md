@@ -1,0 +1,173 @@
+# NixWoods Reel System — research, structure and rules
+
+Built 6 Sep 2026 from: your own Meta ad account (last 90 days, 40 ads), the Meta Ad Library (India, "wooden lamp" / "table lamp"), competitor sites (Ikari Homes, Phanash), the store's Rubik's Cube product page, and current 2026 short-form research (sources listed at the end).
+
+---
+
+## 1. What is working — evidence, not opinion
+
+### 1.1 Your own account (last 90 days)
+
+| Ad | CTR | Purchases | ROAS | Lesson |
+|---|---|---|---|---|
+| GlassBlock "Bedside video" | 4.29 % | 98 | 4.7 | A dark bedroom + the lamp as the only light + colour change is your single best creative. Night scene beats daylight. |
+| Aurora "Wood changes everything" | 3.66 % | 62 | 3.6 | A contrast claim in five words. Material as the hook. |
+| Wall Lights, Teak, Women 35–64 | 5.59 % | 9 | 3.3 | Highest CTR on the account: women 35–64 respond to warmth + wood. |
+| Aurora "Transform your walls" | 3.5 % | 13 | 10.8 | Transformation promise, wall-light context. |
+| "Test / Craftsmanship" · "Test / In-Room Night" | 4.1–4.2 % | – | – | Craft and night-room hooks stop the thumb even when the funnel isn't set up. |
+| GlassBlock "Three Moods red-green lifestyle" static | 4.27 % | – | – | Two colours in one frame is the strongest static. |
+| Rubik's "Single image, glass + sheesham" | 1.36 % | 1 | 1.1 | A plain product photo with a materials headline does not stop anyone. |
+| Rosewood pendant statics | 1.2–1.5 % | – | – | Pendants need a room and a person, not a packshot. |
+
+Rules that fall out of this:
+1. **Night + glow + colour change** is the NixWoods hook. Every Rubik's reel opens in the dark.
+2. **Contrast copy in ≤5 words** ("Wood changes everything", "Not brighter. Warmer.") beats feature lists.
+3. **Transformation** (before/after, off/on, one colour → another) outperforms description.
+4. **Women 35–64 and 45–54** are your best buyers; write for them first, Gen-Z second.
+5. Statics only work when two colour states share one frame; otherwise use video.
+
+### 1.2 Competitors (Ad Library IN + sites)
+
+- **Ikari Homes**: "Boho furniture & lamps for modern homes", constant "UP TO 60 % OFF", monsoon/festive sale hooks, treated seasoned wood, COD + 7-day returns. Price ladder ₹999 → ₹24,990.
+- **Phanash**: cordless/rechargeable is the whole pitch ("Cordless Beauty, Everyday Ease"), touch dimming, 3000K, 1-year warranty, ₹1,499–₹8,500, tiers named Premium/Elite/Signature.
+- **Mâzia Home / UrbanNivasa / VibeCrafts / Lumitop**: "hand-carved solid wood lamp", multi-product catalog carousels, generic "modern floor lamp for living room" SEO-style titles.
+- Nobody in the Indian set is running a **single-hero, night-scene, colour-turn video**. That lane is still open (your master doc said this in June; the Ad Library confirms it in September).
+
+Selling points to press that competitors can't: three hand-painted faces / **turn = colour** (no app, no remote, nothing to charge), real glass + solid sheesham, one-of-a-kind grain, 25,000-hour LED, 3-year wood warranty, made in Khatauli, ₹2,999 with free shipping and COD.
+
+### 1.3 Platform research (2026)
+
+- Viewers decide in **~1.7 s**; ~90 % of failing reels lose in the first 3 s. Pattern-interrupt hooks hold 72–84 % at 3 s, curiosity 65–78 %, questions 58–72 %, bold claims 55–70 %.
+- Ranking: **completion rate**, then **shares (DM sends 3–5× a like)**, then **saves (~3×)**. Likes and follower count barely matter. Under 90 s for non-follower reach; 15–30 s is the sweet spot for ads.
+- **Originality**: near-duplicate uploads get suppressed. Every variant must differ in cut, copy and colour, not just music.
+- **85 % watch muted**: the caption is the video. Text hook ≤ 12 words, on screen inside 2 s.
+- Converting formats by hit-rate: Demo, Testimonial, Unboxing, Before/After, Listicle, Split-screen. Before/After beats plain product shots by 60–80 % in engagement; ASMR unboxing lifts saves 25–40 %. Top of funnel: ASMR / trend; mid: demo, before-after, listicle; bottom: review, social proof.
+- India small-brand signals: raw phone-camera reels outperform studio polish for reach; humour and "internal debate" (two personas) formats are rising; festive (Diwali) framing works Sept–Nov.
+
+---
+
+## 2. Hook library (tested patterns → NixWoods lines)
+
+Each hook = text on frame 1 + a visual pattern interrupt + the first sound.
+
+| Type | Pattern | NixWoods lines (≤ 12 words) |
+|---|---|---|
+| Pattern interrupt | dark → light snaps on; colour flips on beat | *Still lit by one tubelight?* · *Watch the room change.* |
+| Contrast claim | X not Y | *Not brighter. Warmer.* · *Wood changes everything.* · *A lamp, not a gadget.* |
+| Curiosity gap | withhold the mechanism | *Nobody guesses how the colour changes.* · *There's no switch. Watch.* |
+| POV / relatable | pov: + situation | *pov: your room at 2am* · *pov: guests keep asking about the lamp* |
+| Confession / social proof | number + moment | *98 homes bought this after one video.* · *175 homes in 90 days.* |
+| Question | one they already ask | *Why does your room feel like an office?* |
+| Price shock | reveal late | *Everyone asks about it. Nobody guesses the price.* |
+| Listicle | 3 things | *3 moods. 1 turn.* · *3 reasons this isn't plastic.* |
+| Festive | occasion | *The gift they'll actually remember.* (Diwali / wedding season) |
+
+---
+
+## 3. Script-writing rules (voice-over and captions)
+
+- Structure: **Hook → Problem → Turn (mechanism) → Proof → CTA**. Or PAS: name the pain, twist it, show the turn.
+- Voice-over pace **130–150 wpm**: 15 s ≈ 40 words, 20 s ≈ 50, 30 s ≈ 75. Sentences under 12 words. Contractions. Mark stress in the script. Conversational, never announcer.
+- Caption ≠ transcript: captions carry the 3–6 word version of each VO line.
+- The CTA repeats the benefit in operational language: *Turn the block. nixwoods.com* beats *Shop now*.
+- Brand voice: warm, plain, specific. Banned: discover, elevate, luxury, premium, exquisite, journey, curated, unlock, stunning, delve, realm.
+- Three VO registers to alternate (see `scripts/vo-scripts.md`): **Narrator** (Reel 2 style), **UGC-casual** (first person, phone-mic energy), **Spec-fast** (numbers, staccato).
+
+---
+
+## 4. Typography and placement system
+
+Safe area on 1080×1920 (Instagram 2026): top 220 px and bottom ~400 px are covered by UI, right ~130 px by the action rail. **Everything important lives in y = 230…1500, x = 70…950.**
+
+Slots used by the engine (`reelkit.SLOTS`): `top` 300 · `upper` 560 · `centre` 880 · `lower` 1200 · `low` 1330 · `bottom` 1420. `reelkit.auto_slot()` reads the frame, finds the bright product band and picks the first slot that doesn't cover it (lower third first, then upper).
+
+Sizes at 1080 wide: headline **64–88 px**, caption box **66–84 px**, secondary **36–44 px**, kicker **28–30 px** tracked. Minimum readable 36 px. Max 12 words per screen, 2–3 lines.
+
+Type pairs by audience (fonts in `assets/`):
+
+| Audience | Headline | Support | Why |
+|---|---|---|---|
+| Aesthetic / editorial | Cormorant Garamond italic, lowercase | DM Sans | quiet, film-caption feel; shares for taste |
+| Broad 28–45 / VO reels | Playfair Display 600 | DM Sans 500 | matches existing NixWoods reels |
+| Design crowd | Space Grotesk 700 | Inter 300 | product-page / keynote register |
+| Gen-Z | Archivo Black in colour boxes (Space Grotesk 700 for ₹) | – | native caption-box look; note Archivo Black has no ₹ glyph |
+| 30–40 trust | Playfair Display 600/700 | DM Sans | serif = considered purchase; one jewel-tone box for price |
+
+Placement rules: never on the glass block; hook text appears by 0.3 s and holds ≥ 1.2 s; one idea per screen; colour-name words take the lamp's actual colour; price gets its own screen; end card = logo + one line + URL, 2–2.6 s.
+
+---
+
+## 5. Camera system (works on static images)
+
+All moves are rendered at 2× supersample so they are sub-pixel smooth (`reelkit.cam_filter`).
+
+| Move | Params | Use |
+|---|---|---|
+| Push-in | z 1.0→1.12 over the shot | hero reveals, hooks |
+| Pull-out | z 1.12→1.0 | endings, loops |
+| Drift / pan | z 1.12, px −0.3→0.3 | wide rooms, shelves |
+| Tilt | py 0.3→−0.1 | tall scenes, reveal from table to lamp |
+| Beat punch | punch 0.08–0.10 for 5 frames | every cut on a fast track |
+| Handheld | shake 2–3 px | UGC / Gen-Z |
+| Slow motion | slow 1.2–1.5 (motion-interpolated) | the colour turn |
+| Dutch | source shot tilted (Higgsfield still #11) | graphic beats |
+
+Cinematic angles to shoot or generate for every product: low-angle hero, top-down flat lay, 100 mm macro corner, hands-turning closeup, wide room at blue hour, bedside three-quarter, desk, unboxing, backlit silhouette, mirror reflection, festive console, dutch detail. Twelve of these were generated for the Rubik's Cube with Higgsfield (`hf/`), locked to the real product photo.
+
+For real parallax (foreground/background separation) use Higgsfield image-to-video (Kling 3.0, ~9 credits per 5 s) on a generated still, then cut it like footage. Five are done for the Rubik's Cube (`rubik-reels/hf/k00`–`k04`: hero dolly, hands turning amber→green, room dolly, backlit arc, Diwali push) plus two "before" states (`hf12` lamp off at dusk, `hf13` room under a tubelight) for the transformation and before/after mechanisms. Prompts and credits: `rubik-reels/hf/PROMPTS.md`. The mechanisms use a clip when it exists and fall back to the still it was made from.
+
+Transitions (`reelkit.TRANS`): cut (default), dissolve, fade, **flash** (white dip, 0.18 s, for beat hits), dip-to-black, zoom, whip (smoothleft), circle, slide.
+
+---
+
+## 6. Reel mechanisms (the different styles)
+
+Each mechanism is a function in `mechanisms.py` that turns a brief into a reel. Pick by funnel stage.
+
+| # | Mechanism | Funnel | What it does | Best music |
+|---|---|---|---|---|
+| 1 | **Off→On transformation** | top | dark room, flash, lamp on, colour cycle | cinematic hit |
+| 2 | **Colour-cycle loop** | top | seamless amber→green→red→amber loop, no CTA until the end card | lo-fi |
+| 3 | **Before/After wipe** | mid | overhead-light room wipes to lamp-lit room | soft build |
+| 4 | **Triptych** | top/mid | three colour states side by side, moving | electronic |
+| 5 | **Kinetic-text hook** | top | word-by-word pop over a static hero, one claim | phonk / trap |
+| 6 | **Listicle 3-1-3** | mid | numbered "3 reasons", counter + caption | indie |
+| 7 | **Spec sheet** | mid | design-notes callouts with rules | minimal |
+| 8 | **Voice-over story** | mid | narrator reel (R2 style) | felt piano, ducked |
+| 9 | **UGC / POV** | top | handheld shake, lowercase, "pov:" boxes | trending sound |
+| 10 | **Price reveal** | bottom | value stack → big price box → COD/warranty | acoustic |
+| 11 | **Unboxing / gift** | bottom / festive | kraft box, tissue, reveal, "the gift they'll remember" | warm |
+| 12 | **Testimonial card** | bottom | real review text over night footage (needs a real quote) | soft |
+
+Rotation that respects the originality rule: never post two of the same mechanism in a row; change hook type, colour palette and music every time.
+
+---
+
+## 7. Production system (how to run it)
+
+```
+brief.json  →  make_reel.py  →  out/<name>-music.mp4 + out/<name>-clean.mp4 + cover.jpg + sheet.png
+```
+
+A brief names the mechanism, product, style (audience), assets, copy lines and music. `make_reel.py` lints the copy (banned words, ≤12 words a screen), builds the mechanism, checks every text layer against the safe zone and the hook rule, renders music + clean versions, and writes a cover, a contact sheet and a timeline JSON for review. Fonts, palettes, slots, camera moves and product assets come from `system/presets.json`. Twelve example briefs, one per mechanism, are in `system/briefs/`; rendered demos are in `rubik-reels/out/system/`. Schema and how to add a product or a mechanism: `system/README.md`.
+
+Weekly cadence (3–5 reels/week): Mon transformation · Wed mechanism of the week · Fri UGC/POV · plus one price/festive reel; re-cut the best performer after 7 days with a new hook, never a straight repost.
+
+Measure: hook rate (3-s views ÷ plays), hold (completion), shares, saves, then CTR and CPA. A reel that gets shares but no clicks becomes an ad with a price-reveal cut.
+
+---
+
+## Sources
+
+Own data: Meta ad account 9020821008043944 (ads_get_ad_entities, last 90 days). Meta Ad Library search, India, "wooden lamp", "table lamp". Sites: ikarihomes.com, phanash.com, nixwoods.com/products/rubiks-cube-table-lamp-sheesham-wood.
+
+- [Instagram Safe Zone Guide 2026 (Outfy)](https://www.outfy.com/blog/instagram-safe-zone/) · [Kreatli Reels safe zone](https://kreatli.com/guides/instagram-reels-safe-zone) · [Pod2Reels safe zone](https://www.pod2reels.com/blog/instagram-reels-safe-zone-guide)
+- [OpusClip: hooks that go viral 2026](https://www.opus.pro/blog/tiktok-hooks-that-go-viral-2026) · [Trendtrack: best performing ad hooks](https://www.trendtrack.io/blog-post/best-performing-ad-hooks) · [Taggbox: Instagram hooks](https://taggbox.com/blog/best-instagram-hooks/)
+- [Sovran: Hook-Body-CTA framework](https://sovran.ai/blog/hook-body-cta-video-ad-structure) · [ChatCut: script writing 2026](https://chatcut.io/blog/how-to-write-a-script-for-a-video-2026) · [Lazybird: voice-over script templates](https://www.lazybird.app/blog/voice-over-script-example)
+- [SocialPilot: Reels algorithm 2026](https://www.socialpilot.co/blog/instagram-reels-algorithm) · [CreatorFlow: algorithm 2026](https://creatorflow.so/blog/instagram-algorithm-2026/) · [Fastlane: Reels algorithm 2026](https://www.usefastlane.ai/blog/instagram-reels-algorithm-2026)
+- [Vaizle: Reel trends 2026](https://insights.vaizle.com/instagram-reel-trends/) · [Passionbits: viral Instagram trends India 2026](https://passionbits.io/blog/10-viral-instagram-trends-in-india-for-consumer-brands-march-2026-part-1/) · [Inspire Product: Reels for small business India](https://inspireproduct.in/instagram-reels-small-business-growth-india/)
+- [Blitzcut: caption fonts 2026](https://blitzcutai.com/blog/best-caption-fonts-reels-2026) · [Made Good Designs: fonts for Reels](https://madegooddesigns.com/best-fonts-for-reels/) · [EMAX: caption fonts readability](https://emax.studio/blog/best-caption-fonts-for-ai-reels-2026)
+- [RocketShip HQ: text overlays in video ads](https://www.rocketshiphq.com/text-overlays-video-ads-mobile/) · [Highviz: Reels benchmarks from 346 reels](https://www.highviz.io/instagram-reels-report/) · [OpusClip: caption best practices](https://www.opus.pro/blog/instagram-reels-caption-subtitle-best-practices)
+- [Motion: visual ad formats library](https://motionapp.com/library/formats/) · [Balistro: Instagram ad creative ideas 2026](https://www.balistro.com/instagram-ad-creative-ideas-convert-2026/) · [Creetr: unboxing video guide](https://creetr.com/blog/unboxing-video-guide)
+- [Hawky: DTC Meta ad hooks 2026](https://hawky.ai/blog/best-dtc-meta-ad-hooks) · [Webtonic: 31 ad hooks](https://www.webtonic.io/blog/best-ad-hooks) · [AdLibrary: Meta creative best practices](https://adlibrary.com/posts/meta-ad-creative-best-practices)
+- [Kudoflix: Ken Burns effect](https://kudoflix.com/blog/2026/08/04/ken-burns-effect/) · [Sketchbooky: Ken Burns and 2.5D](https://sketchbooky.wordpress.com/2023/06/07/the-ken-burns-effect-and-2-5d-for-after-effects/)

@@ -10,6 +10,8 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 W, H, FPS = 1080, 1920, 25
 ROOT = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(ROOT, "assets")
+if not os.path.isdir(ASSETS):
+    ASSETS = os.path.join(os.path.dirname(ROOT), "assets")
 
 def font(name, size):
     return ImageFont.truetype(os.path.join(ASSETS, name), size)
@@ -346,3 +348,146 @@ class Reel:
 def contact_sheet(video, out_png, fps=2, cols=8, rows=4, scale=200):
     subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", video,
                     "-vf", f"fps={fps},scale={scale}:-1,tile={cols}x{rows}", "-frames:v", "1", out_png], check=True)
+
+# ==========================================================================
+# v2 additions: safe zones, placement, kinetic text, mechanisms
+# ==========================================================================
+import numpy as np
+
+# Instagram/TikTok UI-safe area on a 1080x1920 canvas (2026 guidance):
+# top ~220px (status/camera), bottom ~400px (caption/handle/audio), right ~130px (action rail)
+SAFE = dict(top=230, bottom=1500, left=70, right=950)   # y-range 230..1500 is always visible
+
+# named vertical slots (y_top of the text block)
+SLOTS = dict(top=300, upper=560, centre=880, lower=1200, low=1330, bottom=1420)
+
+def _frame_at(path, t):
+    """decode one frame (RGB numpy) at time t seconds"""
+    out = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-ss", f"{t:.3f}", "-i", path,
+                          "-frames:v", "1", "-vf", f"scale={W//8}:{H//8}", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
+                         capture_output=True).stdout
+    a = np.frombuffer(out, dtype=np.uint8)
+    if a.size < (W//8)*(H//8)*3:
+        return None
+    return a.reshape((H//8, W//8, 3))
+
+def product_region(path, t):
+    """returns (y0, y1) in canvas px of the brightest horizontal band (where the lamp is)."""
+    fr = _frame_at(path, t)
+    if fr is None:
+        return (800, 1300)
+    lum = fr.astype(np.float32).mean(axis=2)
+    rows = lum.mean(axis=1)
+    thr = rows.mean() + 0.8 * rows.std()
+    idx = np.where(rows > thr)[0]
+    if len(idx) == 0:
+        return (800, 1300)
+    return (int(idx.min() * 8), int(idx.max() * 8))
+
+def auto_slot(path, t, block_h=260, prefer=("lower", "low", "upper", "centre", "top")):
+    """pick the first named slot whose text block does not overlap the bright product band
+    and stays inside the safe area."""
+    y0, y1 = product_region(path, t)
+    for name in prefer:
+        y = SLOTS[name]
+        if y < SAFE["top"] or y + block_h > SAFE["bottom"]:
+            continue
+        if y + block_h < y0 - 20 or y > y1 + 20:
+            return y
+    # nothing clears the product: take the first slot that at least stays inside the safe area
+    for name in prefer:
+        y = SLOTS[name]
+        if y >= SAFE["top"] and y + block_h <= SAFE["bottom"]:
+            return y
+    return SLOTS["upper"]
+
+def kinetic_cues(reel, words, start, per_word=0.14, hold=1.6, **style):
+    """word-by-word pop: each word gets its own cue appearing per_word seconds after the last;
+    all stay until start+len*per_word+hold. style -> text_layer kwargs (size, fontfile, color, box...)"""
+    n = len(words)
+    end = start + n * per_word + hold
+    # build cumulative lines so words accumulate on one line
+    acc = []
+    for i, w in enumerate(words):
+        acc.append(w)
+        s = start + i * per_word
+        e = start + (i + 1) * per_word if i < n - 1 else end
+        reel.cue(s, e, text_layer([" ".join(acc)], **style), fade_in=0.05, fade_out=0.05, rise=6)
+
+def letterbox_layer(bar=150, color=(0, 0, 0)):
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rectangle((0, 0, W, bar), fill=color + (255,))
+    d.rectangle((0, H - bar, W, H), fill=color + (255,))
+    return img
+
+def progress_bar_cues(reel, duration, y=1495, h=6, color=(227, 165, 82), steps=40):
+    """thin progress bar that fills over the reel (retention trick)"""
+    for i in range(1, steps + 1):
+        img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        ImageDraw.Draw(img).rectangle((SAFE["left"], y, SAFE["left"] + (SAFE["right"] - SAFE["left"]) * i / steps, y + h), fill=color + (230,))
+        s = duration * (i - 1) / steps
+        e = duration * i / steps + 0.02
+        reel.cue(s, e, img, fade_in=0.0, fade_out=0.0, rise=0)
+
+def counter_cues(reel, items, start, each, **style):
+    """numbered listicle labels: items = [(number, text)]"""
+    for i, (num, txt) in enumerate(items):
+        s = start + i * each
+        lay = M(text_layer([str(num)], y_top=style.get("num_y", 1150), size=style.get("num_size", 150),
+                           fontfile=style.get("num_font", "Playfair_Display-700.ttf"), color=style.get("num_color", (227, 165, 82)),
+                           align="left", x_left=90, shadow_blur=12),
+                text_layer([txt], y_top=style.get("y", 1330), size=style.get("size", 60), fontfile=style.get("font", "DM_Sans-600.ttf"),
+                           color=style.get("color", (244, 234, 219)), align="left", x_left=90, shadow_blur=12))
+        reel.cue(s + 0.05, s + each - 0.05, lay)
+
+M = merge_layers
+
+# --- multi-frame compositions (rendered as their own pre-clips) ---------
+def render_triptych(clips, out_path, dur, labels=None, gap=6, bg=(10, 8, 6), label_style=None):
+    """three vertical strips side by side, each a (path, ss, kind) tuple. Produces an mp4 usable as a segment."""
+    n = len(clips)
+    sw = (W - gap * (n - 1)) // n
+    cmd = ["ffmpeg", "-hide_banner", "-y"]
+    fc = []
+    for i, (p, ss, kind) in enumerate(clips):
+        if kind == "video":
+            cmd += ["-ss", f"{ss:.3f}", "-t", f"{dur + 0.3:.3f}", "-i", p]
+        else:
+            cmd += ["-loop", "1", "-framerate", str(FPS), "-t", f"{dur + 0.3:.3f}", "-i", p]
+        # crop a vertical strip from the centre of each source, scaled to full height
+        fc.append(f"[{i}:v]scale=-2:{H}:flags=lanczos,crop={sw}:{H}:(iw-{sw})/2:0,fps={FPS},setsar=1,format=yuv420p[c{i}]")
+    fc.append(f"color=c=0x{bg[0]:02x}{bg[1]:02x}{bg[2]:02x}:s={W}x{H}:r={FPS}:d={dur:.3f}[bg]")
+    cur = "bg"
+    for i in range(n):
+        x = i * (sw + gap)
+        fc.append(f"[{cur}][c{i}]overlay={x}:0:shortest=1[o{i}]")
+        cur = f"o{i}"
+    fc.append(f"[{cur}]trim=duration={dur:.3f},setpts=PTS-STARTPTS[v]")
+    cmd += ["-filter_complex", ";".join(fc), "-map", "[v]", "-c:v", "libx264", "-preset", "fast", "-crf", "16",
+            "-pix_fmt", "yuv420p", "-r", str(FPS), out_path]
+    subprocess.run(cmd, check=True, capture_output=True)
+    return out_path
+
+def render_before_after(before, after, out_path, dur, wipe_start=0.6, wipe_dur=1.2, kind_b="video", kind_a="video", ss_b=0, ss_a=0, vertical=False):
+    """A wipe reveal: 'after' slides over 'before' with a thin light-coloured edge.
+    Uses xfade wipe so both sources keep playing."""
+    cmd = ["ffmpeg", "-hide_banner", "-y"]
+    for p, kind, ss in ((before, kind_b, ss_b), (after, kind_a, ss_a)):
+        if kind == "video":
+            cmd += ["-ss", f"{ss:.3f}", "-t", f"{dur + 0.5:.3f}", "-i", p]
+        else:
+            cmd += ["-loop", "1", "-framerate", str(FPS), "-t", f"{dur + 0.5:.3f}", "-i", p]
+    prep = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS},setsar=1,format=yuv420p,settb=1/{FPS}"
+    trans = "wipeup" if vertical else "wipeleft"
+    fc = (f"[0:v]{prep}[a];[1:v]{prep}[b];"
+          f"[a][b]xfade=transition={trans}:duration={wipe_dur}:offset={wipe_start},trim=duration={dur:.3f},setpts=PTS-STARTPTS[v]")
+    cmd += ["-filter_complex", fc, "-map", "[v]", "-c:v", "libx264", "-preset", "fast", "-crf", "16",
+            "-pix_fmt", "yuv420p", "-r", str(FPS), out_path]
+    subprocess.run(cmd, check=True, capture_output=True)
+    return out_path
+
+# transition presets usable as Reel.video(..., xfade=(kind, dur))
+TRANS = dict(cut=None, dissolve=("dissolve", 0.35), fade=("fade", 0.4), flash=("fadewhite", 0.18),
+             dip=("fadeblack", 0.3), zoom=("zoomin", 0.3), whip=("smoothleft", 0.22), whip_up=("smoothup", 0.22),
+             circle=("circleopen", 0.4), slide=("slideleft", 0.25))

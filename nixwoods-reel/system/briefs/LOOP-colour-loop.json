@@ -1,0 +1,18 @@
+{
+ "name": "LOOP-colour-loop",
+ "mechanism": "colour_loop",
+ "product": "rubik",
+ "style": "aesthetic",
+ "music": "audio/music1-aesthetic.mp3",
+ "music_gain": -2,
+ "cover_t": 6.0,
+ "copy": {
+  "captions": [
+   "9:40 pm",
+   "10:15 pm",
+   "11:58 pm"
+  ],
+  "line": "the lamp that knows what time it is."
+ },
+ "notes": "Share-for-taste. Loops back to the opening amber frame; no CTA until the last 2 s."
+}
