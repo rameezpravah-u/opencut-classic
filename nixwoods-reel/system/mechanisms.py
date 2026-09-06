@@ -229,6 +229,9 @@ class Build:
         bh = block_h or int(len(lines) * size * 1.25 + (90 if kw.get("kicker") else 40))
         if y is None:
             y = self.slot(sh, block_h=bh, prefer=prefer) if prefer else self.slot(sh, block_h=bh)
+        # a kicker renders ABOVE the anchor (~88px), so a top-slot placement pushes it off frame
+        if kw.get("kicker") and y < SAFE["top"] + 100:
+            y = SAFE["top"] + 100
         if "box" not in kw:
             bx = self.auto_box(sh, y, bh)
             if bx:
@@ -236,7 +239,17 @@ class Build:
         o = {}
         if fade is not None: o["fade_in"] = o["fade_out"] = fade
         if rise is not None: o["rise"] = rise
-        self.cue(sh["start"] + pad, sh["end"] - pad, self.st.headline(lines, y_top=y, **kw), **o)
+        # last-resort width guard: a mechanism that forgets to wrap its line must not push text
+        # under Instagram's action rail. Shrink until it fits, then hand it to the cue.
+        lay = self.st.headline(lines, y_top=y, **kw)
+        limit = SAFE["right"] - SAFE["left"]
+        for _ in range(6):
+            bb = lay.getbbox()
+            if not bb or (bb[2] - bb[0]) <= limit:
+                break
+            kw["size"] = int((kw.get("size") or self.sd["headline_size"]) * 0.92)
+            lay = self.st.headline(lines, y_top=y, **kw)
+        self.cue(sh["start"] + pad, sh["end"] - pad, lay, **o)
         return y
 
     # --- audio --------------------------------------------------------
@@ -317,7 +330,7 @@ def m_transformation(b):
     mc = B.still("macro", 2.0, cam=B.cam("pull"))
     B.card([c["name"]], f'{c["price"]}  ·  {c["url"]}')
     B.cue(0.25, off["end"] - 0.1, st.headline(_wrap(c.get("hook", "Still lit by one tubelight?"), 20), y_top=B.slot(off, block_h=200)))
-    B.say(on, c.get("turn", "Watch the room change."), pad=0.3, kicker=c.get("kicker", "one turn · three colours"))
+    B.say(on, _wrap(c.get("turn", "Watch the room change."), 20), pad=0.3, kicker=c.get("kicker", "one turn · three colours"))
     for sh, key in ((am, "amber"), (rd, "red"), (gr, "green")):
         line = c["colors"][key]
         B.say(sh, _wrap(line, 22), colors=_col(line, key, b))

@@ -94,6 +94,8 @@ What goes in, and what it costs today:
 | Review sheets and timelines | alongside the reels | 40 MB | JPEG sheets, never PNG (11× smaller; the PNG era ended 6 Sep) |
 | Intermediates | — | — | never: wipe fragments (`*-ba.mp4`, `*-tri.mp4`), superseded takes, `__pycache__` |
 
+**Where we are against the ceiling (6 Sep, four products).** Adding 20 reels took `.git` from 560 MB to about 940 MB even after re-encoding the set at CRF 24. That is the last product whose finished mp4s belong in git. **Product five moves the videos to Git LFS or Drive** and keeps only covers, sheets and timelines here — the system regenerates every mp4 from `system/` and the product folders with one command, so the videos are the expendable part.
+
 **The ceiling to watch.** A product set is roughly 300 MB of video. The repo is at 560 MB after one product. GitHub starts warning past 1 GB and refuses past 5 GB, and git keeps every version forever, so a re-render of a committed reel costs its full size again. At product three, either move finished mp4s to Drive or Git LFS and keep only covers, sheets and timelines here. Everything in `out/` regenerates from what is in `system/` and `hf/` with one command, so the videos are the expendable part, not the system.
 
 **Rendering a batch.** A long render must not write into the working tree: a half-written mp4 will be picked up by any `git add`, and a corrupt file in history is worse than no file. Render a batch to a staging directory with `--out`, review it, then copy the finished set in and commit:

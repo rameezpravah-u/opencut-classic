@@ -1,0 +1,243 @@
+{
+ "name": "K2-rubik-mood",
+ "mechanism": "colour_loop",
+ "style": "aesthetic",
+ "duration": 18.75,
+ "shots": [
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 5.65,
+   "start": 0.0,
+   "end": 2.6,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 0.0,
+   "start": 2.25,
+   "end": 4.85,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": -0.3,
+    "px1": 0.3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/hf06-desk-green.jpg",
+   "ss": 0,
+   "start": 4.5,
+   "end": 7.1,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.05,
+    "z1": 1.12,
+    "py0": 0.3,
+    "py1": -0.1
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 3.25,
+   "start": 6.75,
+   "end": 9.15,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.18
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/hf05-bedside-red.jpg",
+   "ss": 0,
+   "start": 8.8,
+   "end": 11.4,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": 0.3,
+    "px1": -0.3
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 13.0,
+   "start": 11.05,
+   "end": 14.25,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.08,
+    "z1": 1.08
+   }
+  },
+  {
+   "kind": "video",
+   "src": "hf/k03-backlit-arc.mp4",
+   "ss": 0,
+   "start": 13.9,
+   "end": 16.5,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 5.65,
+   "start": 16.15,
+   "end": 18.75,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  }
+ ],
+ "cues": [
+  {
+   "png": "K2-rubik-mood-c00.png",
+   "start": 0.2,
+   "end": 2.4
+  },
+  {
+   "png": "K2-rubik-mood-c01.png",
+   "start": 4.7,
+   "end": 6.9
+  },
+  {
+   "png": "K2-rubik-mood-c02.png",
+   "start": 9.0,
+   "end": 11.2
+  },
+  {
+   "png": "K2-rubik-mood-c03.png",
+   "start": 11.25,
+   "end": 14.05
+  },
+  {
+   "png": "K2-rubik-mood-c04.png",
+   "start": 16.55,
+   "end": 18.55
+  }
+ ],
+ "audio": [
+  {
+   "src": "sfx-turn.mp3",
+   "start": 11.350000000000001,
+   "gain": -10,
+   "music": false
+  },
+  {
+   "src": "music1-aesthetic.mp3",
+   "start": 0.0,
+   "gain": -2,
+   "music": true
+  }
+ ],
+ "lint": [],
+ "warnings": [],
+ "checks": [],
+ "tags": [
+  "night",
+  "colour-flip"
+ ],
+ "preflight": {
+  "ad_name": "COM | Rubiks | Broad | Sales | Sep06",
+  "hook_score": null,
+  "uses_generated_frames": true,
+  "colours": [
+   "amber",
+   "green",
+   "red"
+  ],
+  "hypothesis": [],
+  "category_focus": "new money and new creative go to wall lights and pendants first; Rubik's keeps its old campaign; the Sep03 Rubik's campaign stays off. Rubik's reels are organic-first until the focus window ends.",
+  "rows": [
+   {
+    "check": "rules · at least two colours shown",
+    "ok": true,
+    "detail": "amber, green, red"
+   },
+   {
+    "check": "rules · no dispatch-time claim while backlogged",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "landing = the product shown, .nw-pdp template, stock visible",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "visual confirmation (watch the mp4, not the sheet)",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "named control in the same ad set",
+    "ok": null,
+    "detail": "4411971999130238"
+   },
+   {
+    "check": "kill threshold written on the ad",
+    "ok": null,
+    "detail": "₹1,500 spend with 0 purchases, or 7d ROAS below the ad-set average after ≥₹3,000"
+   },
+   {
+    "check": "AI disclosure ticked in Ads Manager",
+    "ok": null,
+    "detail": "Higgsfield frames in this cut → tick by hand"
+   },
+   {
+    "check": "hook on screen by 0.3 s, holds 1.2 s; all text in the safe zone",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "length · 25–30 s cut exists for ads (Medium bucket 4.54x vs 0.98x Short)",
+    "ok": null,
+    "detail": "18.8 s — render again with \"stretch\" for the ad cut"
+   }
+  ]
+ }
+}

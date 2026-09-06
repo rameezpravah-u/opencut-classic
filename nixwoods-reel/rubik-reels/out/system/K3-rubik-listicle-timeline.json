@@ -1,0 +1,218 @@
+{
+ "name": "K3-rubik-listicle",
+ "mechanism": "listicle",
+ "style": "broad",
+ "duration": 12.44,
+ "shots": [
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 8.7,
+   "start": 0.0,
+   "end": 2.2,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "video",
+   "src": "hf/k00-hero-dolly.mp4",
+   "ss": 0,
+   "start": 1.98,
+   "end": 4.98,
+   "xfade": [
+    "smoothleft",
+    0.22
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/hf06-desk-green.jpg",
+   "ss": 0,
+   "start": 4.76,
+   "end": 7.76,
+   "xfade": [
+    "smoothleft",
+    0.22
+   ],
+   "cam": {
+    "z0": 1.08,
+    "z1": 1.08
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/hf05-bedside-red.jpg",
+   "ss": 0,
+   "start": 7.54,
+   "end": 10.54,
+   "xfade": [
+    "smoothleft",
+    0.22
+   ],
+   "cam": {
+    "z0": 1.05,
+    "z1": 1.12,
+    "py0": 0.3,
+    "py1": -0.1
+   }
+  },
+  {
+   "kind": "still",
+   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/K3-rubik-listicle-end.png",
+   "ss": 0,
+   "start": 10.04,
+   "end": 12.44,
+   "xfade": [
+    "fade",
+    0.5
+   ],
+   "cam": null
+  }
+ ],
+ "cues": [
+  {
+   "png": "K3-rubik-listicle-c00.png",
+   "start": 0.25,
+   "end": 2.1
+  },
+  {
+   "png": "K3-rubik-listicle-c01.png",
+   "start": 2.18,
+   "end": 4.78
+  },
+  {
+   "png": "K3-rubik-listicle-c02.png",
+   "start": 4.96,
+   "end": 7.56
+  },
+  {
+   "png": "K3-rubik-listicle-c03.png",
+   "start": 7.74,
+   "end": 10.34
+  }
+ ],
+ "audio": [
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 1.7800000000000002,
+   "gain": -12,
+   "music": false
+  },
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 4.5600000000000005,
+   "gain": -12,
+   "music": false
+  },
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 7.340000000000001,
+   "gain": -12,
+   "music": false
+  },
+  {
+   "src": "music5-3040.mp3",
+   "start": 0.0,
+   "gain": -3,
+   "music": true
+  }
+ ],
+ "lint": [],
+ "warnings": [],
+ "checks": [],
+ "tags": [
+  "craft",
+  "hands"
+ ],
+ "preflight": {
+  "ad_name": "COM | Rubiks | Broad | Sales | Sep06",
+  "hook_score": {
+   "hook": "Three moods. One turn. No app.",
+   "words": 6,
+   "gates": {
+    "gap": true,
+    "truth": true,
+    "pull": true
+   },
+   "brevity": 3,
+   "specificity": 2,
+   "family": 3,
+   "families": [
+    "contrast",
+    "listicle",
+    "transformation"
+   ],
+   "score": 11,
+   "out_of": 12,
+   "trademark": [],
+   "passes": true
+  },
+  "uses_generated_frames": true,
+  "colours": [
+   "amber",
+   "green",
+   "red"
+  ],
+  "hypothesis": [],
+  "category_focus": "new money and new creative go to wall lights and pendants first; Rubik's keeps its old campaign; the Sep03 Rubik's campaign stays off. Rubik's reels are organic-first until the focus window ends.",
+  "rows": [
+   {
+    "check": "rules · at least two colours shown",
+    "ok": true,
+    "detail": "amber, green, red"
+   },
+   {
+    "check": "rules · no dispatch-time claim while backlogged",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "ok": true,
+    "detail": "hook truth gate pass"
+   },
+   {
+    "check": "landing = the product shown, .nw-pdp template, stock visible",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "visual confirmation (watch the mp4, not the sheet)",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "named control in the same ad set",
+    "ok": null,
+    "detail": "4411971999130238"
+   },
+   {
+    "check": "kill threshold written on the ad",
+    "ok": null,
+    "detail": "₹1,500 spend with 0 purchases, or 7d ROAS below the ad-set average after ≥₹3,000"
+   },
+   {
+    "check": "AI disclosure ticked in Ads Manager",
+    "ok": null,
+    "detail": "Higgsfield frames in this cut → tick by hand"
+   },
+   {
+    "check": "hook on screen by 0.3 s, holds 1.2 s; all text in the safe zone",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "length · 25–30 s cut exists for ads (Medium bucket 4.54x vs 0.98x Short)",
+    "ok": null,
+    "detail": "12.4 s — render again with \"stretch\" for the ad cut"
+   }
+  ]
+ }
+}

@@ -1,0 +1,300 @@
+{
+ "name": "R2-rosewood-vo",
+ "mechanism": "vo_story",
+ "style": "broad",
+ "duration": 21.2,
+ "shots": [
+  {
+   "kind": "still",
+   "src": "hf/sh00-dining-pampas.jpg",
+   "ss": 0,
+   "start": 0.0,
+   "end": 2.8,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/sh06-led-underside.jpg",
+   "ss": 0,
+   "start": 2.8,
+   "end": 4.8,
+   "xfade": null,
+   "cam": {
+    "z0": 1.08,
+    "z1": 1.08
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/sh00-dining-pampas.jpg",
+   "ss": 0,
+   "start": 4.8,
+   "end": 7.4,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": -0.3,
+    "px1": 0.3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/sh05-daylight-oval.jpg",
+   "ss": 0,
+   "start": 7.4,
+   "end": 9.6,
+   "xfade": null,
+   "cam": {
+    "z0": 1.05,
+    "z1": 1.12,
+    "py0": 0.3,
+    "py1": -0.1
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/sh02-evening-six.jpg",
+   "ss": 0,
+   "start": 9.6,
+   "end": 11.4,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.18
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/sh06-led-underside.jpg",
+   "ss": 0,
+   "start": 11.4,
+   "end": 13.8,
+   "xfade": null,
+   "cam": {
+    "z0": 1.08,
+    "z1": 1.08
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/sh01-endcap-macro.jpg",
+   "ss": 0,
+   "start": 13.45,
+   "end": 15.25,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/sh03-front-fluted.png",
+   "ss": 0,
+   "start": 15.25,
+   "end": 17.05,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": -0.3,
+    "px1": 0.3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/sh02-evening-six.jpg",
+   "ss": 0,
+   "start": 16.7,
+   "end": 19.1,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "still",
+   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/R2-rosewood-vo-end.png",
+   "ss": 0,
+   "start": 18.6,
+   "end": 21.2,
+   "xfade": [
+    "fade",
+    0.5
+   ],
+   "cam": null
+  }
+ ],
+ "cues": [
+  {
+   "png": "R2-rosewood-vo-c00.png",
+   "start": 0.25,
+   "end": 2.15
+  },
+  {
+   "png": "R2-rosewood-vo-c01.png",
+   "start": 2.6,
+   "end": 4.2
+  },
+  {
+   "png": "R2-rosewood-vo-c02.png",
+   "start": 4.4,
+   "end": 7.0
+  },
+  {
+   "png": "R2-rosewood-vo-c03.png",
+   "start": 7.2,
+   "end": 9.1
+  },
+  {
+   "png": "R2-rosewood-vo-c04.png",
+   "start": 9.2,
+   "end": 10.8
+  },
+  {
+   "png": "R2-rosewood-vo-c05.png",
+   "start": 10.9,
+   "end": 13.0
+  },
+  {
+   "png": "R2-rosewood-vo-c06.png",
+   "start": 13.1,
+   "end": 14.8
+  },
+  {
+   "png": "R2-rosewood-vo-c07.png",
+   "start": 14.8,
+   "end": 16.4
+  },
+  {
+   "png": "R2-rosewood-vo-c08.png",
+   "start": 16.45,
+   "end": 17.9
+  },
+  {
+   "png": "R2-rosewood-vo-c09.png",
+   "start": 17.95,
+   "end": 21.15
+  }
+ ],
+ "audio": [
+  {
+   "src": "vo-meaning.mp3",
+   "start": 0.6,
+   "gain": 0,
+   "music": false
+  },
+  {
+   "src": "music2-meaning.mp3",
+   "start": 0.0,
+   "gain": -13,
+   "music": true
+  },
+  {
+   "src": "sfx-turn.mp3",
+   "start": 3.0999999999999996,
+   "gain": -12,
+   "music": false
+  }
+ ],
+ "lint": [],
+ "warnings": [],
+ "checks": [],
+ "tags": [
+  "room",
+  "craft"
+ ],
+ "preflight": {
+  "ad_name": "COM | Rosewood | Broad | Sales | Sep06",
+  "hook_score": {
+   "hook": "Your dining light is in the wrong place.",
+   "words": 8,
+   "gates": {
+    "gap": true,
+    "truth": true,
+    "pull": true
+   },
+   "brevity": 2,
+   "specificity": 1,
+   "family": 3,
+   "families": [
+    "contrast",
+    "pov"
+   ],
+   "score": 9,
+   "out_of": 12,
+   "trademark": [],
+   "passes": true
+  },
+  "uses_generated_frames": false,
+  "colours": [
+   "n/a"
+  ],
+  "hypothesis": [],
+  "category_focus": "new money and new creative go to wall lights and pendants first; Rubik's keeps its old campaign; the Sep03 Rubik's campaign stays off. Rubik's reels are organic-first until the focus window ends.",
+  "rows": [
+   {
+    "check": "rules · at least two colours shown",
+    "ok": true,
+    "detail": "not applicable — single-temperature fixture"
+   },
+   {
+    "check": "rules · no dispatch-time claim while backlogged",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "ok": true,
+    "detail": "hook truth gate pass"
+   },
+   {
+    "check": "landing = the product shown, .nw-pdp template, stock visible",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "visual confirmation (watch the mp4, not the sheet)",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "named control in the same ad set",
+    "ok": null,
+    "detail": "none on record"
+   },
+   {
+    "check": "kill threshold written on the ad",
+    "ok": null,
+    "detail": "₹1,500 spend with 0 purchases, or 7d ROAS below the ad-set average after ≥₹3,000"
+   },
+   {
+    "check": "AI disclosure ticked in Ads Manager",
+    "ok": true,
+    "detail": "no generated frames"
+   },
+   {
+    "check": "hook on screen by 0.3 s, holds 1.2 s; all text in the safe zone",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "length · 25–30 s cut exists for ads (Medium bucket 4.54x vs 0.98x Short)",
+    "ok": null,
+    "detail": "21.2 s — render again with \"stretch\" for the ad cut"
+   }
+  ]
+ }
+}
