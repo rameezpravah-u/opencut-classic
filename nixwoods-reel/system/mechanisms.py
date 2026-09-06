@@ -363,7 +363,10 @@ def m_before_after(b):
     pre = os.path.join(B.out, f"{B.name}-ba.mp4")
     rk.render_before_after(before, after, pre, dur=4.4, wipe_start=1.4, wipe_dur=1.3, kind_b=before_kind, kind_a=after_kind,
                            vertical=b.get("vertical_wipe", False))
-    ba = B.pre(pre, 4.4, post=("" if B.has("stills", "room_before") else "eq=saturation=0.35:contrast=0.9:brightness=0.08"))
+    ba = B.pre(pre, 4.4, post=("" if B.has("stills", "room_before") else
+                  # "before" for a lighting product means the room without that light: darker and
+                  # cooler, not merely desaturated. brightness=+0.08 was lightening it.
+                  "eq=saturation=0.42:contrast=1.06:brightness=-0.15,colorbalance=rs=-0.04:bs=0.07"))
     hero = B.clip("hero", 2.8, cam=B.cam("push"))
     hd = B.clip("hands", 2.8, xfade=TRANS["dissolve"], cam=B.cam("hold"))
     rd = B.still("bedside_red", 2.0, cam=B.cam("push_hard"))
