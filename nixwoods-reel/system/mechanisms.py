@@ -372,7 +372,7 @@ def m_triptych(b):
     B.card([c.get("hook", "3 moods. 1 turn.")], f'{c["name"]} · {c["price"]} · {c["url"]}')
     sw = (1080 - 12) // 3
     for i, (name, col) in enumerate((("Red", COL["red"]), ("Amber", COL["amber"]), ("Green", COL["green"]))):
-        x = i * (sw + 6) + 96
+        x = min(i * (sw + 6) + 96, SAFE["right"] - 170)   # third strip label stays clear of the action rail
         for sh in (tri, tri2):
             B.cue(sh["start"] + 0.15, sh["end"] - 0.1, T([name], y_top=SLOTS["top"], size=44, fontfile=st.d["headline_font"],
                                                          color=col, align="left", x_left=x, shadow_blur=14, shadow_alpha=240))
