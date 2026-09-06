@@ -9,7 +9,7 @@
  "pillar": "In-Room Lifestyle",
  "channel": "ads + organic",
  "cover_t": 1.2,
- "vo": "../../rubik-reels/audio/vo-meaning.mp3",
+ "vo": "audio/vo-meaning.mp3",
  "vo_offset": 0.6,
  "caption_y": 1380,
  "caption_size": 60,

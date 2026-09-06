@@ -8,7 +8,7 @@
  ],
  "pillar": "Hero Product",
  "channel": "organic",
- "music": "../../rubik-reels/audio/music1-aesthetic.mp3",
+ "music": "audio/music1-aesthetic.mp3",
  "music_gain": -2,
  "cover_t": 6.0,
  "copy": {

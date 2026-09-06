@@ -9,7 +9,7 @@
  "pillar": "Hero Product",
  "hypothesis": "H1",
  "channel": "organic",
- "music": "../../rubik-reels/audio/music4-genz.mp3",
+ "music": "audio/music4-genz.mp3",
  "music_offset": -26.6,
  "music_gain": -2,
  "cover_t": 0.9,
