@@ -216,7 +216,7 @@ class Build:
             if fr is None:
                 return None
             band = fr[max(0, y // 8):max(1, (y + h) // 8)]
-            if band.mean() > 118:
+            if band.mean() > 108:
                 return (10, 10, 10, 165)
         except Exception:
             pass
@@ -487,12 +487,16 @@ def m_spec_sheet(b):
         bx = B.auto_box(sh, y, 160)
         lay = M(rule_layer(y - 24, 100, 520, tuple(st.pal.get("rule", st.pal["accent"])), 160, 2),
                 st.headline([big], y_top=y, size=64, align="left", x_left=100, box=bx, box_pad=(20, 10)),
-                st.support([small], y_top=y + 92, size=36, align="left", x_left=102, box=bx, box_pad=(20, 8)))
+                # the small line carries half a spec card's value: ivory, not the dim accent, and a
+                # heavier shadow — gold at 36px vanished on warm wood in the Aurora sizing reel
+                st.support([small], y_top=y + 92, size=38, align="left", x_left=102, box=bx, box_pad=(20, 8),
+                           color=st.pal["text"], shadow_blur=16))
         B.cue(sh["start"] + 0.2, sh["end"] - 0.2, lay, rise=10)
         B.sfx("whoosh", sh["start"] - 0.2, -14)
     hd = B.clip("hands", 2.6, xfade=TRANS["whip"], cam=B.cam("hold"))
     B.say(hd, _wrap(c.get("mechanism", "Turn. That's the whole interface."), 22), size=54)
-    B.card([c["name"]], f'{c["price"]}   ·   {c["url"]}')
+    # a spec reel is kept, not clicked — recap on the last frame when the brief gives a cta_line
+    B.card(_wrap(c.get("cta_line") or c["name"], 22), f'{c["name"]} · {c["price"]} · {c["url"]}')
     B.sfx("turn", hd["start"] + 0.3)
     B.music(gain=-3, fi=0.3)
     return B.reel()
