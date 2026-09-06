@@ -330,9 +330,9 @@ def m_triptych(b):
         for sh in (tri, tri2):
             B.cue(sh["start"] + 0.15, sh["end"] - 0.1, T([name], y_top=SLOTS["top"], size=40, fontfile=st.d["support_font"],
                                                          color=col, align="left", x_left=x, shadow_blur=10))
-    B.cue(0.25, tri["end"] - 0.1, st.headline([c.get("hook", "3 moods. 1 turn.")], y_top=SLOTS["low"]))
+    B.cue(0.25, tri["end"] - 0.1, st.headline([c.get("hook", "3 moods. 1 turn.")], y_top=SLOTS["upper"]))
     B.say(hd, _wrap(c.get("mechanism", "No app. Just turn it."), 20))
-    B.cue(tri2["start"] + 0.2, tri2["end"] - 0.1, st.headline([c.get("line2", "Bedside. Console. Desk.")], y_top=SLOTS["low"]))
+    B.cue(tri2["start"] + 0.2, tri2["end"] - 0.1, st.headline([c.get("line2", "Bedside. Console. Desk.")], y_top=SLOTS["upper"]))
     B.say(hero, _wrap(c.get("line3", "One lamp. Three rooms' worth of mood."), 22))
     for sh in (hd, tri2, hero):
         B.sfx("whoosh", sh["start"] - 0.2, -12)
@@ -361,8 +361,9 @@ def m_kinetic(b):
     B.say(rd, "red.", size=84, fade=0.06, rise=6); B.say(gr, "green.", size=84, fade=0.06, rise=6)
     B.say(dg, _wrap(c.get("line3", "real glass. real wood."), 18), fade=0.06, rise=6)
     pr = B.still("mirror", 2.2, xfade=TRANS["dip"], cam=B.cam("push"))
-    B.cue(pr["start"] + 0.2, pr["end"] - 0.1, M(st.price(c["price"], y_top=SLOTS["lower"], size=96),
-                                                 st.support([c.get("cta", "link in bio")], y_top=SLOTS["lower"] + 160)))
+    py = B.slot(pr, block_h=300)
+    B.cue(pr["start"] + 0.2, pr["end"] - 0.1, M(st.price(c["price"], y_top=py, size=96),
+                                                 st.support([c.get("cta", "link in bio")], y_top=py + 160)))
     B.card([c["name"]], c["url"], dur=2.0)
     B.sfx("whoosh", hd["start"] - 0.2, -10); B.sfx("turn", hd["start"] + 0.2)
     B.sfx("turn", rd["start"], -10); B.sfx("turn", gr["start"], -10)
@@ -479,8 +480,9 @@ def m_price_reveal(b):
         B.cue(sh["start"] + 0.15, sh["end"] - 0.1, st.headline(ticks[-3:], y_top=y, size=50, align="left", x_left=100), rise=8)
         B.sfx("whoosh", sh["start"] - 0.15, -14)
     pr = B.still("bedside_red", 2.6, xfade=TRANS["dip"], cam=B.cam("push_hard"))
-    B.cue(pr["start"] + 0.25, pr["end"] - 0.1, M(st.price(c["price"], y_top=SLOTS["centre"] - 40, size=110),
-                                                 st.support([f'was {c["compare"]}'], y_top=SLOTS["centre"] + 130, size=40)))
+    py = B.slot(pr, block_h=320)
+    B.cue(pr["start"] + 0.25, pr["end"] - 0.1, M(st.price(c["price"], y_top=py, size=110),
+                                                 st.support([f'was {c["compare"]}'], y_top=py + 170, size=40)))
     B.sfx("turn", pr["start"], -8)
     cod = B.still("unbox", 2.2, cam=B.cam("pull"))
     B.say(cod, _wrap(c.get("terms", "Free shipping across India. COD available."), 22), size=52)
