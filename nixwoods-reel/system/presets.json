@@ -646,7 +646,8 @@
     "3 reasons",
     "3 faces",
     "2 screws"
-   ]
+   ],
+   "root": "rubik-reels"
   }
  },
  "engine": {
@@ -922,5 +923,16 @@
     "rule": "festive urgency is genuine: no fake countdowns, no discount shouting; lead with gifting + warmth"
    }
   }
+ },
+ "_layout": {
+  "note": "Each product has a folder under nixwoods-reel/ named by products.<key>.root. Inside it: src/ real footage, audio/ music+VO+SFX, hf/ generated stills and clips, ref/ design reference, out/ renders. Asset paths in this file are relative to that folder, so make_reel.py needs no --root for a product declared here.",
+  "add_a_product": [
+   "1. mkdir nixwoods-reel/<name>-reels/{src,audio,hf,ref,out}",
+   "2. put real footage in src/, a reference frame per angle in ref/, write ref/REFERENCE.md describing the true product form",
+   "3. python3 system/sources.py <name>-reels/src/<clip>.mp4 --write <key>  (registers colour states)",
+   "4. add products.<key> here: root, name, price, url, copy, assets, facts",
+   "5. generate stills with the template in <name>-reels/hf/PROMPTS.md, then python3 system/qa.py --root <name>-reels to approve or reject each one",
+   "6. copy a brief from system/briefs/, set product, render"
+  ]
  }
 }

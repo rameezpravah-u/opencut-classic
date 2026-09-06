@@ -30,10 +30,12 @@ def status_of(assets, kind, key):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--root", default=".")
+    ap.add_argument("--root", default=None)
     ap.add_argument("--product", default="rubik")
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
+    if not a.root:
+        a.root = os.path.abspath(os.path.join(os.path.dirname(HERE), PRESETS["products"][a.product]["root"]))
     assets = PRESETS["products"][a.product]["assets"]
     refs = sorted(glob.glob(os.path.join(a.root, "ref", "ref-*.jpg")) + glob.glob(os.path.join(os.path.dirname(HERE), "rubik-reels", "ref", "ref-*.jpg")))
     ref_img = first_frame(refs[len(refs) // 2]) if refs else None

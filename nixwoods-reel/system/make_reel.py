@@ -20,6 +20,14 @@ from PIL import Image
 PRESETS = MX.PRESETS
 
 
+def product_root(key):
+    """asset folder for a product, from presets.json → products.<key>.root (relative to nixwoods-reel/)"""
+    rel = PRESETS["products"].get(key, {}).get("root")
+    if not rel:
+        raise SystemExit(f"product {key!r} has no 'root' in presets.json and no --root was given")
+    return os.path.abspath(os.path.join(os.path.dirname(HERE), rel))
+
+
 def _strings(v, label):
     if isinstance(v, str):
         yield label, v
@@ -112,7 +120,7 @@ def cover(video, out_jpg, t):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("brief")
-    ap.add_argument("--root", default=".", help="asset root: paths in the brief/presets are relative to it")
+    ap.add_argument("--root", default=None, help="asset root; defaults to nixwoods-reel/<products.<key>.root> from presets.json, so it is normally not needed")
     ap.add_argument("--out", default=None, help="output dir (default <root>/out/system)")
     ap.add_argument("--audio", default="both", choices=["music", "clean", "both"])
     ap.add_argument("--no-sheet", action="store_true")
@@ -128,7 +136,7 @@ def main():
         for f in sorted(os.listdir(a.brief)):
             if not f.endswith(".json"):
                 continue
-            cmd = [sys.executable, os.path.abspath(__file__), os.path.join(a.brief, f), "--root", a.root, "--audio", a.audio] + (["--out", a.out] if a.out else []) + (["--dry"] if a.dry else []) + (["--no-sheet"] if a.no_sheet else [])
+            cmd = [sys.executable, os.path.abspath(__file__), os.path.join(a.brief, f), "--audio", a.audio] + (["--root", a.root] if a.root else []) + (["--out", a.out] if a.out else []) + (["--dry"] if a.dry else []) + (["--no-sheet"] if a.no_sheet else [])
             r = sp.run(cmd, capture_output=True, text=True)
             out = r.stdout + r.stderr
             name = f[:-5]
@@ -160,7 +168,7 @@ def main():
         return
 
     brief = json.load(open(a.brief, encoding="utf-8"))
-    root = os.path.abspath(a.root)
+    root = os.path.abspath(a.root) if a.root else product_root(brief.get("product", "rubik"))
     out = os.path.abspath(a.out or os.path.join(root, "out", "system"))
     os.makedirs(out, exist_ok=True)
 

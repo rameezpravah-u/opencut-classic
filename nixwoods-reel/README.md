@@ -1,4 +1,27 @@
-# NixWoods — 20s viral reel (9:16)
+# NixWoods reel system
+
+Brief-driven 9:16 reels for NixWoods, with the quality gates that keep them on-brand and ad-legal.
+**New here?** Read `system/PLAYBOOK.md`, then `system/README.md`. Agents: invoke the `nixwoods-reels` skill or read `CLAUDE.md`.
+
+```bash
+pip install pillow numpy imageio-ffmpeg
+python3 system/make_reel.py system/briefs/T1-transformation.json     # one reel
+python3 system/make_reel.py system/briefs --all                      # all thirteen
+```
+
+| Want | Go to |
+|---|---|
+| How any of this works | `system/PLAYBOOK.md` |
+| Brief schema, adding a product or mechanism | `system/README.md` |
+| The twelve reels and the ad cut | `rubik-reels/out/system/` |
+| What the product actually looks like | `rubik-reels/ref/REFERENCE.md` |
+| Image and video prompts that produced the assets | `rubik-reels/hf/PROMPTS.md` |
+| Voice-over scripts | `system/scripts/vo-scripts.md` |
+| Which Drive clip is which product | `FOOTAGE-INDEX.md` |
+
+---
+
+## The first reel — 20s brand cut (9:16)
 
 Output: `out/NixWoods-Reel-20s-9x16.mp4` (1080×1920, 25 fps, H.264 + AAC, −15 LUFS) and `out/NixWoods-Reel-cover.jpg` (Reels cover frame).
 
