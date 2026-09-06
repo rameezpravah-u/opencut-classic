@@ -345,9 +345,12 @@ class Reel:
             raise SystemExit(f"ffmpeg failed for {outp}")
         return outp
 
-def contact_sheet(video, out_png, fps=2, cols=8, rows=4, scale=200):
+def contact_sheet(video, out_path, fps=2, cols=8, rows=4, scale=200, quality=4):
+    """Review sheet. Writes JPEG when out_path ends .jpg (a tenth the size of PNG, and it only
+    has to be legible enough to spot text over the product)."""
+    args = ["-q:v", str(quality)] if out_path.lower().endswith((".jpg", ".jpeg")) else []
     subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", video,
-                    "-vf", f"fps={fps},scale={scale}:-1,tile={cols}x{rows}", "-frames:v", "1", out_png], check=True)
+                    "-vf", f"fps={fps},scale={scale}:-1,tile={cols}x{rows}", "-frames:v", "1"] + args + [out_path], check=True)
 
 # ==========================================================================
 # v2 additions: safe zones, placement, kinetic text, mechanisms

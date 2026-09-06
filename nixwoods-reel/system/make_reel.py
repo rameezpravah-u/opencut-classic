@@ -206,7 +206,8 @@ def main():
     cover(main_out, os.path.join(out, f"{reel.name}-cover.jpg"), brief.get("cover_t", 1.0))
     if not a.no_sheet:
         rows = max(1, math.ceil(reel.duration * 2 / 8))
-        rk.contact_sheet(main_out, os.path.join(out, f"{reel.name}-sheet.png"), fps=2, cols=8, rows=rows, scale=200)
+        # JPEG, not PNG: a review sheet is a thumbnail, and PNG sheets were 3-5 MB each in git
+        rk.contact_sheet(main_out, os.path.join(out, f"{reel.name}-sheet.jpg"), fps=2, cols=8, rows=rows, scale=200)
     print("done", *outputs)
 
 

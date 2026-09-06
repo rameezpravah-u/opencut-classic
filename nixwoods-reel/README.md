@@ -53,3 +53,24 @@ Hashtags: #nixwoods #woodenlights #homedecorindia #interiordesignindia #warmligh
 - Music is the track from the existing NixWoods brand film; confirm its licence covers paid placement before running it as an ad.
 - The 3-colour Glass Block beat is the hero product moment the master doc requires for any Rubik's/Glass Block creative.
 - Per the deployment hard rules, preview-verify in Ads Manager before spending.
+
+---
+
+## Where content is saved (standing rule, set 6 Sep 2026)
+
+The session container is ephemeral. Anything not committed is gone when the session ends, so **this repo on `main` is the store of record** and renders are committed as each one passes review, not batched at the end.
+
+What goes in, and what it costs today:
+
+| Class | Path | Size now | Rule |
+|---|---|---|---|
+| System (code, presets, briefs, playbook, fonts) | `system/`, `rubik-reels/reelkit.py` | 3 MB | always; this is the part that matters |
+| Design reference | `rubik-reels/ref/` | <1 MB | always; every product needs its own before any generation |
+| Generated stills and short clips | `rubik-reels/hf/` | 17 MB | always, approved and rejected alike — the rejects are the fidelity gate's evidence |
+| Finished reels | `rubik-reels/out/…` | 454 MB | the approved final cut only, music + clean, re-encoded at CRF 23 above ~21 MB |
+| Review sheets and timelines | alongside the reels | 40 MB | JPEG sheets, never PNG (11× smaller; the PNG era ended 6 Sep) |
+| Intermediates | — | — | never: wipe fragments (`*-ba.mp4`, `*-tri.mp4`), superseded takes, `__pycache__` |
+
+**The ceiling to watch.** A product set is roughly 300 MB of video. The repo is at 560 MB after one product. GitHub starts warning past 1 GB and refuses past 5 GB, and git keeps every version forever, so a re-render of a committed reel costs its full size again. At product three, either move finished mp4s to Drive or Git LFS and keep only covers, sheets and timelines here. Everything in `out/` regenerates from what is in `system/` and `hf/` with one command, so the videos are the expendable part, not the system.
+
+**Google Drive** stays the human-side archive (`NixWoods Creatives`). This session can read from Drive but cannot write video to it, so uploads there are manual. Drop new source footage into `1 - Inbox` and `system/sources.py` will register it.
