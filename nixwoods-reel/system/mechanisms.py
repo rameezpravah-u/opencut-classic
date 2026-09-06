@@ -290,8 +290,14 @@ class Build:
         return sorted(seen)
 
 
-def _col(word_line, key):
-    """colour the first word of 'Red. Movie night.' with the lamp colour"""
+def _col(word_line, key, b=None):
+    """Tint the first word of 'Red. Movie night.' with the lamp colour.
+
+    Only for a product whose light actually changes colour. On a single-temperature
+    fixture this would tint an arbitrary word — 'Not brighter. Warmer.' came out with
+    'Not' in red — so it returns None and the line renders in the style's own colour."""
+    if b is not None and not b["_product"].get("rules", {}).get("two_colours", True):
+        return None
     return {word_line.split(".")[0].split()[0]: COL[key]}
 
 
@@ -314,7 +320,7 @@ def m_transformation(b):
     B.say(on, c.get("turn", "Watch the room change."), pad=0.3, kicker=c.get("kicker", "one turn · three colours"))
     for sh, key in ((am, "amber"), (rd, "red"), (gr, "green")):
         line = c["colors"][key]
-        B.say(sh, _wrap(line, 22), colors=_col(line, key))
+        B.say(sh, _wrap(line, 22), colors=_col(line, key, b))
         B.sfx("turn", sh["start"], -10)
     B.say(hd, _wrap(c.get("mechanism", "No app. No remote. Just turn it."), 20))
     B.say(mc, _wrap(c.get("proof_line", "Solid sheesham. Hand-painted glass."), 22), size=50)
@@ -369,8 +375,8 @@ def m_before_after(b):
     B.cue(2.75, ba["end"] - 0.15, st.kicker(c.get("after", "after · rubik's cube lamp"), y_top=SLOTS["top"]))
     B.say(hero, c.get("line1", "Not brighter. Warmer."))
     B.say(hd, _wrap(c.get("mechanism", "Turn the block. The colour changes."), 20))
-    B.say(rd, _wrap(c["colors"]["red"], 22), colors=_col(c["colors"]["red"], "red"))
-    B.say(gr, _wrap(c["colors"]["green"], 22), colors=_col(c["colors"]["green"], "green"))
+    B.say(rd, _wrap(c["colors"]["red"], 22), colors=_col(c["colors"]["red"], "red", b))
+    B.say(gr, _wrap(c["colors"]["green"], 22), colors=_col(c["colors"]["green"], "green", b))
     B.sfx("whoosh", 1.3, -12); B.sfx("turn", hd["start"] + 0.4)
     B.music()
     return B.reel()
@@ -511,7 +517,7 @@ def m_vo_story(b):
     size = b.get("caption_size", 62)
     for i, (s, e, cap, key) in enumerate(lines):
         cap = [cap] if isinstance(cap, str) else cap
-        colors = _col(cap[0], key) if key else None
+        colors = _col(cap[0], key, b) if key else None
         start = min(s + o, 0.25) if i == 0 else s + o      # the first caption is the visual hook: on screen by 0.3 s
         # place each caption off the product of the shot that is on screen when it appears
         mid = (start + e + o) / 2
@@ -592,7 +598,7 @@ def m_unboxing(b):
     B.say(hd, _wrap(c.get("mechanism", "Turn it. The colour changes."), 20))
     B.say(on, c.get("line3", "Warm by default."))
     B.say(fest, _wrap(c.get("line4", "Made in India. Ready for Diwali."), 22))
-    B.say(rd, _wrap(c["colors"]["red"], 22), colors=_col(c["colors"]["red"], "red"))
+    B.say(rd, _wrap(c["colors"]["red"], 22), colors=_col(c["colors"]["red"], "red", b))
     B.sfx("whoosh", on["start"] - 0.2, -12); B.sfx("turn", hd["start"] + 0.4)
     B.music()
     return B.reel()

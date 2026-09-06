@@ -15,10 +15,12 @@ system/          the system, ~3 MB, the part that matters
   hooks.py         Gap/Truth/Pull gates and a /12 hook score
   qa.py            generated assets vs the real reference, with approve/reject status
   sources.py       detects a video's colour states and registers them
-  briefs/          13 briefs, one per mechanism plus a 27 s ad cut
-  scripts/         voice-over scripts in three registers
+  briefs/          33 briefs: 13 for the cube lamp, 5 each for Aurora, Rosewood and Teak
+  scripts/         product-scripts.md (four products) and vo-scripts.md (three registers)
 rubik-reels/     one folder per product, named in presets.json (products.<key>.root)
-  src/ audio/ hf/ ref/ out/
+aurora-reels/      src/ real footage · audio/ (symlink to the shared tracks) · hf/ stills
+rosewood-reels/    ref/ design reference · out/ renders
+teak-reels/
 assets/          fonts and logo, shared across products
 ```
 

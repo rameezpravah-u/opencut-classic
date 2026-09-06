@@ -1,6 +1,6 @@
 ---
 name: nixwoods-reels
-description: Make, review or extend NixWoods 9:16 social reels and ad cuts from the brief-driven system in nixwoods-reel/. Use when asked to build a reel, video, Instagram or TikTok creative, ad cut, hook, caption or voice-over for a NixWoods product (Rubik's Cube Lamp, Aurora wall light, pendants, table lamps), to add a new product to the reel system, to review or approve generated product imagery, or to check a creative against the NixWoods ad rules before it runs.
+description: Make, review or extend NixWoods 9:16 social reels and ad cuts from the brief-driven system in nixwoods-reel/. Use when asked to build a reel, video, Instagram or TikTok creative, ad cut, hook, caption or voice-over for a NixWoods product (Aurora Linear Wall Light, Rubik's Cube Lamp, Scandinavian Rosewood Pendant, Double Arm Teak Pendant, and other lamps and pendants), to add a new product to the reel system, to review or approve generated product imagery, or to check a creative against the NixWoods ad rules before it runs.
 ---
 
 # NixWoods reel system
@@ -43,6 +43,8 @@ No `--root` needed: each product declares its asset folder in `system/presets.js
 - **Any Rubik's / Glass Block creative must show at least two colours.** A single-colour static breaks the locked rule.
 - **Generated frames in a paid ad** need Meta's AI-disclosure ticked by hand, and the trademarked product name swapped for `copy.name_ad`.
 - **Never deploy a creative nobody has watched.** The contact sheet is not a substitute for the mp4.
+- **Judge each product on the right metric.** Wall lights are a CTR product (5.56% to women 35–64); pendants are a ROAS product (1.52% CTR at 13.1x). A pendant reel with low CTR is not a failure — see PLAYBOOK 1.4.
+- **A horizontal fixture is not a cropping problem.** A centre 9:16 crop of a four-foot pendant removes the four feet. Wide shots of linear products use `fit: contain` in the presets.
 - Renders are committed as each passes review — the session container is ephemeral. See the storage rule in `nixwoods-reel/README.md`.
 
 ## Where things are
@@ -50,7 +52,8 @@ No `--root` needed: each product declares its asset folder in `system/presets.js
 | | |
 |---|---|
 | System code and config | `nixwoods-reel/system/` |
-| Product assets | `nixwoods-reel/<product>-reels/` — `src/` real footage, `audio/` music+VO+SFX, `hf/` generated, `ref/` reference, `out/` renders |
-| Finished reels | `nixwoods-reel/rubik-reels/out/system/` (12 mechanisms + a 27 s ad cut, music and clean) |
+| Product assets | `nixwoods-reel/<product>-reels/` — `src/` real footage, `audio/` music+VO+SFX (symlinked to the shared set), `hf/` stills, `ref/` reference, `out/` renders |
+| Finished reels | `rubik-reels/out/system/` (12 mechanisms + a 27 s ad cut) · `aurora-reels/`, `rosewood-reels/`, `teak-reels/` `out/system/` (5 each) |
+| Scripts and voice-overs | `system/scripts/product-scripts.md` (four products) and `vo-scripts.md` (registers) |
 | Ads Engine, creative learnings | `Code` repo, branch `claude/nixwoods-funnel-audit-hg4dk9` |
 | Source footage and briefs | Google Drive, `NixWoods Creatives` |
