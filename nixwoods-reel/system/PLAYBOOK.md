@@ -4,6 +4,27 @@ Built 6 Sep 2026 from: your own Meta ad account (last 90 days, 40 ads), the Meta
 
 ---
 
+## 0. Where this sits in the system you already run
+
+This reel system is the **creative layer** of the NixWoods system that exists elsewhere. It does not replace any of it; it feeds it.
+
+| Existing piece | Where it lives | What the reel system takes from it | What it hands back |
+|---|---|---|---|
+| **Ads Engine (.com) v2** | `Code` repo, branch `claude/nixwoods-funnel-audit-hg4dk9`, `NIXWOODS-ADS-ENGINE-COM.md` | the locked creative rules (§7), the six-check pre-flight, the naming convention `COM \| Product \| Audience \| Objective \| Date`, the kill threshold, the category focus (wall lights + pendants get new money first until 2026-11-04) | every render writes a pre-flight sheet into `<name>-timeline.json` with the checks a script can verify already filled (two colours, banned words, trademark, dispatch claims, hook timing, safe zone, AI disclosure, length) and the manual ones left as boxes |
+| **Creative learnings** | same branch, `ads-system/COM-creative-learnings.md` | the control creative (Rubik's warm-ambient video, 5.69x), the proven lines, the failed hooks, hypotheses H1–H4 | each brief carries its hypothesis id; `--rank` orders briefs the way layer 3 of the Growth System orders concepts |
+| **Growth System** (router + 12 layers, `run_system.py`) | artifact 2026-08-31; the code was never pushed from your machine | layer 3's idea: every opening line passes Gap / Truth / Pull gates and a trademark check before it prints, and concepts are ordered by content-tag index × hook score; the night tag's 2.17x return | `system/hooks.py` re-implements the gates and a /12 score from the published description (labelled as such); `presets.json → engine.tag_index` holds the one tag value on record and is where the rest go when the router's numbers are exported |
+| **Social Master Playbook** | Drive, `NixWoods-Social-Master-Playbook.md` (2026-07-03) | the five pillars and the weekly rotation, the 13:00 / 20:30 IST slots, the palette (espresso, warm bone, one amber accent), Fraunces + Inter, "hook < 3 s, warm ambient audio, no meme/EDM", the Sep–Nov festive calendar | a `social` style preset (Fraunces/Inter, the playbook palette); every brief names its pillar so the monthly grid can pull reels by slot |
+| **AD-COPY.md** (wall-light ad copy set) | Drive, 2026-09-04 | the copy formula (parallel contrast + one material + one real number + persona + free shipping + ORDER_NOW), "short copy wins", the length finding (27.7 s Medium bucket 4.54x vs 0.98x Short), the AI-disclosure step | `brief.stretch` makes a 25–30 s ad cut from any organic cut (`T1-transformation-ad27.json`); the pre-flight lists the disclosure |
+| **NixWoods-Master.md** | Drive | brand voice and the banned-word list | the copy lint refuses to render a banned word |
+
+Three consequences worth stating plainly:
+
+1. **Rubik's reels are organic-first right now.** The category focus says new ad money and new creative go to wall lights and pendants until 4 Nov; the Sep03 Rubik's campaign was turned off deliberately and stays off. So this set posts on Instagram (hero slots, 4–5 reels a week) and YouTube Shorts; the ad cuts wait for the next Rubik's window, or the same mechanisms get run on Aurora and the pendants first (add them under `products` in `presets.json`; the twelve angles in §5 are the shot list).
+2. **The trademark.** The Growth System flagged the trademark in the product's Shopify title and AD-COPY.md bans trademark references in ads. Organic reels keep the store name; the ad cut uses `copy.name_ad` ("Cube Lamp"). The lint prints a warning on every trademark hit so it is never silent.
+3. **Generated frames.** Fourteen stills and five clips here are Higgsfield. The engine's own data says the one AI-rendered problem image was the account's lowest-quality ad, and that real footage wins the hero slot. Use these frames as B-roll around the real product clip (every demo does), disclose them in Ads Manager, and shoot the real "before" (tubelight room, lamp off) when the next shoot happens.
+
+---
+
 ## 1. What is working — evidence, not opinion
 
 ### 1.1 Your own account (last 90 days)
@@ -61,6 +82,8 @@ Each hook = text on frame 1 + a visual pattern interrupt + the first sound.
 | Price shock | reveal late | *Everyone asks about it. Nobody guesses the price.* |
 | Listicle | 3 things | *3 moods. 1 turn.* · *3 reasons this isn't plastic.* |
 | Festive | occasion | *The gift they'll actually remember.* (Diwali / wedding season) |
+
+Lines already proven on the account or in organic (from the Ads Engine, the creative learnings, the Social Playbook), with their evidence, live in `presets.json → engine.hooks_proven`; `python3 hooks.py` scores them and any new line the same way (gates gap/truth/pull, then brevity, specificity and family match, out of 12). Failed framings to avoid: gifting/nostalgia as a static, an AI render as the hero, a single-colour cube, discount-led copy.
 
 ---
 

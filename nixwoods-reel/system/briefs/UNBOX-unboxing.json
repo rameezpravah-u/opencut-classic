@@ -6,10 +6,18 @@
  "music": "audio/music5-3040.mp3",
  "cover_t": 1.0,
  "copy": {
-  "hook": "The gift they'll actually remember.",
+  "hook": "The gift that changes a room.",
   "line4": "Made in India. Ready for Diwali.",
   "gift_line": "The gift they'll actually remember.",
-  "delivery": "₹2,999 · delivered in 5–7 days · nixwoods.com"
+  "delivery": "₹2,999 · free shipping across India · nixwoods.com"
  },
- "notes": "Festive Sept–Nov. Swap 'Diwali' for 'the wedding' in Dec–Feb."
+ "notes": "Festive Sept–Nov (H3). Hook is the H3 line from COM-creative-learnings. No dispatch-time claim: the engine forbids it while orders are backlogged; add 'delivered in 5–7 days' back only when the backlog is under 20. Swap 'Diwali' for 'the wedding' in Dec–Feb.",
+ "tags": [
+  "gift",
+  "festive",
+  "hands"
+ ],
+ "pillar": "soft offer",
+ "hypothesis": "H3",
+ "channel": "organic-first (category focus: wall lights + pendants get new ad money until 2026-11-04)"
 }

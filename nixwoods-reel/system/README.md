@@ -45,3 +45,12 @@ Add an entry under `products` in `presets.json`: name, price, URL, default copy,
 ## Adding a mechanism
 
 Decorate a function in `mechanisms.py` with `@mechanism(name, funnel, note)`; use `Build` (`state / still / clip / pre / card` for shots, `say / cue` for text, `music / sfx` for audio) and return `B.reel()`.
+
+## The existing system, wired in (added 6 Sep)
+
+- `presets.json → engine`: the Ads Engine's locked rules, six-check pre-flight, naming, kill threshold, controls, category focus, hypotheses H1–H4, proven and failed hooks, the tag index, and the Social Playbook's palette, type, slots, pillars and festive dates. Sources are named in `engine._source`.
+- `hooks.py`: Gap / Truth / Pull gates + a /12 hook score (the Growth System's layer-3 rubric, re-implemented from its published description). `python3 hooks.py "your line"`.
+- `make_reel.py briefs --rank`: orders the briefs by tag index × hook score.
+- Every render's `<name>-timeline.json` now carries `preflight`: the ad name, the colours shown (the ≥2-colour rule), the hook score, whether generated frames are used (AI disclosure), and the ten checks with the automatic ones filled in.
+- Brief keys added: `tags`, `pillar`, `hypothesis`, `channel`, `stretch` (1.5 turns an 18 s cut into a 27 s ad cut), `copy.name_ad`.
+- Style `social`: Fraunces 600 + Inter, espresso / warm bone / amber glow, per the Social Master Playbook.

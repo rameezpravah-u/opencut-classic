@@ -98,10 +98,13 @@ class Style:
 
     def endcard(self, path, lines, sub):
         card = solid_card(self.pal["card"], glow=self.pal["accent"], glow_cy=820)
+        lines = [w for l in lines for w in _wrap(l, 24)]
+        size = min(self.d["headline_size"], 66)
         card = M(card, logo_layer(300, 800),
-                 T(self._case(lines), y_top=1010, size=min(self.d["headline_size"], 66), fontfile=self.d["headline_font"],
-                   color=self.pal.get("on_card", self.pal["text"]), shadow_blur=0),
-                 T([sub], y_top=1150, size=40, fontfile=self.d["support_font"], color=self.pal["accent"], shadow_blur=0))
+                 T(self._case(lines), y_top=1010, size=size, fontfile=self.d["headline_font"],
+                   color=self.pal.get("on_card", self.pal["text"]), shadow_blur=0, align="center", line_gap=8),
+                 T(_wrap(sub, 40), y_top=1010 + len(lines) * int(size * 1.25) + 50, size=40, fontfile=self.d["support_font"],
+                   color=self.pal["accent"], shadow_blur=0, align="center"))
         card.save(path)
         return path
 
@@ -132,6 +135,7 @@ class Build:
         return d
 
     def _add(self, kind, path, ss, dur, xfade, kw, key=None):
+        dur = round(dur * float(self.b.get("stretch", 1.0)), 3)     # brief.stretch: 1.5 turns an 18 s cut into a 27 s ad cut
         xfade = xfade if self.shots else None
         start = self.t - (xfade[1] if xfade else 0.0)
         sh = dict(kind=kind, path=path, ss=ss, dur=dur, xfade=xfade, kw=kw, start=start, end=start + dur, key=key)
@@ -142,7 +146,7 @@ class Build:
         """a colour state of the real product video (presets → products.states)"""
         prod = self.b["_product"]
         ss = prod["states"][key] + offset
-        dur = min(dur, prod["state_max"][key] - offset)
+        dur = min(dur, (prod["state_max"][key] - offset) / float(self.b.get("stretch", 1.0)))
         return self._add("video", self.path(self.b["assets"]["video"]), ss, dur, xfade, kw, key="_video")
 
     def still(self, key, dur, xfade=None, **kw):
@@ -153,7 +157,8 @@ class Build:
         """Higgsfield/Kling image-to-video clip if present, else the still it was made from"""
         if self.has("clips", key):
             kw.pop("crop_cx", None); kw.pop("crop_cy", None)
-            return self._add("video", self.path(self.b["assets"]["clips"][key]), 0, min(dur, 4.6), xfade, kw, key=key)
+            cap = 4.6 / float(self.b.get("stretch", 1.0))
+            return self._add("video", self.path(self.b["assets"]["clips"][key]), 0, min(dur, cap), xfade, kw, key=key)
         return self.still(fallback or key, dur, xfade, **kw)
 
     def pre(self, path, dur, xfade=None, **kw):
@@ -242,7 +247,26 @@ class Build:
         for s in self.sounds:
             r.sound(s["path"], s["start"], s["gain"], s["fi"], s["fo"], music=s["music"], duck=s["duck"])
         r.shots = self.shots
+        r.colours = self.colours()
         return r
+
+    def colours(self):
+        """colour states visible in this cut (for the 'at least two colours' rule)"""
+        seen = set()
+        cc = self.b["assets"].get("clip_colours", {})
+        for sh in self.shots:
+            k = sh.get("key") or ""
+            if k == "_video":
+                st = self.b["_product"]["states"]
+                name = max((n for n, t in st.items() if t <= sh["ss"] + 1e-6), key=lambda n: st[n], default="")
+                seen.update({"hand": {"amber", "red", "green"}, "warm": {"amber"}}.get(name, {name}))
+            elif sh["kind"] == "video" and k in cc:
+                seen.update(cc[k])
+            elif "red" in k: seen.add("red")
+            elif "green" in k: seen.add("green")
+            elif k and k not in ("hero_off", "room_before", "flatlay", "unbox") and sh["path"].lower().endswith((".jpg", ".png", ".mp4")) and "end.png" not in sh["path"]:
+                seen.add("amber")
+        return sorted(seen)
 
 
 def _col(word_line, key):
@@ -382,9 +406,9 @@ def m_kinetic(b):
     B.say(rd, "red.", size=84, fade=0.06, rise=6); B.say(gr, "green.", size=84, fade=0.06, rise=6)
     B.say(dg, _wrap(c.get("line3", "real glass. real wood."), 18), fade=0.06, rise=6)
     pr = B.still("mirror", 2.2, xfade=TRANS["dip"], cam=B.cam("push"))
-    py = B.slot(pr, block_h=300)
+    py = B.slot(pr, block_h=240)
     B.cue(pr["start"] + 0.2, pr["end"] - 0.1, M(st.price(c["price"], y_top=py, size=96),
-                                                 st.support([c.get("cta", "link in bio")], y_top=py + 160)))
+                                                 st.support([c.get("cta", "link in bio")], y_top=py + 150)))
     B.card([c["name"]], c["url"], dur=2.0)
     B.sfx("whoosh", hd["start"] - 0.2, -10); B.sfx("turn", hd["start"] + 0.2)
     B.sfx("turn", rd["start"], -10); B.sfx("turn", gr["start"], -10)
@@ -504,9 +528,9 @@ def m_price_reveal(b):
         B.cue(sh["start"] + 0.15, sh["end"] - 0.1, st.headline(ticks[-3:], y_top=y, size=50, align="left", x_left=100, box=bx, box_pad=(20, 8)), rise=8)
         B.sfx("whoosh", sh["start"] - 0.15, -14)
     pr = B.still("bedside_red", 2.6, xfade=TRANS["dip"], cam=B.cam("push_hard"))
-    py = B.slot(pr, block_h=320)
-    B.cue(pr["start"] + 0.25, pr["end"] - 0.1, M(st.price(c["price"], y_top=py, size=110),
-                                                 st.support([f'was {c["compare"]}'], y_top=py + 170, size=40)))
+    py = B.slot(pr, block_h=250)
+    B.cue(pr["start"] + 0.25, pr["end"] - 0.1, M(st.price(c["price"], y_top=py, size=104),
+                                                 st.support([f'was {c["compare"]}'], y_top=py + 150, size=40)))
     B.sfx("turn", pr["start"], -8)
     cod = B.still("unbox", 2.2, cam=B.cam("pull"))
     B.say(cod, _wrap(c.get("terms", "Free shipping across India. COD available."), 22), size=52)

@@ -1,0 +1,28 @@
+{
+ "name": "T1-transformation-ad27",
+ "mechanism": "transformation",
+ "product": "rubik",
+ "style": "broad",
+ "music": "audio/music3-design.mp3",
+ "music_offset": -8.0,
+ "music_gain": -3,
+ "cover_t": 3.9,
+ "copy": {
+  "hook": "Still lit by one tubelight?",
+  "turn": "Watch the room change.",
+  "kicker": "one turn · three colours",
+  "mechanism": "No app. No remote. Just turn it.",
+  "proof_line": "Solid sheesham. Hand-painted glass.",
+  "name": "Cube Lamp"
+ },
+ "notes": "Ad cut of T1: every shot ×1.5 → ~27 s (Medium bucket 4.54x vs 0.98x Short, AD-COPY.md). Uses copy.name_ad on the end card. Needs the six-check pre-flight and the AI disclosure before upload.",
+ "tags": [
+  "night",
+  "colour-flip",
+  "room"
+ ],
+ "pillar": "Hero Product",
+ "hypothesis": "H1",
+ "channel": "organic-first (category focus: wall lights + pendants get new ad money until 2026-11-04)",
+ "stretch": 1.5
+}

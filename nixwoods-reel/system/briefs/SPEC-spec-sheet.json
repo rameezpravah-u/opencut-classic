@@ -10,5 +10,11 @@
   "hook": "A lamp, not a gadget.",
   "mechanism": "Turn. That's the whole interface."
  },
- "notes": "Design crowd. Numbers only; pairs with the Spec-fast VO in scripts/vo-scripts.md."
+ "notes": "Design crowd. Numbers only; pairs with the Spec-fast VO in scripts/vo-scripts.md.",
+ "tags": [
+  "craft"
+ ],
+ "pillar": "Solid-Wood Story",
+ "hypothesis": "H2",
+ "channel": "organic-first (category focus: wall lights + pendants get new ad money until 2026-11-04)"
 }
