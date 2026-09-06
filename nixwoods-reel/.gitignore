@@ -3,7 +3,9 @@ __pycache__/
 # ffmpeg build artifacts — never wanted in the repo
 *.graph
 *.log
-# in-progress renders: outputs are committed deliberately once reviewed, not mid-build
-*-ba.mp4
-*-tri.mp4
-*-tri2.mp4
+# intermediate compositions the mechanisms build before the main render.
+# Exact suffixes: a reel named "TRI-triptych" must NOT be caught by these.
+*-transformation-ba.mp4
+*-before-after-ba.mp4
+*-triptych-tri.mp4
+*-triptych-tri2.mp4
