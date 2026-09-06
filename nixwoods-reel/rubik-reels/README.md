@@ -51,3 +51,22 @@ python3 reels.py all both       # or: python3 reels.py 4 music
 
 - Ads Manager: the three Vibiz in-room stills are AI-generated images, so tick the AI-disclosure box when any of these reels runs as a paid ad (same as your existing Aurora ad).
 - Music beds and the voice-over were generated on the NixWoods ElevenLabs workspace (about 4,800 credits total, roughly 50 US cents).
+
+## System demos (`out/system/`)
+
+Eleven reels rendered by `../system/make_reel.py` from the briefs in `../system/briefs/`, one per mechanism, all from the Higgsfield stills and Kling clips in `hf/` plus the real product clip. Each comes as `-music.mp4` and `-clean.mp4`, with a cover and a contact sheet.
+
+| brief | mechanism | style / audience | length | funnel |
+|---|---|---|---|---|
+| T1-transformation | dark → flash → on → colour cycle | broad | 18 s | top |
+| LOOP-colour-loop | seamless amber → green → red → amber | aesthetic | 19 s | top |
+| BA-before-after | tubelight room wipes to lamp-lit room | 30–40 | 16 s | mid |
+| TRI-triptych | red · amber · green side by side, moving | design | 12 s | top/mid |
+| K-kinetic | word-by-word hook over the backlit arc | Gen-Z | 14 s | top |
+| L-listicle | 3 reasons, counter + caption | broad | 12 s | mid |
+| SPEC-spec-sheet | numbers-only callouts with rules | design | 15 s | mid |
+| VO-story | narrator script over new visuals | broad | 21 s | mid |
+| UGC-pov | handheld, lowercase boxes, "pov:" | ugc | 16 s | top |
+| PRICE-price-reveal | value stack → ₹2,999 → COD | 30–40 | 15 s | bottom |
+| UNBOX-unboxing | kraft box → reveal → Diwali console | festive | 17 s | bottom / festive |
+| TESTI-testimonial | real review over night footage | broad | – | not rendered: needs a real quote |
