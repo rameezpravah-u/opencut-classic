@@ -505,9 +505,15 @@ def render_triptych(clips, out_path, dur, labels=None, gap=6, bg=(10, 8, 6), lab
     subprocess.run(cmd, check=True, capture_output=True)
     return out_path
 
-def render_before_after(before, after, out_path, dur, wipe_start=0.6, wipe_dur=1.2, kind_b="video", kind_a="video", ss_b=0, ss_a=0, vertical=False):
+def render_before_after(before, after, out_path, dur, wipe_start=0.6, wipe_dur=1.2, kind_b="video", kind_a="video", ss_b=0, ss_a=0, vertical=False,
+                        grade_b="", grade_a=""):
     """A wipe reveal: 'after' slides over 'before' with a thin light-coloured edge.
-    Uses xfade wipe so both sources keep playing."""
+    Uses xfade wipe so both sources keep playing.
+
+    grade_b / grade_a grade the two halves *separately*. When the same still plays both
+    roles — this room without the light, then with it — the dim grade must land only on
+    the before branch; grading the finished composite dims the after half too and the
+    wipe reveals nothing."""
     cmd = ["ffmpeg", "-hide_banner", "-y"]
     for p, kind, ss in ((before, kind_b, ss_b), (after, kind_a, ss_a)):
         if kind == "video":
@@ -516,7 +522,9 @@ def render_before_after(before, after, out_path, dur, wipe_start=0.6, wipe_dur=1
             cmd += ["-loop", "1", "-framerate", str(FPS), "-t", f"{dur + 0.5:.3f}", "-i", p]
     prep = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS},setsar=1,format=yuv420p,settb=1/{FPS}"
     trans = "wipeup" if vertical else "wipeleft"
-    fc = (f"[0:v]{prep}[a];[1:v]{prep}[b];"
+    gb = ("," + grade_b) if grade_b else ""
+    ga = ("," + grade_a) if grade_a else ""
+    fc = (f"[0:v]{prep}{gb}[a];[1:v]{prep}{ga}[b];"
           f"[a][b]xfade=transition={trans}:duration={wipe_dur}:offset={wipe_start},trim=duration={dur:.3f},setpts=PTS-STARTPTS[v]")
     cmd += ["-filter_complex", fc, "-map", "[v]", "-c:v", "libx264", "-preset", "fast", "-crf", "16",
             "-pix_fmt", "yuv420p", "-r", str(FPS), out_path]
