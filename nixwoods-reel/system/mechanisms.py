@@ -131,10 +131,10 @@ class Build:
         if self.sd.get("shake") and "shake" not in over: d["shake"] = self.sd["shake"]
         return d
 
-    def _add(self, kind, path, ss, dur, xfade, kw):
+    def _add(self, kind, path, ss, dur, xfade, kw, key=None):
         xfade = xfade if self.shots else None
         start = self.t - (xfade[1] if xfade else 0.0)
-        sh = dict(kind=kind, path=path, ss=ss, dur=dur, xfade=xfade, kw=kw, start=start, end=start + dur)
+        sh = dict(kind=kind, path=path, ss=ss, dur=dur, xfade=xfade, kw=kw, start=start, end=start + dur, key=key)
         self.shots.append(sh); self.t = sh["end"]
         return sh
 
@@ -143,17 +143,17 @@ class Build:
         prod = self.b["_product"]
         ss = prod["states"][key] + offset
         dur = min(dur, prod["state_max"][key] - offset)
-        return self._add("video", self.path(self.b["assets"]["video"]), ss, dur, xfade, kw)
+        return self._add("video", self.path(self.b["assets"]["video"]), ss, dur, xfade, kw, key="_video")
 
     def still(self, key, dur, xfade=None, **kw):
         for k in self.VIDEO_ONLY: kw.pop(k, None)
-        return self._add("still", self.path(self.b["assets"]["stills"][key]), 0, dur, xfade, kw)
+        return self._add("still", self.path(self.b["assets"]["stills"][key]), 0, dur, xfade, kw, key=key)
 
     def clip(self, key, dur, xfade=None, fallback=None, **kw):
         """Higgsfield/Kling image-to-video clip if present, else the still it was made from"""
         if self.has("clips", key):
             kw.pop("crop_cx", None); kw.pop("crop_cy", None)
-            return self._add("video", self.path(self.b["assets"]["clips"][key]), 0, min(dur, 4.6), xfade, kw)
+            return self._add("video", self.path(self.b["assets"]["clips"][key]), 0, min(dur, 4.6), xfade, kw, key=key)
         return self.still(fallback or key, dur, xfade, **kw)
 
     def pre(self, path, dur, xfade=None, **kw):
@@ -170,7 +170,12 @@ class Build:
         self.cues.append((a, b, layer, o))
 
     def slot(self, sh, t_local=0.5, block_h=260, prefer=("lower", "low", "upper", "centre", "top")):
-        """first named slot that does not cover the bright product band of this shot"""
+        """named slot from presets (assets.slots / assets.video_slot) when one is declared for this asset,
+        else the first slot that does not cover the detected product band"""
+        a = self.b["assets"]
+        name = a.get("video_slot") if sh.get("key") == "_video" else a.get("slots", {}).get(sh.get("key") or "")
+        if name and SLOTS[name] + block_h <= SAFE["bottom"]:
+            return SLOTS[name]
         try:
             t = sh["ss"] + (t_local if sh["kind"] == "video" else 0.0)
             return rk.auto_slot(sh["path"], t, block_h, prefer)

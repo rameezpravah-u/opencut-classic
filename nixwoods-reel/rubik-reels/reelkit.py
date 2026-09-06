@@ -361,8 +361,18 @@ SAFE = dict(top=230, bottom=1500, left=70, right=950)   # y-range 230..1500 is a
 # named vertical slots (y_top of the text block)
 SLOTS = dict(top=300, upper=560, centre=880, lower=1200, low=1330, bottom=1420)
 
+IMG_EXT = (".jpg", ".jpeg", ".png", ".webp")
+
 def _frame_at(path, t):
-    """decode one frame (RGB numpy) at time t seconds"""
+    """one frame (RGB numpy, 135x240) at time t; stills are centre-cropped to 9:16 like still_chain"""
+    if path.lower().endswith(IMG_EXT):
+        im = Image.open(path).convert("RGB")
+        w, h = im.size
+        if w / h > W / H:
+            nw = int(h * W / H); im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
+        else:
+            nh = int(w * H / W); im = im.crop((0, (h - nh) // 2, w, (h - nh) // 2 + nh))
+        return np.asarray(im.resize((W // 8, H // 8), Image.BILINEAR))
     out = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-ss", f"{t:.3f}", "-i", path,
                           "-frames:v", "1", "-vf", f"scale={W//8}:{H//8}", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
                          capture_output=True).stdout
@@ -371,18 +381,23 @@ def _frame_at(path, t):
         return None
     return a.reshape((H//8, W//8, 3))
 
-def product_region(path, t):
-    """returns (y0, y1) in canvas px of the brightest horizontal band (where the lamp is)."""
+def product_region(path, t, margin=40):
+    """(y0, y1) in canvas px of the glowing product: rows holding the top-4% brightest pixels
+    (max channel, so a red or green lamp counts), contiguous run around the densest row."""
     fr = _frame_at(path, t)
     if fr is None:
         return (800, 1300)
-    lum = fr.astype(np.float32).mean(axis=2)
-    rows = lum.mean(axis=1)
-    thr = rows.mean() + 0.8 * rows.std()
-    idx = np.where(rows > thr)[0]
-    if len(idx) == 0:
-        return (800, 1300)
-    return (int(idx.min() * 8), int(idx.max() * 8))
+    lum = fr.astype(np.float32).max(axis=2)
+    mask = lum >= np.percentile(lum, 96)
+    rows = mask.sum(axis=1).astype(np.float32)
+    thr = 0.2 * rows.max()
+    peak = int(rows.argmax())
+    lo = hi = peak
+    while lo > 0 and rows[lo - 1] > thr:
+        lo -= 1
+    while hi < len(rows) - 1 and rows[hi + 1] > thr:
+        hi += 1
+    return (max(0, lo * 8 - margin), min(H, (hi + 1) * 8 + margin))
 
 def auto_slot(path, t, block_h=260, prefer=("lower", "low", "upper", "centre", "top")):
     """pick the first named slot whose text block does not overlap the bright product band
