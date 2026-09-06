@@ -54,11 +54,12 @@ python3 reels.py all both       # or: python3 reels.py 4 music
 
 ## System demos (`out/system/`)
 
-Eleven reels rendered by `../system/make_reel.py` from the briefs in `../system/briefs/`, one per mechanism, all from the Higgsfield stills and Kling clips in `hf/` plus the real product clip. Each comes as `-music.mp4` and `-clean.mp4`, with a cover and a contact sheet.
+Twelve reels rendered by `../system/make_reel.py` from the briefs in `../system/briefs/`, one per mechanism, all from the Higgsfield stills and Kling clips in `hf/` plus the real product clip. Each comes as `-music.mp4` and `-clean.mp4` (delivered as files; the mp4s are not committed, ~20 MB each), with a cover, a contact sheet and a `-timeline.json` that carries the pre-flight sheet.
 
 | brief | mechanism | style / audience | length | funnel |
 |---|---|---|---|---|
 | T1-transformation | dark → flash → on → colour cycle | broad | 18 s | top |
+| T1-transformation-ad27 | the same cut stretched ×1.5 for ads (Medium bucket 4.54x vs 0.98x Short) | broad, `Cube Lamp` name | 27 s | ad |
 | LOOP-colour-loop | seamless amber → green → red → amber | aesthetic | 19 s | top |
 | BA-before-after | tubelight room wipes to lamp-lit room | 30–40 | 16 s | mid |
 | TRI-triptych | red · amber · green side by side, moving | design | 12 s | top/mid |

@@ -1,0 +1,215 @@
+{
+ "name": "UGC-pov",
+ "mechanism": "ugc_pov",
+ "style": "ugc",
+ "duration": 15.512,
+ "shots": [
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 0.0,
+   "start": 0.0,
+   "end": 1.714,
+   "xfade": null,
+   "cam": {
+    "z0": 1.14,
+    "z1": 1.16,
+    "punch": 0.06,
+    "shake": 3
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 13.0,
+   "start": 1.714,
+   "end": 3.428,
+   "xfade": null,
+   "cam": {
+    "z0": 1.08,
+    "z1": 1.08,
+    "punch": 0.06,
+    "shake": 3
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 3.35,
+   "start": 3.428,
+   "end": 5.142,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.18,
+    "px0": 0.2,
+    "px1": -0.2,
+    "punch": 0.06,
+    "shake": 3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/hf05-bedside-red.jpg",
+   "ss": 0,
+   "start": 5.142,
+   "end": 6.856,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12,
+    "punch": 0.06,
+    "shake": 3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/hf07-gift-unbox.jpg",
+   "ss": 0,
+   "start": 6.856,
+   "end": 8.57,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0,
+    "punch": 0.06,
+    "shake": 3
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 14.2,
+   "start": 8.57,
+   "end": 10.284,
+   "xfade": null,
+   "cam": {
+    "z0": 1.08,
+    "z1": 1.08,
+    "punch": 0.06,
+    "shake": 3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/hf06-desk-green.jpg",
+   "ss": 0,
+   "start": 10.284,
+   "end": 11.998,
+   "xfade": null,
+   "cam": {
+    "z0": 1.05,
+    "z1": 1.12,
+    "py0": 0.3,
+    "py1": -0.1,
+    "punch": 0.06,
+    "shake": 3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/hf09-mirror.jpg",
+   "ss": 0,
+   "start": 11.998,
+   "end": 13.712,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12,
+    "punch": 0.06,
+    "shake": 3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "out/system/UGC-pov-end.png",
+   "ss": 0,
+   "start": 13.712,
+   "end": 15.512,
+   "xfade": null,
+   "cam": null
+  }
+ ],
+ "cues": [
+  {
+   "png": "UGC-pov-c00.png",
+   "start": 0.08,
+   "end": 1.634
+  },
+  {
+   "png": "UGC-pov-c01.png",
+   "start": 1.794,
+   "end": 3.348
+  },
+  {
+   "png": "UGC-pov-c02.png",
+   "start": 3.508,
+   "end": 5.062
+  },
+  {
+   "png": "UGC-pov-c03.png",
+   "start": 5.222,
+   "end": 6.776
+  },
+  {
+   "png": "UGC-pov-c04.png",
+   "start": 6.936,
+   "end": 8.49
+  },
+  {
+   "png": "UGC-pov-c05.png",
+   "start": 8.65,
+   "end": 10.204
+  },
+  {
+   "png": "UGC-pov-c06.png",
+   "start": 10.364,
+   "end": 11.918
+  },
+  {
+   "png": "UGC-pov-c07.png",
+   "start": 12.098,
+   "end": 13.662
+  }
+ ],
+ "audio": [
+  {
+   "src": "sfx-turn.mp3",
+   "start": 1.714,
+   "gain": -8,
+   "music": false
+  },
+  {
+   "src": "sfx-turn.mp3",
+   "start": 8.57,
+   "gain": -8,
+   "music": false
+  },
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 3.2279999999999998,
+   "gain": -12,
+   "music": false
+  },
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 6.656,
+   "gain": -12,
+   "music": false
+  },
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 10.084000000000001,
+   "gain": -12,
+   "music": false
+  },
+  {
+   "src": "music4-genz.mp3",
+   "start": -26.6,
+   "gain": -2,
+   "music": true
+  }
+ ],
+ "lint": [],
+ "checks": []
+}

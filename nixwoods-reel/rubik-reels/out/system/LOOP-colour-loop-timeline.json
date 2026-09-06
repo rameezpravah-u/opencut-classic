@@ -1,0 +1,174 @@
+{
+ "name": "LOOP-colour-loop",
+ "mechanism": "colour_loop",
+ "style": "aesthetic",
+ "duration": 18.75,
+ "shots": [
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 5.65,
+   "start": 0.0,
+   "end": 2.6,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 0.0,
+   "start": 2.25,
+   "end": 4.85,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": -0.3,
+    "px1": 0.3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/hf06-desk-green.jpg",
+   "ss": 0,
+   "start": 4.5,
+   "end": 7.1,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.05,
+    "z1": 1.12,
+    "py0": 0.3,
+    "py1": -0.1
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 3.25,
+   "start": 6.75,
+   "end": 9.15,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.18
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/hf05-bedside-red.jpg",
+   "ss": 0,
+   "start": 8.8,
+   "end": 11.4,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": 0.3,
+    "px1": -0.3
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 13.0,
+   "start": 11.05,
+   "end": 14.25,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.08,
+    "z1": 1.08
+   }
+  },
+  {
+   "kind": "video",
+   "src": "hf/k03-backlit-arc.mp4",
+   "ss": 0,
+   "start": 13.9,
+   "end": 16.5,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/14-1.mp4",
+   "ss": 5.65,
+   "start": 16.15,
+   "end": 18.75,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  }
+ ],
+ "cues": [
+  {
+   "png": "LOOP-colour-loop-c00.png",
+   "start": 0.2,
+   "end": 2.4
+  },
+  {
+   "png": "LOOP-colour-loop-c01.png",
+   "start": 4.7,
+   "end": 6.9
+  },
+  {
+   "png": "LOOP-colour-loop-c02.png",
+   "start": 9.0,
+   "end": 11.2
+  },
+  {
+   "png": "LOOP-colour-loop-c03.png",
+   "start": 11.25,
+   "end": 14.05
+  },
+  {
+   "png": "LOOP-colour-loop-c04.png",
+   "start": 16.55,
+   "end": 18.55
+  }
+ ],
+ "audio": [
+  {
+   "src": "sfx-turn.mp3",
+   "start": 11.350000000000001,
+   "gain": -10,
+   "music": false
+  },
+  {
+   "src": "music1-aesthetic.mp3",
+   "start": 0.0,
+   "gain": -2,
+   "music": true
+  }
+ ],
+ "lint": [],
+ "checks": []
+}
