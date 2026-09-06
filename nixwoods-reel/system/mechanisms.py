@@ -182,6 +182,22 @@ class Build:
         except Exception:
             return SLOTS["low"]
 
+    def auto_box(self, sh, y, h=200, t_local=0.5):
+        """dark translucent box behind the text when the frame is bright at that slot (daylight scenes);
+        styles that already box their text (genz, ugc) are left alone"""
+        if self.sd.get("box"):
+            return None
+        try:
+            fr = rk._frame_at(sh["path"], sh["ss"] + (t_local if sh["kind"] == "video" else 0.0))
+            if fr is None:
+                return None
+            band = fr[max(0, y // 8):max(1, (y + h) // 8)]
+            if band.mean() > 118:
+                return (10, 10, 10, 165)
+        except Exception:
+            pass
+        return None
+
     def say(self, sh, lines, pad=0.2, y=None, block_h=None, fade=None, rise=None, prefer=None, **kw):
         """headline over one shot, auto-placed off the product, inside the shot's window"""
         lines = [lines] if isinstance(lines, str) else lines
@@ -189,6 +205,10 @@ class Build:
         bh = block_h or int(len(lines) * size * 1.25 + (90 if kw.get("kicker") else 40))
         if y is None:
             y = self.slot(sh, block_h=bh, prefer=prefer) if prefer else self.slot(sh, block_h=bh)
+        if "box" not in kw:
+            bx = self.auto_box(sh, y, bh)
+            if bx:
+                kw["box"] = bx; kw["box_pad"] = (24, 12)
         o = {}
         if fade is not None: o["fade_in"] = o["fade_out"] = fade
         if rise is not None: o["rise"] = rise
@@ -382,9 +402,10 @@ def m_listicle(b):
     for i, (txt, key) in enumerate(items):
         sh = B.clip(key, each, xfade=TRANS["whip"], fallback=key, cam=B.cam(("push", "hold", "tilt_up")[i % 3]))
         y = B.slot(sh, block_h=270, prefer=("lower", "upper", "low"))
+        bx = B.auto_box(sh, y, 270)
         lay = M(T([str(i + 1)], y_top=y, size=110, fontfile=st.d.get("price_font", st.d["headline_font"]),
-                  color=st.pal["accent"], align="left", x_left=100, shadow_blur=12),
-                st.headline(_wrap(txt, 24), y_top=y + 122, size=48, align="left", x_left=100))
+                  color=st.pal["accent"], align="left", x_left=100, shadow_blur=12, box=bx, box_pad=(20, 6)),
+                st.headline(_wrap(txt, 24), y_top=y + 122, size=48, align="left", x_left=100, box=bx, box_pad=(20, 8)))
         B.cue(sh["start"] + 0.2, sh["end"] - 0.2, lay)
         B.sfx("whoosh", sh["start"] - 0.2, -12)
     B.card([c.get("cta_line", "Turn the block.")], f'{c["name"]} · {c["price"]} · {c["url"]}')
@@ -402,9 +423,10 @@ def m_spec_sheet(b):
     for i, (big, small, key) in enumerate(specs):
         sh = B.still(key, each, xfade=TRANS["whip"] if i else TRANS["dissolve"], cam=B.cam(("drift", "push", "pull", "tilt_up")[i % 4]))
         y = B.slot(sh, block_h=220, prefer=("lower", "upper", "low", "top"))
+        bx = B.auto_box(sh, y, 160)
         lay = M(rule_layer(y - 24, 100, 520, tuple(st.pal.get("rule", st.pal["accent"])), 160, 2),
-                st.headline([big], y_top=y, size=64, align="left", x_left=100),
-                st.support([small], y_top=y + 92, size=36, align="left", x_left=102))
+                st.headline([big], y_top=y, size=64, align="left", x_left=100, box=bx, box_pad=(20, 10)),
+                st.support([small], y_top=y + 92, size=36, align="left", x_left=102, box=bx, box_pad=(20, 8)))
         B.cue(sh["start"] + 0.2, sh["end"] - 0.2, lay, rise=10)
         B.sfx("whoosh", sh["start"] - 0.2, -14)
     hd = B.clip("hands", 2.6, xfade=TRANS["whip"], cam=B.cam("hold"))
@@ -478,7 +500,8 @@ def m_price_reveal(b):
         sh = B.clip(key, each, xfade=TRANS["slide"] if i else None, fallback=key, cam=B.cam(("push", "drift", "hold", "pull")[i % 4]))
         ticks.append(txt)
         y = B.slot(sh, block_h=200, prefer=("lower", "upper", "low"))
-        B.cue(sh["start"] + 0.15, sh["end"] - 0.1, st.headline(ticks[-3:], y_top=y, size=50, align="left", x_left=100), rise=8)
+        bx = B.auto_box(sh, y, 200)
+        B.cue(sh["start"] + 0.15, sh["end"] - 0.1, st.headline(ticks[-3:], y_top=y, size=50, align="left", x_left=100, box=bx, box_pad=(20, 8)), rise=8)
         B.sfx("whoosh", sh["start"] - 0.15, -14)
     pr = B.still("bedside_red", 2.6, xfade=TRANS["dip"], cam=B.cam("push_hard"))
     py = B.slot(pr, block_h=320)
