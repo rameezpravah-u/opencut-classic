@@ -96,4 +96,14 @@ What goes in, and what it costs today:
 
 **The ceiling to watch.** A product set is roughly 300 MB of video. The repo is at 560 MB after one product. GitHub starts warning past 1 GB and refuses past 5 GB, and git keeps every version forever, so a re-render of a committed reel costs its full size again. At product three, either move finished mp4s to Drive or Git LFS and keep only covers, sheets and timelines here. Everything in `out/` regenerates from what is in `system/` and `hf/` with one command, so the videos are the expendable part, not the system.
 
+**Rendering a batch.** A long render must not write into the working tree: a half-written mp4 will be picked up by any `git add`, and a corrupt file in history is worse than no file. Render a batch to a staging directory with `--out`, review it, then copy the finished set in and commit:
+
+```bash
+python3 system/make_reel.py system/briefs --all --out /tmp/stage
+# review the sheets, then
+cp /tmp/stage/<name>-* <product>-reels/out/system/ && git add … && git commit
+```
+
+Single reels can render in place; the risk only appears when a batch runs for tens of minutes.
+
 **Google Drive** stays the human-side archive (`NixWoods Creatives`). This session can read from Drive but cannot write video to it, so uploads there are manual. Drop new source footage into `1 - Inbox` and `system/sources.py` will register it.
