@@ -1,0 +1,40 @@
+{
+ "mechanism": "spec_sheet",
+ "product": "rosewood",
+ "style": "design",
+ "tags": [
+  "craft"
+ ],
+ "pillar": "Tips & Education",
+ "channel": "organic-first (saver)",
+ "cover_t": 0.8,
+ "copy": {
+  "hook": "Four feet. One piece. No shade.",
+  "specs": [
+   [
+    "4 ft",
+    "48 inches, one piece",
+    "hero"
+   ],
+   [
+    "3000K",
+    "warm, 18W",
+    "macro"
+   ],
+   [
+    "Dimmable",
+    "by remote",
+    "mirror"
+   ],
+   [
+    "Cable height",
+    "adjusts to your ceiling",
+    "flatlay"
+   ]
+  ],
+  "mechanism": "Rosewood or teak. Two lengths.",
+  "cta_line": "Save this before you shortlist."
+ },
+ "notes": "SAVER. A ₹7,599 purchase gets shortlisted, not impulse-bought — this is the card they keep.",
+ "name": "R3-rosewood-spec"
+}

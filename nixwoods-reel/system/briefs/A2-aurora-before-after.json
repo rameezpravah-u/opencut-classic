@@ -1,0 +1,23 @@
+{
+ "mechanism": "before_after",
+ "product": "aurora",
+ "style": "3040",
+ "tags": [
+  "before-after",
+  "room"
+ ],
+ "pillar": "In-Room Lifestyle",
+ "hypothesis": "H4",
+ "channel": "ads + organic",
+ "cover_t": 3.4,
+ "copy": {
+  "hook": "Same wall. Different feeling.",
+  "before": "before · bare wall",
+  "after": "after · aurora",
+  "line1": "Not brighter. Warmer.",
+  "mechanism": "One bar. The whole wall softens.",
+  "cta_line": "Same wall. Different feeling."
+ },
+ "notes": "Sharer. The 3.71x line, as a wipe on the same frame.",
+ "name": "A2-aurora-before-after"
+}

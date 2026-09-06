@@ -1,0 +1,36 @@
+{
+ "mechanism": "price_reveal",
+ "product": "teak",
+ "style": "3040",
+ "tags": [
+  "price"
+ ],
+ "pillar": "soft offer",
+ "channel": "retargeting",
+ "cover_t": 1.0,
+ "copy": {
+  "hook": "The one thing guests always ask about.",
+  "stack": [
+   [
+    "Solid teak, one piece.",
+    "macro"
+   ],
+   [
+    "Two lines of warm light.",
+    "backlit"
+   ],
+   [
+    "Dimmable by remote.",
+    "mirror"
+   ],
+   [
+    "Handcrafted in India.",
+    "flatlay"
+   ]
+  ],
+  "terms": "Free shipping across India. COD available.",
+  "cta_line": "Two lines. One piece of teak."
+ },
+ "notes": "Closer.",
+ "name": "T5-teak-price"
+}

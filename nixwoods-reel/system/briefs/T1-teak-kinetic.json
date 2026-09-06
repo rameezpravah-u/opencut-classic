@@ -1,0 +1,21 @@
+{
+ "mechanism": "kinetic",
+ "product": "teak",
+ "style": "design",
+ "tags": [
+  "night",
+  "craft"
+ ],
+ "pillar": "Hero Product",
+ "channel": "organic + ads",
+ "cover_t": 0.9,
+ "per_word": 0.17,
+ "copy": {
+  "hook": "Two lines of light. One piece of teak.",
+  "mechanism": "Cut into the underside.",
+  "line3": "Forty-nine inches.",
+  "cta": "link in bio"
+ },
+ "notes": "Stopper. Word-by-word over the dark-room shot where both strips read as two clean lines.",
+ "name": "T1-teak-kinetic"
+}

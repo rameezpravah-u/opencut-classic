@@ -64,15 +64,31 @@ def video_chain(n_frames, cam=None, slow=1.0, speed=1.0, reverse=False, pre="", 
     parts.append(f"fps={FPS},format=yuv420p,settb=1/{FPS}")
     return ",".join(parts)
 
-def still_chain(n_frames, cam=None, crop_cx=0.5, crop_cy=0.5, post=""):
+def still_chain(n_frames, cam=None, crop_cx=0.5, crop_cy=0.5, post="", fit="cover", uid=0,
+                bg_blur=44, bg_dim=-0.18, contain=0.98):
     """filter chain for a still image -> 9:16 window then camera move.
-    crop_cx/cy: where the 9:16 window sits on the source (0..1)."""
-    # scale so the short side of the 9:16 window is 2160 wide, then crop
-    parts = [f"scale='if(gte(iw/ih,{W/H}),-2,{W*2})':'if(gte(iw/ih,{W/H}),{H*2},-2)':flags=lanczos",
-             f"crop={W*2}:{H*2}:'(iw-{W*2})*{crop_cx}':'(ih-{H*2})*{crop_cy}'",
-             "setsar=1",
-             cam_filter(n_frames, **(cam or {})),
-             f"trim=end_frame={n_frames},setpts=PTS-STARTPTS"]
+
+    fit="cover"   : fill the frame, cropping what does not fit. crop_cx/cy place the window (0..1).
+    fit="contain" : fit the whole image inside the frame over a blurred, dimmed copy of itself.
+                    For a wide or square subject — a linear pendant, a wall bar — whose length IS
+                    the product; cropping one to 9:16 throws that away.
+    uid must be unique per segment: the contain path uses named filter pads."""
+    if fit == "contain":
+        cov = (f"scale='if(gte(iw/ih,{W/H}),-2,{W*2})':'if(gte(iw/ih,{W/H}),{H*2},-2)':flags=lanczos,"
+               f"crop={W*2}:{H*2}:'(iw-{W*2})*0.5':'(ih-{H*2})*0.5'")
+        con = (f"scale='if(gte(iw/ih,{W/H}),{int(W*2*contain)},-2)':'if(gte(iw/ih,{W/H}),-2,{int(H*2*contain)})'"
+               f":flags=lanczos")
+        head = (f"split=2[bg{uid}][fg{uid}];"
+                f"[bg{uid}]{cov},gblur=sigma={bg_blur},eq=brightness={bg_dim}:saturation=0.85[bgb{uid}];"
+                f"[fg{uid}]{con}[fgs{uid}];"
+                f"[bgb{uid}][fgs{uid}]overlay=(W-w)/2:(H-h)/2:format=auto,")
+        parts = [head + "setsar=1"]
+    else:
+        parts = [f"scale='if(gte(iw/ih,{W/H}),-2,{W*2})':'if(gte(iw/ih,{W/H}),{H*2},-2)':flags=lanczos",
+                 f"crop={W*2}:{H*2}:'(iw-{W*2})*{crop_cx}':'(ih-{H*2})*{crop_cy}'",
+                 "setsar=1"]
+    parts += [cam_filter(n_frames, **(cam or {})),
+              f"trim=end_frame={n_frames},setpts=PTS-STARTPTS"]
     if post:
         parts.append(post)
     parts.append(f"fps={FPS},format=yuv420p,settb=1/{FPS}")
@@ -265,7 +281,7 @@ class Reel:
                 fc.append(f"[{idx}:v]{video_chain(n, post=post, **kw)}[s{i}]")
             else:
                 cmd += ["-loop", "1", "-framerate", str(FPS), "-t", f"{s['dur'] + 0.2:.3f}", "-i", s["path"]]
-                fc.append(f"[{idx}:v]{still_chain(n, post=post, **kw)}[s{i}]")
+                fc.append(f"[{idx}:v]{still_chain(n, post=post, uid=i, **kw)}[s{i}]")
             labels.append(f"s{i}")
             idx += 1
         # chain with cuts / xfades

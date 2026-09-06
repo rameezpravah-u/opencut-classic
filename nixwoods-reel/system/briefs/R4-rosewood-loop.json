@@ -1,0 +1,24 @@
+{
+ "mechanism": "colour_loop",
+ "product": "rosewood",
+ "style": "aesthetic",
+ "tags": [
+  "night",
+  "room"
+ ],
+ "pillar": "Hero Product",
+ "channel": "organic",
+ "cover_t": 6.0,
+ "cut": 2.6,
+ "music_gain": -2,
+ "copy": {
+  "captions": [
+   "8:40 pm",
+   "9:15 pm",
+   "11:20 pm"
+  ],
+  "line": "the table that knows what time it is."
+ },
+ "notes": "Sharer. Loops back to the opening frame; no CTA until the last two seconds.",
+ "name": "R4-rosewood-loop"
+}

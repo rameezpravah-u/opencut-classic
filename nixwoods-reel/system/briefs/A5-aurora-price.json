@@ -1,0 +1,37 @@
+{
+ "mechanism": "price_reveal",
+ "product": "aurora",
+ "style": "3040",
+ "tags": [
+  "price",
+  "room"
+ ],
+ "pillar": "soft offer",
+ "channel": "retargeting",
+ "cover_t": 1.0,
+ "copy": {
+  "hook": "Everyone asks where the light is coming from.",
+  "stack": [
+   [
+    "Solid wood.",
+    "macro"
+   ],
+   [
+    "Hidden LED channel.",
+    "channel"
+   ],
+   [
+    "Three sizes.",
+    "hero"
+   ],
+   [
+    "Two finishes.",
+    "grain"
+   ]
+  ],
+  "terms": "Free shipping across India. COD available.",
+  "cta_line": "Turn the big light off."
+ },
+ "notes": "Closer. Price late; ₹1,999 is the entry price and it lands as a surprise.",
+ "name": "A5-aurora-price"
+}

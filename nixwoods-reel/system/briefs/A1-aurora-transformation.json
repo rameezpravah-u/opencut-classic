@@ -1,0 +1,24 @@
+{
+ "mechanism": "transformation",
+ "product": "aurora",
+ "style": "3040",
+ "tags": [
+  "before-after",
+  "room",
+  "night"
+ ],
+ "pillar": "Hero Product",
+ "hypothesis": "H4",
+ "channel": "ads + organic",
+ "cover_t": 3.2,
+ "copy": {
+  "hook": "Still lit by one tubelight?",
+  "turn": "Wood changes everything.",
+  "kicker": "solid wood · 3000K · 36–48 in",
+  "mechanism": "The light washes the wall. Not your eyes.",
+  "proof_line": "Solid wood. Not another fixture.",
+  "cta_line": "Turn the big light off."
+ },
+ "notes": "Stopper. Real unlit bar on plaster is the 'before'. 'Wood changes everything' ran 3.66% CTR / 3.64x.",
+ "name": "A1-aurora-transformation"
+}

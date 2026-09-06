@@ -1,0 +1,107 @@
+{
+ "mechanism": "vo_story",
+ "product": "rosewood",
+ "style": "broad",
+ "tags": [
+  "room",
+  "craft"
+ ],
+ "pillar": "In-Room Lifestyle",
+ "channel": "ads + organic",
+ "cover_t": 1.2,
+ "vo": "../../rubik-reels/audio/vo-meaning.mp3",
+ "vo_offset": 0.6,
+ "caption_y": 1380,
+ "caption_size": 60,
+ "vo_lines": [
+  [
+   0.0,
+   1.55,
+   [
+    "Most dining lights",
+    "hang in the way."
+   ],
+   null
+  ],
+  [
+   2.0,
+   3.6,
+   [
+    "A shade in your eyeline."
+   ],
+   null
+  ],
+  [
+   3.8,
+   6.4,
+   [
+    "This is one bar",
+    "of solid rosewood."
+   ],
+   null
+  ],
+  [
+   6.6,
+   8.5,
+   [
+    "Four feet long."
+   ],
+   null
+  ],
+  [
+   8.6,
+   10.2,
+   [
+    "Light along the underside."
+   ],
+   null
+  ],
+  [
+   10.3,
+   12.4,
+   [
+    "It lands on the table.",
+    "Not in your face."
+   ],
+   null
+  ],
+  [
+   12.5,
+   14.2,
+   [
+    "Dimmable, by remote."
+   ],
+   null
+  ],
+  [
+   14.2,
+   15.8,
+   [
+    "Handcrafted in India."
+   ],
+   null
+  ],
+  [
+   15.85,
+   17.3,
+   [
+    "₹7,599"
+   ],
+   null
+  ],
+  [
+   17.35,
+   21.3,
+   [
+    "One light.",
+    "The whole table."
+   ],
+   null
+  ]
+ ],
+ "copy": {
+  "hook": "Most dining lights hang in the way."
+ },
+ "notes": "Convincer. NOTE: reuses the Rubik's VO audio as a timing scaffold — record the R2 script from system/scripts/product-scripts.md before this one ships.",
+ "name": "R2-rosewood-vo"
+}

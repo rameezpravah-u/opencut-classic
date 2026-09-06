@@ -1,0 +1,40 @@
+{
+ "mechanism": "spec_sheet",
+ "product": "aurora",
+ "style": "design",
+ "tags": [
+  "craft"
+ ],
+ "pillar": "Tips & Education",
+ "channel": "organic-first (saver)",
+ "cover_t": 0.8,
+ "copy": {
+  "hook": "Three sizes. Pick by your wall.",
+  "specs": [
+   [
+    "36 in",
+    "above a console",
+    "hero"
+   ],
+   [
+    "40 in",
+    "above a bed",
+    "room"
+   ],
+   [
+    "48 in",
+    "above a sideboard",
+    "entry"
+   ],
+   [
+    "Rosewood or teak",
+    "two finishes, one bar",
+    "grain"
+   ]
+  ],
+  "mechanism": "Light down only, or up and down.",
+  "cta_line": "Save this for your wall."
+ },
+ "notes": "SAVER. Reference content: people come back to a sizing card. Ends on a recap, not a sell.",
+ "name": "A3-aurora-sizes"
+}

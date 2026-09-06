@@ -1,0 +1,24 @@
+{
+ "mechanism": "colour_loop",
+ "product": "rubik",
+ "style": "aesthetic",
+ "tags": [
+  "night",
+  "colour-flip"
+ ],
+ "pillar": "Hero Product",
+ "channel": "organic",
+ "music": "../../rubik-reels/audio/music1-aesthetic.mp3",
+ "music_gain": -2,
+ "cover_t": 6.0,
+ "copy": {
+  "captions": [
+   "9:40 pm",
+   "10:15 pm",
+   "11:58 pm"
+  ],
+  "line": "not just a lamp. a mood."
+ },
+ "notes": "The 5.69x control line, as a loop.",
+ "name": "K2-rubik-mood"
+}

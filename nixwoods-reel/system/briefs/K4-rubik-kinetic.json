@@ -1,0 +1,25 @@
+{
+ "mechanism": "kinetic",
+ "product": "rubik",
+ "style": "genz",
+ "tags": [
+  "night",
+  "colour-flip"
+ ],
+ "pillar": "Hero Product",
+ "hypothesis": "H1",
+ "channel": "organic",
+ "music": "../../rubik-reels/audio/music4-genz.mp3",
+ "music_offset": -26.6,
+ "music_gain": -2,
+ "cover_t": 0.9,
+ "per_word": 0.16,
+ "copy": {
+  "hook": "there's no switch. watch.",
+  "mechanism": "you just turn the block.",
+  "line3": "real glass. real wood.",
+  "cta": "link in bio"
+ },
+ "notes": "Curiosity gap, the strongest hold pattern in the 2026 data.",
+ "name": "K4-rubik-kinetic"
+}

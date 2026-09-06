@@ -67,6 +67,23 @@ Selling points to press that competitors can't: three hand-painted faces / **tur
 
 ---
 
+## 1.4 The four top products, and what the numbers say to write (6 Sep 2026)
+
+Ranked by 90-day net sales, from Shopify:
+
+| Product | Net sales / orders | Best ad signal | What that means for the writing |
+|---|---|---|---|
+| **Aurora Linear Wall Light** ₹1,999 | ₹525k · 194 | "Wood changes everything" 3.66% CTR, 3.64x · "Transform your walls" 9.41x on warm · Wall lights to women 35–64 **5.56% CTR**, the account's highest | Write to **stop**. Short contrast claims, a visible before and after, the wall as the subject. This product carries the top of the funnel. |
+| **Rubik's Cube Lamp** ₹2,999 | ₹347k · 121 | Bedside video 4.31% CTR, 4.71x · "Not just a lamp. A mood." 5.69x · single-image static 1.31% | Night, glow, colour change. A plain packshot does not work on this product and never has. |
+| **Scandinavian Rosewood Pendant** ₹7,599 | ₹124k · 13 | Static B **1.52% CTR but 13.1x ROAS** · Nordic pendant 14.9x | Write to **qualify**, not to stop. Low CTR is fine and even correct: name a person who owns a dining table in the first two seconds and let everyone else scroll. Price early — it is a shortlisted purchase, not an impulse. |
+| **Double Arm Teak Pendant** ₹9,999 | ₹59k · 4 | thin data; inherits the pendant pattern | Sell the object. Twin lines cut into one piece of teak is the whole idea; the specification is the romance. |
+
+The split that matters: **wall lights are a CTR product, pendants are a ROAS product.** A pendant reel judged on CTR looks like a failure and is not one. Judge pendants on purchases and ROAS, wall lights on CTR and reach.
+
+**A second finding, from the same pull:** a horizontal fixture in a vertical frame is a craft problem, not a cropping problem. A centre 9:16 crop of a four-foot pendant removes the four feet. Every wide shot of a linear product uses `fit: contain` (the whole fixture over a blurred, dimmed copy of its own scene); only diagonal macros are cropped to fill.
+
+---
+
 ## 2. Hook library (tested patterns → NixWoods lines)
 
 Each hook = text on frame 1 + a visual pattern interrupt + the first sound.

@@ -1,0 +1,40 @@
+{
+ "mechanism": "spec_sheet",
+ "product": "teak",
+ "style": "design",
+ "tags": [
+  "craft"
+ ],
+ "pillar": "Solid-Wood Story",
+ "channel": "organic-first",
+ "cover_t": 0.8,
+ "copy": {
+  "hook": "Forty-nine inches. One piece.",
+  "specs": [
+   [
+    "49 in",
+    "one piece of solid teak",
+    "hero"
+   ],
+   [
+    "Two strips",
+    "warm 3000K, 18W",
+    "flatlay"
+   ],
+   [
+    "Dimmable",
+    "by remote",
+    "mirror"
+   ],
+   [
+    "Adjustable",
+    "cable height",
+    "unbox"
+   ]
+  ],
+  "mechanism": "No shade. The wood is the fixture.",
+  "cta_line": "Hang it over the table."
+ },
+ "notes": "Convincer.",
+ "name": "T4-teak-spec"
+}

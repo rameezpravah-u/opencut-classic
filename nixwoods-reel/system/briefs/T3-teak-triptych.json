@@ -1,0 +1,24 @@
+{
+ "mechanism": "triptych",
+ "product": "teak",
+ "style": "design",
+ "tags": [
+  "room"
+ ],
+ "pillar": "In-Room Lifestyle",
+ "channel": "organic",
+ "cover_t": 0.8,
+ "copy": {
+  "hook": "One piece of teak. Three rooms.",
+  "panels": [
+   "Dining",
+   "Living",
+   "Bedroom"
+  ],
+  "mechanism": "Dimmable, by remote.",
+  "line2": "Over a table. Over a counter.",
+  "line3": "Forty-nine inches of solid teak."
+ },
+ "notes": "SAVER. Three placements in one frame answers 'where would it even go'.",
+ "name": "T3-teak-triptych"
+}

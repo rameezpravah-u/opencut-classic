@@ -1,0 +1,37 @@
+{
+ "mechanism": "price_reveal",
+ "product": "rosewood",
+ "style": "3040",
+ "tags": [
+  "price",
+  "room"
+ ],
+ "pillar": "soft offer",
+ "channel": "retargeting",
+ "cover_t": 1.0,
+ "copy": {
+  "hook": "Nobody guesses what this costs.",
+  "stack": [
+   [
+    "Solid rosewood.",
+    "macro"
+   ],
+   [
+    "Four feet, one piece.",
+    "hero"
+   ],
+   [
+    "Dimmable by remote.",
+    "mirror"
+   ],
+   [
+    "Handcrafted in India.",
+    "flatlay"
+   ]
+  ],
+  "terms": "Free shipping across India. COD available.",
+  "cta_line": "One light. The whole table."
+ },
+ "notes": "Closer. High ticket: the stack has to earn the number before it appears.",
+ "name": "R5-rosewood-price"
+}

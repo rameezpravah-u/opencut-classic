@@ -16,11 +16,11 @@ PRESETS = json.load(open(os.path.join(HERE, "presets.json"), encoding="utf-8"))
 ENGINE = PRESETS["engine"]
 
 FAMILIES = {
-    "contrast":          r"\bnot\b.*\.|\bnot another\b|\bnot just\b|\b(warmer|colder|less|more)\b",
+    "contrast":          r"\bnot\b|\bno\b\s+\w|\bwrong\b|\binstead\b|\b(warmer|colder|less|more)\b",
     "question":          r"\?$",
     "curiosity":         r"\bnobody\b|\bno one\b|\bguess\b|\bwatch\b|\bthere's no\b|\bsecret\b|\bhow\b",
     "pov":               r"^pov:|\byou\b|\byour\b|\b\d{1,2}\s?(am|pm)\b",
-    "listicle":          r"\b(one|two|three|1|2|3)\b.*\b(moods?|reasons?|colours?|things?|lamps?)\b",
+    "listicle":          r"\b(one|two|three|1|2|3)\b.*\b(moods?|reasons?|colours?|things?|lamps?|rooms?|sizes?|lines?|pieces?|feet|finishes)\b",
     "transformation":    r"\bsame\b.*\bdifferent\b|\bchanges?\b|\btransform\b|\bbefore\b|\bafter\b|\bturn\b",
     "pattern-interrupt": r"\bstop\b|\bstill\b|\bwait\b",
     "price":             r"₹|\bprice\b|\brupees\b",
@@ -48,6 +48,8 @@ def gate_truth(hook, facts):
     h = hook.lower()
     if any(w in BANNED or w in HYPE for w in re.findall(r"[a-z']+", h)):
         return False
+    # a clock time is not a product claim: "at 11 pm", "9:40 pm"
+    h = re.sub(r"\b\d{1,2}(:\d{2})?\s*(am|pm)\b", " ", h)
     nums = re.findall(r"₹?\d[\d,]*", h)
     facts_l = " ".join(facts).lower()
     return all(n in facts_l for n in nums)

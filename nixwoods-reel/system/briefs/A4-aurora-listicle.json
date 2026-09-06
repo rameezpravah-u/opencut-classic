@@ -1,0 +1,32 @@
+{
+ "mechanism": "listicle",
+ "product": "aurora",
+ "style": "broad",
+ "tags": [
+  "craft",
+  "room"
+ ],
+ "pillar": "Solid-Wood Story",
+ "channel": "ads + organic",
+ "cover_t": 0.8,
+ "copy": {
+  "hook": "3 reasons this isn't a fixture.",
+  "items": [
+   [
+    "Solid wood, not moulded plastic.",
+    "macro"
+   ],
+   [
+    "Light down the wall, not in your eyes.",
+    "channel"
+   ],
+   [
+    "One bar replaces the big light.",
+    "room"
+   ]
+  ],
+  "cta_line": "Turn the big light off."
+ },
+ "notes": "Convincer. 'Solid wood. Not another fixture.' is the best CTR-to-purchase line on the account.",
+ "name": "A4-aurora-listicle"
+}

@@ -1,0 +1,20 @@
+{
+ "mechanism": "price_reveal",
+ "product": "rubik",
+ "style": "3040",
+ "tags": [
+  "price",
+  "night"
+ ],
+ "pillar": "soft offer",
+ "channel": "retargeting",
+ "music": "../../rubik-reels/audio/music5-3040.mp3",
+ "cover_t": 1.0,
+ "copy": {
+  "hook": "Everyone asks. Nobody guesses the price.",
+  "terms": "Free shipping across India. COD available.",
+  "cta_line": "Turn the block."
+ },
+ "notes": "Closer.",
+ "name": "K5-rubik-price"
+}

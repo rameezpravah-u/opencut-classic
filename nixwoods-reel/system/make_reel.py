@@ -65,10 +65,15 @@ def preflight(brief, reel, warns):
     hook = c.get("hook") or (brief.get("vo_lines") or [[0, 0, ""]])[0][2]
     hook = " ".join(hook) if isinstance(hook, list) else hook
     hs = HK.score_hook(hook, brief.get("product", "rubik")) if hook else None
-    uses_ai = any("hf/" in s["path"].replace(os.sep, "/") for s in reel.shots)
+    ai = set(brief.get("assets", {}).get("ai_generated", MX.PRESETS["products"].get(brief.get("product", "rubik"), {}).get("assets", {}).get("ai_generated", [])))
+    stills = MX.PRESETS["products"].get(brief.get("product", "rubik"), {}).get("assets", {}).get("stills", {})
+    ai_files = {os.path.basename(stills[k]) for k in ai if k in stills}
+    uses_ai = any(os.path.basename(s["path"]) in ai_files for s in reel.shots) or any(
+        "/hf/hf" in s["path"].replace(os.sep, "/") for s in reel.shots)
     text = " ".join(s for _, s in _strings(c, "copy"))
     rows = [
-        dict(check="rules · at least two colours shown", ok=len(reel.colours) >= 2, detail=", ".join(reel.colours)),
+        dict(check="rules · at least two colours shown", ok=(True if reel.colours == ["n/a"] else len(reel.colours) >= 2),
+             detail="not applicable — single-temperature fixture" if reel.colours == ["n/a"] else ", ".join(reel.colours)),
         dict(check="rules · no dispatch-time claim while backlogged", ok=not re.search(r"\b(ships?|dispatch\w*|deliver\w*)\b.*\b\d+\s*(days?|hrs?|hours?)", text.lower()), detail="brief.copy.delivery is a claim: confirm the backlog first" if "deliver" in text.lower() else ""),
         dict(check="facts · banned words / trademark / numbers in PDP facts", ok=not [w for w in warns if "trademark" in w] and (hs["gates"]["truth"] if hs else True), detail="; ".join(w for w in warns if "trademark" in w) or (f"hook truth gate {'pass' if hs and hs['gates']['truth'] else 'FAIL'}" if hs else "")),
         dict(check="landing = the product shown, .nw-pdp template, stock visible", ok=None, detail="manual"),

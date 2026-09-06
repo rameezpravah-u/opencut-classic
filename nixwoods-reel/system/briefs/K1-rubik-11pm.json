@@ -1,0 +1,26 @@
+{
+ "mechanism": "transformation",
+ "product": "rubik",
+ "style": "3040",
+ "tags": [
+  "night",
+  "colour-flip",
+  "room"
+ ],
+ "pillar": "Hero Product",
+ "hypothesis": "H1",
+ "channel": "organic-first",
+ "music": "../../rubik-reels/audio/music3-design.mp3",
+ "music_offset": -8.0,
+ "cover_t": 3.2,
+ "copy": {
+  "hook": "At 11 pm you don't want a ceiling light.",
+  "turn": "You want this.",
+  "kicker": "one turn · three colours",
+  "mechanism": "No app. No remote. Just turn it.",
+  "proof_line": "Solid sheesham. Hand-painted glass.",
+  "cta_line": "Turn the block."
+ },
+ "notes": "New hook from the Growth System's top concept (night tag indexes 2.17x).",
+ "name": "K1-rubik-11pm"
+}

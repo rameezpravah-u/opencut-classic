@@ -647,7 +647,429 @@
     "3 faces",
     "2 screws"
    ],
-   "root": "rubik-reels"
+   "root": "rubik-reels",
+   "rules": {
+    "two_colours": true,
+    "note": "the locked rule: any Rubik's/Glass Block creative must show at least two colours"
+   }
+  },
+  "aurora": {
+   "root": "aurora-reels",
+   "name": "Aurora Linear Wall Light",
+   "price": "₹1,999",
+   "compare": "₹2,999",
+   "url": "nixwoods.com",
+   "copy": {
+    "name": "Aurora Linear Wall Light",
+    "name_ad": "Linear Wall Light",
+    "price": "₹1,999",
+    "compare": "₹2,999",
+    "url": "nixwoods.com",
+    "hook": "Wood changes everything.",
+    "turn": "Same wall. Different feeling.",
+    "mechanism": "One bar. The whole wall softens.",
+    "proof_line": "Solid wood. Not another fixture.",
+    "cta": "Turn the big light off. nixwoods.com",
+    "cta_line": "Turn the big light off.",
+    "kicker": "solid wood · 3000K · 36–48 in",
+    "colors": {
+     "amber": "Warm 3000K, down the wall.",
+     "green": "Up and down, if you want both.",
+     "red": "Not brighter. Warmer."
+    }
+   },
+   "facts": [
+    "36 in",
+    "40 in",
+    "48 in",
+    "36",
+    "40",
+    "48",
+    "3000k",
+    "3000K",
+    "solid wood",
+    "rosewood",
+    "teak",
+    "natural teak",
+    "₹1,999",
+    "₹2,999",
+    "₹4,099",
+    "down only",
+    "up and down",
+    "free shipping",
+    "cod",
+    "made in india",
+    "1,999"
+   ],
+   "states": {},
+   "state_max": {},
+   "assets": {
+    "video": null,
+    "stills": {
+     "hero": "hf/sh00-console-lit.png",
+     "hero_off": "hf/sh04-unlit-real.jpg",
+     "room": "hf/sh01-bedroom-headboard.jpg",
+     "entry": "hf/sh02-entryway.jpg",
+     "macro": "hf/sh03-angled-wash.jpg",
+     "channel": "hf/sh06-angled-channel.png",
+     "grain": "hf/sh07-grain-endcap.png",
+     "bedside_red": "hf/sh01-bedroom-headboard.jpg",
+     "desk_green": "hf/sh02-entryway.jpg",
+     "backlit": "hf/sh03-angled-wash.jpg",
+     "mirror": "hf/sh06-angled-channel.png",
+     "flatlay": "hf/sh07-grain-endcap.png",
+     "unbox": "hf/sh07-grain-endcap.png",
+     "diwali": "hf/sh00-console-lit.png",
+     "dutch_green": "hf/sh06-angled-channel.png",
+     "hands": "hf/sh03-angled-wash.jpg",
+     "room_before": "hf/sh04-unlit-real.jpg"
+    },
+    "clips": {},
+    "sfx": {
+     "turn": "audio/sfx-turn.mp3",
+     "whoosh": "audio/sfx-whoosh.mp3"
+    },
+    "fit": {
+     "hero": "contain",
+     "hero_off": "contain",
+     "room": "contain",
+     "entry": "contain",
+     "room_before": "contain",
+     "diwali": "contain",
+     "bedside_red": "contain",
+     "desk_green": "contain"
+    },
+    "crops": {
+     "grain": {
+      "crop_cy": 0.32
+     },
+     "flatlay": {
+      "crop_cy": 0.32
+     },
+     "unbox": {
+      "crop_cy": 0.32
+     }
+    },
+    "slots": {
+     "hero": "low",
+     "hero_off": "low",
+     "room": "low",
+     "entry": "low",
+     "macro": "low",
+     "channel": "low",
+     "grain": "low",
+     "bedside_red": "low",
+     "desk_green": "low",
+     "backlit": "low",
+     "mirror": "low",
+     "flatlay": "low",
+     "unbox": "low",
+     "diwali": "low",
+     "dutch_green": "low",
+     "hands": "low",
+     "room_before": "low"
+    },
+    "ai_generated": [
+     "entry"
+    ],
+    "status": {
+     "hero": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "room": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "macro": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "channel": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "grain": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "bedside_red": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "desk_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "backlit": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "mirror": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "flatlay": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "unbox": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "dutch_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "room_before": "approved 6 Sep — real Shopify product photography, matches the live PDP"
+    },
+    "clip_status": {},
+    "clip_colours": {}
+   },
+   "rules": {
+    "two_colours": false,
+    "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
+   }
+  },
+  "rosewood": {
+   "root": "rosewood-reels",
+   "name": "Scandinavian Rosewood Pendant",
+   "price": "₹7,599",
+   "compare": "₹9,999",
+   "url": "nixwoods.com",
+   "copy": {
+    "name": "Scandinavian Rosewood Pendant",
+    "name_ad": "Rosewood Pendant",
+    "price": "₹7,599",
+    "compare": "₹9,999",
+    "url": "nixwoods.com",
+    "hook": "Your dining table is under the wrong light.",
+    "turn": "One bar. The whole table.",
+    "mechanism": "Dimmable by remote. Cable height adjusts to your ceiling.",
+    "proof_line": "Solid rosewood. Handcrafted in India.",
+    "cta": "Hang it over the table. nixwoods.com",
+    "cta_line": "One light. The whole table.",
+    "kicker": "solid rosewood · 3000K · 4 ft",
+    "colors": {
+     "amber": "Warm 3000K over dinner.",
+     "green": "Dimmable, by remote.",
+     "red": "Four feet of solid rosewood."
+    }
+   },
+   "facts": [
+    "4 ft",
+    "6 ft",
+    "48 inches",
+    "72 inches",
+    "3000k",
+    "3000K",
+    "18w",
+    "18W",
+    "solid rosewood",
+    "rosewood",
+    "teakwood",
+    "dimmable",
+    "remote",
+    "₹7,599",
+    "₹8,399",
+    "₹17,599",
+    "7,599",
+    "adjustable",
+    "handcrafted in india",
+    "made in india",
+    "free shipping",
+    "cod"
+   ],
+   "states": {},
+   "state_max": {},
+   "assets": {
+    "video": null,
+    "stills": {
+     "hero": "hf/sh00-dining-pampas.jpg",
+     "room": "hf/sh02-evening-six.jpg",
+     "macro": "hf/sh01-endcap-macro.jpg",
+     "flatlay": "hf/sh03-front-fluted.png",
+     "backlit": "hf/sh04-warm-grass.jpg",
+     "mirror": "hf/sh06-led-underside.jpg",
+     "desk_green": "hf/sh05-daylight-oval.jpg",
+     "bedside_red": "hf/sh02-evening-six.jpg",
+     "dutch_green": "hf/sh07-channel-wire.png",
+     "unbox": "hf/sh01-endcap-macro.jpg",
+     "diwali": "hf/sh04-warm-grass.jpg",
+     "hands": "hf/sh06-led-underside.jpg",
+     "hero_off": "hf/sh05-daylight-oval.jpg",
+     "room_before": "hf/sh05-daylight-oval.jpg",
+     "entry": "hf/sh03-front-fluted.png"
+    },
+    "clips": {},
+    "sfx": {
+     "turn": "audio/sfx-turn.mp3",
+     "whoosh": "audio/sfx-whoosh.mp3"
+    },
+    "fit": {
+     "hero": "contain",
+     "flatlay": "contain",
+     "backlit": "contain",
+     "entry": "contain",
+     "hero_off": "contain",
+     "room_before": "contain",
+     "diwali": "contain"
+    },
+    "crops": {
+     "room": {
+      "crop_cy": 0.42
+     },
+     "bedside_red": {
+      "crop_cy": 0.42
+     },
+     "desk_green": {
+      "crop_cy": 0.45
+     }
+    },
+    "slots": {
+     "hero": "low",
+     "room": "low",
+     "macro": "low",
+     "flatlay": "low",
+     "backlit": "low",
+     "mirror": "low",
+     "desk_green": "low",
+     "bedside_red": "low",
+     "dutch_green": "low",
+     "unbox": "low",
+     "diwali": "low",
+     "hands": "low",
+     "hero_off": "low",
+     "room_before": "low",
+     "entry": "low"
+    },
+    "ai_generated": [],
+    "status": {
+     "hero": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "room": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "macro": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "flatlay": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "backlit": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "mirror": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "desk_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "bedside_red": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "dutch_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "unbox": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "room_before": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP"
+    },
+    "clip_status": {},
+    "clip_colours": {}
+   },
+   "rules": {
+    "two_colours": false,
+    "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
+   }
+  },
+  "teak": {
+   "root": "teak-reels",
+   "name": "Double Arm Teak Pendant",
+   "price": "₹9,999",
+   "compare": "₹12,999",
+   "url": "nixwoods.com",
+   "copy": {
+    "name": "Double Arm Teak Pendant",
+    "name_ad": "Double Arm Pendant",
+    "price": "₹9,999",
+    "compare": "₹12,999",
+    "url": "nixwoods.com",
+    "hook": "Two lines of light. One piece of teak.",
+    "turn": "Look up. That is the whole design.",
+    "mechanism": "Dimmable by remote. 49 inches of solid teak.",
+    "proof_line": "Solid teak. Handcrafted in India.",
+    "cta": "Hang it over the table. nixwoods.com",
+    "cta_line": "Two lines. One piece of teak.",
+    "kicker": "solid teak · 3000K · 49 in",
+    "colors": {
+     "amber": "Warm 3000K, twice over.",
+     "green": "Dimmable, by remote.",
+     "red": "Forty-nine inches of solid teak."
+    }
+   },
+   "facts": [
+    "49 in",
+    "49 inch",
+    "49 inches",
+    "2 in",
+    "3 in",
+    "3000k",
+    "3000K",
+    "18w",
+    "18W",
+    "solid teak",
+    "teak",
+    "dimmable",
+    "remote",
+    "₹9,999",
+    "9,999",
+    "₹12,999",
+    "two led",
+    "twin",
+    "handcrafted in india",
+    "made in india",
+    "free shipping",
+    "cod"
+   ],
+   "states": {},
+   "state_max": {},
+   "assets": {
+    "video": null,
+    "stills": {
+     "hero": "hf/sh00-marble-dining.jpg",
+     "room": "hf/sh00-marble-dining.jpg",
+     "macro": "hf/sh04-end-channels.webp",
+     "flatlay": "hf/sh01-underside-twin.jpg",
+     "backlit": "hf/sh03-dark-two-lines.jpg",
+     "mirror": "hf/sh02-strip-fluted.jpg",
+     "desk_green": "hf/sh02-strip-fluted.jpg",
+     "bedside_red": "hf/sh03-dark-two-lines.jpg",
+     "dutch_green": "hf/sh04-end-channels.webp",
+     "unbox": "hf/sh05-canopy-cables.jpg",
+     "diwali": "hf/sh00-marble-dining.jpg",
+     "hands": "hf/sh01-underside-twin.jpg",
+     "hero_off": "hf/sh05-canopy-cables.jpg",
+     "room_before": "hf/sh05-canopy-cables.jpg",
+     "entry": "hf/sh01-underside-twin.jpg"
+    },
+    "clips": {},
+    "sfx": {
+     "turn": "audio/sfx-turn.mp3",
+     "whoosh": "audio/sfx-whoosh.mp3"
+    },
+    "fit": {
+     "flatlay": "contain",
+     "unbox": "contain",
+     "hero_off": "contain",
+     "room_before": "contain",
+     "entry": "contain",
+     "hands": "contain"
+    },
+    "crops": {
+     "backlit": {
+      "crop_cy": 0.45
+     },
+     "bedside_red": {
+      "crop_cy": 0.45
+     }
+    },
+    "slots": {
+     "hero": "low",
+     "room": "low",
+     "macro": "low",
+     "flatlay": "low",
+     "backlit": "low",
+     "mirror": "low",
+     "desk_green": "low",
+     "bedside_red": "low",
+     "dutch_green": "low",
+     "unbox": "low",
+     "diwali": "low",
+     "hands": "low",
+     "hero_off": "low",
+     "room_before": "low",
+     "entry": "low"
+    },
+    "ai_generated": [],
+    "status": {
+     "hero": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "room": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "macro": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "flatlay": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "backlit": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "mirror": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "desk_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "bedside_red": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "dutch_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "unbox": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "room_before": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+     "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP"
+    },
+    "clip_status": {},
+    "clip_colours": {}
+   },
+   "rules": {
+    "two_colours": false,
+    "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
+   }
   }
  },
  "engine": {

@@ -142,9 +142,17 @@ class Build:
         self.shots.append(sh); self.t = sh["end"]
         return sh
 
+    #: colour state -> still key, for products that have photography but no product video
+    STATE_STILL = {"amber": "hero", "warm": "room", "green": "desk_green", "red": "bedside_red", "hand": "hands"}
+
     def state(self, key, dur, xfade=None, offset=0.0, **kw):
-        """a colour state of the real product video (presets → products.states)"""
+        """a colour state of the real product video (presets → products.states).
+        Products with no video resolve to the equivalent still, so every mechanism runs on
+        a photography-only product without being rewritten."""
         prod = self.b["_product"]
+        if not self.b["assets"].get("video") or not prod.get("states"):
+            for k in self.VIDEO_ONLY: kw.pop(k, None)
+            return self.still(self.STATE_STILL.get(key, "hero"), dur, xfade, **kw)
         ss = prod["states"][key] + offset
         dur = min(dur, (prod["state_max"][key] - offset) / float(self.b.get("stretch", 1.0)))
         return self._add("video", self.path(self.b["assets"]["video"]), ss, dur, xfade, kw, key="_video")
@@ -155,6 +163,10 @@ class Build:
 
     def still(self, key, dur, xfade=None, **kw):
         for k in self.VIDEO_ONLY: kw.pop(k, None)
+        a = self.b["assets"]
+        kw.setdefault("fit", a.get("fit", {}).get(key, "cover"))          # contain keeps a wide fixture whole
+        for ck, cv in a.get("crops", {}).get(key, {}).items():
+            kw.setdefault(ck, cv)
         if self.rejected("stills", key):
             # fidelity gate: fall back to the real product footage (the hand-turn state)
             return self.state("hand", dur, xfade, slow=1.2, cam=kw.get("cam") or self.cam("hold"))
@@ -259,6 +271,8 @@ class Build:
 
     def colours(self):
         """colour states visible in this cut (for the 'at least two colours' rule)"""
+        if not self.b["_product"].get("rules", {}).get("two_colours", True):
+            return ["n/a"]
         seen = set()
         cc = self.b["assets"].get("clip_colours", {})
         for sh in self.shots:
@@ -365,10 +379,15 @@ def m_before_after(b):
 @mechanism("triptych", "top/mid", "three colour states side by side, all moving")
 def m_triptych(b):
     B = Build(b); c = b["copy"]; st = B.st
-    V = B.path(b["assets"]["video"]); S_ = b["_product"]["states"]; stills = b["assets"]["stills"]
+    stills = b["assets"]["stills"]
     pre = os.path.join(B.out, f"{B.name}-tri.mp4")
     vx = b["_product"].get("video_cx", 0.5)          # lamp is left of centre in the product clip
-    rk.render_triptych([(V, S_["red"], "video", vx), (V, S_["amber"], "video", vx), (V, S_["green"], "video", vx)], pre, 2.4)
+    if b["assets"].get("video") and b["_product"].get("states"):
+        V = B.path(b["assets"]["video"]); S_ = b["_product"]["states"]
+        panel1 = [(V, S_["red"], "video", vx), (V, S_["amber"], "video", vx), (V, S_["green"], "video", vx)]
+    else:   # photography-only product: three rooms instead of three colour states
+        panel1 = [(B.path(stills[k]), 0, "still", 0.5) for k in ("room", "hero", "backlit")]
+    rk.render_triptych(panel1, pre, 2.4)
     tri = B.pre(pre, 2.4)
     hd = B.clip("hands", 3.0, xfade=TRANS["whip"], cam=B.cam("hold"))
     pre2 = os.path.join(B.out, f"{B.name}-tri2.mp4")
@@ -378,12 +397,16 @@ def m_triptych(b):
     hero = B.clip("hero", 2.6, xfade=TRANS["whip"], cam=B.cam("push"))
     B.card([c.get("hook", "3 moods. 1 turn.")], f'{c["name"]} · {c["price"]} · {c["url"]}')
     sw = (1080 - 12) // 3
-    for i, (name, col) in enumerate((("Red", COL["red"]), ("Amber", COL["amber"]), ("Green", COL["green"]))):
-        x = min(i * (sw + 6) + 96, SAFE["right"] - 170)   # third strip label stays clear of the action rail
+    lab_size = 44 if max(len(l) for l in (c.get("panels") or ["Red"])) <= 6 else 34
+    two_col = b["_product"].get("rules", {}).get("two_colours", True)
+    labels = c.get("panels") or (["Red", "Amber", "Green"] if two_col else ["Dining", "Living", "Bedroom"])
+    cols = [COL["red"], COL["amber"], COL["green"]] if two_col else [st.pal["accent"]] * 3
+    for i, (name, col) in enumerate(zip(labels, cols)):
+        x = min(i * (sw + 6) + 96, SAFE["right"] - (170 if lab_size > 38 else 210))   # label stays clear of the action rail
         for sh in (tri, tri2):
-            B.cue(sh["start"] + 0.15, sh["end"] - 0.1, T([name], y_top=SLOTS["top"], size=44, fontfile=st.d["headline_font"],
+            B.cue(sh["start"] + 0.15, sh["end"] - 0.1, T([name], y_top=SLOTS["top"], size=lab_size, fontfile=st.d["headline_font"],
                                                          color=col, align="left", x_left=x, shadow_blur=14, shadow_alpha=240))
-    B.cue(0.25, tri["end"] - 0.1, st.headline([c.get("hook", "3 moods. 1 turn.")], y_top=SLOTS["upper"]))
+    B.cue(0.25, tri["end"] - 0.1, st.headline(_wrap(c.get("hook", "3 moods. 1 turn."), 18), y_top=SLOTS["upper"]))
     B.say(hd, _wrap(c.get("mechanism", "No app. Just turn it."), 24))
     B.cue(tri2["start"] + 0.2, tri2["end"] - 0.1, st.headline([c.get("line2", "Bedside. Console. Desk.")], y_top=SLOTS["upper"]))
     B.say(hero, _wrap(c.get("line3", "One lamp. Three rooms' worth of mood."), 22))
