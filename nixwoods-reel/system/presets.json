@@ -1344,5 +1344,14 @@
    "5. generate stills with the template in <name>-reels/hf/PROMPTS.md, then python3 system/qa.py --root <name>-reels to approve or reject each one",
    "6. copy a brief from system/briefs/, set product, render"
   ]
+ },
+ "drive": {
+  "root": "1CzQKZ9EHRY5ITfZlPCjAABb8kR4nXo91",
+  "product_photos": "1nXp-iE61A0lIgidTFZhFTdKlMelz3qvS",
+  "unsorted": "1ukKuObS93sg0VHhXteNHKFNMOhAMVKjk",
+  "never_use": [
+   "90-Archive/photoshoot-20260805-WATERMARKED-do-not-use"
+  ],
+  "note": "Private files: a session cannot download them (base64 through the conversation, 4-28 MB each). Metadata and search work. Reel imagery comes from the public Shopify product CDN instead. Full map: nixwoods-reel/DRIVE-MAP.md"
  }
 }

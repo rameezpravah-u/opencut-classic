@@ -44,6 +44,8 @@ No `--root` needed: each product declares its asset folder in `system/presets.js
 - **Generated frames in a paid ad** need Meta's AI-disclosure ticked by hand, and the trademarked product name swapped for `copy.name_ad`.
 - **Never deploy a creative nobody has watched.** The contact sheet is not a substitute for the mp4.
 - **Judge each product on the right metric.** Wall lights are a CTR product (5.56% to women 35–64); pendants are a ROAS product (1.52% CTR at 13.1x). A pendant reel with low CTR is not a failure — see PLAYBOOK 1.4.
+- **Never pull from `90-Archive/photoshoot-20260805-WATERMARKED-do-not-use`.** It is the same 5 Aug shoot as the clean `NW-CREATIVE-IMG-20260805-*` files, but its filenames are bare camera names (`AC4I9586.JPG`), so it is easy to grab by mistake. Match the frame number to the clean original instead; do not remove a watermark to reuse a frame.
+- **Drive cannot be downloaded from a session** (private files, 4–28 MB, base64 only). Reel imagery comes from the public Shopify product CDN. See `nixwoods-reel/DRIVE-MAP.md`.
 - **A horizontal fixture is not a cropping problem.** A centre 9:16 crop of a four-foot pendant removes the four feet. Wide shots of linear products use `fit: contain` in the presets.
 - Renders are committed as each passes review — the session container is ephemeral. See the storage rule in `nixwoods-reel/README.md`.
 
@@ -56,4 +58,4 @@ No `--root` needed: each product declares its asset folder in `system/presets.js
 | Finished reels | `rubik-reels/out/system/` (12 mechanisms + a 27 s ad cut) · `aurora-reels/`, `rosewood-reels/`, `teak-reels/` `out/system/` (5 each) |
 | Scripts and voice-overs | `system/scripts/product-scripts.md` (four products) and `vo-scripts.md` (registers) |
 | Ads Engine, creative learnings | `Code` repo, branch `claude/nixwoods-funnel-audit-hg4dk9` |
-| Source footage and briefs | Google Drive, `NixWoods Creatives` |
+| Source footage and briefs | Google Drive, root `nixwoods` — map and access limits in `nixwoods-reel/DRIVE-MAP.md` |

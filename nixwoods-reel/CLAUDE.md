@@ -40,4 +40,5 @@ No flags needed. `--root` only for assets outside a declared product folder.
 - **Commit renders as they pass review**, not in a batch — the session container is ephemeral. Storage rule and size ceiling in `README.md`.
 - **Review sheets are JPEG**, never PNG.
 - **Copy rules are enforced, not advisory**: banned words, 12 words a screen, no fabricated testimonials, no dispatch claims while backlogged, two colours minimum on the cube lamp, AI disclosure on generated frames in paid ads.
-- Ads Engine, creative learnings and the decision ledger live in the `Code` repo, branch `claude/nixwoods-funnel-audit-hg4dk9`. Footage and briefs live in Google Drive, `NixWoods Creatives`.
+- Ads Engine, creative learnings and the decision ledger live in the `Code` repo, branch `claude/nixwoods-funnel-audit-hg4dk9`.
+- **Drive** (root `nixwoods`) is the source of truth for people, not for the pipeline: its files are private and too large to pull into a session, so reel imagery comes from the public Shopify product CDN. Map, naming convention and the do-not-use watermarked set: `DRIVE-MAP.md`.
