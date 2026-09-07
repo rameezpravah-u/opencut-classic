@@ -45,7 +45,7 @@ No flags needed. `--root` only for assets outside a declared product folder.
 
 ## NixWoods OS contract (OPERATING_MANUAL §6b / §6c — standing, no need to be asked)
 
-Nothing produced here is finished until all four are true. A session that skips a step has produced
+Nothing produced here is finished until all five are true. A session that skips a step has produced
 nothing as far as the OS is concerned; the weekly health check lists it as an "orphan producer".
 
 1. **Filed** — the render lives in the tree, not only in a scratch folder or a branch. Text
@@ -58,7 +58,13 @@ nothing as far as the OS is concerned; the weekly health check lists it as an "o
    product_id, shot_type, orientation, duration, location, tool/credits, and
    `status` = **READY** (post-able as is) | **STAGED** (needs a caption/crop/VO) | **UNUSED**.
    `git pull --rebase` before pushing — the Mac writes to the same files.
-4. **Handed off** — a TASK_LEDGER row plus a HANDOFF line naming the consumers:
+4. **Reachable** — the mp4s live in this repo, which is not in the Cowork project sync, so a
+   registry row alone leaves a consumer knowing an asset exists and unable to open it. After a
+   status change or a new batch, rebuild the index in repo `Code`:
+   `python3 creative/viral-reel/build_index.py --registry ../nixwoods-os/00-OS/ASSET_REGISTRY.md --renders ../opencut-classic`
+   It refuses to write a path that does not exist. `creative/viral-reel/FETCH.md` carries the
+   fetch commands — a partial + sparse clone pulls one reel in ~14 MB.
+5. **Handed off** — a TASK_LEDGER row plus a HANDOFF line naming the consumers:
    `next: SOCIAL (Mac social engine) · ADS (Decision Pass creative pipeline) · PIN (pinterest-engine) · EMAIL (EMAIL tab)`.
 
 Consumers read the registry, never this chat: the Mac social engine takes `READY` rows for the
