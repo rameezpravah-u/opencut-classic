@@ -651,7 +651,9 @@
    "rules": {
     "two_colours": true,
     "note": "the locked rule: any Rubik's/Glass Block creative must show at least two colours"
-   }
+   },
+   "shopify_handle": "rubiks-cube-table-lamp-sheesham-wood",
+   "shopify_gid": "gid://shopify/Product/8517218893959"
   },
   "aurora": {
    "root": "aurora-reels",
@@ -793,7 +795,9 @@
    "rules": {
     "two_colours": false,
     "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
-   }
+   },
+   "shopify_handle": "nixwoods-aurora-linear-wall-light",
+   "shopify_gid": "gid://shopify/Product/8606269014151"
   },
   "rosewood": {
    "root": "rosewood-reels",
@@ -927,7 +931,9 @@
    "rules": {
     "two_colours": false,
     "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
-   }
+   },
+   "shopify_handle": "scandinavian-rosewood-round-pendant-light",
+   "shopify_gid": "gid://shopify/Product/8060245311623"
   },
   "teak": {
    "root": "teak-reels",
@@ -1057,7 +1063,9 @@
    "rules": {
     "two_colours": false,
     "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
-   }
+   },
+   "shopify_handle": "double-arm-teak-pendant-light-sculptural-led",
+   "shopify_gid": "gid://shopify/Product/8216098832519"
   }
  },
  "engine": {
