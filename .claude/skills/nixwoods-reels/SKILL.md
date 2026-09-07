@@ -45,7 +45,7 @@ No `--root` needed: each product declares its asset folder in `system/presets.js
 - **Never deploy a creative nobody has watched.** The contact sheet is not a substitute for the mp4.
 - **Judge each product on the right metric.** Wall lights are a CTR product (5.56% to women 35–64); pendants are a ROAS product (1.52% CTR at 13.1x). A pendant reel with low CTR is not a failure — see PLAYBOOK 1.4.
 - **Never pull from `90-Archive/photoshoot-20260805-WATERMARKED-do-not-use`.** It is the same 5 Aug shoot as the clean `NW-CREATIVE-IMG-20260805-*` files, but its filenames are bare camera names (`AC4I9586.JPG`), so it is easy to grab by mistake. Match the frame number to the clean original instead; do not remove a watermark to reuse a frame.
-- **Drive cannot be downloaded from a session** (private files, 4–28 MB, base64 only). Reel imagery comes from the public Shopify product CDN. See `nixwoods-reel/DRIVE-MAP.md`.
+- **Drive downloads work up to 10 MB per file**; over that the connector refuses. That rules out the 18 raw shoot clips (19–25 MB) but not the photographs or the shorter edits. Oversized tool results are written to disk — decode the base64 from there, never through context. See `nixwoods-reel/DRIVE-MAP.md`.
 - **A horizontal fixture is not a cropping problem.** A centre 9:16 crop of a four-foot pendant removes the four feet. Wide shots of linear products use `fit: contain` in the presets.
 - Renders are committed as each passes review — the session container is ephemeral. See the storage rule in `nixwoods-reel/README.md`.
 

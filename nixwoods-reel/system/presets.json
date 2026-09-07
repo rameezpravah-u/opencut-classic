@@ -1352,6 +1352,7 @@
   "never_use": [
    "90-Archive/photoshoot-20260805-WATERMARKED-do-not-use"
   ],
-  "note": "Private files: a session cannot download them (base64 through the conversation, 4-28 MB each). Metadata and search work. Reel imagery comes from the public Shopify product CDN instead. Full map: nixwoods-reel/DRIVE-MAP.md"
+  "note": "Files up to 10 MB download via download_file_content (oversized results are written to ~/.claude/projects/<project>/tool-results/ as JSON {content: base64}; decode from disk, never through context). Over 10 MB the connector refuses outright, which rules out all 18 raw shoot clips at 19-25 MB. Reel photography comes from the public Shopify product CDN. Full detail: nixwoods-reel/DRIVE-MAP.md",
+  "download_limit_mb": 10
  }
 }

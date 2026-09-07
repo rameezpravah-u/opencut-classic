@@ -41,4 +41,4 @@ No flags needed. `--root` only for assets outside a declared product folder.
 - **Review sheets are JPEG**, never PNG.
 - **Copy rules are enforced, not advisory**: banned words, 12 words a screen, no fabricated testimonials, no dispatch claims while backlogged, two colours minimum on the cube lamp, AI disclosure on generated frames in paid ads.
 - Ads Engine, creative learnings and the decision ledger live in the `Code` repo, branch `claude/nixwoods-funnel-audit-hg4dk9`.
-- **Drive** (root `nixwoods`) is the source of truth for people, not for the pipeline: its files are private and too large to pull into a session, so reel imagery comes from the public Shopify product CDN. Map, naming convention and the do-not-use watermarked set: `DRIVE-MAP.md`.
+- **Drive** (root `nixwoods`): downloads work up to 10 MB a file, so photographs and short edits are fetchable but the 18 raw shoot clips (19–25 MB) are not. Reel photography comes from the public Shopify product CDN. Map, naming, download recipe and the do-not-use watermarked set: `DRIVE-MAP.md`.

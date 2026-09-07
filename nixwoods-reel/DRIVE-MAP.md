@@ -29,16 +29,47 @@ NW-CREATIVE-VID-{YYYYMMDD}-{product-handle}-{shot description}-{ratio}-v{n}.mp4
 
 **Never pull from it.** No watermark removal is needed or wanted: a clean original of every frame already exists under the sorted product folders — match on the frame number (`AC4I9835` → `NW-CREATIVE-IMG-20260805-rubiks-cube-table-lamp-sheesham-wood-AC4I9835-v1.JPG`). If a frame ever turns out to exist *only* watermarked, that is a rights question for the photographer, not an editing task — ask before using it.
 
-## Access constraint (read this before planning around Drive)
+## What a session can and cannot pull from Drive (corrected 7 Sep)
 
-Drive files here are private, so an agent session **cannot download them**. The API returns file bytes as base64 through the conversation, and these are 4–7 MB photographs and 20–28 MB videos — far past what fits. `https://drive.google.com/uc?export=download` hits a login wall.
+**Files up to 10 MB download fine.** `download_file_content` returns base64; when the result is
+too big for the conversation the harness writes it to a file under
+`~/.claude/projects/<project>/tool-results/` and hands back the path. Decode it there and the
+bytes never touch context:
 
-What this means in practice:
+```python
+import json, base64
+d = json.load(open(saved_path))          # {content, id, mimeType, title}
+open(dest, "wb").write(base64.b64decode(d["content"]))
+```
 
-- **Drive is the source of truth for people, not the pipeline.** Humans pull from it; sessions cannot.
-- **The working image source for reels is the Shopify product CDN** (`cdn.shopify.com/s/files/1/0650/8488/3079/files/…`), which is public, free and is the same photography the PDP shows. That is where `aurora-reels/hf/`, `rosewood-reels/hf/` and `teak-reels/hf/` came from — see each product's `hf/README.md`.
-- **To get a Drive asset into the system**, a person copies it into the product folder in this repo (`<product>-reels/src/` for footage, `hf/` for stills) and commits it. `system/sources.py` then registers a video's colour states automatically.
-- Drive *metadata* — search, titles, folder structure — is fully readable, which is how this map was verified.
+Verified 7 Sep: a 1.5 MB mp4 came through and decoded to a clean 10 s, 720×1280 h264 file.
+
+**Over 10 MB the connector refuses**, with "File too large for download, over limit of 10 MB.
+For downloading larger files, use the standard Google Drive API." That is a hard cap in the
+connector, not a context limit.
+
+What that means for this library:
+
+| | |
+|---|---|
+| **The 18 raw shoot clips** (19–25 MB each) | **out of reach** — every one is over the cap |
+| Brand-film exports, the Aurora hallway cinematic, the Gemini clips, the finished reels (1.5–9 MB) | **downloadable** |
+| The two wall-light ad exports (28 MB, 62 MB) | out of reach |
+| Product photographs (4–7 MB) | **downloadable** |
+| Drive metadata — search, titles, structure | always readable |
+
+So the raw shoot is the one thing a session cannot fetch, and it is exactly the material the reels
+want most. Three ways round it, cheapest first:
+
+1. **Copy the clip into the repo** (`<product>-reels/src/`) and commit it. `system/sources.py`
+   registers its colour states automatically.
+2. **Export a smaller version to Drive** — a 9:16 H.264 under 10 MB is plenty for a reel, since
+   the renders top out at 1080×1920 anyway.
+3. Use the standard Drive API with an OAuth token, which has no such cap.
+
+Photography for the reels still comes from the **public Shopify product CDN**
+(`cdn.shopify.com/s/files/1/0650/8488/3079/files/…`) — it needs no credentials, and it is the same
+imagery the PDP shows. See each product's `hf/README.md`.
 
 ## Naming, if you add files
 
