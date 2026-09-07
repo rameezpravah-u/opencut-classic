@@ -40,7 +40,7 @@ def _strings(v, label):
 
 
 def lint(brief, warn=None):
-    """brand-voice and readability checks on every copy string; trademark hits go to warn (ads only)"""
+    """brand-voice and readability checks on every copy string"""
     problems = []
     warn = warn if warn is not None else []
     banned = set(PRESETS["banned_words"])
@@ -52,9 +52,8 @@ def lint(brief, warn=None):
                 problems.append(f"{label}: banned word '{w}' in {s!r}")
         if len(words) > maxw and not label.endswith(".quote"):
             problems.append(f"{label}: {len(words)} words (max {maxw}) in {s!r}")
-        for term in HK.trademark_hits(s):
-            if label != "copy.name":
-                warn.append(f"{label}: trademark term '{term}' in {s!r} — ad cuts use copy.name_ad")
+        # D-017 (2026-09-07, settled): the product name stays in every creative, organic and ad
+        # alike. No warning, no swap, and the question is not to be reopened.
     return problems
 
 
@@ -75,7 +74,7 @@ def preflight(brief, reel, warns):
         dict(check="rules · at least two colours shown", ok=(True if reel.colours == ["n/a"] else len(reel.colours) >= 2),
              detail="not applicable — single-temperature fixture" if reel.colours == ["n/a"] else ", ".join(reel.colours)),
         dict(check="rules · no dispatch-time claim while backlogged", ok=not re.search(r"\b(ships?|dispatch\w*|deliver\w*)\b.*\b\d+\s*(days?|hrs?|hours?)", text.lower()), detail="brief.copy.delivery is a claim: confirm the backlog first" if "deliver" in text.lower() else ""),
-        dict(check="facts · banned words / trademark / numbers in PDP facts", ok=not [w for w in warns if "trademark" in w] and (hs["gates"]["truth"] if hs else True), detail="; ".join(w for w in warns if "trademark" in w) or (f"hook truth gate {'pass' if hs and hs['gates']['truth'] else 'FAIL'}" if hs else "")),
+        dict(check="facts · banned words / numbers in PDP facts", ok=(hs["gates"]["truth"] if hs else True), detail=(f"hook truth gate {'pass' if hs and hs['gates']['truth'] else 'FAIL'}" if hs else "")),
         dict(check="landing = the product shown, .nw-pdp template, stock visible", ok=None, detail="manual"),
         dict(check="visual confirmation (watch the mp4, not the sheet)", ok=None, detail="manual"),
         dict(check="named control in the same ad set", ok=None, detail=E["controls"].get(brief.get("product", "rubik"), {}).get("creative_id", "none on record")),

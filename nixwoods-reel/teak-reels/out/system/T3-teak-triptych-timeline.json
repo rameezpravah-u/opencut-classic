@@ -6,7 +6,7 @@
  "shots": [
   {
    "kind": "video",
-   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/T3-teak-triptych-tri.mp4",
+   "src": "out/system/T3-teak-triptych-tri.mp4",
    "ss": 0,
    "start": 0.0,
    "end": 2.4,
@@ -30,7 +30,7 @@
   },
   {
    "kind": "video",
-   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/T3-teak-triptych-tri2.mp4",
+   "src": "out/system/T3-teak-triptych-tri2.mp4",
    "ss": 0,
    "start": 4.96,
    "end": 7.36,
@@ -57,7 +57,7 @@
   },
   {
    "kind": "still",
-   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/T3-teak-triptych-end.png",
+   "src": "out/system/T3-teak-triptych-end.png",
    "ss": 0,
    "start": 9.24,
    "end": 11.64,
@@ -153,7 +153,7 @@
   "room"
  ],
  "preflight": {
-  "ad_name": "COM | Teak | Design | Sales | Sep06",
+  "ad_name": "COM | Teak | Design | Sales | Sep07",
   "hook_score": {
    "hook": "One piece of teak. Three rooms.",
    "words": 6,
@@ -191,7 +191,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },

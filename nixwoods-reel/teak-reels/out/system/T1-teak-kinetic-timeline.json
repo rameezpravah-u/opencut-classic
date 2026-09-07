@@ -86,7 +86,7 @@
   },
   {
    "kind": "still",
-   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/T1-teak-kinetic-end.png",
+   "src": "out/system/T1-teak-kinetic-end.png",
    "ss": 0,
    "start": 12.12,
    "end": 14.12,
@@ -204,7 +204,7 @@
   "craft"
  ],
  "preflight": {
-  "ad_name": "COM | Teak | Design | Sales | Sep06",
+  "ad_name": "COM | Teak | Design | Sales | Sep07",
   "hook_score": {
    "hook": "Two lines of light. One piece of teak.",
    "words": 8,
@@ -242,7 +242,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },

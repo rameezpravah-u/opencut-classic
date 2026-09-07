@@ -6,7 +6,7 @@
  "shots": [
   {
    "kind": "video",
-   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/A2-aurora-before-after-ba.mp4",
+   "src": "out/system/A2-aurora-before-after-ba.mp4",
    "ss": 0,
    "start": 0.0,
    "end": 4.4,
@@ -68,7 +68,7 @@
   },
   {
    "kind": "still",
-   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/A2-aurora-before-after-end.png",
+   "src": "out/system/A2-aurora-before-after-end.png",
    "ss": 0,
    "start": 13.15,
    "end": 15.55,
@@ -144,7 +144,7 @@
   "room"
  ],
  "preflight": {
-  "ad_name": "COM | Aurora | 30-40 | Sales | Sep06",
+  "ad_name": "COM | Aurora | 30-40 | Sales | Sep07",
   "hook_score": {
    "hook": "Same wall. Different feeling.",
    "words": 4,
@@ -182,7 +182,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },

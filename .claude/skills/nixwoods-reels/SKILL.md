@@ -41,12 +41,15 @@ No `--root` needed: each product declares its asset folder in `system/presets.js
 - **Never claim a dispatch time** while orders are backlogged, and no lumens or CRI figures without a datasheet.
 - **Banned words** (the lint enforces): discover, elevate, luxury, premium, exquisite, journey, curated, unlock, stunning, delve, realm.
 - **Any Rubik's / Glass Block creative must show at least two colours.** A single-colour static breaks the locked rule.
-- **Generated frames in a paid ad** need Meta's AI-disclosure ticked by hand, and the trademarked product name swapped for `copy.name_ad`.
+- **Generated frames in a paid ad** need Meta's AI-disclosure ticked by hand.
+- **D-017 (2026-09-07, settled): "Rubik's Cube" stays in all creative** — end cards, captions, everywhere. No re-render, no rename, and the trademark question is not to be raised again in any session.
 - **Never deploy a creative nobody has watched.** The contact sheet is not a substitute for the mp4.
 - **Judge each product on the right metric.** Wall lights are a CTR product (5.56% to women 35–64); pendants are a ROAS product (1.52% CTR at 13.1x). A pendant reel with low CTR is not a failure — see PLAYBOOK 1.4.
 - **Never pull from `90-Archive/photoshoot-20260805-WATERMARKED-do-not-use`.** It is the same 5 Aug shoot as the clean `NW-CREATIVE-IMG-20260805-*` files, but its filenames are bare camera names (`AC4I9586.JPG`), so it is easy to grab by mistake. Match the frame number to the clean original instead; do not remove a watermark to reuse a frame.
 - **Drive downloads work up to 10 MB per file**; over that the connector refuses. That rules out the 18 raw shoot clips (19–25 MB) but not the photographs or the shorter edits. Oversized tool results are written to disk — decode the base64 from there, never through context. See `nixwoods-reel/DRIVE-MAP.md`.
 - **A horizontal fixture is not a cropping problem.** A centre 9:16 crop of a four-foot pendant removes the four feet. Wide shots of linear products use `fit: contain` in the presets.
+- **Reuse before you generate (§6c).** Read `source/INDEX.tsv` at the repo root — the library Mac Claude Code mirrors into `source/<shopify-handle>/` — and build from existing footage before generating or spending a credit. Never use a frame flagged `DO NOT REUSE`. If `source/` is absent the mirror has not landed yet: say so, and fall back to `<product>-reels/src/` and the Shopify CDN.
+- **Nothing is finished until it is filed, named, registered and handed off (§6b).** Named `NW-<FRONT>-<TYPE>-<YYYYMMDD>-<handle|brand>-<slug>-v#` (use `system/file_for_os.py`); text merged to `Code` `main` the same session, never left on a branch; one `00-OS/ASSET_REGISTRY.md` row per asset with `status` READY/STAGED/UNUSED (`git pull --rebase` first — the Mac writes the same files); a TASK_LEDGER row and a HANDOFF line naming `SOCIAL · ADS · PIN · EMAIL`. Consumers read the registry, never the chat.
 - Renders are committed as each passes review — the session container is ephemeral. See the storage rule in `nixwoods-reel/README.md`.
 
 ## Where things are
@@ -58,4 +61,5 @@ No `--root` needed: each product declares its asset folder in `system/presets.js
 | Finished reels | `rubik-reels/out/system/` (12 mechanisms + a 27 s ad cut) · `aurora-reels/`, `rosewood-reels/`, `teak-reels/` `out/system/` (5 each) |
 | Scripts and voice-overs | `system/scripts/product-scripts.md` (four products) and `vo-scripts.md` (registers) |
 | Ads Engine, creative learnings | `Code` repo, branch `claude/nixwoods-funnel-audit-hg4dk9` |
-| Source footage and briefs | Google Drive, root `nixwoods` — map and access limits in `nixwoods-reel/DRIVE-MAP.md` |
+| Source footage and briefs | `source/<handle>/` + `source/INDEX.tsv` (Mac mirror, read first) · Google Drive, root `nixwoods` — map and access limits in `nixwoods-reel/DRIVE-MAP.md` |
+| OS contract, ledgers, decisions | repo `nixwoods-os` — `00-OS/OPERATING_MANUAL.md` §6b/§6c, `ASSET_REGISTRY.md`, `TASK_LEDGER.md`, `DECISIONS.md` |

@@ -185,7 +185,7 @@
   "craft"
  ],
  "preflight": {
-  "ad_name": "COM | Rubiks | Design | Sales | Sep06",
+  "ad_name": "COM | Rubiks | Design | Sales | Sep07",
   "hook_score": {
    "hook": "A lamp, not a gadget.",
    "words": 5,
@@ -227,7 +227,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },

@@ -97,7 +97,7 @@
   },
   {
    "kind": "still",
-   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/R3-rosewood-spec-end.png",
+   "src": "out/system/R3-rosewood-spec-end.png",
    "ss": 0,
    "start": 12.67,
    "end": 15.07,
@@ -185,7 +185,7 @@
   "craft"
  ],
  "preflight": {
-  "ad_name": "COM | Rosewood | Design | Sales | Sep06",
+  "ad_name": "COM | Rosewood | Design | Sales | Sep07",
   "hook_score": {
    "hook": "Four feet. One piece. No shade.",
    "words": 6,
@@ -224,7 +224,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },

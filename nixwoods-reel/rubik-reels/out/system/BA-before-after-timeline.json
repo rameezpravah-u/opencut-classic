@@ -137,9 +137,7 @@
   }
  ],
  "lint": [],
- "warnings": [
-  "copy.after: trademark term 'rubik' in \"after · rubik's cube lamp\" — ad cuts use copy.name_ad"
- ],
+ "warnings": [],
  "checks": [],
  "tags": [
   "before-after",
@@ -147,7 +145,7 @@
   "night"
  ],
  "preflight": {
-  "ad_name": "COM | Rubiks | 30-40 | Sales | Sep06",
+  "ad_name": "COM | Rubiks | 30-40 | Sales | Sep07",
   "hook_score": {
    "hook": "Same room. One lamp.",
    "words": 4,
@@ -189,9 +187,9 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
-    "ok": false,
-    "detail": "copy.after: trademark term 'rubik' in \"after · rubik's cube lamp\" — ad cuts use copy.name_ad"
+    "check": "facts · banned words / numbers in PDP facts",
+    "ok": true,
+    "detail": "hook truth gate pass"
    },
    {
     "check": "landing = the product shown, .nw-pdp template, stock visible",

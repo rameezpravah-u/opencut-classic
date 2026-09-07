@@ -211,5 +211,75 @@
   }
  ],
  "lint": [],
- "checks": []
+ "warnings": [],
+ "checks": [],
+ "tags": [
+  "ugc",
+  "hands",
+  "night"
+ ],
+ "preflight": {
+  "ad_name": "COM | Rubiks | Broad | Sales | Sep07",
+  "hook_score": null,
+  "uses_generated_frames": true,
+  "colours": [
+   "amber",
+   "green",
+   "red"
+  ],
+  "hypothesis": [],
+  "category_focus": "new money and new creative go to wall lights and pendants first; Rubik's keeps its old campaign; the Sep03 Rubik's campaign stays off. Rubik's reels are organic-first until the focus window ends.",
+  "rows": [
+   {
+    "check": "rules · at least two colours shown",
+    "ok": true,
+    "detail": "amber, green, red"
+   },
+   {
+    "check": "rules · no dispatch-time claim while backlogged",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "facts · banned words / numbers in PDP facts",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "landing = the product shown, .nw-pdp template, stock visible",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "visual confirmation (watch the mp4, not the sheet)",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "named control in the same ad set",
+    "ok": null,
+    "detail": "4411971999130238"
+   },
+   {
+    "check": "kill threshold written on the ad",
+    "ok": null,
+    "detail": "₹1,500 spend with 0 purchases, or 7d ROAS below the ad-set average after ≥₹3,000"
+   },
+   {
+    "check": "AI disclosure ticked in Ads Manager",
+    "ok": null,
+    "detail": "Higgsfield frames in this cut → tick by hand"
+   },
+   {
+    "check": "hook on screen by 0.3 s, holds 1.2 s; all text in the safe zone",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "length · 25–30 s cut exists for ads (Medium bucket 4.54x vs 0.98x Short)",
+    "ok": null,
+    "detail": "15.5 s — render again with \"stretch\" for the ad cut"
+   }
+  ]
+ }
 }

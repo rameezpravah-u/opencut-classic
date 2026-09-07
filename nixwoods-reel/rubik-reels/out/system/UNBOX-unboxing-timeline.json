@@ -166,7 +166,7 @@
   "hands"
  ],
  "preflight": {
-  "ad_name": "COM | Rubiks | Festive | Sales | Sep06",
+  "ad_name": "COM | Rubiks | Festive | Sales | Sep07",
   "hook_score": {
    "hook": "The gift that changes a room.",
    "words": 6,
@@ -208,7 +208,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },

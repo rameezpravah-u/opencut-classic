@@ -20,7 +20,7 @@ This reel system is the **creative layer** of the NixWoods system that exists el
 Three consequences worth stating plainly:
 
 1. **Rubik's reels are organic-first right now.** The category focus says new ad money and new creative go to wall lights and pendants until 4 Nov; the Sep03 Rubik's campaign was turned off deliberately and stays off. So this set posts on Instagram (hero slots, 4–5 reels a week) and YouTube Shorts; the ad cuts wait for the next Rubik's window, or the same mechanisms get run on Aurora and the pendants first (add them under `products` in `presets.json`; the twelve angles in §5 are the shot list).
-2. **The trademark.** The Growth System flagged the trademark in the product's Shopify title and AD-COPY.md bans trademark references in ads. Organic reels keep the store name; the ad cut uses `copy.name_ad` ("Cube Lamp"). The lint prints a warning on every trademark hit so it is never silent.
+2. **The product name — settled.** D-017 (Rameez, 2026-09-07): "Rubik's Cube" stays in all creative, end cards and captions, organic and ad cuts alike. No re-render, no rename, and the question is not to be raised again in any session. The lint no longer warns on it; `copy.name_ad` survives only as an optional shorter label.
 3. **Generated frames.** Fourteen stills and five clips here are Higgsfield. The engine's own data says the one AI-rendered problem image was the account's lowest-quality ad, and that real footage wins the hero slot. Use these frames as B-roll around the real product clip (every demo does), disclose them in Ads Manager, and shoot the real "before" (tubelight room, lamp off) when the next shoot happens.
 
 ---

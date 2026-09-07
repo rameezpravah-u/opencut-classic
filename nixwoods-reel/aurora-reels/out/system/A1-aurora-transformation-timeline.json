@@ -103,7 +103,7 @@
   },
   {
    "kind": "still",
-   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/A1-aurora-transformation-end.png",
+   "src": "out/system/A1-aurora-transformation-end.png",
    "ss": 0,
    "start": 15.82,
    "end": 18.22,
@@ -192,7 +192,7 @@
   "night"
  ],
  "preflight": {
-  "ad_name": "COM | Aurora | 30-40 | Sales | Sep06",
+  "ad_name": "COM | Aurora | 30-40 | Sales | Sep07",
   "hook_score": {
    "hook": "Still lit by one tubelight?",
    "words": 5,
@@ -231,7 +231,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },

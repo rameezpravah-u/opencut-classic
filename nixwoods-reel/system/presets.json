@@ -1143,7 +1143,7 @@
   "trademark_terms": [
    "rubik"
   ],
-  "trademark_note": "the Growth System flagged the trademark in the #2 product's Shopify title; AD-COPY.md bans trademark refs in ads. Reels for organic keep the store name; ad cuts use copy.name_ad ('Cube Lamp' / 'Glass Block Lamp').",
+  "trademark_note": "SETTLED by D-017 (Rameez, 2026-09-07): the product name stays in all creative — end cards, captions, organic and ad cuts alike. No re-render, no rename, and the question is not to be reopened in any session. copy.name_ad is kept only as an optional shorter label; nothing enforces it and the lint no longer warns.",
   "hypotheses": {
    "H1": {
     "line": "Same wall. Different feeling. — colour-flip opening beats warm-ambient opening for cold traffic",

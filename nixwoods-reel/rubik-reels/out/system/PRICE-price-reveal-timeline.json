@@ -198,7 +198,7 @@
   "night"
  ],
  "preflight": {
-  "ad_name": "COM | Rubiks | 30-40 | Sales | Sep06",
+  "ad_name": "COM | Rubiks | 30-40 | Sales | Sep07",
   "hook_score": {
    "hook": "Everyone asks about it. Nobody guesses the price.",
    "words": 8,
@@ -238,7 +238,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },

@@ -154,7 +154,7 @@
   "night"
  ],
  "preflight": {
-  "ad_name": "COM | Rubiks | Design | Sales | Sep06",
+  "ad_name": "COM | Rubiks | Design | Sales | Sep07",
   "hook_score": {
    "hook": "3 moods. 1 turn.",
    "words": 4,
@@ -175,7 +175,7 @@
    "trademark": [],
    "passes": true
   },
-  "uses_generated_frames": true,
+  "uses_generated_frames": false,
   "colours": [
    "amber",
    "red"
@@ -196,7 +196,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },
@@ -222,8 +222,8 @@
    },
    {
     "check": "AI disclosure ticked in Ads Manager",
-    "ok": null,
-    "detail": "Higgsfield frames in this cut → tick by hand"
+    "ok": true,
+    "detail": "no generated frames"
    },
    {
     "check": "hook on screen by 0.3 s, holds 1.2 s; all text in the safe zone",

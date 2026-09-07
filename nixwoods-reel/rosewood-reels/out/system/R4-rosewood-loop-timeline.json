@@ -177,7 +177,7 @@
   "room"
  ],
  "preflight": {
-  "ad_name": "COM | Rosewood | Broad | Sales | Sep06",
+  "ad_name": "COM | Rosewood | Broad | Sales | Sep07",
   "hook_score": null,
   "uses_generated_frames": false,
   "colours": [
@@ -197,7 +197,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": ""
    },

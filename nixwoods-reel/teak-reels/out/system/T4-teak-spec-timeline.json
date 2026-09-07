@@ -97,7 +97,7 @@
   },
   {
    "kind": "still",
-   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/T4-teak-spec-end.png",
+   "src": "out/system/T4-teak-spec-end.png",
    "ss": 0,
    "start": 12.67,
    "end": 15.07,
@@ -185,7 +185,7 @@
   "craft"
  ],
  "preflight": {
-  "ad_name": "COM | Teak | Design | Sales | Sep06",
+  "ad_name": "COM | Teak | Design | Sales | Sep07",
   "hook_score": {
    "hook": "Forty-nine inches. One piece.",
    "words": 4,
@@ -223,7 +223,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },

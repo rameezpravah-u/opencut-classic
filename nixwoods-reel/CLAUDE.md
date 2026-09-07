@@ -42,3 +42,42 @@ No flags needed. `--root` only for assets outside a declared product folder.
 - **Copy rules are enforced, not advisory**: banned words, 12 words a screen, no fabricated testimonials, no dispatch claims while backlogged, two colours minimum on the cube lamp, AI disclosure on generated frames in paid ads.
 - Ads Engine, creative learnings and the decision ledger live in the `Code` repo, branch `claude/nixwoods-funnel-audit-hg4dk9`.
 - **Drive** (root `nixwoods`): downloads work up to 10 MB a file, so photographs and short edits are fetchable but the 18 raw shoot clips (19–25 MB) are not. Reel photography comes from the public Shopify product CDN. Map, naming, download recipe and the do-not-use watermarked set: `DRIVE-MAP.md`.
+
+## NixWoods OS contract (OPERATING_MANUAL §6b / §6c — standing, no need to be asked)
+
+Nothing produced here is finished until all four are true. A session that skips a step has produced
+nothing as far as the OS is concerned; the weekly health check lists it as an "orphan producer".
+
+1. **Filed** — the render lives in the tree, not only in a scratch folder or a branch. Text
+   (scripts, prompts, captions, hooks, briefs, manifests) goes to repo `Code` under
+   `creative/<engine>/` and is **merged to `main` the same session** — branches are invisible to
+   Cowork and to the Mac.
+2. **Named** — `NW-<FRONT>-<TYPE>-<YYYYMMDD>-<shopify-handle|brand>-<slug>-v#`.
+   `system/file_for_os.py` does this: `python3 system/file_for_os.py --date <YYYYMMDD>`.
+3. **Registered** — one row per asset in `nixwoods-os` `00-OS/ASSET_REGISTRY.md` with product,
+   product_id, shot_type, orientation, duration, location, tool/credits, and
+   `status` = **READY** (post-able as is) | **STAGED** (needs a caption/crop/VO) | **UNUSED**.
+   `git pull --rebase` before pushing — the Mac writes to the same files.
+4. **Handed off** — a TASK_LEDGER row plus a HANDOFF line naming the consumers:
+   `next: SOCIAL (Mac social engine) · ADS (Decision Pass creative pipeline) · PIN (pinterest-engine) · EMAIL (EMAIL tab)`.
+
+Consumers read the registry, never this chat: the Mac social engine takes `READY` rows for the
+weekly calendar, the .com Decision Pass (Thursday step 10) proposes ad tests from `READY` 9:16/4:5
+rows whose `usable-for` contains ADS, pinterest-engine takes 2:3/9:16, the EMAIL tab takes heroes.
+
+### Source-media bus (§6c) — reuse before you generate
+
+Cloud sessions cannot read Drive or the Mac. The library you may build from is mirrored by Mac
+Claude Code into **`source/<shopify-handle>/`** in this repo, with **`source/INDEX.tsv`**
+(asset ID, handle, path, shot type, orientation, usage rule).
+
+- **Read `source/INDEX.tsv` before generating anything new.** Reuse beats re-render, and beats
+  spending Higgsfield credits.
+- **Never use a frame flagged `DO NOT REUSE`.**
+- If `source/` is absent, the Mac mirror has not landed yet — say so rather than assuming there is
+  no footage, and fall back to `<product>-reels/src/` and the Shopify product CDN.
+
+### Settled decisions
+
+- **D-017 (2026-09-07).** "Rubik's Cube" stays in all creative — end cards, captions, everywhere.
+  No re-render, no rename. Do not raise the trademark question again in any session.

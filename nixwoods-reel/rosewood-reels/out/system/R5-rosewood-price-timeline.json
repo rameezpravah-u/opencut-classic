@@ -104,7 +104,7 @@
   },
   {
    "kind": "still",
-   "src": "/tmp/claude-0/-home-user-opencut-classic/f863beaa-1937-5cac-8a95-89d282b7c923/scratchpad/out/p20/R5-rosewood-price-end.png",
+   "src": "out/system/R5-rosewood-price-end.png",
    "ss": 0,
    "start": 12.85,
    "end": 15.25,
@@ -198,7 +198,7 @@
   "room"
  ],
  "preflight": {
-  "ad_name": "COM | Rosewood | 30-40 | Sales | Sep06",
+  "ad_name": "COM | Rosewood | 30-40 | Sales | Sep07",
   "hook_score": {
    "hook": "Nobody guesses what this costs.",
    "words": 5,
@@ -236,7 +236,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },

@@ -132,7 +132,7 @@
   "hands"
  ],
  "preflight": {
-  "ad_name": "COM | Rubiks | Broad | Sales | Sep06",
+  "ad_name": "COM | Rubiks | Broad | Sales | Sep07",
   "hook_score": {
    "hook": "3 reasons this isn't plastic.",
    "words": 5,
@@ -173,7 +173,7 @@
     "detail": ""
    },
    {
-    "check": "facts · banned words / trademark / numbers in PDP facts",
+    "check": "facts · banned words / numbers in PDP facts",
     "ok": true,
     "detail": "hook truth gate pass"
    },
