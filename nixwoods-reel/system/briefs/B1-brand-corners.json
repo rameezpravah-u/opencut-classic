@@ -10,9 +10,9 @@
  ],
  "pillar": "Brand",
  "channel": "organic",
- "music": "audio/music1-aesthetic.mp3",
+ "music": "audio/music6-corners.mp3",
  "music_gain_db": -4,
- "cut": 1.766,
+ "cut": 1.672,
  "cover_t": 3.2,
  "grade": "eq=contrast=0.97:brightness=0.015:saturation=0.94,vignette=angle=PI/4.6:mode=forward,noise=alls=2:allf=t+u",
  "shots": [
@@ -95,6 +95,6 @@
   "cta_line": "every corner, one lamp.",
   "cta": "solid wood lighting · nixwoods.com"
  },
- "notes": "Reference: a creator reel in the #cornersofmyhome / #cozyvibes register (jklmnest, 'you can never have too many lamps'). Genre conventions only — the reference video was never visible to the session, so the grade and the track are this system's aesthetic style, not a measured match. Nine corners, four fixtures, two shots each, walked in one evening: aurora hall -> cube living -> teak dining -> rosewood evening -> cube bedside -> aurora bedroom -> teak underside detail -> rosewood endcap macro -> cube console at Diwali. Half the pendant photography was shot in daylight (mean luminance 186-192 vs 36-90 for the night frames), so those four shots carry a per-shot evening grade and the one very dark teak frame is lifted; measured, not eyeballed. Film grain cut from alls=5 to 2 because grain through a 0.35 s dissolve blows out. No price, no proof line, no CTA screen before the end card — a save/share cut, judged on saves. Second pass: the teak night frame (mean 36) read as a dead black 1.8 s on the sheet and the contained rosewood dining frame as an empty letterbox, so both were replaced with lit wood details — it also gives the cut two macros against seven wides instead of nine wides.",
+ "notes": "Reference: a creator reel in the #cornersofmyhome / #cozyvibes register (jklmnest, 'you can never have too many lamps'). Genre conventions only — the reference video was never visible to the session, so the grade is this system's aesthetic style, not a measured match. Its own track (music6-corners, ElevenLabs eleven_music_v2, 900 credits) rather than the shared music1-aesthetic, because every other aesthetic-style reel already uses that one; measured at 71.8 BPM by system/beatgrid.py, so the cut is 1.672 s, not 1.766. Nine corners, four fixtures, two shots each, walked in one evening: aurora hall -> cube living -> teak dining -> rosewood evening -> cube bedside -> aurora bedroom -> teak underside detail -> rosewood endcap macro -> cube console at Diwali. Half the pendant photography was shot in daylight (mean luminance 186-192 vs 36-90 for the night frames), so those four shots carry a per-shot evening grade and the one very dark teak frame is lifted; measured, not eyeballed. Film grain cut from alls=5 to 2 because grain through a 0.35 s dissolve blows out. No price, no proof line, no CTA screen before the end card — a save/share cut, judged on saves. Second pass: the teak night frame (mean 36) read as a dead black 1.8 s on the sheet and the contained rosewood dining frame as an empty letterbox, so both were replaced with lit wood details — it also gives the cut two macros against seven wides instead of nine wides.",
  "name": "B1-brand-corners"
 }
