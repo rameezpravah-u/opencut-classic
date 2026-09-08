@@ -1,0 +1,277 @@
+{
+ "name": "B1-brand-corners",
+ "mechanism": "corners",
+ "style": "aesthetic",
+ "duration": 18.526,
+ "shots": [
+  {
+   "kind": "still",
+   "src": "../aurora-reels/hf/sh02-entryway.jpg",
+   "ss": 0,
+   "start": 0.0,
+   "end": 3.532,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": -0.3,
+    "px1": 0.3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../rubik-reels/hf/hf04-wide-bluehour.jpg",
+   "ss": 0,
+   "start": 3.182,
+   "end": 4.948,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../teak-reels/hf/sh00-marble-dining.jpg",
+   "ss": 0,
+   "start": 4.598,
+   "end": 6.364,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.05,
+    "z1": 1.12,
+    "py0": 0.3,
+    "py1": -0.1
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../rosewood-reels/hf/sh02-evening-six.jpg",
+   "ss": 0,
+   "start": 6.014,
+   "end": 7.78,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": 0.3,
+    "px1": -0.3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../rubik-reels/hf/hf05-bedside-red.jpg",
+   "ss": 0,
+   "start": 7.43,
+   "end": 9.196,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.18
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../aurora-reels/hf/sh01-bedroom-headboard.jpg",
+   "ss": 0,
+   "start": 8.846,
+   "end": 10.612,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": -0.3,
+    "px1": 0.3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../teak-reels/hf/sh01-underside-twin.jpg",
+   "ss": 0,
+   "start": 10.262,
+   "end": 12.028,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../rosewood-reels/hf/sh01-endcap-macro.jpg",
+   "ss": 0,
+   "start": 11.678,
+   "end": 13.444,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": 0.3,
+    "px1": -0.3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../rubik-reels/hf/hf10-console-diwali.jpg",
+   "ss": 0,
+   "start": 13.094,
+   "end": 16.626,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  },
+  {
+   "kind": "still",
+   "src": "out/system/B1-brand-corners-end.png",
+   "ss": 0,
+   "start": 16.126,
+   "end": 18.526,
+   "xfade": [
+    "fade",
+    0.5
+   ],
+   "cam": null
+  }
+ ],
+ "cues": [
+  {
+   "png": "B1-brand-corners-c00.png",
+   "start": 0.25,
+   "end": 3.282
+  },
+  {
+   "png": "B1-brand-corners-c01.png",
+   "start": 7.63,
+   "end": 8.996
+  },
+  {
+   "png": "B1-brand-corners-c02.png",
+   "start": 13.594,
+   "end": 16.126
+  }
+ ],
+ "audio": [
+  {
+   "src": "music1-aesthetic.mp3",
+   "start": 0.0,
+   "gain": -4.0,
+   "music": true
+  }
+ ],
+ "lint": [],
+ "warnings": [],
+ "checks": [],
+ "tags": [
+  "night",
+  "cosy",
+  "multi-product",
+  "corners-of-my-home"
+ ],
+ "preflight": {
+  "ad_name": "COM | Brand | Broad | Sales | Sep08",
+  "hook_score": {
+   "hook": "how many lamps is too many?",
+   "words": 6,
+   "gates": {
+    "gap": true,
+    "truth": true,
+    "pull": false
+   },
+   "brevity": 3,
+   "specificity": 1,
+   "family": 2,
+   "families": [
+    "question",
+    "curiosity"
+   ],
+   "score": 8,
+   "out_of": 12,
+   "trademark": [],
+   "passes": false
+  },
+  "uses_generated_frames": true,
+  "colours": [
+   "n/a"
+  ],
+  "hypothesis": [],
+  "category_focus": "new money and new creative go to wall lights and pendants first; Rubik's keeps its old campaign; the Sep03 Rubik's campaign stays off. Rubik's reels are organic-first until the focus window ends.",
+  "rows": [
+   {
+    "check": "rules · at least two colours shown",
+    "ok": true,
+    "detail": "not applicable — single-temperature fixture"
+   },
+   {
+    "check": "rules · no dispatch-time claim while backlogged",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "facts · banned words / numbers in PDP facts",
+    "ok": true,
+    "detail": "hook truth gate pass"
+   },
+   {
+    "check": "landing = the product shown, .nw-pdp template, stock visible",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "visual confirmation (watch the mp4, not the sheet)",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "named control in the same ad set",
+    "ok": null,
+    "detail": "none on record"
+   },
+   {
+    "check": "kill threshold written on the ad",
+    "ok": null,
+    "detail": "₹1,500 spend with 0 purchases, or 7d ROAS below the ad-set average after ≥₹3,000"
+   },
+   {
+    "check": "AI disclosure ticked in Ads Manager",
+    "ok": null,
+    "detail": "Higgsfield frames in this cut → tick by hand"
+   },
+   {
+    "check": "hook on screen by 0.3 s, holds 1.2 s; all text in the safe zone",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "length · 25–30 s cut exists for ads (Medium bucket 4.54x vs 0.98x Short)",
+    "ok": null,
+    "detail": "18.5 s — render again with \"stretch\" for the ad cut"
+   }
+  ]
+ }
+}

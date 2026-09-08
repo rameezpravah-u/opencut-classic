@@ -1,1366 +1,1453 @@
 {
- "canvas": {
-  "w": 1080,
-  "h": 1920,
-  "fps": 25
- },
- "safe": {
-  "top": 230,
-  "bottom": 1500,
-  "left": 70,
-  "right": 950,
-  "note": "Instagram 2026: top ~220px and bottom ~400px are covered by UI, right ~130px by the action rail"
- },
- "slots": {
-  "top": 300,
-  "upper": 560,
-  "centre": 880,
-  "lower": 1200,
-  "low": 1330,
-  "bottom": 1420
- },
- "sizes": {
-  "headline": [
-   64,
-   88
-  ],
-  "box": [
-   66,
-   84
-  ],
-  "secondary": [
-   36,
-   44
-  ],
-  "kicker": [
-   28,
-   30
-  ],
-  "minimum": 36,
-  "max_words_per_screen": 12,
-  "max_lines": 3
- },
- "hook": {
-  "on_screen_by": 0.3,
-  "hold_at_least": 1.2,
-  "max_words": 12
- },
- "banned_words": [
-  "discover",
-  "elevate",
-  "luxury",
-  "premium",
-  "exquisite",
-  "journey",
-  "curated",
-  "unlock",
-  "stunning",
-  "delve",
-  "realm"
- ],
- "colors": {
-  "amber": [
-   242,
-   180,
-   78
-  ],
-  "green": [
-   90,
-   205,
-   140
-  ],
-  "red": [
-   232,
-   90,
-   80
-  ],
-  "warm": [
-   244,
-   234,
-   219
-  ],
-  "ivory": [
-   244,
-   234,
-   219
-  ],
-  "honey": [
-   227,
-   165,
-   82
-  ],
-  "espresso": [
-   20,
-   17,
-   14
-  ]
- },
- "styles": {
-  "aesthetic": {
-   "label": "editorial / share-for-taste",
-   "audience": "design-led 22-35, saves and shares",
-   "headline_font": "Cormorant_Garamond-500-i.ttf",
-   "headline_size": 62,
-   "support_font": "DM_Sans-500.ttf",
-   "support_size": 34,
-   "case": "lower",
-   "align": "left",
-   "x_left": 96,
-   "tracking": 2,
-   "line_gap": 6,
-   "shadow_blur": 10,
-   "palette": {
-    "text": [
-     239,
-     230,
-     216
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 25
+  },
+  "safe": {
+    "top": 230,
+    "bottom": 1500,
+    "left": 70,
+    "right": 950,
+    "note": "Instagram 2026: top ~220px and bottom ~400px are covered by UI, right ~130px by the action rail"
+  },
+  "slots": {
+    "top": 300,
+    "upper": 560,
+    "centre": 880,
+    "lower": 1200,
+    "low": 1330,
+    "bottom": 1420
+  },
+  "sizes": {
+    "headline": [
+      64,
+      88
     ],
-    "accent": [
-     226,
-     178,
-     168
+    "box": [
+      66,
+      84
     ],
-    "card": [
-     20,
-     17,
-     14
+    "secondary": [
+      36,
+      44
+    ],
+    "kicker": [
+      28,
+      30
+    ],
+    "minimum": 36,
+    "max_words_per_screen": 12,
+    "max_lines": 3
+  },
+  "hook": {
+    "on_screen_by": 0.3,
+    "hold_at_least": 1.2,
+    "max_words": 12
+  },
+  "banned_words": [
+    "discover",
+    "elevate",
+    "luxury",
+    "premium",
+    "exquisite",
+    "journey",
+    "curated",
+    "unlock",
+    "stunning",
+    "delve",
+    "realm"
+  ],
+  "colors": {
+    "amber": [
+      242,
+      180,
+      78
+    ],
+    "green": [
+      90,
+      205,
+      140
+    ],
+    "red": [
+      232,
+      90,
+      80
+    ],
+    "warm": [
+      244,
+      234,
+      219
+    ],
+    "ivory": [
+      244,
+      234,
+      219
+    ],
+    "honey": [
+      227,
+      165,
+      82
+    ],
+    "espresso": [
+      20,
+      17,
+      14
     ]
-   },
-   "grade": "eq=contrast=0.97:brightness=0.015:saturation=0.94,vignette=angle=PI/4.6:mode=forward,noise=alls=5:allf=t+u",
-   "music": "audio/music1-aesthetic.mp3",
-   "cut": 1.766,
-   "transition": "dissolve"
   },
-  "broad": {
-   "label": "broad 28-45 / voice-over",
-   "audience": "women 35-64 first, matches existing NixWoods reels",
-   "headline_font": "Playfair_Display-600.ttf",
-   "headline_size": 68,
-   "support_font": "DM_Sans-500.ttf",
-   "support_size": 40,
-   "case": "as-is",
-   "align": "center",
-   "shadow_blur": 14,
-   "palette": {
-    "text": [
-     244,
-     234,
-     219
-    ],
-    "accent": [
-     227,
-     165,
-     82
-    ],
-    "card": [
-     20,
-     17,
-     14
-    ]
-   },
-   "grade": "eq=contrast=1.04:saturation=1.05,vignette=angle=PI/5:mode=forward",
-   "music": "audio/music2-meaning.mp3",
-   "cut": 2.4,
-   "transition": "cut"
-  },
-  "design": {
-   "label": "design crowd / product-page register",
-   "audience": "architects, design followers, 25-40",
-   "headline_font": "Space_Grotesk-700.ttf",
-   "headline_size": 60,
-   "support_font": "Inter-300.ttf",
-   "support_size": 38,
-   "price_font": "Space_Grotesk-700.ttf",
-   "case": "as-is",
-   "align": "left",
-   "x_left": 96,
-   "tracking": 0,
-   "shadow_blur": 12,
-   "palette": {
-    "text": [
-     245,
-     245,
-     242
-    ],
-    "accent": [
-     232,
-     162,
-     74
-    ],
-    "card": [
-     12,
-     12,
-     12
-    ],
-    "rule": [
-     200,
-     200,
-     196
-    ]
-   },
-   "grade": "eq=contrast=1.12:saturation=0.96",
-   "music": "audio/music3-design.mp3",
-   "cut": 2.4,
-   "transition": "whip"
-  },
-  "genz": {
-   "label": "Gen-Z caption boxes",
-   "audience": "18-26, fast, lowercase, neon",
-   "headline_font": "Archivo_Black-400.ttf",
-   "headline_size": 66,
-   "support_font": "Space_Grotesk-500.ttf",
-   "support_size": 40,
-   "price_font": "Space_Grotesk-700.ttf",
-   "case": "lower",
-   "align": "center",
-   "shadow_blur": 0,
-   "box": [
-    255,
-    197,
-    66,
-    255
-   ],
-   "price_box": [
-    61,
-    255,
-    143,
-    255
-   ],
-   "palette": {
-    "text": [
-     10,
-     10,
-     10
-    ],
-    "accent": [
-     61,
-     255,
-     143
-    ],
-    "card": [
-     10,
-     10,
-     10
-    ],
-    "on_card": [
-     242,
-     242,
-     242
-    ]
-   },
-   "grade": "eq=contrast=1.08:saturation=1.28",
-   "shake": 3,
-   "punch": 0.09,
-   "music": "audio/music4-genz.mp3",
-   "cut": 1.714,
-   "transition": "cut"
-  },
-  "3040": {
-   "label": "30-40 trust",
-   "audience": "first-home, considered purchase, gifts",
-   "headline_font": "Playfair_Display-600.ttf",
-   "headline_size": 66,
-   "support_font": "DM_Sans-500.ttf",
-   "support_size": 40,
-   "price_font": "Playfair_Display-700.ttf",
-   "price_box": [
-    94,
-    40,
-    58,
-    255
-   ],
-   "case": "as-is",
-   "align": "center",
-   "shadow_blur": 14,
-   "palette": {
-    "text": [
-     244,
-     234,
-     219
-    ],
-    "accent": [
-     217,
-     160,
-     91
-    ],
-    "card": [
-     20,
-     17,
-     14
-    ],
-    "price": [
-     244,
-     234,
-     219
-    ]
-   },
-   "grade": "eq=contrast=1.05:saturation=1.06,vignette=angle=PI/5:mode=forward",
-   "music": "audio/music5-3040.mp3",
-   "cut": 2.526,
-   "transition": "cut"
-  },
-  "festive": {
-   "label": "Diwali / wedding season gifting",
-   "audience": "family buyers, Sept-Nov",
-   "headline_font": "Playfair_Display-700.ttf",
-   "headline_size": 66,
-   "support_font": "DM_Sans-600.ttf",
-   "support_size": 40,
-   "price_font": "Playfair_Display-700.ttf",
-   "price_box": [
-    120,
-    26,
-    40,
-    255
-   ],
-   "case": "as-is",
-   "align": "center",
-   "shadow_blur": 14,
-   "palette": {
-    "text": [
-     250,
-     238,
-     214
-    ],
-    "accent": [
-     240,
-     150,
-     50
-    ],
-    "card": [
-     60,
-     18,
-     28
-    ],
-    "price": [
-     250,
-     238,
-     214
-    ]
-   },
-   "grade": "eq=contrast=1.05:saturation=1.12,vignette=angle=PI/5:mode=forward",
-   "music": "audio/music5-3040.mp3",
-   "cut": 2.526,
-   "transition": "dissolve"
-  },
-  "ugc": {
-   "label": "phone-camera POV",
-   "audience": "reach; raw beats polished in India small-brand data",
-   "headline_font": "DM_Sans-600.ttf",
-   "headline_size": 56,
-   "support_font": "DM_Sans-500.ttf",
-   "support_size": 38,
-   "price_font": "DM_Sans-600.ttf",
-   "case": "lower",
-   "align": "center",
-   "shadow_blur": 0,
-   "box": [
-    0,
-    0,
-    0,
-    215
-   ],
-   "price_box": [
-    0,
-    0,
-    0,
-    215
-   ],
-   "palette": {
-    "text": [
-     255,
-     255,
-     255
-    ],
-    "accent": [
-     255,
-     255,
-     255
-    ],
-    "card": [
-     10,
-     10,
-     10
-    ]
-   },
-   "grade": "eq=contrast=1.06:saturation=1.15,noise=alls=8:allf=t+u",
-   "shake": 3,
-   "punch": 0.06,
-   "music": "audio/music4-genz.mp3",
-   "cut": 1.714,
-   "transition": "cut"
-  },
-  "social": {
-   "label": "Social Master Playbook house style",
-   "audience": "Instagram hub, all pillars",
-   "headline_font": "Fraunces-600.ttf",
-   "headline_size": 66,
-   "support_font": "Inter-400.ttf",
-   "support_size": 38,
-   "price_font": "Fraunces-600.ttf",
-   "case": "as-is",
-   "align": "left",
-   "x_left": 96,
-   "shadow_blur": 14,
-   "palette": {
-    "text": [
-     243,
-     237,
-     227
-    ],
-    "accent": [
-     232,
-     162,
-     74
-    ],
-    "card": [
-     26,
-     22,
-     20
-    ]
-   },
-   "grade": "eq=contrast=1.04:saturation=1.02,vignette=angle=PI/5:mode=forward",
-   "music": "audio/music2-meaning.mp3",
-   "cut": 2.4,
-   "transition": "dissolve"
-  }
- },
- "camera": {
-  "push": {
-   "z0": 1.0,
-   "z1": 1.12
-  },
-  "push_hard": {
-   "z0": 1.0,
-   "z1": 1.18
-  },
-  "pull": {
-   "z0": 1.12,
-   "z1": 1.0
-  },
-  "drift": {
-   "z0": 1.12,
-   "z1": 1.12,
-   "px0": -0.3,
-   "px1": 0.3
-  },
-  "drift_back": {
-   "z0": 1.12,
-   "z1": 1.12,
-   "px0": 0.3,
-   "px1": -0.3
-  },
-  "tilt_up": {
-   "z0": 1.05,
-   "z1": 1.12,
-   "py0": 0.3,
-   "py1": -0.1
-  },
-  "tilt_down": {
-   "z0": 1.05,
-   "z1": 1.12,
-   "py0": -0.3,
-   "py1": 0.1
-  },
-  "hero": {
-   "z0": 1.0,
-   "z1": 1.15,
-   "py0": 0.15,
-   "py1": -0.05
-  },
-  "hold": {
-   "z0": 1.08,
-   "z1": 1.08
-  }
- },
- "transitions": [
-  "cut",
-  "dissolve",
-  "fade",
-  "flash",
-  "dip",
-  "zoom",
-  "whip",
-  "whip_up",
-  "circle",
-  "slide"
- ],
- "products": {
-  "rubik": {
-   "name": "Rubik's Cube Lamp",
-   "price": "₹2,999",
-   "compare": "₹4,199",
-   "url": "nixwoods.com",
-   "copy": {
-    "name": "Rubik's Cube Lamp",
-    "price": "₹2,999",
-    "compare": "₹4,199",
-    "url": "nixwoods.com",
-    "cta": "Turn the block. nixwoods.com",
-    "proof": [
-     "Solid sheesham",
-     "Hand-painted glass",
-     "3-year wood warranty",
-     "Free shipping · COD"
-    ],
-    "colors": {
-     "amber": "Amber. The workday winds down.",
-     "green": "Green. A slow evening.",
-     "red": "Red. Movie night."
+  "styles": {
+    "aesthetic": {
+      "label": "editorial / share-for-taste",
+      "audience": "design-led 22-35, saves and shares",
+      "headline_font": "Cormorant_Garamond-500-i.ttf",
+      "headline_size": 62,
+      "support_font": "DM_Sans-500.ttf",
+      "support_size": 34,
+      "case": "lower",
+      "align": "left",
+      "x_left": 96,
+      "tracking": 2,
+      "line_gap": 6,
+      "shadow_blur": 10,
+      "palette": {
+        "text": [
+          239,
+          230,
+          216
+        ],
+        "accent": [
+          226,
+          178,
+          168
+        ],
+        "card": [
+          20,
+          17,
+          14
+        ]
+      },
+      "grade": "eq=contrast=0.97:brightness=0.015:saturation=0.94,vignette=angle=PI/4.6:mode=forward,noise=alls=5:allf=t+u",
+      "music": "audio/music1-aesthetic.mp3",
+      "cut": 1.766,
+      "transition": "dissolve"
     },
-    "name_ad": "Cube Lamp"
-   },
-   "states": {
-    "green": 0.0,
-    "red": 3.25,
-    "amber": 5.65,
-    "warm": 8.7,
-    "hand": 13.0
-   },
-   "state_max": {
-    "green": 3.2,
-    "red": 2.4,
-    "amber": 3.0,
-    "warm": 4.3,
-    "hand": 3.4
-   },
-   "assets": {
-    "video": "src/14-1.mp4",
-    "stills": {
-     "hero": "hf/hf00-hero-lowangle.jpg",
-     "flatlay": "hf/hf01-flatlay.jpg",
-     "macro": "hf/hf02-macro-corner.jpg",
-     "hands": "hf/hf14-hands-turn-v2.jpg",
-     "room": "hf/hf04-wide-bluehour.jpg",
-     "bedside_red": "hf/hf05-bedside-red.jpg",
-     "desk_green": "hf/hf06-desk-green.jpg",
-     "unbox": "hf/hf07-gift-unbox.jpg",
-     "backlit": "hf/hf08-backlit-silhouette.jpg",
-     "mirror": "hf/hf09-mirror.jpg",
-     "diwali": "hf/hf10-console-diwali.jpg",
-     "dutch_green": "hf/hf11-dutch-green.jpg",
-     "hero_off": "hf/hf12-hero-off.jpg",
-     "room_before": "hf/hf13-room-tubelight.jpg",
-     "hands_v1": "hf/hf03-hands-turning.jpg",
-     "hands_console": "hf/hf15-hands-console-v2.jpg"
+    "broad": {
+      "label": "broad 28-45 / voice-over",
+      "audience": "women 35-64 first, matches existing NixWoods reels",
+      "headline_font": "Playfair_Display-600.ttf",
+      "headline_size": 68,
+      "support_font": "DM_Sans-500.ttf",
+      "support_size": 40,
+      "case": "as-is",
+      "align": "center",
+      "shadow_blur": 14,
+      "palette": {
+        "text": [
+          244,
+          234,
+          219
+        ],
+        "accent": [
+          227,
+          165,
+          82
+        ],
+        "card": [
+          20,
+          17,
+          14
+        ]
+      },
+      "grade": "eq=contrast=1.04:saturation=1.05,vignette=angle=PI/5:mode=forward",
+      "music": "audio/music2-meaning.mp3",
+      "cut": 2.4,
+      "transition": "cut"
     },
-    "clips": {
-     "hero": "hf/k00-hero-dolly.mp4",
-     "hands": "hf/k05-hands-turn-v2.mp4",
-     "room": "hf/k02-room-dolly.mp4",
-     "backlit": "hf/k03-backlit-arc.mp4",
-     "diwali": "hf/k04-diwali-push.mp4",
-     "hands_v1": "hf/k01-hands-turn.mp4"
+    "design": {
+      "label": "design crowd / product-page register",
+      "audience": "architects, design followers, 25-40",
+      "headline_font": "Space_Grotesk-700.ttf",
+      "headline_size": 60,
+      "support_font": "Inter-300.ttf",
+      "support_size": 38,
+      "price_font": "Space_Grotesk-700.ttf",
+      "case": "as-is",
+      "align": "left",
+      "x_left": 96,
+      "tracking": 0,
+      "shadow_blur": 12,
+      "palette": {
+        "text": [
+          245,
+          245,
+          242
+        ],
+        "accent": [
+          232,
+          162,
+          74
+        ],
+        "card": [
+          12,
+          12,
+          12
+        ],
+        "rule": [
+          200,
+          200,
+          196
+        ]
+      },
+      "grade": "eq=contrast=1.12:saturation=0.96",
+      "music": "audio/music3-design.mp3",
+      "cut": 2.4,
+      "transition": "whip"
     },
-    "sfx": {
-     "turn": "audio/sfx-turn.mp3",
-     "whoosh": "audio/sfx-whoosh.mp3"
+    "genz": {
+      "label": "Gen-Z caption boxes",
+      "audience": "18-26, fast, lowercase, neon",
+      "headline_font": "Archivo_Black-400.ttf",
+      "headline_size": 66,
+      "support_font": "Space_Grotesk-500.ttf",
+      "support_size": 40,
+      "price_font": "Space_Grotesk-700.ttf",
+      "case": "lower",
+      "align": "center",
+      "shadow_blur": 0,
+      "box": [
+        255,
+        197,
+        66,
+        255
+      ],
+      "price_box": [
+        61,
+        255,
+        143,
+        255
+      ],
+      "palette": {
+        "text": [
+          10,
+          10,
+          10
+        ],
+        "accent": [
+          61,
+          255,
+          143
+        ],
+        "card": [
+          10,
+          10,
+          10
+        ],
+        "on_card": [
+          242,
+          242,
+          242
+        ]
+      },
+      "grade": "eq=contrast=1.08:saturation=1.28",
+      "shake": 3,
+      "punch": 0.09,
+      "music": "audio/music4-genz.mp3",
+      "cut": 1.714,
+      "transition": "cut"
     },
-    "video_slot": "top",
-    "slots": {
-     "flatlay": "top",
-     "macro": "low",
-     "room": "lower",
-     "unbox": "top",
-     "mirror": "top",
-     "diwali": "top",
-     "dutch_green": "low",
-     "room_before": "upper",
-     "hands": "top",
-     "hero_off": "upper",
-     "hero": "upper",
-     "backlit": "upper",
-     "bedside_red": "lower",
-     "desk_green": "lower",
-     "_note": "named slot per asset key (stills and clips share keys); video_slot applies to the product video states. auto_slot is the fallback.",
-     "hands_console": "top",
-     "hands_v1": "top"
+    "3040": {
+      "label": "30-40 trust",
+      "audience": "first-home, considered purchase, gifts",
+      "headline_font": "Playfair_Display-600.ttf",
+      "headline_size": 66,
+      "support_font": "DM_Sans-500.ttf",
+      "support_size": 40,
+      "price_font": "Playfair_Display-700.ttf",
+      "price_box": [
+        94,
+        40,
+        58,
+        255
+      ],
+      "case": "as-is",
+      "align": "center",
+      "shadow_blur": 14,
+      "palette": {
+        "text": [
+          244,
+          234,
+          219
+        ],
+        "accent": [
+          217,
+          160,
+          91
+        ],
+        "card": [
+          20,
+          17,
+          14
+        ],
+        "price": [
+          244,
+          234,
+          219
+        ]
+      },
+      "grade": "eq=contrast=1.05:saturation=1.06,vignette=angle=PI/5:mode=forward",
+      "music": "audio/music5-3040.mp3",
+      "cut": 2.526,
+      "transition": "cut"
     },
-    "clip_colours": {
-     "hands": [
-      "amber",
-      "red"
-     ]
+    "festive": {
+      "label": "Diwali / wedding season gifting",
+      "audience": "family buyers, Sept-Nov",
+      "headline_font": "Playfair_Display-700.ttf",
+      "headline_size": 66,
+      "support_font": "DM_Sans-600.ttf",
+      "support_size": 40,
+      "price_font": "Playfair_Display-700.ttf",
+      "price_box": [
+        120,
+        26,
+        40,
+        255
+      ],
+      "case": "as-is",
+      "align": "center",
+      "shadow_blur": 14,
+      "palette": {
+        "text": [
+          250,
+          238,
+          214
+        ],
+        "accent": [
+          240,
+          150,
+          50
+        ],
+        "card": [
+          60,
+          18,
+          28
+        ],
+        "price": [
+          250,
+          238,
+          214
+        ]
+      },
+      "grade": "eq=contrast=1.05:saturation=1.12,vignette=angle=PI/5:mode=forward",
+      "music": "audio/music5-3040.mp3",
+      "cut": 2.526,
+      "transition": "dissolve"
     },
-    "status": {
-     "_note": "fidelity gate: an asset marked rejected is never cut in; Build falls back to the real product footage. Approve only after comparing against the design reference (rubik-reels/ref/REFERENCE.md).",
-     "hands_v1": "rejected — glass rendered as a lifted cube; the real block is an 8x8x3 in slab that turns on its base (Rameez, 6 Sep)",
-     "hands": "approved 6 Sep — checked against ref/ref-14-1-14.8s.jpg: slab seated on the base, hand on the top edge, red edge showing",
-     "hands_console": "approved 6 Sep — two hands on the top corners, amber→green, slab on the base",
-     "hero": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "flatlay": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "macro": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "room": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "bedside_red": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "desk_green": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "unbox": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "backlit": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "mirror": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "diwali": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "dutch_green": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "hero_off": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
-     "room_before": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque"
+    "ugc": {
+      "label": "phone-camera POV",
+      "audience": "reach; raw beats polished in India small-brand data",
+      "headline_font": "DM_Sans-600.ttf",
+      "headline_size": 56,
+      "support_font": "DM_Sans-500.ttf",
+      "support_size": 38,
+      "price_font": "DM_Sans-600.ttf",
+      "case": "lower",
+      "align": "center",
+      "shadow_blur": 0,
+      "box": [
+        0,
+        0,
+        0,
+        215
+      ],
+      "price_box": [
+        0,
+        0,
+        0,
+        215
+      ],
+      "palette": {
+        "text": [
+          255,
+          255,
+          255
+        ],
+        "accent": [
+          255,
+          255,
+          255
+        ],
+        "card": [
+          10,
+          10,
+          10
+        ]
+      },
+      "grade": "eq=contrast=1.06:saturation=1.15,noise=alls=8:allf=t+u",
+      "shake": 3,
+      "punch": 0.06,
+      "music": "audio/music4-genz.mp3",
+      "cut": 1.714,
+      "transition": "cut"
     },
-    "clip_status": {
-     "hands_v1": "rejected — animated from the rejected still",
-     "hands": "approved 6 Sep — slab rotates on its base through the edge-on view, amber → red, never lifted",
-     "hero": "approved 6 Sep — checked on the frame strips: product unchanged through the move",
-     "room": "approved 6 Sep — checked on the frame strips: product unchanged through the move",
-     "backlit": "approved 6 Sep — checked on the frame strips: product unchanged through the move",
-     "diwali": "approved 6 Sep — checked on the frame strips: product unchanged through the move"
+    "social": {
+      "label": "Social Master Playbook house style",
+      "audience": "Instagram hub, all pillars",
+      "headline_font": "Fraunces-600.ttf",
+      "headline_size": 66,
+      "support_font": "Inter-400.ttf",
+      "support_size": 38,
+      "price_font": "Fraunces-600.ttf",
+      "case": "as-is",
+      "align": "left",
+      "x_left": 96,
+      "shadow_blur": 14,
+      "palette": {
+        "text": [
+          243,
+          237,
+          227
+        ],
+        "accent": [
+          232,
+          162,
+          74
+        ],
+        "card": [
+          26,
+          22,
+          20
+        ]
+      },
+      "grade": "eq=contrast=1.04:saturation=1.02,vignette=angle=PI/5:mode=forward",
+      "music": "audio/music2-meaning.mp3",
+      "cut": 2.4,
+      "transition": "dissolve"
     }
-   },
-   "video_cx": 0.28,
-   "facts": [
-    "3 colours",
-    "three colours",
-    "red",
-    "green",
-    "amber",
-    "8 × 8 in",
-    "8-inch",
-    "solid sheesham",
-    "sheesham",
-    "hand-painted glass",
-    "candy glass",
-    "2700–3000K",
-    "3000K",
-    "25,000 h",
-    "3-year",
-    "three-year",
-    "warranty",
-    "₹2,999",
-    "₹4,199",
-    "free shipping",
-    "COD",
-    "no app",
-    "no remote",
-    "made in india",
-    "khatauli",
-    "uttar pradesh",
-    "one-of-a-kind grain",
-    "5–7 days",
-    "1 lamp",
-    "3 moods",
-    "1 turn",
-    "3 reasons",
-    "3 faces",
-    "2 screws"
-   ],
-   "root": "rubik-reels",
-   "rules": {
-    "two_colours": true,
-    "note": "the locked rule: any Rubik's/Glass Block creative must show at least two colours"
-   },
-   "shopify_handle": "rubiks-cube-table-lamp-sheesham-wood",
-   "shopify_gid": "gid://shopify/Product/8517218893959"
   },
-  "aurora": {
-   "root": "aurora-reels",
-   "name": "Aurora Linear Wall Light",
-   "price": "₹1,999",
-   "compare": "₹2,999",
-   "url": "nixwoods.com",
-   "copy": {
-    "name": "Aurora Linear Wall Light",
-    "name_ad": "Linear Wall Light",
-    "price": "₹1,999",
-    "compare": "₹2,999",
-    "url": "nixwoods.com",
-    "hook": "Wood changes everything.",
-    "turn": "Same wall. Different feeling.",
-    "mechanism": "One bar. The whole wall softens.",
-    "proof_line": "Solid wood. Not another fixture.",
-    "cta": "Turn the big light off. nixwoods.com",
-    "cta_line": "Turn the big light off.",
-    "kicker": "solid wood · 3000K · 36–48 in",
-    "colors": {
-     "amber": "Warm 3000K, down the wall.",
-     "green": "Up and down, if you want both.",
-     "red": "Not brighter. Warmer."
+  "camera": {
+    "push": {
+      "z0": 1.0,
+      "z1": 1.12
+    },
+    "push_hard": {
+      "z0": 1.0,
+      "z1": 1.18
+    },
+    "pull": {
+      "z0": 1.12,
+      "z1": 1.0
+    },
+    "drift": {
+      "z0": 1.12,
+      "z1": 1.12,
+      "px0": -0.3,
+      "px1": 0.3
+    },
+    "drift_back": {
+      "z0": 1.12,
+      "z1": 1.12,
+      "px0": 0.3,
+      "px1": -0.3
+    },
+    "tilt_up": {
+      "z0": 1.05,
+      "z1": 1.12,
+      "py0": 0.3,
+      "py1": -0.1
+    },
+    "tilt_down": {
+      "z0": 1.05,
+      "z1": 1.12,
+      "py0": -0.3,
+      "py1": 0.1
+    },
+    "hero": {
+      "z0": 1.0,
+      "z1": 1.15,
+      "py0": 0.15,
+      "py1": -0.05
+    },
+    "hold": {
+      "z0": 1.08,
+      "z1": 1.08
     }
-   },
-   "facts": [
-    "36 in",
-    "40 in",
-    "48 in",
-    "36",
-    "40",
-    "48",
-    "3000k",
-    "3000K",
-    "solid wood",
-    "rosewood",
-    "teak",
-    "natural teak",
-    "₹1,999",
-    "₹2,999",
-    "₹4,099",
-    "down only",
-    "up and down",
-    "free shipping",
-    "cod",
-    "made in india",
-    "1,999"
-   ],
-   "states": {},
-   "state_max": {},
-   "assets": {
-    "video": null,
-    "stills": {
-     "hero": "hf/sh00-console-lit.png",
-     "hero_off": "hf/sh04-unlit-real.jpg",
-     "room": "hf/sh01-bedroom-headboard.jpg",
-     "entry": "hf/sh02-entryway.jpg",
-     "macro": "hf/sh03-angled-wash.jpg",
-     "channel": "hf/sh06-angled-channel.png",
-     "grain": "hf/sh07-grain-endcap.png",
-     "bedside_red": "hf/sh01-bedroom-headboard.jpg",
-     "desk_green": "hf/sh02-entryway.jpg",
-     "backlit": "hf/sh03-angled-wash.jpg",
-     "mirror": "hf/sh06-angled-channel.png",
-     "flatlay": "hf/sh07-grain-endcap.png",
-     "unbox": "hf/sh07-grain-endcap.png",
-     "diwali": "hf/sh00-console-lit.png",
-     "dutch_green": "hf/sh06-angled-channel.png",
-     "hands": "hf/sh03-angled-wash.jpg"
-    },
-    "clips": {},
-    "sfx": {
-     "turn": "audio/sfx-turn.mp3",
-     "whoosh": "audio/sfx-whoosh.mp3"
-    },
-    "fit": {
-     "hero": "contain",
-     "hero_off": "contain",
-     "room": "contain",
-     "entry": "contain",
-     "diwali": "contain",
-     "bedside_red": "contain",
-     "desk_green": "contain"
-    },
-    "crops": {
-     "grain": {
-      "crop_cy": 0.32
-     },
-     "flatlay": {
-      "crop_cy": 0.32
-     },
-     "unbox": {
-      "crop_cy": 0.32
-     }
-    },
-    "slots": {
-     "hero": "low",
-     "hero_off": "low",
-     "room": "low",
-     "entry": "low",
-     "macro": "low",
-     "channel": "low",
-     "grain": "low",
-     "bedside_red": "low",
-     "desk_green": "low",
-     "backlit": "low",
-     "mirror": "low",
-     "flatlay": "low",
-     "unbox": "low",
-     "diwali": "low",
-     "dutch_green": "low",
-     "hands": "low"
-    },
-    "ai_generated": [
-     "entry"
-    ],
-    "status": {
-     "hero": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "room": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "macro": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "channel": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "grain": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "bedside_red": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "desk_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "backlit": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "mirror": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "flatlay": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "unbox": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "dutch_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP"
-    },
-    "clip_status": {},
-    "clip_colours": {}
-   },
-   "rules": {
-    "two_colours": false,
-    "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
-   },
-   "shopify_handle": "nixwoods-aurora-linear-wall-light",
-   "shopify_gid": "gid://shopify/Product/8606269014151"
   },
-  "rosewood": {
-   "root": "rosewood-reels",
-   "name": "Scandinavian Rosewood Pendant",
-   "price": "₹7,599",
-   "compare": "₹9,999",
-   "url": "nixwoods.com",
-   "copy": {
-    "name": "Scandinavian Rosewood Pendant",
-    "name_ad": "Rosewood Pendant",
-    "price": "₹7,599",
-    "compare": "₹9,999",
-    "url": "nixwoods.com",
-    "hook": "Your dining table is under the wrong light.",
-    "turn": "One bar. The whole table.",
-    "mechanism": "Dimmable by remote. Cable height adjusts to your ceiling.",
-    "proof_line": "Solid rosewood. Handcrafted in India.",
-    "cta": "Hang it over the table. nixwoods.com",
-    "cta_line": "One light. The whole table.",
-    "kicker": "solid rosewood · 3000K · 4 ft",
-    "colors": {
-     "amber": "Warm 3000K over dinner.",
-     "green": "Dimmable, by remote.",
-     "red": "Four feet of solid rosewood."
+  "transitions": [
+    "cut",
+    "dissolve",
+    "fade",
+    "flash",
+    "dip",
+    "zoom",
+    "whip",
+    "whip_up",
+    "circle",
+    "slide"
+  ],
+  "products": {
+    "rubik": {
+      "name": "Rubik's Cube Lamp",
+      "price": "₹2,999",
+      "compare": "₹4,199",
+      "url": "nixwoods.com",
+      "copy": {
+        "name": "Rubik's Cube Lamp",
+        "price": "₹2,999",
+        "compare": "₹4,199",
+        "url": "nixwoods.com",
+        "cta": "Turn the block. nixwoods.com",
+        "proof": [
+          "Solid sheesham",
+          "Hand-painted glass",
+          "3-year wood warranty",
+          "Free shipping · COD"
+        ],
+        "colors": {
+          "amber": "Amber. The workday winds down.",
+          "green": "Green. A slow evening.",
+          "red": "Red. Movie night."
+        },
+        "name_ad": "Cube Lamp"
+      },
+      "states": {
+        "green": 0.0,
+        "red": 3.25,
+        "amber": 5.65,
+        "warm": 8.7,
+        "hand": 13.0
+      },
+      "state_max": {
+        "green": 3.2,
+        "red": 2.4,
+        "amber": 3.0,
+        "warm": 4.3,
+        "hand": 3.4
+      },
+      "assets": {
+        "video": "src/14-1.mp4",
+        "stills": {
+          "hero": "hf/hf00-hero-lowangle.jpg",
+          "flatlay": "hf/hf01-flatlay.jpg",
+          "macro": "hf/hf02-macro-corner.jpg",
+          "hands": "hf/hf14-hands-turn-v2.jpg",
+          "room": "hf/hf04-wide-bluehour.jpg",
+          "bedside_red": "hf/hf05-bedside-red.jpg",
+          "desk_green": "hf/hf06-desk-green.jpg",
+          "unbox": "hf/hf07-gift-unbox.jpg",
+          "backlit": "hf/hf08-backlit-silhouette.jpg",
+          "mirror": "hf/hf09-mirror.jpg",
+          "diwali": "hf/hf10-console-diwali.jpg",
+          "dutch_green": "hf/hf11-dutch-green.jpg",
+          "hero_off": "hf/hf12-hero-off.jpg",
+          "room_before": "hf/hf13-room-tubelight.jpg",
+          "hands_v1": "hf/hf03-hands-turning.jpg",
+          "hands_console": "hf/hf15-hands-console-v2.jpg"
+        },
+        "clips": {
+          "hero": "hf/k00-hero-dolly.mp4",
+          "hands": "hf/k05-hands-turn-v2.mp4",
+          "room": "hf/k02-room-dolly.mp4",
+          "backlit": "hf/k03-backlit-arc.mp4",
+          "diwali": "hf/k04-diwali-push.mp4",
+          "hands_v1": "hf/k01-hands-turn.mp4"
+        },
+        "sfx": {
+          "turn": "audio/sfx-turn.mp3",
+          "whoosh": "audio/sfx-whoosh.mp3"
+        },
+        "video_slot": "top",
+        "slots": {
+          "flatlay": "top",
+          "macro": "low",
+          "room": "lower",
+          "unbox": "top",
+          "mirror": "top",
+          "diwali": "top",
+          "dutch_green": "low",
+          "room_before": "upper",
+          "hands": "top",
+          "hero_off": "upper",
+          "hero": "upper",
+          "backlit": "upper",
+          "bedside_red": "lower",
+          "desk_green": "lower",
+          "_note": "named slot per asset key (stills and clips share keys); video_slot applies to the product video states. auto_slot is the fallback.",
+          "hands_console": "top",
+          "hands_v1": "top"
+        },
+        "clip_colours": {
+          "hands": [
+            "amber",
+            "red"
+          ]
+        },
+        "status": {
+          "_note": "fidelity gate: an asset marked rejected is never cut in; Build falls back to the real product footage. Approve only after comparing against the design reference (rubik-reels/ref/REFERENCE.md).",
+          "hands_v1": "rejected — glass rendered as a lifted cube; the real block is an 8x8x3 in slab that turns on its base (Rameez, 6 Sep)",
+          "hands": "approved 6 Sep — checked against ref/ref-14-1-14.8s.jpg: slab seated on the base, hand on the top edge, red edge showing",
+          "hands_console": "approved 6 Sep — two hands on the top corners, amber→green, slab on the base",
+          "hero": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "flatlay": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "macro": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "room": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "bedside_red": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "desk_green": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "unbox": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "backlit": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "mirror": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "diwali": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "dutch_green": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "hero_off": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque",
+          "room_before": "approved 6 Sep — checked on the contact sheet against the packshot and ref/: slab on its base, grid glass, NX plaque"
+        },
+        "clip_status": {
+          "hands_v1": "rejected — animated from the rejected still",
+          "hands": "approved 6 Sep — slab rotates on its base through the edge-on view, amber → red, never lifted",
+          "hero": "approved 6 Sep — checked on the frame strips: product unchanged through the move",
+          "room": "approved 6 Sep — checked on the frame strips: product unchanged through the move",
+          "backlit": "approved 6 Sep — checked on the frame strips: product unchanged through the move",
+          "diwali": "approved 6 Sep — checked on the frame strips: product unchanged through the move"
+        }
+      },
+      "video_cx": 0.28,
+      "facts": [
+        "3 colours",
+        "three colours",
+        "red",
+        "green",
+        "amber",
+        "8 × 8 in",
+        "8-inch",
+        "solid sheesham",
+        "sheesham",
+        "hand-painted glass",
+        "candy glass",
+        "2700–3000K",
+        "3000K",
+        "25,000 h",
+        "3-year",
+        "three-year",
+        "warranty",
+        "₹2,999",
+        "₹4,199",
+        "free shipping",
+        "COD",
+        "no app",
+        "no remote",
+        "made in india",
+        "khatauli",
+        "uttar pradesh",
+        "one-of-a-kind grain",
+        "5–7 days",
+        "1 lamp",
+        "3 moods",
+        "1 turn",
+        "3 reasons",
+        "3 faces",
+        "2 screws"
+      ],
+      "root": "rubik-reels",
+      "rules": {
+        "two_colours": true,
+        "note": "the locked rule: any Rubik's/Glass Block creative must show at least two colours"
+      },
+      "shopify_handle": "rubiks-cube-table-lamp-sheesham-wood",
+      "shopify_gid": "gid://shopify/Product/8517218893959"
+    },
+    "aurora": {
+      "root": "aurora-reels",
+      "name": "Aurora Linear Wall Light",
+      "price": "₹1,999",
+      "compare": "₹2,999",
+      "url": "nixwoods.com",
+      "copy": {
+        "name": "Aurora Linear Wall Light",
+        "name_ad": "Linear Wall Light",
+        "price": "₹1,999",
+        "compare": "₹2,999",
+        "url": "nixwoods.com",
+        "hook": "Wood changes everything.",
+        "turn": "Same wall. Different feeling.",
+        "mechanism": "One bar. The whole wall softens.",
+        "proof_line": "Solid wood. Not another fixture.",
+        "cta": "Turn the big light off. nixwoods.com",
+        "cta_line": "Turn the big light off.",
+        "kicker": "solid wood · 3000K · 36–48 in",
+        "colors": {
+          "amber": "Warm 3000K, down the wall.",
+          "green": "Up and down, if you want both.",
+          "red": "Not brighter. Warmer."
+        }
+      },
+      "facts": [
+        "36 in",
+        "40 in",
+        "48 in",
+        "36",
+        "40",
+        "48",
+        "3000k",
+        "3000K",
+        "solid wood",
+        "rosewood",
+        "teak",
+        "natural teak",
+        "₹1,999",
+        "₹2,999",
+        "₹4,099",
+        "down only",
+        "up and down",
+        "free shipping",
+        "cod",
+        "made in india",
+        "1,999"
+      ],
+      "states": {},
+      "state_max": {},
+      "assets": {
+        "video": null,
+        "stills": {
+          "hero": "hf/sh00-console-lit.png",
+          "hero_off": "hf/sh04-unlit-real.jpg",
+          "room": "hf/sh01-bedroom-headboard.jpg",
+          "entry": "hf/sh02-entryway.jpg",
+          "macro": "hf/sh03-angled-wash.jpg",
+          "channel": "hf/sh06-angled-channel.png",
+          "grain": "hf/sh07-grain-endcap.png",
+          "bedside_red": "hf/sh01-bedroom-headboard.jpg",
+          "desk_green": "hf/sh02-entryway.jpg",
+          "backlit": "hf/sh03-angled-wash.jpg",
+          "mirror": "hf/sh06-angled-channel.png",
+          "flatlay": "hf/sh07-grain-endcap.png",
+          "unbox": "hf/sh07-grain-endcap.png",
+          "diwali": "hf/sh00-console-lit.png",
+          "dutch_green": "hf/sh06-angled-channel.png",
+          "hands": "hf/sh03-angled-wash.jpg"
+        },
+        "clips": {},
+        "sfx": {
+          "turn": "audio/sfx-turn.mp3",
+          "whoosh": "audio/sfx-whoosh.mp3"
+        },
+        "fit": {
+          "hero": "contain",
+          "hero_off": "contain",
+          "room": "contain",
+          "entry": "contain",
+          "diwali": "contain",
+          "bedside_red": "contain",
+          "desk_green": "contain"
+        },
+        "crops": {
+          "grain": {
+            "crop_cy": 0.32
+          },
+          "flatlay": {
+            "crop_cy": 0.32
+          },
+          "unbox": {
+            "crop_cy": 0.32
+          }
+        },
+        "slots": {
+          "hero": "low",
+          "hero_off": "low",
+          "room": "low",
+          "entry": "low",
+          "macro": "low",
+          "channel": "low",
+          "grain": "low",
+          "bedside_red": "low",
+          "desk_green": "low",
+          "backlit": "low",
+          "mirror": "low",
+          "flatlay": "low",
+          "unbox": "low",
+          "diwali": "low",
+          "dutch_green": "low",
+          "hands": "low"
+        },
+        "ai_generated": [
+          "entry"
+        ],
+        "status": {
+          "hero": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "room": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "macro": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "channel": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "grain": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "bedside_red": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "desk_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "backlit": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "mirror": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "flatlay": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "unbox": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "dutch_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP"
+        },
+        "clip_status": {},
+        "clip_colours": {}
+      },
+      "rules": {
+        "two_colours": false,
+        "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
+      },
+      "shopify_handle": "nixwoods-aurora-linear-wall-light",
+      "shopify_gid": "gid://shopify/Product/8606269014151"
+    },
+    "rosewood": {
+      "root": "rosewood-reels",
+      "name": "Scandinavian Rosewood Pendant",
+      "price": "₹7,599",
+      "compare": "₹9,999",
+      "url": "nixwoods.com",
+      "copy": {
+        "name": "Scandinavian Rosewood Pendant",
+        "name_ad": "Rosewood Pendant",
+        "price": "₹7,599",
+        "compare": "₹9,999",
+        "url": "nixwoods.com",
+        "hook": "Your dining table is under the wrong light.",
+        "turn": "One bar. The whole table.",
+        "mechanism": "Dimmable by remote. Cable height adjusts to your ceiling.",
+        "proof_line": "Solid rosewood. Handcrafted in India.",
+        "cta": "Hang it over the table. nixwoods.com",
+        "cta_line": "One light. The whole table.",
+        "kicker": "solid rosewood · 3000K · 4 ft",
+        "colors": {
+          "amber": "Warm 3000K over dinner.",
+          "green": "Dimmable, by remote.",
+          "red": "Four feet of solid rosewood."
+        }
+      },
+      "facts": [
+        "4 ft",
+        "6 ft",
+        "48 inches",
+        "72 inches",
+        "3000k",
+        "3000K",
+        "18w",
+        "18W",
+        "solid rosewood",
+        "rosewood",
+        "teakwood",
+        "dimmable",
+        "remote",
+        "₹7,599",
+        "₹8,399",
+        "₹17,599",
+        "7,599",
+        "adjustable",
+        "handcrafted in india",
+        "made in india",
+        "free shipping",
+        "cod"
+      ],
+      "states": {},
+      "state_max": {},
+      "assets": {
+        "video": null,
+        "stills": {
+          "hero": "hf/sh00-dining-pampas.jpg",
+          "room": "hf/sh02-evening-six.jpg",
+          "macro": "hf/sh01-endcap-macro.jpg",
+          "flatlay": "hf/sh03-front-fluted.png",
+          "backlit": "hf/sh04-warm-grass.jpg",
+          "mirror": "hf/sh06-led-underside.jpg",
+          "desk_green": "hf/sh05-daylight-oval.jpg",
+          "bedside_red": "hf/sh02-evening-six.jpg",
+          "dutch_green": "hf/sh07-channel-wire.png",
+          "unbox": "hf/sh01-endcap-macro.jpg",
+          "diwali": "hf/sh04-warm-grass.jpg",
+          "hands": "hf/sh06-led-underside.jpg",
+          "hero_off": "hf/sh05-daylight-oval.jpg",
+          "entry": "hf/sh03-front-fluted.png"
+        },
+        "clips": {},
+        "sfx": {
+          "turn": "audio/sfx-turn.mp3",
+          "whoosh": "audio/sfx-whoosh.mp3"
+        },
+        "fit": {
+          "hero": "contain",
+          "flatlay": "contain",
+          "backlit": "contain",
+          "entry": "contain",
+          "hero_off": "contain",
+          "diwali": "contain"
+        },
+        "crops": {
+          "room": {
+            "crop_cy": 0.42
+          },
+          "bedside_red": {
+            "crop_cy": 0.42
+          },
+          "desk_green": {
+            "crop_cy": 0.45
+          }
+        },
+        "slots": {
+          "hero": "low",
+          "room": "low",
+          "macro": "low",
+          "flatlay": "low",
+          "backlit": "low",
+          "mirror": "low",
+          "desk_green": "low",
+          "bedside_red": "low",
+          "dutch_green": "low",
+          "unbox": "low",
+          "diwali": "low",
+          "hands": "low",
+          "hero_off": "low",
+          "entry": "low"
+        },
+        "ai_generated": [],
+        "status": {
+          "hero": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "room": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "macro": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "flatlay": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "backlit": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "mirror": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "desk_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "bedside_red": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "dutch_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "unbox": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP"
+        },
+        "clip_status": {},
+        "clip_colours": {}
+      },
+      "rules": {
+        "two_colours": false,
+        "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
+      },
+      "shopify_handle": "scandinavian-rosewood-round-pendant-light",
+      "shopify_gid": "gid://shopify/Product/8060245311623"
+    },
+    "teak": {
+      "root": "teak-reels",
+      "name": "Double Arm Teak Pendant",
+      "price": "₹9,999",
+      "compare": "₹12,999",
+      "url": "nixwoods.com",
+      "copy": {
+        "name": "Double Arm Teak Pendant",
+        "name_ad": "Double Arm Pendant",
+        "price": "₹9,999",
+        "compare": "₹12,999",
+        "url": "nixwoods.com",
+        "hook": "Two lines of light. One piece of teak.",
+        "turn": "Look up. That is the whole design.",
+        "mechanism": "Dimmable by remote. 49 inches of solid teak.",
+        "proof_line": "Solid teak. Handcrafted in India.",
+        "cta": "Hang it over the table. nixwoods.com",
+        "cta_line": "Two lines. One piece of teak.",
+        "kicker": "solid teak · 3000K · 49 in",
+        "colors": {
+          "amber": "Warm 3000K, twice over.",
+          "green": "Dimmable, by remote.",
+          "red": "Forty-nine inches of solid teak."
+        }
+      },
+      "facts": [
+        "49 in",
+        "49 inch",
+        "49 inches",
+        "2 in",
+        "3 in",
+        "3000k",
+        "3000K",
+        "18w",
+        "18W",
+        "solid teak",
+        "teak",
+        "dimmable",
+        "remote",
+        "₹9,999",
+        "9,999",
+        "₹12,999",
+        "two led",
+        "twin",
+        "handcrafted in india",
+        "made in india",
+        "free shipping",
+        "cod"
+      ],
+      "states": {},
+      "state_max": {},
+      "assets": {
+        "video": null,
+        "stills": {
+          "hero": "hf/sh00-marble-dining.jpg",
+          "room": "hf/sh00-marble-dining.jpg",
+          "macro": "hf/sh04-end-channels.webp",
+          "flatlay": "hf/sh01-underside-twin.jpg",
+          "backlit": "hf/sh03-dark-two-lines.jpg",
+          "mirror": "hf/sh02-strip-fluted.jpg",
+          "desk_green": "hf/sh02-strip-fluted.jpg",
+          "bedside_red": "hf/sh03-dark-two-lines.jpg",
+          "dutch_green": "hf/sh04-end-channels.webp",
+          "unbox": "hf/sh05-canopy-cables.jpg",
+          "diwali": "hf/sh00-marble-dining.jpg",
+          "hands": "hf/sh01-underside-twin.jpg",
+          "hero_off": "hf/sh05-canopy-cables.jpg",
+          "entry": "hf/sh01-underside-twin.jpg"
+        },
+        "clips": {},
+        "sfx": {
+          "turn": "audio/sfx-turn.mp3",
+          "whoosh": "audio/sfx-whoosh.mp3"
+        },
+        "fit": {
+          "flatlay": "contain",
+          "unbox": "contain",
+          "hero_off": "contain",
+          "entry": "contain",
+          "hands": "contain"
+        },
+        "crops": {
+          "backlit": {
+            "crop_cy": 0.45
+          },
+          "bedside_red": {
+            "crop_cy": 0.45
+          }
+        },
+        "slots": {
+          "hero": "low",
+          "room": "low",
+          "macro": "low",
+          "flatlay": "low",
+          "backlit": "low",
+          "mirror": "low",
+          "desk_green": "low",
+          "bedside_red": "low",
+          "dutch_green": "low",
+          "unbox": "low",
+          "diwali": "low",
+          "hands": "low",
+          "hero_off": "low",
+          "entry": "low"
+        },
+        "ai_generated": [],
+        "status": {
+          "hero": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "room": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "macro": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "flatlay": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "backlit": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "mirror": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "desk_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "bedside_red": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "dutch_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "unbox": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
+          "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP"
+        },
+        "clip_status": {},
+        "clip_colours": {}
+      },
+      "rules": {
+        "two_colours": false,
+        "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
+      },
+      "shopify_handle": "double-arm-teak-pendant-light-sculptural-led",
+      "shopify_gid": "gid://shopify/Product/8216098832519"
+    },
+    "brand": {
+      "root": "brand-reels",
+      "name": "NixWoods",
+      "price": "",
+      "url": "nixwoods.com",
+      "copy": {
+        "name": "NixWoods",
+        "name_ad": "NixWoods",
+        "price": "",
+        "url": "nixwoods.com",
+        "hook": "how many lamps is too many?",
+        "turn": "we stopped counting.",
+        "cta": "solid wood lighting · nixwoods.com",
+        "cta_line": "every corner, one lamp.",
+        "kicker": "solid wood · made in india"
+      },
+      "facts": [
+        "solid wood",
+        "sheesham",
+        "teak",
+        "rosewood",
+        "made in india",
+        "handcrafted in india"
+      ],
+      "states": {},
+      "state_max": {},
+      "rules": {
+        "two_colours": false,
+        "note": "brand-level cut across four fixtures; the two-colour rule is specific to the cube lamp"
+      },
+      "shopify_handle": "brand",
+      "shopify_gid": "",
+      "assets": {
+        "stills": {
+          "a_entry": "../aurora-reels/hf/sh02-entryway.jpg",
+          "r_room": "../rubik-reels/hf/hf04-wide-bluehour.jpg",
+          "t_dining": "../teak-reels/hf/sh00-marble-dining.jpg",
+          "w_evening": "../rosewood-reels/hf/sh02-evening-six.jpg",
+          "r_bedside": "../rubik-reels/hf/hf05-bedside-red.jpg",
+          "a_bedroom": "../aurora-reels/hf/sh01-bedroom-headboard.jpg",
+          "t_dark": "../teak-reels/hf/sh03-dark-two-lines.jpg",
+          "w_warm": "../rosewood-reels/hf/sh04-warm-grass.jpg",
+          "r_diwali": "../rubik-reels/hf/hf10-console-diwali.jpg",
+          "hero": "../rubik-reels/hf/hf04-wide-bluehour.jpg",
+          "room": "../rubik-reels/hf/hf04-wide-bluehour.jpg",
+          "w_dining": "../rosewood-reels/hf/sh00-dining-pampas.jpg",
+          "t_detail": "../teak-reels/hf/sh01-underside-twin.jpg",
+          "w_macro": "../rosewood-reels/hf/sh01-endcap-macro.jpg"
+        },
+        "clips": {},
+        "sfx": {
+          "turn": "audio/sfx-turn.mp3",
+          "whoosh": "audio/sfx-whoosh.mp3"
+        },
+        "fit": {
+          "a_entry": "contain",
+          "a_bedroom": "contain",
+          "w_warm": "contain",
+          "w_dining": "contain",
+          "t_detail": "contain"
+        },
+        "crops": {},
+        "slots": {},
+        "ai_generated": [
+          "a_entry"
+        ],
+        "status": {
+          "a_entry": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "r_room": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "t_dining": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "w_evening": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "r_bedside": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "a_bedroom": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "t_dark": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "w_warm": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "r_diwali": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "hero": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "room": "inherited — see the source product's status entry; all nine approved 6 Sep",
+          "w_dining": "inherited — rosewood 'hero', approved 6 Sep",
+          "t_detail": "inherited — teak 'flatlay', approved 6 Sep",
+          "w_macro": "inherited — rosewood 'macro', approved 6 Sep"
+        },
+        "clip_status": {},
+        "clip_colours": {},
+        "_note": "brand-level product: every still is a relative path into another product's folder, so brand-reels/ holds no photography of its own. Add a corner by pointing at <product>-reels/hf/<file> and copying that product's fit rule."
+      }
     }
-   },
-   "facts": [
-    "4 ft",
-    "6 ft",
-    "48 inches",
-    "72 inches",
-    "3000k",
-    "3000K",
-    "18w",
-    "18W",
-    "solid rosewood",
-    "rosewood",
-    "teakwood",
-    "dimmable",
-    "remote",
-    "₹7,599",
-    "₹8,399",
-    "₹17,599",
-    "7,599",
-    "adjustable",
-    "handcrafted in india",
-    "made in india",
-    "free shipping",
-    "cod"
-   ],
-   "states": {},
-   "state_max": {},
-   "assets": {
-    "video": null,
-    "stills": {
-     "hero": "hf/sh00-dining-pampas.jpg",
-     "room": "hf/sh02-evening-six.jpg",
-     "macro": "hf/sh01-endcap-macro.jpg",
-     "flatlay": "hf/sh03-front-fluted.png",
-     "backlit": "hf/sh04-warm-grass.jpg",
-     "mirror": "hf/sh06-led-underside.jpg",
-     "desk_green": "hf/sh05-daylight-oval.jpg",
-     "bedside_red": "hf/sh02-evening-six.jpg",
-     "dutch_green": "hf/sh07-channel-wire.png",
-     "unbox": "hf/sh01-endcap-macro.jpg",
-     "diwali": "hf/sh04-warm-grass.jpg",
-     "hands": "hf/sh06-led-underside.jpg",
-     "hero_off": "hf/sh05-daylight-oval.jpg",
-     "entry": "hf/sh03-front-fluted.png"
-    },
-    "clips": {},
-    "sfx": {
-     "turn": "audio/sfx-turn.mp3",
-     "whoosh": "audio/sfx-whoosh.mp3"
-    },
-    "fit": {
-     "hero": "contain",
-     "flatlay": "contain",
-     "backlit": "contain",
-     "entry": "contain",
-     "hero_off": "contain",
-     "diwali": "contain"
-    },
-    "crops": {
-     "room": {
-      "crop_cy": 0.42
-     },
-     "bedside_red": {
-      "crop_cy": 0.42
-     },
-     "desk_green": {
-      "crop_cy": 0.45
-     }
-    },
-    "slots": {
-     "hero": "low",
-     "room": "low",
-     "macro": "low",
-     "flatlay": "low",
-     "backlit": "low",
-     "mirror": "low",
-     "desk_green": "low",
-     "bedside_red": "low",
-     "dutch_green": "low",
-     "unbox": "low",
-     "diwali": "low",
-     "hands": "low",
-     "hero_off": "low",
-     "entry": "low"
-    },
-    "ai_generated": [],
-    "status": {
-     "hero": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "room": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "macro": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "flatlay": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "backlit": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "mirror": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "desk_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "bedside_red": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "dutch_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "unbox": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP"
-    },
-    "clip_status": {},
-    "clip_colours": {}
-   },
-   "rules": {
-    "two_colours": false,
-    "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
-   },
-   "shopify_handle": "scandinavian-rosewood-round-pendant-light",
-   "shopify_gid": "gid://shopify/Product/8060245311623"
   },
-  "teak": {
-   "root": "teak-reels",
-   "name": "Double Arm Teak Pendant",
-   "price": "₹9,999",
-   "compare": "₹12,999",
-   "url": "nixwoods.com",
-   "copy": {
-    "name": "Double Arm Teak Pendant",
-    "name_ad": "Double Arm Pendant",
-    "price": "₹9,999",
-    "compare": "₹12,999",
-    "url": "nixwoods.com",
-    "hook": "Two lines of light. One piece of teak.",
-    "turn": "Look up. That is the whole design.",
-    "mechanism": "Dimmable by remote. 49 inches of solid teak.",
-    "proof_line": "Solid teak. Handcrafted in India.",
-    "cta": "Hang it over the table. nixwoods.com",
-    "cta_line": "Two lines. One piece of teak.",
-    "kicker": "solid teak · 3000K · 49 in",
-    "colors": {
-     "amber": "Warm 3000K, twice over.",
-     "green": "Dimmable, by remote.",
-     "red": "Forty-nine inches of solid teak."
+  "engine": {
+    "_source": "NIXWOODS-ADS-ENGINE-COM.md v2 (2026-09-03, branch claude/nixwoods-funnel-audit-hg4dk9), ads-system/COM-creative-learnings.md, NixWoods-Social-Master-Playbook.md (Drive, 2026-07-03), AD-COPY.md (Drive, 2026-09-04), NixWoods Growth System artifact (2026-08-31)",
+    "locked_rules": [
+      "video-first, 9:16, hook inside 3 seconds",
+      "before/after room transformation",
+      "UGC from real homes is the biggest gap",
+      "specs on frame 1 for ads: material, size, warm 3000K, no bulbs included, free shipping",
+      "Rubik's Cube / Glass Block lamp must show at least two colours, never a static single glow",
+      "Aurora never outdoors, never implies weather resistance",
+      "Scandinavian Rosewood Pendant is Rosewood-only in creative, never Teakwood",
+      "discard any generation that breaks these",
+      "never deploy a creative that hasn't been visually confirmed",
+      "never run duplicate creatives in one ad set",
+      "real footage over renders for hero images (the one AI-rendered problem image was the account's lowest-quality ad)",
+      "no dispatch-time claims while backlogged; no lumens/CRI claims without a datasheet"
+    ],
+    "preflight": [
+      {
+        "id": "rules",
+        "check": "locked rule check pass/fail per rule",
+        "auto": "two_colours, no_dispatch_claim"
+      },
+      {
+        "id": "facts",
+        "check": "fact check against the PDP",
+        "auto": "banned_words, trademark, numbers_in_facts"
+      },
+      {
+        "id": "landing",
+        "check": "landing = the product shown, page passes .nw-pdp template and shows stock",
+        "auto": false
+      },
+      {
+        "id": "visual",
+        "check": "visual confirmation by Rameez (watch the mp4, not the sheet)",
+        "auto": false
+      },
+      {
+        "id": "control",
+        "check": "named control in the same ad set, never a replacement",
+        "auto": "control_named"
+      },
+      {
+        "id": "kill",
+        "check": "kill threshold written on the ad",
+        "auto": "kill_threshold_written"
+      }
+    ],
+    "kill_threshold": "₹1,500 spend with 0 purchases, or 7d ROAS below the ad-set average after ≥₹3,000",
+    "test_threshold": "≥8 purchases at ≥4x within 14 days against the control (Rubik's); CTR +20% and CPA ≤ control at ≥₹3,000 each (H1)",
+    "naming": "COM | {Product} | {Audience} | {Objective} | {Launch date}",
+    "controls": {
+      "rubik": {
+        "creative_id": "4411971999130238",
+        "name": "Rubik's Cube Lamp warm-ambient video, ORDER_NOW",
+        "roas": "5.69x, 31 purchases / 30d (2026-09-03)",
+        "line": "Not just a lamp. A mood."
+      }
+    },
+    "category_focus": {
+      "until": "2026-11-04",
+      "first": [
+        "wall lights",
+        "pendants"
+      ],
+      "rule": "new money and new creative go to wall lights and pendants first; Rubik's keeps its old campaign; the Sep03 Rubik's campaign stays off. Rubik's reels are organic-first until the focus window ends."
+    },
+    "ad_length": {
+      "finding": "27.7 s reels landed in the Medium bucket at 4.54x vs 0.98x for Short (AD-COPY.md, 2026-09-04)",
+      "rule": "cut a 25–30 s version of any reel that goes to ads (brief.stretch); keep the 12–20 s cut for organic"
+    },
+    "ai_disclosure": "any Higgsfield/Vibiz/Veo frame in an ad → tick the Ads Manager AI disclosure by hand; say so in the pre-flight sheet",
+    "trademark_terms": [
+      "rubik"
+    ],
+    "trademark_note": "SETTLED by D-017 (Rameez, 2026-09-07): the product name stays in all creative — end cards, captions, organic and ad cuts alike. No re-render, no rename, and the question is not to be reopened in any session. copy.name_ad is kept only as an optional shorter label; nothing enforces it and the lint no longer warns.",
+    "hypotheses": {
+      "H1": {
+        "line": "Same wall. Different feeling. — colour-flip opening beats warm-ambient opening for cold traffic",
+        "control": "4411971999130238",
+        "briefs": [
+          "T1-transformation",
+          "TRI-triptych",
+          "K-kinetic"
+        ],
+        "status": "shelved with the Sep03 campaign; creative kept for a future Rubik's window"
+      },
+      "H2": {
+        "line": "Cut from one block of Sheesham — craft proof lifts purchase rate on warm audiences",
+        "briefs": [
+          "SPEC-spec-sheet",
+          "L-listicle"
+        ],
+        "status": "draft"
+      },
+      "H3": {
+        "line": "The gift that changes a room — gifting frame for the Sep–Oct festive window",
+        "briefs": [
+          "UNBOX-unboxing"
+        ],
+        "status": "draft; the render-led gifting static failed (₹2,178, 0 purchases) — run gifting only as an unboxing video or UGC"
+      },
+      "H4": {
+        "line": "Turn the big light off — anti-overhead-light angle (pendants)",
+        "briefs": [
+          "BA-before-after"
+        ],
+        "status": "draft"
+      }
+    },
+    "hooks_proven": [
+      {
+        "line": "Not just a lamp. A mood.",
+        "evidence": "Rubik's control creative, 5.69x / 31 purchases",
+        "family": "contrast",
+        "product": "rubik"
+      },
+      {
+        "line": "Wood changes everything.",
+        "evidence": "Aurora, 3.78x / 26 purchases",
+        "family": "contrast",
+        "product": "aurora"
+      },
+      {
+        "line": "Same wall. Different feeling.",
+        "evidence": "Aurora before/after static 3.71x",
+        "family": "transformation",
+        "product": "aurora"
+      },
+      {
+        "line": "Transform your walls.",
+        "evidence": "19.7x on 4 (warm)",
+        "family": "transformation",
+        "product": "aurora"
+      },
+      {
+        "line": "Solid wood. Not another fixture.",
+        "evidence": "product-truth line, best CTR-to-purchase 30d",
+        "family": "contrast",
+        "product": "wall lights"
+      },
+      {
+        "line": "Not brighter. Warmer.",
+        "evidence": "AD-COPY.md recommended primary text (short copy 3.67x vs 2.97x)",
+        "family": "contrast",
+        "product": "aurora"
+      },
+      {
+        "line": "Still lit by one tubelight?",
+        "evidence": "AD-COPY.md problem-first variant; used in the NixWoods 20s reel",
+        "family": "question",
+        "product": "any"
+      },
+      {
+        "line": "One lamp, three moods.",
+        "evidence": "best organic post ever: 52 saves, 3.7% ER (Social Playbook)",
+        "family": "listicle",
+        "product": "rubik"
+      },
+      {
+        "line": "Stop buying boring lights.",
+        "evidence": "most shares (Social Playbook)",
+        "family": "pattern-interrupt",
+        "product": "any"
+      },
+      {
+        "line": "Cozy, not cluttered.",
+        "evidence": "problem→solution, most shares (Social Playbook)",
+        "family": "contrast",
+        "product": "any"
+      },
+      {
+        "line": "Look at the joint, not the label.",
+        "evidence": "craft-proof line, unoccupied in the market (Ads Engine §4)",
+        "family": "contrast",
+        "product": "any"
+      },
+      {
+        "line": "At 11pm you don't want a ceiling light. You want this.",
+        "evidence": "Growth System layer 3 top concept, night tag 2.17x, hook 11/12",
+        "family": "pov",
+        "product": "rubik"
+      },
+      {
+        "line": "Why does this wall look expensive?",
+        "evidence": "status static, live",
+        "family": "question",
+        "product": "aurora"
+      },
+      {
+        "line": "Three moods. One lamp.",
+        "evidence": "Ads Engine test #1 (control: bedside video)",
+        "family": "listicle",
+        "product": "rubik"
+      }
+    ],
+    "hooks_failed": [
+      "gifting / nostalgia static on Rubik's (₹2,178, 0 purchases)",
+      "AI-rendered 'Overhead lighting ruins everything' as the hero (quality bottom 35%)",
+      "single-colour cube static (rule breach)",
+      "discount-led framing (competitors own it: Ikari 50–60% off)"
+    ],
+    "tags": [
+      "night",
+      "colour-flip",
+      "hands",
+      "craft",
+      "room",
+      "before-after",
+      "price",
+      "gift",
+      "festive",
+      "ugc"
+    ],
+    "tag_index": {
+      "night": 2.17,
+      "_note": "return multiplier per content tag from the Growth System's content-tag index (run_system.py, not in the repo); only 'night' is on record. Unknown tags count as 1.0 in --rank."
+    },
+    "social": {
+      "palette": {
+        "espresso": "#1A1614",
+        "walnut": "#3B2C22",
+        "ink": "#2A2320",
+        "warm_bone": "#F3EDE3",
+        "sand": "#D8C7B0",
+        "amber_glow": "#E8A24A"
+      },
+      "rule": "amber is the only accent; two base backgrounds (espresso dark, warm bone light) alternated; warm-grade everything; hook <3 s; warm ambient audio, no meme/EDM",
+      "type": "Fraunces (serif headlines) + Inter (body)",
+      "slots_ist": [
+        "13:00",
+        "20:30"
+      ],
+      "pillars": {
+        "Hero Product": [
+          "transformation",
+          "colour_loop",
+          "triptych",
+          "kinetic"
+        ],
+        "In-Room Lifestyle": [
+          "before_after",
+          "vo_story",
+          "ugc_pov"
+        ],
+        "Solid-Wood Story": [
+          "spec_sheet",
+          "listicle"
+        ],
+        "Social Proof/UGC": [
+          "testimonial",
+          "ugc_pov"
+        ],
+        "Tips & Education": [
+          "listicle",
+          "spec_sheet"
+        ],
+        "soft offer (1x/wk)": [
+          "price_reveal",
+          "unboxing"
+        ]
+      },
+      "cadence": "4–5 reels/week, at least one reel in the hero slots; every reel also to YouTube Shorts; Pinterest gets the room stills",
+      "festive": {
+        "Ganesh Chaturthi": "2026-09-14",
+        "Navratri": "2026-10-11",
+        "Dussehra": "2026-10-20",
+        "Dhanteras": "2026-11-06",
+        "Diwali": "2026-11-08",
+        "Bhai Dooj": "2026-11-11",
+        "rule": "festive urgency is genuine: no fake countdowns, no discount shouting; lead with gifting + warmth"
+      }
     }
-   },
-   "facts": [
-    "49 in",
-    "49 inch",
-    "49 inches",
-    "2 in",
-    "3 in",
-    "3000k",
-    "3000K",
-    "18w",
-    "18W",
-    "solid teak",
-    "teak",
-    "dimmable",
-    "remote",
-    "₹9,999",
-    "9,999",
-    "₹12,999",
-    "two led",
-    "twin",
-    "handcrafted in india",
-    "made in india",
-    "free shipping",
-    "cod"
-   ],
-   "states": {},
-   "state_max": {},
-   "assets": {
-    "video": null,
-    "stills": {
-     "hero": "hf/sh00-marble-dining.jpg",
-     "room": "hf/sh00-marble-dining.jpg",
-     "macro": "hf/sh04-end-channels.webp",
-     "flatlay": "hf/sh01-underside-twin.jpg",
-     "backlit": "hf/sh03-dark-two-lines.jpg",
-     "mirror": "hf/sh02-strip-fluted.jpg",
-     "desk_green": "hf/sh02-strip-fluted.jpg",
-     "bedside_red": "hf/sh03-dark-two-lines.jpg",
-     "dutch_green": "hf/sh04-end-channels.webp",
-     "unbox": "hf/sh05-canopy-cables.jpg",
-     "diwali": "hf/sh00-marble-dining.jpg",
-     "hands": "hf/sh01-underside-twin.jpg",
-     "hero_off": "hf/sh05-canopy-cables.jpg",
-     "entry": "hf/sh01-underside-twin.jpg"
-    },
-    "clips": {},
-    "sfx": {
-     "turn": "audio/sfx-turn.mp3",
-     "whoosh": "audio/sfx-whoosh.mp3"
-    },
-    "fit": {
-     "flatlay": "contain",
-     "unbox": "contain",
-     "hero_off": "contain",
-     "entry": "contain",
-     "hands": "contain"
-    },
-    "crops": {
-     "backlit": {
-      "crop_cy": 0.45
-     },
-     "bedside_red": {
-      "crop_cy": 0.45
-     }
-    },
-    "slots": {
-     "hero": "low",
-     "room": "low",
-     "macro": "low",
-     "flatlay": "low",
-     "backlit": "low",
-     "mirror": "low",
-     "desk_green": "low",
-     "bedside_red": "low",
-     "dutch_green": "low",
-     "unbox": "low",
-     "diwali": "low",
-     "hands": "low",
-     "hero_off": "low",
-     "entry": "low"
-    },
-    "ai_generated": [],
-    "status": {
-     "hero": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "room": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "macro": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "flatlay": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "backlit": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "mirror": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "desk_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "bedside_red": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "dutch_green": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "unbox": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "diwali": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "hands": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "hero_off": "approved 6 Sep — real Shopify product photography, matches the live PDP",
-     "entry": "approved 6 Sep — real Shopify product photography, matches the live PDP"
-    },
-    "clip_status": {},
-    "clip_colours": {}
-   },
-   "rules": {
-    "two_colours": false,
-    "note": "single-temperature fixture (3000K); the two-colour rule is specific to the cube lamp"
-   },
-   "shopify_handle": "double-arm-teak-pendant-light-sculptural-led",
-   "shopify_gid": "gid://shopify/Product/8216098832519"
-  }
- },
- "engine": {
-  "_source": "NIXWOODS-ADS-ENGINE-COM.md v2 (2026-09-03, branch claude/nixwoods-funnel-audit-hg4dk9), ads-system/COM-creative-learnings.md, NixWoods-Social-Master-Playbook.md (Drive, 2026-07-03), AD-COPY.md (Drive, 2026-09-04), NixWoods Growth System artifact (2026-08-31)",
-  "locked_rules": [
-   "video-first, 9:16, hook inside 3 seconds",
-   "before/after room transformation",
-   "UGC from real homes is the biggest gap",
-   "specs on frame 1 for ads: material, size, warm 3000K, no bulbs included, free shipping",
-   "Rubik's Cube / Glass Block lamp must show at least two colours, never a static single glow",
-   "Aurora never outdoors, never implies weather resistance",
-   "Scandinavian Rosewood Pendant is Rosewood-only in creative, never Teakwood",
-   "discard any generation that breaks these",
-   "never deploy a creative that hasn't been visually confirmed",
-   "never run duplicate creatives in one ad set",
-   "real footage over renders for hero images (the one AI-rendered problem image was the account's lowest-quality ad)",
-   "no dispatch-time claims while backlogged; no lumens/CRI claims without a datasheet"
-  ],
-  "preflight": [
-   {
-    "id": "rules",
-    "check": "locked rule check pass/fail per rule",
-    "auto": "two_colours, no_dispatch_claim"
-   },
-   {
-    "id": "facts",
-    "check": "fact check against the PDP",
-    "auto": "banned_words, trademark, numbers_in_facts"
-   },
-   {
-    "id": "landing",
-    "check": "landing = the product shown, page passes .nw-pdp template and shows stock",
-    "auto": false
-   },
-   {
-    "id": "visual",
-    "check": "visual confirmation by Rameez (watch the mp4, not the sheet)",
-    "auto": false
-   },
-   {
-    "id": "control",
-    "check": "named control in the same ad set, never a replacement",
-    "auto": "control_named"
-   },
-   {
-    "id": "kill",
-    "check": "kill threshold written on the ad",
-    "auto": "kill_threshold_written"
-   }
-  ],
-  "kill_threshold": "₹1,500 spend with 0 purchases, or 7d ROAS below the ad-set average after ≥₹3,000",
-  "test_threshold": "≥8 purchases at ≥4x within 14 days against the control (Rubik's); CTR +20% and CPA ≤ control at ≥₹3,000 each (H1)",
-  "naming": "COM | {Product} | {Audience} | {Objective} | {Launch date}",
-  "controls": {
-   "rubik": {
-    "creative_id": "4411971999130238",
-    "name": "Rubik's Cube Lamp warm-ambient video, ORDER_NOW",
-    "roas": "5.69x, 31 purchases / 30d (2026-09-03)",
-    "line": "Not just a lamp. A mood."
-   }
   },
-  "category_focus": {
-   "until": "2026-11-04",
-   "first": [
-    "wall lights",
-    "pendants"
-   ],
-   "rule": "new money and new creative go to wall lights and pendants first; Rubik's keeps its old campaign; the Sep03 Rubik's campaign stays off. Rubik's reels are organic-first until the focus window ends."
-  },
-  "ad_length": {
-   "finding": "27.7 s reels landed in the Medium bucket at 4.54x vs 0.98x for Short (AD-COPY.md, 2026-09-04)",
-   "rule": "cut a 25–30 s version of any reel that goes to ads (brief.stretch); keep the 12–20 s cut for organic"
-  },
-  "ai_disclosure": "any Higgsfield/Vibiz/Veo frame in an ad → tick the Ads Manager AI disclosure by hand; say so in the pre-flight sheet",
-  "trademark_terms": [
-   "rubik"
-  ],
-  "trademark_note": "SETTLED by D-017 (Rameez, 2026-09-07): the product name stays in all creative — end cards, captions, organic and ad cuts alike. No re-render, no rename, and the question is not to be reopened in any session. copy.name_ad is kept only as an optional shorter label; nothing enforces it and the lint no longer warns.",
-  "hypotheses": {
-   "H1": {
-    "line": "Same wall. Different feeling. — colour-flip opening beats warm-ambient opening for cold traffic",
-    "control": "4411971999130238",
-    "briefs": [
-     "T1-transformation",
-     "TRI-triptych",
-     "K-kinetic"
-    ],
-    "status": "shelved with the Sep03 campaign; creative kept for a future Rubik's window"
-   },
-   "H2": {
-    "line": "Cut from one block of Sheesham — craft proof lifts purchase rate on warm audiences",
-    "briefs": [
-     "SPEC-spec-sheet",
-     "L-listicle"
-    ],
-    "status": "draft"
-   },
-   "H3": {
-    "line": "The gift that changes a room — gifting frame for the Sep–Oct festive window",
-    "briefs": [
-     "UNBOX-unboxing"
-    ],
-    "status": "draft; the render-led gifting static failed (₹2,178, 0 purchases) — run gifting only as an unboxing video or UGC"
-   },
-   "H4": {
-    "line": "Turn the big light off — anti-overhead-light angle (pendants)",
-    "briefs": [
-     "BA-before-after"
-    ],
-    "status": "draft"
-   }
-  },
-  "hooks_proven": [
-   {
-    "line": "Not just a lamp. A mood.",
-    "evidence": "Rubik's control creative, 5.69x / 31 purchases",
-    "family": "contrast",
-    "product": "rubik"
-   },
-   {
-    "line": "Wood changes everything.",
-    "evidence": "Aurora, 3.78x / 26 purchases",
-    "family": "contrast",
-    "product": "aurora"
-   },
-   {
-    "line": "Same wall. Different feeling.",
-    "evidence": "Aurora before/after static 3.71x",
-    "family": "transformation",
-    "product": "aurora"
-   },
-   {
-    "line": "Transform your walls.",
-    "evidence": "19.7x on 4 (warm)",
-    "family": "transformation",
-    "product": "aurora"
-   },
-   {
-    "line": "Solid wood. Not another fixture.",
-    "evidence": "product-truth line, best CTR-to-purchase 30d",
-    "family": "contrast",
-    "product": "wall lights"
-   },
-   {
-    "line": "Not brighter. Warmer.",
-    "evidence": "AD-COPY.md recommended primary text (short copy 3.67x vs 2.97x)",
-    "family": "contrast",
-    "product": "aurora"
-   },
-   {
-    "line": "Still lit by one tubelight?",
-    "evidence": "AD-COPY.md problem-first variant; used in the NixWoods 20s reel",
-    "family": "question",
-    "product": "any"
-   },
-   {
-    "line": "One lamp, three moods.",
-    "evidence": "best organic post ever: 52 saves, 3.7% ER (Social Playbook)",
-    "family": "listicle",
-    "product": "rubik"
-   },
-   {
-    "line": "Stop buying boring lights.",
-    "evidence": "most shares (Social Playbook)",
-    "family": "pattern-interrupt",
-    "product": "any"
-   },
-   {
-    "line": "Cozy, not cluttered.",
-    "evidence": "problem→solution, most shares (Social Playbook)",
-    "family": "contrast",
-    "product": "any"
-   },
-   {
-    "line": "Look at the joint, not the label.",
-    "evidence": "craft-proof line, unoccupied in the market (Ads Engine §4)",
-    "family": "contrast",
-    "product": "any"
-   },
-   {
-    "line": "At 11pm you don't want a ceiling light. You want this.",
-    "evidence": "Growth System layer 3 top concept, night tag 2.17x, hook 11/12",
-    "family": "pov",
-    "product": "rubik"
-   },
-   {
-    "line": "Why does this wall look expensive?",
-    "evidence": "status static, live",
-    "family": "question",
-    "product": "aurora"
-   },
-   {
-    "line": "Three moods. One lamp.",
-    "evidence": "Ads Engine test #1 (control: bedside video)",
-    "family": "listicle",
-    "product": "rubik"
-   }
-  ],
-  "hooks_failed": [
-   "gifting / nostalgia static on Rubik's (₹2,178, 0 purchases)",
-   "AI-rendered 'Overhead lighting ruins everything' as the hero (quality bottom 35%)",
-   "single-colour cube static (rule breach)",
-   "discount-led framing (competitors own it: Ikari 50–60% off)"
-  ],
-  "tags": [
-   "night",
-   "colour-flip",
-   "hands",
-   "craft",
-   "room",
-   "before-after",
-   "price",
-   "gift",
-   "festive",
-   "ugc"
-  ],
-  "tag_index": {
-   "night": 2.17,
-   "_note": "return multiplier per content tag from the Growth System's content-tag index (run_system.py, not in the repo); only 'night' is on record. Unknown tags count as 1.0 in --rank."
-  },
-  "social": {
-   "palette": {
-    "espresso": "#1A1614",
-    "walnut": "#3B2C22",
-    "ink": "#2A2320",
-    "warm_bone": "#F3EDE3",
-    "sand": "#D8C7B0",
-    "amber_glow": "#E8A24A"
-   },
-   "rule": "amber is the only accent; two base backgrounds (espresso dark, warm bone light) alternated; warm-grade everything; hook <3 s; warm ambient audio, no meme/EDM",
-   "type": "Fraunces (serif headlines) + Inter (body)",
-   "slots_ist": [
-    "13:00",
-    "20:30"
-   ],
-   "pillars": {
-    "Hero Product": [
-     "transformation",
-     "colour_loop",
-     "triptych",
-     "kinetic"
-    ],
-    "In-Room Lifestyle": [
-     "before_after",
-     "vo_story",
-     "ugc_pov"
-    ],
-    "Solid-Wood Story": [
-     "spec_sheet",
-     "listicle"
-    ],
-    "Social Proof/UGC": [
-     "testimonial",
-     "ugc_pov"
-    ],
-    "Tips & Education": [
-     "listicle",
-     "spec_sheet"
-    ],
-    "soft offer (1x/wk)": [
-     "price_reveal",
-     "unboxing"
+  "_layout": {
+    "note": "Each product has a folder under nixwoods-reel/ named by products.<key>.root. Inside it: src/ real footage, audio/ music+VO+SFX, hf/ generated stills and clips, ref/ design reference, out/ renders. Asset paths in this file are relative to that folder, so make_reel.py needs no --root for a product declared here.",
+    "add_a_product": [
+      "1. mkdir nixwoods-reel/<name>-reels/{src,audio,hf,ref,out}",
+      "2. put real footage in src/, a reference frame per angle in ref/, write ref/REFERENCE.md describing the true product form",
+      "3. python3 system/sources.py <name>-reels/src/<clip>.mp4 --write <key>  (registers colour states)",
+      "4. add products.<key> here: root, name, price, url, copy, assets, facts",
+      "5. generate stills with the template in <name>-reels/hf/PROMPTS.md, then python3 system/qa.py --root <name>-reels to approve or reject each one",
+      "6. copy a brief from system/briefs/, set product, render"
     ]
-   },
-   "cadence": "4–5 reels/week, at least one reel in the hero slots; every reel also to YouTube Shorts; Pinterest gets the room stills",
-   "festive": {
-    "Ganesh Chaturthi": "2026-09-14",
-    "Navratri": "2026-10-11",
-    "Dussehra": "2026-10-20",
-    "Dhanteras": "2026-11-06",
-    "Diwali": "2026-11-08",
-    "Bhai Dooj": "2026-11-11",
-    "rule": "festive urgency is genuine: no fake countdowns, no discount shouting; lead with gifting + warmth"
-   }
+  },
+  "drive": {
+    "root": "1CzQKZ9EHRY5ITfZlPCjAABb8kR4nXo91",
+    "product_photos": "1nXp-iE61A0lIgidTFZhFTdKlMelz3qvS",
+    "unsorted": "1ukKuObS93sg0VHhXteNHKFNMOhAMVKjk",
+    "never_use": [
+      "90-Archive/photoshoot-20260805-WATERMARKED-do-not-use"
+    ],
+    "note": "Files up to 10 MB download via download_file_content (oversized results are written to ~/.claude/projects/<project>/tool-results/ as JSON {content: base64}; decode from disk, never through context). Over 10 MB the connector refuses outright, which rules out all 18 raw shoot clips at 19-25 MB. Reel photography comes from the public Shopify product CDN. Full detail: nixwoods-reel/DRIVE-MAP.md",
+    "download_limit_mb": 10
   }
- },
- "_layout": {
-  "note": "Each product has a folder under nixwoods-reel/ named by products.<key>.root. Inside it: src/ real footage, audio/ music+VO+SFX, hf/ generated stills and clips, ref/ design reference, out/ renders. Asset paths in this file are relative to that folder, so make_reel.py needs no --root for a product declared here.",
-  "add_a_product": [
-   "1. mkdir nixwoods-reel/<name>-reels/{src,audio,hf,ref,out}",
-   "2. put real footage in src/, a reference frame per angle in ref/, write ref/REFERENCE.md describing the true product form",
-   "3. python3 system/sources.py <name>-reels/src/<clip>.mp4 --write <key>  (registers colour states)",
-   "4. add products.<key> here: root, name, price, url, copy, assets, facts",
-   "5. generate stills with the template in <name>-reels/hf/PROMPTS.md, then python3 system/qa.py --root <name>-reels to approve or reject each one",
-   "6. copy a brief from system/briefs/, set product, render"
-  ]
- },
- "drive": {
-  "root": "1CzQKZ9EHRY5ITfZlPCjAABb8kR4nXo91",
-  "product_photos": "1nXp-iE61A0lIgidTFZhFTdKlMelz3qvS",
-  "unsorted": "1ukKuObS93sg0VHhXteNHKFNMOhAMVKjk",
-  "never_use": [
-   "90-Archive/photoshoot-20260805-WATERMARKED-do-not-use"
-  ],
-  "note": "Files up to 10 MB download via download_file_content (oversized results are written to ~/.claude/projects/<project>/tool-results/ as JSON {content: base64}; decode from disk, never through context). Over 10 MB the connector refuses outright, which rules out all 18 raw shoot clips at 19-25 MB. Reel photography comes from the public Shopify product CDN. Full detail: nixwoods-reel/DRIVE-MAP.md",
-  "download_limit_mb": 10
- }
 }

@@ -648,6 +648,51 @@ def m_testimonial(b):
 # ==========================================================================
 # brief → reel
 # ==========================================================================
+
+@mechanism("corners", "top", "a walk through one home after dark, one lamp a corner — slow drift, almost no text")
+def m_corners(b):
+    """The #cornersofmyhome register: no hook-and-sell, no price screen, no proof line. A room,
+    then the next room, cut on the beat of a slow track, and one line of thought across the whole
+    thing. It is a saver and a sharer, not a closer — judge it on saves, not on CTR.
+
+    Shots come from the brief so the same mechanism walks any set of corners:
+
+        "shots": [{"still": "a_entry", "cam": "drift", "beats": 2}, ...]
+        "lines": [{"at": 0, "text": "how many lamps is too many?"}, ...]
+
+    With the `brand` product every still is a path into another product folder, so one cut can
+    carry the whole range without pretending to be four separate reels.
+    """
+    B = Build(b); c = b["copy"]; st = B.st
+    beat = float(b.get("cut", B.sd.get("cut", 1.766)))
+    xf = TRANS[b.get("transition", B.sd.get("transition", "dissolve"))]
+    plan = b.get("shots") or [dict(still=k, cam="drift") for k in list(b["assets"]["stills"])[:8]]
+
+    shots = []
+    for i, s in enumerate(plan):
+        # per-shot render options: `post` is the one that matters here. Half this photography was
+        # shot in daylight, and a daylight frame in a night cut reads as a mistake, so a shot can
+        # carry its own grade to bring it down to the hour the rest of the reel is set in.
+        kw = {k: s[k] for k in ("post", "fit", "crop_cx", "crop_cy") if k in s}
+        shots.append(B.still(s["still"], beat * float(s.get("beats", 1)),
+                             xfade=None if i == 0 else xf, cam=B.cam(s.get("cam", "drift")), **kw))
+
+    # Text is the exception here, not the rhythm: a line only where the brief asks for one.
+    for ln in b.get("lines", [{"at": 0, "text": c.get("hook", "")},
+                              {"at": len(shots) - 1, "text": c.get("turn", "")}]):
+        text = ln.get("text", "").strip()
+        if not text:
+            continue
+        sh = shots[max(0, min(len(shots) - 1, int(ln.get("at", 0))))]
+        B.say(sh, _wrap(text, int(ln.get("wrap", 22))), size=ln.get("size", 60),
+              pad=float(ln.get("pad", 0.2)), fade=float(ln.get("fade", 0.45)),
+              prefer=tuple(ln["prefer"]) if ln.get("prefer") else None)
+
+    B.card([c.get("cta_line", "every corner, one lamp.")], c.get("cta", c.get("url", "nixwoods.com")))
+    B.music(gain=float(b.get("music_gain_db", -4)), fi=0.8, fo=2.2)
+    return B.reel()
+
+
 def resolve(brief, root, out):
     prod = PRESETS["products"][brief.get("product", "rubik")]
     style = dict(PRESETS["styles"][brief.get("style", "broad")]); style.update(brief.get("style_overrides", {}))

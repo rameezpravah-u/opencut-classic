@@ -18,28 +18,30 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 PRESETS = json.load(open(os.path.join(HERE, "presets.json"), encoding="utf-8"))
 
-# brief prefix -> (product key, slug for the OS name)
+# brief prefix -> (product key, slug for the OS name, date filed or None for --date)
 BRIEFS = {
- "A1-aurora-transformation":      ("aurora",  "transformation"),
- "A2-aurora-before-after":        ("aurora",  "before-after"),
- "A3-aurora-sizes":               ("aurora",  "size-guide"),
- "A4-aurora-listicle":            ("aurora",  "three-reasons"),
- "A5-aurora-price":               ("aurora",  "price-reveal"),
- "R1-rosewood-transformation":    ("rosewood","transformation"),
- "R2-rosewood-vo":                ("rosewood","voice-over"),
- "R3-rosewood-spec":              ("rosewood","spec-card"),
- "R4-rosewood-loop":              ("rosewood","evening-loop"),
- "R5-rosewood-price":             ("rosewood","price-reveal"),
- "T1-teak-kinetic":               ("teak",    "kinetic-two-lines"),
- "T2-teak-transformation":        ("teak",    "transformation"),
- "T3-teak-triptych":              ("teak",    "three-rooms"),
- "T4-teak-spec":                  ("teak",    "spec-card"),
- "T5-teak-price":                 ("teak",    "price-reveal"),
- "K1-rubik-11pm":                 ("rubik",   "transformation-11pm"),
- "K2-rubik-mood":                 ("rubik",   "mood-loop"),
- "K3-rubik-listicle":             ("rubik",   "three-moods"),
- "K4-rubik-kinetic":              ("rubik",   "kinetic-no-switch"),
- "K5-rubik-price":                ("rubik",   "price-reveal"),
+ "A1-aurora-transformation":      ("aurora",  "transformation", "20260907"),
+ "A2-aurora-before-after":        ("aurora",  "before-after", "20260907"),
+ "A3-aurora-sizes":               ("aurora",  "size-guide", "20260907"),
+ "A4-aurora-listicle":            ("aurora",  "three-reasons", "20260907"),
+ "A5-aurora-price":               ("aurora",  "price-reveal", "20260907"),
+ "R1-rosewood-transformation":    ("rosewood","transformation", "20260907"),
+ "R2-rosewood-vo":                ("rosewood","voice-over", "20260907"),
+ "R3-rosewood-spec":              ("rosewood","spec-card", "20260907"),
+ "R4-rosewood-loop":              ("rosewood","evening-loop", "20260907"),
+ "R5-rosewood-price":             ("rosewood","price-reveal", "20260907"),
+ "T1-teak-kinetic":               ("teak",    "kinetic-two-lines", "20260907"),
+ "T2-teak-transformation":        ("teak",    "transformation", "20260907"),
+ "T3-teak-triptych":              ("teak",    "three-rooms", "20260907"),
+ "T4-teak-spec":                  ("teak",    "spec-card", "20260907"),
+ "T5-teak-price":                 ("teak",    "price-reveal", "20260907"),
+ "K1-rubik-11pm":                 ("rubik",   "transformation-11pm", "20260907"),
+ "K2-rubik-mood":                 ("rubik",   "mood-loop", "20260907"),
+ "K3-rubik-listicle":             ("rubik",   "three-moods", "20260907"),
+ "K4-rubik-kinetic":              ("rubik",   "kinetic-no-switch", "20260907"),
+ "K5-rubik-price":                ("rubik",   "price-reveal", "20260907"),
+
+ "B1-brand-corners":              ("brand",   "corners", None),
 }
 VARIANTS = {"-music.mp4": "music", "-clean.mp4": "clean"}
 
@@ -62,19 +64,20 @@ def main():
     a = ap.parse_args()
 
     manifest, rows = [], []
-    for brief, (pkey, slug) in BRIEFS.items():
+    for brief, (pkey, slug, filed) in BRIEFS.items():
+        date = filed or a.date
         prod = PRESETS["products"][pkey]
         handle, gid = prod["shopify_handle"], prod["shopify_gid"]
         src_dir = os.path.join(ROOT, prod["root"], "out", "system")
         for suffix, variant in VARIANTS.items():
-            asset = f"NW-CREATIVE-VID-{a.date}-{handle}-{slug}-{variant}-{a.version}"
+            asset = f"NW-CREATIVE-VID-{date}-{handle}-{slug}-{variant}-{a.version}"
             src, dst = os.path.join(src_dir, brief + suffix), os.path.join(src_dir, asset + ".mp4")
             if os.path.exists(src) and not os.path.exists(dst):
                 if subprocess.run(["git", "mv", src, dst], cwd=ROOT, capture_output=True).returncode:
                     os.rename(src, dst)          # not tracked yet
             if not os.path.exists(dst):
                 print("MISSING", src, file=sys.stderr); continue
-            manifest.append(dict(asset_id=asset, brief=brief, product=handle, product_id=gid,
+            manifest.append(dict(asset_id=asset, brief=brief, date=date, product=handle, product_id=gid,
                                  variant=variant, orientation="9:16",
                                  duration_s=probe(dst), size_mb=round(os.path.getsize(dst) / 1048576, 1),
                                  repo_path=os.path.relpath(dst, os.path.dirname(ROOT))))
@@ -85,7 +88,7 @@ def main():
     if a.rows:
         for m in manifest:
             print(f"| {m['asset_id']} | {m['brief']} {m['variant']} cut | VID | com | opencut-classic `{m['repo_path']}` | "
-                  f"code-cloud | {a.date[:4]}-{a.date[4:6]}-{a.date[6:]} | reel | SOCIAL, ADS, PIN | — | STAGED | "
+                  f"code-cloud | {m['date'][:4]}-{m['date'][4:6]}-{m['date'][6:]} | reel | SOCIAL, ADS, PIN | — | STAGED | "
                   f"— | CREATIVE tab | {m['product']} | {m['product_id']} | reel | {m['orientation']} | {m['duration_s']}s |")
 
 
