@@ -76,8 +76,10 @@ def main():
               f"{'   <- a shot every beat is frantic below ~100 BPM' if mult == 1 and bpm < 100 else ''}")
     # confidence: how far the peak stands above the rest of the plausible band
     band = ac[ok]
-    print(f"  confidence peak is {band.max()/ (band.mean() or 1):.1f}x the band mean "
-          f"({'clear' if band.max() > 2.5 * band.mean() else 'weak — check by ear'})")
+    ref = np.abs(band).mean() or 1.0        # autocorrelation goes negative; a signed mean prints nonsense
+    ratio = band.max() / ref
+    print(f"  confidence peak is {ratio:.1f}x the mean absolute correlation in the band "
+          f"({'clear' if ratio > 2.5 else 'weak — check by ear'})")
 
 
 if __name__ == "__main__":

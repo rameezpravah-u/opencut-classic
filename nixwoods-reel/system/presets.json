@@ -423,6 +423,55 @@
       "music": "audio/music2-meaning.mp3",
       "cut": 2.4,
       "transition": "dissolve"
+    },
+    "noir": {
+      "label": "dark / stylish quick cut",
+      "audience": "design-led, scroll-stopping; saves and sends",
+      "headline_font": "Space_Grotesk-500.ttf",
+      "headline_size": 56,
+      "support_font": "Inter-300.ttf",
+      "support_size": 30,
+      "kicker_font": "Inter-600.ttf",
+      "kicker_size": 26,
+      "price_font": "Inter-600.ttf",
+      "case": "lower",
+      "align": "left",
+      "x_left": 96,
+      "tracking": 6,
+      "support_tracking": 4,
+      "line_gap": 8,
+      "shadow_blur": 16,
+      "palette": {
+        "text": [
+          242,
+          238,
+          231
+        ],
+        "accent": [
+          226,
+          166,
+          92
+        ],
+        "card": [
+          9,
+          9,
+          10
+        ],
+        "on_card": [
+          242,
+          238,
+          231
+        ],
+        "rule": [
+          70,
+          70,
+          72
+        ]
+      },
+      "grade": "eq=brightness=-0.30:contrast=1.50:saturation=1.05,colorbalance=rh=0.06:bh=-0.06:rs=-0.03:bs=0.04,vignette=angle=PI/3.6:mode=forward",
+      "cut": 1.16,
+      "transition": "cut",
+      "music": "audio/music7-noir.mp3"
     }
   },
   "camera": {
@@ -1152,6 +1201,61 @@
         "clip_status": {},
         "clip_colours": {},
         "_note": "brand-level product: every still is a relative path into another product's folder, so brand-reels/ holds no photography of its own. Add a corner by pointing at <product>-reels/hf/<file> and copying that product's fit rule."
+      }
+    },
+    "curve": {
+      "root": "curve-reels",
+      "name": "Sculpted Glow Pendant",
+      "price": "",
+      "url": "nixwoods.com",
+      "copy": {
+        "name": "Sculpted Glow Pendant",
+        "name_ad": "Sculpted Glow Pendant",
+        "price": "",
+        "url": "nixwoods.com",
+        "hook": "one line of light.",
+        "turn": "drawn in one stroke.",
+        "cta": "solid wood lighting · nixwoods.com",
+        "cta_line": "one line of light.",
+        "kicker": "solid wood · made in india"
+      },
+      "facts": [
+        "solid wood",
+        "rosewood",
+        "sheesham",
+        "made in india",
+        "handcrafted in india",
+        "led"
+      ],
+      "states": {},
+      "state_max": {},
+      "rules": {
+        "two_colours": false,
+        "note": "single warm LED rope; the two-colour rule is specific to the cube lamp"
+      },
+      "shopify_handle": "brand",
+      "shopify_gid": "",
+      "assets": {
+        "stills": {},
+        "clips": {
+          "c1": "src/IMG_7752.mp4",
+          "c2": "src/IMG_7753.mp4"
+        },
+        "sfx": {
+          "whoosh": "audio/sfx-whoosh.mp3",
+          "turn": "audio/sfx-turn.mp3"
+        },
+        "fit": {},
+        "crops": {},
+        "slots": {},
+        "ai_generated": [],
+        "status": {},
+        "clip_status": {
+          "c1": "approved 9 Sep — the owner's own phone footage of the real fixture, IMG_7752.mov",
+          "c2": "approved 9 Sep — the owner's own phone footage of the real fixture, IMG_7753.mov"
+        },
+        "clip_colours": {},
+        "_note": "Real iPhone footage, HEVC 10-bit HLG at 1920x1080 with a -90 display rotation. src/ holds the tonemapped SDR 1080x1920 conversions (zscale linear -> tonemap=hable -> bt709); the .mov originals are NOT in the repo. Shopify handle is UNCONFIRMED — the fixture is the pendant sibling of `luminous-spiral-sculptural-sheesham-wood` (a floor lamp) and no pendant listing was found, so it is filed under `brand` until the owner names the handle."
       }
     }
   },

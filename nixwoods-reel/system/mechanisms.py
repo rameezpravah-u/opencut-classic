@@ -180,6 +180,18 @@ class Build:
             return self._add("video", self.path(self.b["assets"]["clips"][key]), 0, min(dur, cap), xfade, kw, key=key)
         return self.still(fallback or key, dur, xfade, **kw)
 
+    def take(self, key, ss, dur, xfade=None, **kw):
+        """one segment of a source clip, chosen by in-point.
+
+        `clip()` exists for a generated clip used whole; a cut assembled out of real footage needs
+        to go back to the same file at a different second, so this takes `ss` and does not cap the
+        duration. Honours the same fidelity gate."""
+        if not self.has("clips", key):
+            raise SystemExit(f"{self.name}: no clip {key!r} at {self.b['assets'].get('clips', {}).get(key)!r}")
+        if self.rejected("clips", key):
+            raise SystemExit(f"{self.name}: clip {key!r} is marked rejected in presets.json")
+        return self._add("video", self.path(self.b["assets"]["clips"][key]), ss, dur, xfade, kw, key=key)
+
     def pre(self, path, dur, xfade=None, **kw):
         """a pre-rendered composition (triptych, before/after) used as a segment"""
         return self._add("video", path, 0, dur, xfade, kw)
@@ -690,6 +702,51 @@ def m_corners(b):
 
     B.card([c.get("cta_line", "every corner, one lamp.")], c.get("cta", c.get("url", "nixwoods.com")))
     B.music(gain=float(b.get("music_gain_db", -4)), fi=0.8, fo=2.2)
+    return B.reel()
+
+
+
+@mechanism("quickcut", "top", "fast cuts out of real footage — dark grade, hard cuts on the beat, two lines of type")
+def m_quickcut(b):
+    """For footage rather than photography: a short, hard-cut piece that goes back to the same one
+    or two clips at different seconds and different speeds instead of needing eight setups.
+
+    Every shot is `{clip, ss, dur (in beats), speed|slow|reverse}` from the brief, so the same
+    mechanism cuts any footage:
+
+        "shots": [{"clip": "c2", "ss": 0.2, "beats": 1}, {"clip": "c1", "ss": 2.6, "beats": 0.5}]
+        "lines": [{"at": 0, "text": "one line of light."}]
+
+    Hard cuts by default: a dissolve at this speed reads as a mistake. The dark look is the
+    `noir` style's grade, not something this mechanism imposes.
+    """
+    B = Build(b); c = b["copy"]; st = B.st
+    beat = float(b.get("cut", B.sd.get("cut", 1.16)))
+    xf = TRANS[b.get("transition", B.sd.get("transition", "cut"))]
+
+    shots = []
+    for i, s in enumerate(b["shots"]):
+        kw = {k: s[k] for k in ("speed", "slow", "reverse", "post", "cam") if k in s}
+        if "cam" in kw:
+            kw["cam"] = B.cam(kw["cam"])
+        shots.append(B.take(s["clip"], float(s.get("ss", 0)), beat * float(s.get("beats", 1)),
+                            xfade=None if i == 0 else xf, **kw))
+
+    for ln in b.get("lines", []):
+        text = ln.get("text", "").strip()
+        if not text:
+            continue
+        sh = shots[max(0, min(len(shots) - 1, int(ln.get("at", 0))))]
+        kw = {} if ln.get("box", True) else {"box": None}      # dark grade: a plate reads as a smudge
+        B.say(sh, _wrap(text, int(ln.get("wrap", 18))), size=ln.get("size", B.sd["headline_size"]),
+              pad=float(ln.get("pad", 0.12)), fade=float(ln.get("fade", 0.18)),
+              prefer=tuple(ln["prefer"]) if ln.get("prefer") else None, **kw)
+
+    for t in b.get("whoosh_at", []):                       # accent 0.2 s before a cut, house rule
+        B.sfx("whoosh", float(t) - 0.2)
+    B.card([c.get("cta_line", "one line of light.")], c.get("cta", c.get("url", "nixwoods.com")),
+           dur=float(b.get("card_dur", 2.0)), xfade=TRANS["fade"])
+    B.music(gain=float(b.get("music_gain_db", -3)), fi=0.15, fo=1.4)
     return B.reel()
 
 
