@@ -42,7 +42,8 @@ BRIEFS = {
  "K5-rubik-price":                ("rubik",   "price-reveal", "20260907"),
 
  "B1-brand-corners":              ("brand",   "corners", "20260908"),
- "N1-curve-noir":                 ("curve",   "sculpted-glow-quickcut", None),
+ "N1-curve-noir":                 ("curve",   "sculpted-glow-quickcut", "20260909"),
+ "S1-shelf-noir":                 ("shelf",   "light-shelf-workshop", None),
 }
 VARIANTS = {"-music.mp4": "music", "-clean.mp4": "clean"}
 
