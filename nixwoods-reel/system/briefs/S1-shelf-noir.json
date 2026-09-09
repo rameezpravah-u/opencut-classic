@@ -1,0 +1,112 @@
+{
+ "mechanism": "quickcut",
+ "product": "shelf",
+ "style": "noir",
+ "tags": [
+  "dark",
+  "quick-cut",
+  "real-footage",
+  "workshop",
+  "made-in-india"
+ ],
+ "pillar": "Craft",
+ "channel": "organic",
+ "music": "audio/music7-noir.mp3",
+ "music_gain_db": -3,
+ "cut": 1.16,
+ "cover_t": 6.5,
+ "card_dur": 2.0,
+ "shots": [
+  {
+   "clip": "polish",
+   "ss": 0.3,
+   "beats": 1.5,
+   "cam": "pull"
+  },
+  {
+   "clip": "polish",
+   "ss": 2.1,
+   "beats": 1,
+   "cam": "push_hard"
+  },
+  {
+   "clip": "polish",
+   "ss": 4.3,
+   "beats": 0.5,
+   "cam": "hold"
+  },
+  {
+   "clip": "track",
+   "ss": 0.2,
+   "beats": 1,
+   "cam": "push"
+  },
+  {
+   "clip": "track",
+   "ss": 1.6,
+   "beats": 0.5,
+   "cam": "push_hard"
+  },
+  {
+   "clip": "three",
+   "ss": 0.15,
+   "beats": 1,
+   "cam": "pull"
+  },
+  {
+   "clip": "track",
+   "ss": 2.3,
+   "beats": 0.5,
+   "cam": "drift_back"
+  },
+  {
+   "clip": "three",
+   "ss": 1.6,
+   "beats": 1,
+   "cam": "push"
+  },
+  {
+   "clip": "three",
+   "ss": 2.4,
+   "beats": 1.5,
+   "cam": "pull",
+   "slow": 1.3
+  }
+ ],
+ "lines": [
+  {
+   "at": 0,
+   "text": "wait for it to light up.",
+   "size": 56,
+   "wrap": 18,
+   "box": false
+  },
+  {
+   "at": 3,
+   "text": "there it is.",
+   "size": 52,
+   "wrap": 16,
+   "box": false
+  },
+  {
+   "at": 8,
+   "text": "three on one wall.",
+   "size": 52,
+   "wrap": 18,
+   "box": false
+  }
+ ],
+ "whoosh_at": [
+  3.9,
+  7.2
+ ],
+ "copy": {
+  "hook": "wait for it to light up.",
+  "turn": "there it is.",
+  "cta_line": "made by hand. lit by a line.",
+  "cta": "solid wood lighting · nixwoods.com"
+ },
+ "notes": "Rameez's own workshop footage of the floating light shelf: a craftsman finishing the plank, a tight track along the lit channel, and the three finished shelves. Same noir style and quickcut mechanism as N1. The story is make -> light -> three, so the workshop shots lead and the payoff is the three lit shelves. Source is HLG (7749 is 4K60) — tonemapped to SDR 1080x1920 first. Handle UNCONFIRMED: the store carries several floating light shelves and this dark rosewood one was not matched, so no price, no size and no material claim beyond what the footage shows. Hook rewritten: 'polished by hand.' scored 4/12 (no gap, no pull). The footage withholds the light for three shots, so the hook now names that wait — 'wait for it to light up.' scores 8/12, and the payoff line lands on the first lit frame. Grade overridden at brief level. The `noir` style grade (brightness -0.30, contrast 1.50) was built for the pendant footage, whose darkest 5% of pixels sit at 122; this workshop footage sits at 28, so the same crush buried the craftsman and the plank in black. This grade lifts the toe with a curve instead of pulling brightness down, and keeps the dark look with contrast and vignette: measured, then checked against a frame.",
+ "name": "S1-shelf-noir",
+ "grade": "curves=all='0/0.05 0.3/0.27 0.75/0.80 1/1',eq=brightness=-0.10:contrast=1.25:saturation=1.08,colorbalance=rh=0.06:bh=-0.06,vignette=angle=PI/3.8:mode=forward"
+}

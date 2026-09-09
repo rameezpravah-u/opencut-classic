@@ -1257,6 +1257,74 @@
         "clip_colours": {},
         "_note": "Real iPhone footage, HEVC 10-bit HLG at 1920x1080 with a -90 display rotation. src/ holds the tonemapped SDR 1080x1920 conversions (zscale linear -> tonemap=hable -> bt709); the .mov originals are NOT in the repo. Shopify handle is UNCONFIRMED — the fixture is the pendant sibling of `luminous-spiral-sculptural-sheesham-wood` (a floor lamp) and no pendant listing was found, so it is filed under `brand` until the owner names the handle."
       }
+    },
+    "shelf": {
+      "root": "shelf-reels",
+      "name": "Floating Wall Light Shelf",
+      "price": "",
+      "url": "nixwoods.com",
+      "copy": {
+        "name": "Floating Wall Light Shelf",
+        "name_ad": "Floating Wall Light Shelf",
+        "price": "",
+        "url": "nixwoods.com",
+        "hook": "wait for it to light up.",
+        "turn": "there it is.",
+        "cta": "solid wood lighting · nixwoods.com",
+        "cta_line": "made by hand. lit by a line.",
+        "kicker": "solid wood · made in india"
+      },
+      "facts": [
+        "solid wood",
+        "rosewood",
+        "sheesham",
+        "made in india",
+        "handcrafted in india",
+        "led"
+      ],
+      "states": {},
+      "state_max": {},
+      "rules": {
+        "two_colours": false,
+        "note": "single warm LED channel"
+      },
+      "shopify_handle": "brand",
+      "shopify_gid": "",
+      "assets": {
+        "stills": {
+          "endcap": "src/ref-endcap.jpg",
+          "wall_a": "hf/gen-three-on-wall-a.png",
+          "wall_b": "hf/gen-three-on-wall-b.png"
+        },
+        "clips": {
+          "polish": "src/IMG_7745.mp4",
+          "track": "src/IMG_7747.mp4",
+          "three": "src/IMG_7749.mp4"
+        },
+        "sfx": {
+          "whoosh": "audio/sfx-whoosh.mp3",
+          "turn": "audio/sfx-turn.mp3"
+        },
+        "fit": {},
+        "crops": {},
+        "slots": {},
+        "ai_generated": [
+          "wall_a",
+          "wall_b"
+        ],
+        "status": {
+          "endcap": "approved 9 Sep — the owner's own photo of the finished shelf end, ref for any generation",
+          "wall_a": "approved 9 Sep — generated (ElevenLabs gemini-3-pro-image) from a reference composite of the owner's own end-cap photo plus a frame of the three finished shelves. Checked against both: dark plank, bullnose ends, one warm line inset in the top face, three staggered on a wall. 16:9 — needs a vertical version before it can carry a reel or a pin.",
+          "wall_b": "approved 9 Sep — same generation, second take. Cleaner read of the inset channel than wall_a, less styling. 16:9."
+        },
+        "clip_status": {
+          "polish": "approved 9 Sep — owner's workshop footage, a craftsman finishing the plank (IMG_7745.mov)",
+          "track": "approved 9 Sep — owner's footage, tight track along three lit shelves (IMG_7747.mov)",
+          "three": "approved 9 Sep — owner's footage, the three finished shelves lit, 4K60 (IMG_7749.mov)"
+        },
+        "clip_colours": {},
+        "_note": "Owner's own iPhone footage, HEVC 10-bit HLG with a -90 rotation; 7749 is 3840x2160 at 60 fps. src/ holds tonemapped SDR 1080x1920 conversions. Shopify handle UNCONFIRMED — the store lists several floating light shelves (floating-wall-sconce-light, wood-floating-wall-light-shelf-modern-led-wall-sconce-lighting, curve-pine-...) and this dark rosewood one was not matched to a listing, so it is filed under `brand`."
+      }
     }
   },
   "engine": {
