@@ -180,17 +180,48 @@ class Build:
             return self._add("video", self.path(self.b["assets"]["clips"][key]), 0, min(dur, cap), xfade, kw, key=key)
         return self.still(fallback or key, dur, xfade, **kw)
 
+    @staticmethod
+    def _clip_duration(path):
+        """seconds, parsed from ffmpeg's own report — imageio-ffmpeg ships ffmpeg but no ffprobe"""
+        import subprocess
+        try:
+            import imageio_ffmpeg
+            exe = imageio_ffmpeg.get_ffmpeg_exe()
+        except Exception:
+            exe = "ffmpeg"
+        out = subprocess.run([exe, "-hide_banner", "-i", path], capture_output=True, text=True).stderr
+        for line in out.splitlines():
+            if "Duration:" in line:
+                h, m, sec = line.split("Duration:")[1].split(",")[0].strip().split(":")
+                return int(h) * 3600 + int(m) * 60 + float(sec)
+        return None
+
     def take(self, key, ss, dur, xfade=None, **kw):
         """one segment of a source clip, chosen by in-point.
 
         `clip()` exists for a generated clip used whole; a cut assembled out of real footage needs
         to go back to the same file at a different second, so this takes `ss` and does not cap the
-        duration. Honours the same fidelity gate."""
+        duration. Honours the same fidelity gate.
+
+        Refuses a segment that reads past the end of its source. Silently, that does not shorten
+        one shot — ffmpeg runs out of frames and everything after it, the end card included, is
+        truncated off the render, which is easy to miss on a contact sheet."""
         if not self.has("clips", key):
             raise SystemExit(f"{self.name}: no clip {key!r} at {self.b['assets'].get('clips', {}).get(key)!r}")
         if self.rejected("clips", key):
             raise SystemExit(f"{self.name}: clip {key!r} is marked rejected in presets.json")
-        return self._add("video", self.path(self.b["assets"]["clips"][key]), ss, dur, xfade, kw, key=key)
+        path = self.path(self.b["assets"]["clips"][key])
+        have = self._clip_duration(path)
+        # slow=N stretches N seconds of output out of 1 second of source, so it needs LESS source
+        need = round(dur * float(self.b.get("stretch", 1.0)) / float(kw.get("slow", 1.0) or 1.0)
+                     * float(kw.get("speed", 1.0) or 1.0), 3)
+        if have is not None and ss + need > have + 1e-3:
+            raise SystemExit(
+                f"{self.name}: shot on clip {key!r} runs past the end of the source — "
+                f"ss {ss:.2f}s + {need:.2f}s needed = {ss + need:.2f}s, but {os.path.basename(path)} "
+                f"is only {have:.2f}s. Move the in-point back to {max(0.0, have - need):.2f}s or earlier, "
+                f"or shorten the shot.")
+        return self._add("video", path, ss, dur, xfade, kw, key=key)
 
     def pre(self, path, dur, xfade=None, **kw):
         """a pre-rendered composition (triptych, before/after) used as a segment"""

@@ -67,7 +67,7 @@
   },
   {
    "clip": "three",
-   "ss": 2.4,
+   "ss": 1.8,
    "beats": 1.5,
    "cam": "pull",
    "slow": 1.3
@@ -106,7 +106,7 @@
   "cta_line": "made by hand. lit by a line.",
   "cta": "solid wood lighting · nixwoods.com"
  },
- "notes": "Rameez's own workshop footage of the floating light shelf: a craftsman finishing the plank, a tight track along the lit channel, and the three finished shelves. Same noir style and quickcut mechanism as N1. The story is make -> light -> three, so the workshop shots lead and the payoff is the three lit shelves. Source is HLG (7749 is 4K60) — tonemapped to SDR 1080x1920 first. Handle UNCONFIRMED: the store carries several floating light shelves and this dark rosewood one was not matched, so no price, no size and no material claim beyond what the footage shows. Hook rewritten: 'polished by hand.' scored 4/12 (no gap, no pull). The footage withholds the light for three shots, so the hook now names that wait — 'wait for it to light up.' scores 8/12, and the payoff line lands on the first lit frame. Grade overridden at brief level. The `noir` style grade (brightness -0.30, contrast 1.50) was built for the pendant footage, whose darkest 5% of pixels sit at 122; this workshop footage sits at 28, so the same crush buried the craftsman and the plank in black. This grade lifts the toe with a curve instead of pulling brightness down, and keeps the dark look with contrast and vignette: measured, then checked against a frame.",
+ "notes": "Rameez's own workshop footage of the floating light shelf: a craftsman finishing the plank, a tight track along the lit channel, and the three finished shelves. Same noir style and quickcut mechanism as N1. The story is make -> light -> three, so the workshop shots lead and the payoff is the three lit shelves. Source is HLG (7749 is 4K60) — tonemapped to SDR 1080x1920 first. Handle UNCONFIRMED: the store carries several floating light shelves and this dark rosewood one was not matched, so no price, no size and no material claim beyond what the footage shows. Hook rewritten: 'polished by hand.' scored 4/12 (no gap, no pull). The footage withholds the light for three shots, so the hook now names that wait — 'wait for it to light up.' scores 8/12, and the payoff line lands on the first lit frame. Grade overridden at brief level. The `noir` style grade (brightness -0.30, contrast 1.50) was built for the pendant footage, whose darkest 5% of pixels sit at 122; this workshop footage sits at 28, so the same crush buried the craftsman and the plank in black. This grade lifts the toe with a curve instead of pulling brightness down, and keeps the dark look with contrast and vignette: measured, then checked against a frame. Third pass: the closing shot read from 2.40 s of a 3.27 s clip and needed 3.74 s — ffmpeg ran out of frames and silently truncated the end card off the render (the video stopped at 10.0 s while the container still said 11.46 s). In-point moved to 1.80 s, and Build.take now refuses any shot that reads past the end of its source instead of failing quietly.",
  "name": "S1-shelf-noir",
  "grade": "curves=all='0/0.05 0.3/0.27 0.75/0.80 1/1',eq=brightness=-0.10:contrast=1.25:saturation=1.08,colorbalance=rh=0.06:bh=-0.06,vignette=angle=PI/3.8:mode=forward"
 }
