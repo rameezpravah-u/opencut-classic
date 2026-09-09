@@ -757,11 +757,17 @@ def m_quickcut(b):
 
     shots = []
     for i, s in enumerate(b["shots"]):
-        kw = {k: s[k] for k in ("speed", "slow", "reverse", "post", "cam") if k in s}
+        kw = {k: s[k] for k in ("speed", "slow", "reverse", "post", "cam", "fit") if k in s}
         if "cam" in kw:
             kw["cam"] = B.cam(kw["cam"])
-        shots.append(B.take(s["clip"], float(s.get("ss", 0)), beat * float(s.get("beats", 1)),
-                            xfade=None if i == 0 else xf, **kw))
+        dur, xfade = beat * float(s.get("beats", 1)), None if i == 0 else xf
+        if s.get("still"):
+            # a still among the footage: the payoff shot a phone in a workshop cannot get
+            for k in ("speed", "slow", "reverse"):
+                kw.pop(k, None)
+            shots.append(B.still(s["still"], dur, xfade=xfade, **kw))
+        else:
+            shots.append(B.take(s["clip"], float(s.get("ss", 0)), dur, xfade=xfade, **kw))
 
     for ln in b.get("lines", []):
         text = ln.get("text", "").strip()

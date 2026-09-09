@@ -2,7 +2,7 @@
  "name": "S1-shelf-noir",
  "mechanism": "quickcut",
  "style": "noir",
- "duration": 11.46,
+ "duration": 14.36,
  "shots": [
   {
    "kind": "video",
@@ -116,10 +116,22 @@
   },
   {
    "kind": "still",
+   "src": "hf/gen-three-on-wall-a-9x16.jpg",
+   "ss": 0,
+   "start": 9.86,
+   "end": 12.76,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "still",
    "src": "out/system/S1-shelf-noir-end.png",
    "ss": 0,
-   "start": 9.46,
-   "end": 11.46,
+   "start": 12.36,
+   "end": 14.36,
    "xfade": [
     "fade",
     0.4
@@ -140,8 +152,8 @@
   },
   {
    "png": "S1-shelf-noir-c02.png",
-   "start": 8.24,
-   "end": 9.74
+   "start": 9.98,
+   "end": 12.64
   }
  ],
  "audio": [
@@ -195,7 +207,7 @@
    "trademark": [],
    "passes": false
   },
-  "uses_generated_frames": false,
+  "uses_generated_frames": true,
   "colours": [
    "n/a"
   ],
@@ -239,8 +251,8 @@
    },
    {
     "check": "AI disclosure ticked in Ads Manager",
-    "ok": true,
-    "detail": "no generated frames"
+    "ok": null,
+    "detail": "Higgsfield frames in this cut → tick by hand"
    },
    {
     "check": "hook on screen by 0.3 s, holds 1.2 s; all text in the safe zone",
@@ -250,7 +262,7 @@
    {
     "check": "length · 25–30 s cut exists for ads (Medium bucket 4.54x vs 0.98x Short)",
     "ok": null,
-    "detail": "11.5 s — render again with \"stretch\" for the ad cut"
+    "detail": "14.4 s — render again with \"stretch\" for the ad cut"
    }
   ]
  }
