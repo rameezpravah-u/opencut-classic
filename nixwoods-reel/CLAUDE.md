@@ -39,6 +39,12 @@ No flags needed. `--root` only for assets outside a declared product folder.
 - **Reference before generation.** Every product needs `ref/REFERENCE.md` and real frames before any AI imagery is made or judged. Generated assets carry an approve/reject verdict in `presets.json`; rejected ones are refused at render and fall back to real footage.
 - **Commit renders as they pass review**, not in a batch — the session container is ephemeral. Storage rule and size ceiling in `README.md`.
 - **Review sheets are JPEG**, never PNG.
+- **Never poll for a background render with a `pgrep` wait-loop.** The harness sends a completion
+  notification when a backgrounded command exits — that is the signal. A loop like
+  `while pgrep -f "make_reel.py <brief>"; do sleep 15; done` also matches its OWN command line,
+  so it never exits, and a second one matches the first. Two of these span silently on 9 Sep while
+  the render they were watching had already finished. If a wait is genuinely needed, wait on a
+  condition that cannot match the watcher (a file appearing, a marker written by the job itself).
 - **Copy rules are enforced, not advisory**: banned words, 12 words a screen, no fabricated testimonials, no dispatch claims while backlogged, two colours minimum on the cube lamp, AI disclosure on generated frames in paid ads.
 - Ads Engine, creative learnings and the decision ledger live in the `Code` repo, branch `claude/nixwoods-funnel-audit-hg4dk9`.
 - **Drive** (root `nixwoods`): downloads work up to 10 MB a file, so photographs and short edits are fetchable but the 18 raw shoot clips (19–25 MB) are not. Reel photography comes from the public Shopify product CDN. Map, naming, download recipe and the do-not-use watermarked set: `DRIVE-MAP.md`.
