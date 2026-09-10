@@ -2,7 +2,13 @@
  "mechanism": "quickcut",
  "product": "shelf",
  "style": "noir",
- "tags": ["dark", "quick-cut", "mugs", "styling", "real-footage + render"],
+ "tags": [
+  "dark",
+  "quick-cut",
+  "mugs",
+  "styling",
+  "real-footage + render"
+ ],
  "pillar": "New Product",
  "channel": "organic",
  "music": "audio/music7-noir.mp3",
@@ -12,27 +18,93 @@
  "card_dur": 2.0,
  "grade": "curves=all='0/0.03 0.3/0.28 0.75/0.80 1/1',eq=brightness=-0.06:contrast=1.20:saturation=1.06,colorbalance=rh=0.06:bh=-0.06,vignette=angle=PI/3.8:mode=forward",
  "shots": [
-  {"still": "mugs_c", "cam": "hold",       "beats": 1.5, "post": "eq=brightness=-0.46:contrast=0.92:saturation=0.75"},
-  {"still": "mugs_c", "cam": "push",       "beats": 1.5},
-  {"clip": "track",   "ss": 0.20, "cam": "push_hard", "beats": 0.5},
-  {"clip": "polish",  "ss": 2.10, "cam": "pull",      "beats": 1, "post": "eq=brightness=-0.14:contrast=1.06"},
-  {"still": "mugs_a", "cam": "drift_back", "beats": 1},
-  {"clip": "three",   "ss": 0.15, "cam": "pull",      "beats": 1, "post": "eq=brightness=-0.10:contrast=1.05"},
-  {"still": "mugs_b", "cam": "push",       "beats": 1},
-  {"still": "mugs_c", "cam": "pull",       "beats": 1.5}
+  {
+   "still": "mugs_c",
+   "cam": "hold",
+   "beats": 1.5,
+   "post": "eq=brightness=-0.46:contrast=0.92:saturation=0.75"
+  },
+  {
+   "still": "mugs_c",
+   "cam": "push",
+   "beats": 1.5
+  },
+  {
+   "clip": "track",
+   "ss": 0.2,
+   "cam": "push_hard",
+   "beats": 0.5,
+   "post": "eq=brightness=-0.14:contrast=1.06"
+  },
+  {
+   "still": "mugs_c",
+   "cam": "drift",
+   "beats": 1.0,
+   "fit": "cover"
+  },
+  {
+   "clip": "polish",
+   "ss": 2.1,
+   "cam": "pull",
+   "beats": 1.0,
+   "post": "eq=brightness=-0.14:contrast=1.06"
+  },
+  {
+   "still": "mugs_a",
+   "cam": "drift_back",
+   "beats": 1.0
+  },
+  {
+   "clip": "three",
+   "ss": 0.15,
+   "cam": "pull",
+   "beats": 1.0,
+   "post": "eq=brightness=-0.10:contrast=1.05"
+  },
+  {
+   "still": "mugs_b",
+   "cam": "push",
+   "beats": 1.0
+  },
+  {
+   "still": "mugs_c",
+   "cam": "pull",
+   "beats": 1.5
+  }
  ],
  "lines": [
-  {"at": 0, "text": "turn it on and look at the mugs.", "size": 52, "wrap": 18, "box": false},
-  {"at": 4, "text": "it lights what you actually use.", "size": 48, "wrap": 20, "box": false},
-  {"at": 7, "text": "one line. every mug.", "size": 52, "wrap": 18, "box": false}
+  {
+   "at": 0,
+   "text": "turn it on and look at the mugs.",
+   "size": 52,
+   "wrap": 18,
+   "box": false
+  },
+  {
+   "at": 5,
+   "text": "it lights what you actually use.",
+   "size": 48,
+   "wrap": 20,
+   "box": false
+  },
+  {
+   "at": 8,
+   "text": "one line. every mug.",
+   "size": 52,
+   "wrap": 18,
+   "box": false
+  }
  ],
- "whoosh_at": [1.74, 5.22],
+ "whoosh_at": [
+  1.74,
+  5.22
+ ],
  "copy": {
   "hook": "turn it on and look at the mugs.",
   "turn": "it lights what you actually use.",
   "cta_line": "one line of light.",
   "cta": "solid wood lighting · nixwoods.com"
  },
- "notes": "Rameez sent an Instagram reel I could not open (login wall) and said 'perhaps show nixwoods light doing this to mugs'. Built on one stated assumption: the shelf's inset LED is a RAKING light at the front edge, so a row of mugs is the ideal subject — each catches a bright warm edge and throws a long shadow back onto the wall. Shots 1 and 2 are the SAME still, the first pushed down with a per-shot grade and the second at full level: a grade-driven reveal, not a filmed switch-on — nothing in the source footage shows the light being turned on, and the caption must not claim it does. Real workshop footage carries the middle (track, polish, three) so the reel is not purely rendered. Hook scores 9/12, all three gates — the best in this product's set. THREE of eight shots are AI-generated stills: paid use needs Meta's AI disclosure, and the caption says the room shots are renders.",
+ "notes": "Rameez sent an Instagram reel I could not open (login wall) and said 'perhaps show nixwoods light doing this to mugs'. Built on one stated assumption: the shelf's inset LED is a RAKING light at the front edge, so a row of mugs is the ideal subject — each catches a bright warm edge and throws a long shadow back onto the wall. Shots 1 and 2 are the SAME still, the first pushed down with a per-shot grade and the second at full level: a grade-driven reveal, not a filmed switch-on — nothing in the source footage shows the light being turned on, and the caption must not claim it does. Real workshop footage carries the middle (track, polish, three) so the reel is not purely rendered. Hook scores 9/12, all three gates — the best in this product's set. THREE of eight shots are AI-generated stills: paid use needs Meta's AI disclosure, and the caption says the room shots are renders. Second pass, from the contact sheet: the first build put the 9:16 vertically-EXTENDED mug stills in the cut, which left the lit shelf as a thin band in a mostly black frame — the product read as tiny. Extension is right for a standalone poster with a tall wall to fill; it is wrong for a wide subject inside a reel. The cut now uses the 16:9 originals with `fit: contain`, so the whole shelf sits full width over a blurred, dimmed copy of itself instead of dead black, plus one tight `fit: cover` shot with a `drift` pan that travels along the row of mugs. The 9:16 mug files were deleted rather than left around to be picked up by mistake.",
  "name": "M1-shelf-mugs"
 }

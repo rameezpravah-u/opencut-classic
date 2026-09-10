@@ -1296,9 +1296,9 @@
           "wall_a": "hf/gen-three-on-wall-a.png",
           "wall_b": "hf/gen-three-on-wall-b.png",
           "wall_9x16": "hf/gen-three-on-wall-a-9x16.jpg",
-          "mugs_a": "hf/gen-mugs-a-9x16.jpg",
-          "mugs_b": "hf/gen-mugs-b-9x16.jpg",
-          "mugs_c": "hf/gen-mugs-c-9x16.jpg"
+          "mugs_a": "hf/gen-mugs-a.png",
+          "mugs_b": "hf/gen-mugs-b.png",
+          "mugs_c": "hf/gen-mugs-c.png"
         },
         "clips": {
           "polish": "src/IMG_7745.mp4",
@@ -1309,7 +1309,11 @@
           "whoosh": "audio/sfx-whoosh.mp3",
           "turn": "audio/sfx-turn.mp3"
         },
-        "fit": {},
+        "fit": {
+          "mugs_a": "contain",
+          "mugs_b": "contain",
+          "mugs_c": "contain"
+        },
         "crops": {},
         "slots": {},
         "ai_generated": [
