@@ -1,0 +1,259 @@
+{
+ "name": "M1-shelf-mugs",
+ "mechanism": "quickcut",
+ "style": "noir",
+ "duration": 13.2,
+ "shots": [
+  {
+   "kind": "still",
+   "src": "hf/gen-mugs-c.png",
+   "ss": 0,
+   "start": 0.0,
+   "end": 1.74,
+   "xfade": null,
+   "cam": {
+    "z0": 1.08,
+    "z1": 1.08
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/gen-mugs-c.png",
+   "ss": 0,
+   "start": 1.74,
+   "end": 3.48,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/IMG_7747.mp4",
+   "ss": 0.2,
+   "start": 3.48,
+   "end": 4.06,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.18
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/gen-mugs-c.png",
+   "ss": 0,
+   "start": 4.06,
+   "end": 5.22,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": -0.3,
+    "px1": 0.3
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/IMG_7745.mp4",
+   "ss": 2.1,
+   "start": 5.22,
+   "end": 6.38,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/gen-mugs-a.png",
+   "ss": 0,
+   "start": 6.38,
+   "end": 7.54,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": 0.3,
+    "px1": -0.3
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/IMG_7749.mp4",
+   "ss": 0.15,
+   "start": 7.54,
+   "end": 8.7,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/gen-mugs-b.png",
+   "ss": 0,
+   "start": 8.7,
+   "end": 9.86,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "still",
+   "src": "hf/gen-mugs-c.png",
+   "ss": 0,
+   "start": 9.86,
+   "end": 11.6,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  },
+  {
+   "kind": "still",
+   "src": "out/system/M1-shelf-mugs-end.png",
+   "ss": 0,
+   "start": 11.2,
+   "end": 13.2,
+   "xfade": [
+    "fade",
+    0.4
+   ],
+   "cam": null
+  }
+ ],
+ "cues": [
+  {
+   "png": "M1-shelf-mugs-c00.png",
+   "start": 0.12,
+   "end": 1.62
+  },
+  {
+   "png": "M1-shelf-mugs-c01.png",
+   "start": 6.5,
+   "end": 7.42
+  },
+  {
+   "png": "M1-shelf-mugs-c02.png",
+   "start": 9.98,
+   "end": 11.48
+  }
+ ],
+ "audio": [
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 1.54,
+   "gain": -10,
+   "music": false
+  },
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 5.02,
+   "gain": -10,
+   "music": false
+  },
+  {
+   "src": "music7-noir.mp3",
+   "start": 0.0,
+   "gain": -3.0,
+   "music": true
+  }
+ ],
+ "lint": [],
+ "warnings": [],
+ "checks": [],
+ "tags": [
+  "dark",
+  "quick-cut",
+  "mugs",
+  "styling",
+  "real-footage + render"
+ ],
+ "preflight": {
+  "ad_name": "COM | Shelf | Broad | Sales | Sep10",
+  "hook_score": {
+   "hook": "turn it on and look at the mugs.",
+   "words": 8,
+   "gates": {
+    "gap": true,
+    "truth": true,
+    "pull": true
+   },
+   "brevity": 2,
+   "specificity": 1,
+   "family": 3,
+   "families": [
+    "transformation"
+   ],
+   "score": 9,
+   "out_of": 12,
+   "trademark": [],
+   "passes": true
+  },
+  "uses_generated_frames": true,
+  "colours": [
+   "n/a"
+  ],
+  "hypothesis": [],
+  "category_focus": "new money and new creative go to wall lights and pendants first; Rubik's keeps its old campaign; the Sep03 Rubik's campaign stays off. Rubik's reels are organic-first until the focus window ends.",
+  "rows": [
+   {
+    "check": "rules · at least two colours shown",
+    "ok": true,
+    "detail": "not applicable — single-temperature fixture"
+   },
+   {
+    "check": "rules · no dispatch-time claim while backlogged",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "facts · banned words / numbers in PDP facts",
+    "ok": true,
+    "detail": "hook truth gate pass"
+   },
+   {
+    "check": "landing = the product shown, .nw-pdp template, stock visible",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "visual confirmation (watch the mp4, not the sheet)",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "named control in the same ad set",
+    "ok": null,
+    "detail": "none on record"
+   },
+   {
+    "check": "kill threshold written on the ad",
+    "ok": null,
+    "detail": "₹1,500 spend with 0 purchases, or 7d ROAS below the ad-set average after ≥₹3,000"
+   },
+   {
+    "check": "AI disclosure ticked in Ads Manager",
+    "ok": null,
+    "detail": "Higgsfield frames in this cut → tick by hand"
+   },
+   {
+    "check": "hook on screen by 0.3 s, holds 1.2 s; all text in the safe zone",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "length · 25–30 s cut exists for ads (Medium bucket 4.54x vs 0.98x Short)",
+    "ok": null,
+    "detail": "13.2 s — render again with \"stretch\" for the ad cut"
+   }
+  ]
+ }
+}
