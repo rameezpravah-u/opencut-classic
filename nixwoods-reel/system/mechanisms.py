@@ -757,7 +757,8 @@ def m_quickcut(b):
 
     shots = []
     for i, s in enumerate(b["shots"]):
-        kw = {k: s[k] for k in ("speed", "slow", "reverse", "post", "cam", "fit") if k in s}
+        kw = {k: s[k] for k in ("speed", "slow", "reverse", "post", "cam", "fit",
+                                "crop_cx", "crop_cy") if k in s}
         if "cam" in kw:
             kw["cam"] = B.cam(kw["cam"])
         dur, xfade = beat * float(s.get("beats", 1)), None if i == 0 else xf

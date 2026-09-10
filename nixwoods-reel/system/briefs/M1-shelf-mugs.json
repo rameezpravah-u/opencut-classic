@@ -22,12 +22,16 @@
    "still": "mugs_c",
    "cam": "hold",
    "beats": 1.5,
+   "fit": "cover",
+   "crop_cx": 0.5,
    "post": "eq=brightness=-0.46:contrast=0.92:saturation=0.75"
   },
   {
    "still": "mugs_c",
    "cam": "push",
-   "beats": 1.5
+   "beats": 1.5,
+   "fit": "cover",
+   "crop_cx": 0.5
   },
   {
    "clip": "track",
@@ -40,7 +44,8 @@
    "still": "mugs_c",
    "cam": "drift",
    "beats": 1.0,
-   "fit": "cover"
+   "fit": "cover",
+   "crop_cx": 0.28
   },
   {
    "clip": "polish",
@@ -52,7 +57,9 @@
   {
    "still": "mugs_a",
    "cam": "drift_back",
-   "beats": 1.0
+   "beats": 1.0,
+   "fit": "cover",
+   "crop_cx": 0.7
   },
   {
    "clip": "three",
@@ -64,7 +71,9 @@
   {
    "still": "mugs_b",
    "cam": "push",
-   "beats": 1.0
+   "beats": 1.0,
+   "fit": "cover",
+   "crop_cx": 0.45
   },
   {
    "still": "mugs_c",
@@ -105,6 +114,6 @@
   "cta_line": "one line of light.",
   "cta": "solid wood lighting · nixwoods.com"
  },
- "notes": "Rameez sent an Instagram reel I could not open (login wall) and said 'perhaps show nixwoods light doing this to mugs'. Built on one stated assumption: the shelf's inset LED is a RAKING light at the front edge, so a row of mugs is the ideal subject — each catches a bright warm edge and throws a long shadow back onto the wall. Shots 1 and 2 are the SAME still, the first pushed down with a per-shot grade and the second at full level: a grade-driven reveal, not a filmed switch-on — nothing in the source footage shows the light being turned on, and the caption must not claim it does. Real workshop footage carries the middle (track, polish, three) so the reel is not purely rendered. Hook scores 9/12, all three gates — the best in this product's set. THREE of eight shots are AI-generated stills: paid use needs Meta's AI disclosure, and the caption says the room shots are renders. Second pass, from the contact sheet: the first build put the 9:16 vertically-EXTENDED mug stills in the cut, which left the lit shelf as a thin band in a mostly black frame — the product read as tiny. Extension is right for a standalone poster with a tall wall to fill; it is wrong for a wide subject inside a reel. The cut now uses the 16:9 originals with `fit: contain`, so the whole shelf sits full width over a blurred, dimmed copy of itself instead of dead black, plus one tight `fit: cover` shot with a `drift` pan that travels along the row of mugs. The 9:16 mug files were deleted rather than left around to be picked up by mistake.",
+ "notes": "Rameez sent an Instagram reel I could not open (login wall) and said 'perhaps show nixwoods light doing this to mugs'. Built on one stated assumption: the shelf's inset LED is a RAKING light at the front edge, so a row of mugs is the ideal subject — each catches a bright warm edge and throws a long shadow back onto the wall. Shots 1 and 2 are the SAME still, the first pushed down with a per-shot grade and the second at full level: a grade-driven reveal, not a filmed switch-on — nothing in the source footage shows the light being turned on, and the caption must not claim it does. Real workshop footage carries the middle (track, polish, three) so the reel is not purely rendered. Hook scores 9/12, all three gates — the best in this product's set. THREE of eight shots are AI-generated stills: paid use needs Meta's AI disclosure, and the caption says the room shots are renders. Second pass, from the contact sheet: the first build put the 9:16 vertically-EXTENDED mug stills in the cut, which left the lit shelf as a thin band in a mostly black frame — the product read as tiny. Extension is right for a standalone poster with a tall wall to fill; it is wrong for a wide subject inside a reel. The cut now uses the 16:9 originals with `fit: contain`, so the whole shelf sits full width over a blurred, dimmed copy of itself instead of dead black, plus one tight `fit: cover` shot with a `drift` pan that travels along the row of mugs. The 9:16 mug files were deleted rather than left around to be picked up by mistake. Third pass: `contain` did not rescue it either — these frames are dark to begin with, so the blurred backing is near-black and the shelf still read as a small band. The mug shots are now tight `fit: cover` crops at different crop_cx (0.28 / 0.45 / 0.50 / 0.70) so each one lands on a different part of the row and the mugs fill the frame, with drift pans travelling along them. ONE contain wide is kept as the last shot, where pulling back to the whole shelf is the payoff rather than the default.",
  "name": "M1-shelf-mugs"
 }
