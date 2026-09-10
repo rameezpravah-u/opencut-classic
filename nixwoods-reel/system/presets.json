@@ -1295,7 +1295,10 @@
           "endcap": "src/ref-endcap.jpg",
           "wall_a": "hf/gen-three-on-wall-a.png",
           "wall_b": "hf/gen-three-on-wall-b.png",
-          "wall_9x16": "hf/gen-three-on-wall-a-9x16.jpg"
+          "wall_9x16": "hf/gen-three-on-wall-a-9x16.jpg",
+          "mugs_a": "hf/gen-mugs-a-9x16.jpg",
+          "mugs_b": "hf/gen-mugs-b-9x16.jpg",
+          "mugs_c": "hf/gen-mugs-c-9x16.jpg"
         },
         "clips": {
           "polish": "src/IMG_7745.mp4",
@@ -1310,15 +1313,21 @@
         "crops": {},
         "slots": {},
         "ai_generated": [
+          "mugs_a",
+          "mugs_b",
+          "mugs_c",
+          "wall_9x16",
           "wall_a",
-          "wall_b",
-          "wall_9x16"
+          "wall_b"
         ],
         "status": {
           "endcap": "approved 9 Sep — the owner's own photo of the finished shelf end, ref for any generation",
           "wall_a": "approved 9 Sep — generated (ElevenLabs gemini-3-pro-image) from a reference composite of the owner's own end-cap photo plus a frame of the three finished shelves. Checked against both: dark plank, bullnose ends, one warm line inset in the top face, three staggered on a wall. 16:9 — needs a vertical version before it can carry a reel or a pin.",
           "wall_b": "approved 9 Sep — same generation, second take. Cleaner read of the inset channel than wall_a, less styling. 16:9.",
-          "wall_9x16": "approved 9 Sep — the 9:16 version of wall_a, used as the closing shot of S1. AI-generated: any paid placement of that reel needs Meta's AI disclosure."
+          "wall_9x16": "approved 9 Sep — the 9:16 version of wall_a, used as the closing shot of S1. AI-generated: any paid placement of that reel needs Meta's AI disclosure.",
+          "mugs_a": "approved 10 Sep — generated from the owner's own shelf photo as reference; shelf form, wood tone and the single inset LED line match the real product. AI-generated: paid use needs Meta's disclosure.",
+          "mugs_b": "approved 10 Sep — generated from the owner's own shelf photo as reference; shelf form, wood tone and the single inset LED line match the real product. AI-generated: paid use needs Meta's disclosure.",
+          "mugs_c": "approved 10 Sep — generated from the owner's own shelf photo as reference; shelf form, wood tone and the single inset LED line match the real product. AI-generated: paid use needs Meta's disclosure."
         },
         "clip_status": {
           "polish": "approved 9 Sep — owner's workshop footage, a craftsman finishing the plank (IMG_7745.mov)",
