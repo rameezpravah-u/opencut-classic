@@ -762,6 +762,20 @@ def m_quickcut(b):
         if "cam" in kw:
             kw["cam"] = B.cam(kw["cam"])
         dur, xfade = beat * float(s.get("beats", 1)), None if i == 0 else xf
+        if s.get("wipe"):
+            # assembly beat: one still wipes into the next, so a part appears to go into place.
+            # Two stills of the same setup at two stages is the cheapest honest way to show a
+            # step happening without generating video of it.
+            k_b, k_a = s["wipe"]
+            st_b, st_a = b["assets"]["stills"][k_b], b["assets"]["stills"][k_a]
+            pre = os.path.join(B.out, f"{B.name}-wipe{i}.mp4")
+            rk.render_before_after(B.path(st_b), B.path(st_a), pre, dur=dur,
+                                   wipe_start=float(s.get("wipe_start", 0.35)),
+                                   wipe_dur=float(s.get("wipe_dur", 0.9)),
+                                   kind_b="still", kind_a="still",
+                                   vertical=bool(s.get("vertical", False)))
+            shots.append(B.pre(pre, dur, xfade=xfade))
+            continue
         if s.get("still"):
             # a still among the footage: the payoff shot a phone in a workshop cannot get
             for k in ("speed", "slow", "reverse"):

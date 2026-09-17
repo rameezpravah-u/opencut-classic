@@ -1,0 +1,40 @@
+{
+ "mechanism": "quickcut",
+ "product": "linear",
+ "style": "noir",
+ "tags": ["assembly", "manufacturer", "wood-vs-aluminium", "made-in-india"],
+ "pillar": "Brand",
+ "channel": "organic",
+ "music": "audio/music7-noir.mp3",
+ "music_gain_db": -3,
+ "cut": 1.16,
+ "cover_t": 3.0,
+ "card_dur": 2.0,
+ "grade": "curves=all='0/0.03 0.3/0.28 0.75/0.80 1/1',eq=brightness=-0.06:contrast=1.20:saturation=1.06,colorbalance=rh=0.06:bh=-0.06,vignette=angle=PI/3.8",
+ "shots": [
+  {"still": "channel",  "cam": "pull",       "beats": 1.5},
+  {"wipe": ["channel", "led"], "beats": 1.5, "wipe_start": 0.3, "wipe_dur": 0.8},
+  {"still": "led",      "cam": "push_hard",  "beats": 0.5, "fit": "cover", "crop_cx": 0.62},
+  {"wipe": ["led", "diffuser"], "beats": 1, "wipe_start": 0.15, "wipe_dur": 0.7},
+  {"wipe": ["diffuser", "lit"], "beats": 1, "wipe_start": 0.1, "wipe_dur": 0.6},
+  {"clip": "polish", "ss": 2.10, "cam": "pull",      "beats": 1, "post": "eq=brightness=-0.14:contrast=1.06"},
+  {"clip": "polish", "ss": 0.40, "cam": "push_hard", "beats": 0.5, "post": "eq=brightness=-0.14:contrast=1.06"},
+  {"clip": "track",  "ss": 0.20, "cam": "push",      "beats": 1, "post": "eq=brightness=-0.14:contrast=1.06"},
+  {"clip": "three",  "ss": 0.15, "cam": "pull",      "beats": 1, "post": "eq=brightness=-0.10:contrast=1.05"},
+  {"still": "lit_dark", "cam": "pull",       "beats": 1.5, "fit": "cover", "crop_cx": 0.45}
+ ],
+ "lines": [
+  {"at": 0, "text": "same light. different material.", "size": 50, "wrap": 18, "box": false},
+  {"at": 5, "text": "we cut the wood ourselves.", "size": 48, "wrap": 18, "box": false},
+  {"at": 9, "text": "no middleman touches it.", "size": 50, "wrap": 18, "box": false}
+ ],
+ "whoosh_at": [1.74, 6.96],
+ "copy": {
+  "hook": "same light. different material.",
+  "turn": "we cut the wood ourselves.",
+  "cta_line": "made in wood. by us.",
+  "cta": "solid wood lighting · nixwoods.com"
+ },
+ "notes": "Answer to instagram.com/reel/DbVnOOksf-c (alumaetg, an Iranian aluminium lighting-profile maker, 28s, 63k views). Their reel is a 3D assembly animation of an aluminium extrusion — LED strip in, diffuser in, end cap, ceiling mount, finished pendant — under a direct-from-manufacturer caption: every stage in-house, no middlemen. Rameez: change the material to wood. That claim is literally true for NixWoods, and NixWoods has the thing Aluma had to fake in CGI: real footage of a craftsman finishing the wood. So the cut runs assembly (generated + derived stills) then PROOF (real workshop footage), which is the opposite order to theirs and the stronger half last. Hook scores 9/12. BUILT AT ZERO COST: the ElevenLabs image quota ran out after two stages, so stages 3-5 are derived from stage 2 in numpy and ffmpeg rather than generated — the diffuser beat blurs the LED dots into a continuous line, the lit beat screen-composites a warm bloom off the brightest pixels. The three assembly transitions are render_before_after wipes between consecutive stages, which is how a part appears to go into place without generating video of it. First use of the new `wipe` shot type in quickcut.",
+ "name": "L1-linear-wood"
+}
