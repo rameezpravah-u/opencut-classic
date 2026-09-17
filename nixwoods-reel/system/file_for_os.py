@@ -45,7 +45,8 @@ BRIEFS = {
  "N1-curve-noir":                 ("curve",   "sculpted-glow-quickcut", "20260909"),
  "S1-shelf-noir":                 ("shelf",   "light-shelf-workshop", "20260909"),
  "M1-shelf-mugs":                 ("shelf",   "light-shelf-mugs", "20260910"),
- "L1-linear-wood":                ("linear",  "wood-not-aluminium", None),
+ "L1-linear-wood":                ("linear",  "wood-not-aluminium", "20260917"),
+ "L2-linear-teak":                ("linear",  "teak-not-aluminium", None),
 }
 VARIANTS = {"-music.mp4": "music", "-clean.mp4": "clean"}
 
