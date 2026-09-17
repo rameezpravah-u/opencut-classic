@@ -1,0 +1,323 @@
+{
+ "name": "L2-linear-teak",
+ "mechanism": "quickcut",
+ "style": "noir",
+ "duration": 26.25,
+ "shots": [
+  {
+   "kind": "still",
+   "src": "hf/teak-stage1-channel.png",
+   "ss": 0,
+   "start": 0.0,
+   "end": 2.5,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  },
+  {
+   "kind": "video",
+   "src": "out/system/L2-linear-teak-wipe1.mp4",
+   "ss": 0,
+   "start": 2.15,
+   "end": 4.35,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": null
+  },
+  {
+   "kind": "video",
+   "src": "out/system/L2-linear-teak-wipe2.mp4",
+   "ss": 0,
+   "start": 4.0,
+   "end": 5.7,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": null
+  },
+  {
+   "kind": "video",
+   "src": "out/system/L2-linear-teak-wipe3.mp4",
+   "ss": 0,
+   "start": 5.35,
+   "end": 7.05,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": null
+  },
+  {
+   "kind": "still",
+   "src": "../teak-reels/hf/sh04-end-channels.webp",
+   "ss": 0,
+   "start": 6.7,
+   "end": 7.1,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.18
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../teak-reels/hf/sh01-underside-twin.jpg",
+   "ss": 0,
+   "start": 6.75,
+   "end": 9.85,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": -0.3,
+    "px1": 0.3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../teak-reels/hf/sh02-strip-fluted.jpg",
+   "ss": 0,
+   "start": 9.5,
+   "end": 11.0,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../teak-reels/hf/sh05-canopy-cables.jpg",
+   "ss": 0,
+   "start": 10.65,
+   "end": 15.15,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.05,
+    "z1": 1.12,
+    "py0": -0.3,
+    "py1": 0.1
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../teak-reels/hf/sh03-dark-two-lines.jpg",
+   "ss": 0,
+   "start": 14.8,
+   "end": 18.5,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  },
+  {
+   "kind": "video",
+   "src": "../shelf-reels/src/IMG_7745.mp4",
+   "ss": 2.1,
+   "start": 18.15,
+   "end": 21.85,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../teak-reels/hf/sh04-end-channels.webp",
+   "ss": 0,
+   "start": 21.5,
+   "end": 22.1,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.08,
+    "z1": 1.08
+   }
+  },
+  {
+   "kind": "still",
+   "src": "../teak-reels/hf/sh00-marble-dining.jpg",
+   "ss": 0,
+   "start": 21.75,
+   "end": 24.65,
+   "xfade": [
+    "dissolve",
+    0.35
+   ],
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  },
+  {
+   "kind": "still",
+   "src": "out/system/L2-linear-teak-end.png",
+   "ss": 0,
+   "start": 24.25,
+   "end": 26.25,
+   "xfade": [
+    "fade",
+    0.4
+   ],
+   "cam": null
+  }
+ ],
+ "cues": [
+  {
+   "png": "L2-linear-teak-c00.png",
+   "start": 0.12,
+   "end": 2.38
+  },
+  {
+   "png": "L2-linear-teak-c01.png",
+   "start": 5.47,
+   "end": 6.93
+  },
+  {
+   "png": "L2-linear-teak-c02.png",
+   "start": 10.77,
+   "end": 15.03
+  },
+  {
+   "png": "L2-linear-teak-c03.png",
+   "start": 18.27,
+   "end": 21.73
+  }
+ ],
+ "audio": [
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 7.8999999999999995,
+   "gain": -10,
+   "music": false
+  },
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 12.9,
+   "gain": -10,
+   "music": false
+  },
+  {
+   "src": "music7-noir.mp3",
+   "start": 0.0,
+   "gain": -3.0,
+   "music": true
+  }
+ ],
+ "lint": [],
+ "warnings": [],
+ "checks": [],
+ "tags": [
+  "assembly",
+  "teak",
+  "competitor-structure",
+  "made-in-india"
+ ],
+ "preflight": {
+  "ad_name": "COM | Linear | Broad | Sales | Sep17",
+  "hook_score": {
+   "hook": "this one is not aluminium.",
+   "words": 5,
+   "gates": {
+    "gap": true,
+    "truth": true,
+    "pull": false
+   },
+   "brevity": 3,
+   "specificity": 0,
+   "family": 3,
+   "families": [
+    "contrast"
+   ],
+   "score": 8,
+   "out_of": 12,
+   "trademark": [],
+   "passes": false
+  },
+  "uses_generated_frames": true,
+  "colours": [
+   "n/a"
+  ],
+  "hypothesis": [],
+  "category_focus": "new money and new creative go to wall lights and pendants first; Rubik's keeps its old campaign; the Sep03 Rubik's campaign stays off. Rubik's reels are organic-first until the focus window ends.",
+  "rows": [
+   {
+    "check": "rules · at least two colours shown",
+    "ok": true,
+    "detail": "not applicable — single-temperature fixture"
+   },
+   {
+    "check": "rules · no dispatch-time claim while backlogged",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "facts · banned words / numbers in PDP facts",
+    "ok": true,
+    "detail": "hook truth gate pass"
+   },
+   {
+    "check": "landing = the product shown, .nw-pdp template, stock visible",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "visual confirmation (watch the mp4, not the sheet)",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "named control in the same ad set",
+    "ok": null,
+    "detail": "none on record"
+   },
+   {
+    "check": "kill threshold written on the ad",
+    "ok": null,
+    "detail": "₹1,500 spend with 0 purchases, or 7d ROAS below the ad-set average after ≥₹3,000"
+   },
+   {
+    "check": "AI disclosure ticked in Ads Manager",
+    "ok": null,
+    "detail": "Higgsfield frames in this cut → tick by hand"
+   },
+   {
+    "check": "hook on screen by 0.3 s, holds 1.2 s; all text in the safe zone",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "length · 25–30 s cut exists for ads (Medium bucket 4.54x vs 0.98x Short)",
+    "ok": true,
+    "detail": "26.2 s"
+   }
+  ]
+ }
+}

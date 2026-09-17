@@ -1381,7 +1381,17 @@
           "led": "hf/gen-stage2-led.png",
           "diffuser": "hf/gen-stage3-diffuser.png",
           "lit": "hf/gen-stage4-lit.png",
-          "lit_dark": "hf/gen-stage5-lit-dark.png"
+          "lit_dark": "hf/gen-stage5-lit-dark.png",
+          "t_channel": "hf/teak-stage1-channel.png",
+          "t_led": "hf/teak-stage2-led.png",
+          "t_diffuser": "hf/teak-stage3-diffuser.png",
+          "t_lit": "hf/teak-stage4-lit.png",
+          "t_underside": "../teak-reels/hf/sh01-underside-twin.jpg",
+          "t_strip": "../teak-reels/hf/sh02-strip-fluted.jpg",
+          "t_endcap": "../teak-reels/hf/sh04-end-channels.webp",
+          "t_canopy": "../teak-reels/hf/sh05-canopy-cables.jpg",
+          "t_dark": "../teak-reels/hf/sh03-dark-two-lines.jpg",
+          "t_dining": "../teak-reels/hf/sh00-marble-dining.jpg"
         },
         "clips": {
           "polish": "../shelf-reels/src/IMG_7745.mp4",
@@ -1392,7 +1402,13 @@
           "whoosh": "audio/sfx-whoosh.mp3",
           "turn": "audio/sfx-turn.mp3"
         },
-        "fit": {},
+        "fit": {
+          "t_underside": "contain",
+          "t_strip": "contain",
+          "t_endcap": "contain",
+          "t_canopy": "contain",
+          "t_dining": "contain"
+        },
         "crops": {},
         "slots": {},
         "ai_generated": [
@@ -1400,14 +1416,28 @@
           "led",
           "diffuser",
           "lit",
-          "lit_dark"
+          "lit_dark",
+          "t_channel",
+          "t_led",
+          "t_diffuser",
+          "t_lit"
         ],
         "status": {
           "channel": "approved 17 Sep — AI-generated (seedream-5-pro). NOT a photograph of a NixWoods product; no linear bar has been shot on a bench.",
           "led": "approved 17 Sep — AI-generated, same caveat.",
           "diffuser": "approved 17 Sep — DERIVED from `led` with numpy: the bright LED dots blurred into a continuous line. No new generation.",
           "lit": "approved 17 Sep — DERIVED from `led`: warm bloom screen-composited off the brightest pixels. No new generation.",
-          "lit_dark": "approved 17 Sep — DERIVED from `lit` with an ffmpeg night grade."
+          "lit_dark": "approved 17 Sep — DERIVED from `lit` with an ffmpeg night grade.",
+          "t_channel": "approved 17 Sep — teak recolour of the generated rosewood stage, target sampled from real NixWoods teak photography. AI-generated origin: paid use needs Meta's disclosure.",
+          "t_led": "approved 17 Sep — teak recolour of the generated rosewood stage, target sampled from real NixWoods teak photography. AI-generated origin: paid use needs Meta's disclosure.",
+          "t_diffuser": "approved 17 Sep — teak recolour of the generated rosewood stage, target sampled from real NixWoods teak photography. AI-generated origin: paid use needs Meta's disclosure.",
+          "t_lit": "approved 17 Sep — teak recolour of the generated rosewood stage, target sampled from real NixWoods teak photography. AI-generated origin: paid use needs Meta's disclosure.",
+          "t_underside": "approved — real NixWoods teak product photography, shared from teak-reels/hf/",
+          "t_strip": "approved — real NixWoods teak product photography, shared from teak-reels/hf/",
+          "t_endcap": "approved — real NixWoods teak product photography, shared from teak-reels/hf/",
+          "t_canopy": "approved — real NixWoods teak product photography, shared from teak-reels/hf/",
+          "t_dark": "approved — real NixWoods teak product photography, shared from teak-reels/hf/",
+          "t_dining": "approved — real NixWoods teak product photography, shared from teak-reels/hf/"
         },
         "clip_status": {
           "polish": "approved — Rameez's workshop footage, shared with shelf-reels",
