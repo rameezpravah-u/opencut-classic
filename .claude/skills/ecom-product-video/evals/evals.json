@@ -1,0 +1,52 @@
+{
+ "skill_name": "ecom-product-video",
+ "evals": [
+  {
+   "id": 0,
+   "name": "phone-footage-reel",
+   "prompt": "Cut me a short vertical reel of the floating light shelf using the phone clips in /home/user/opencut-classic/nixwoods-reel/shelf-reels/src/ (IMG_7745, IMG_7747, IMG_7749). Dark and stylish. Save the finished mp4 and tell me what you did.",
+   "expected_output": "A 1080x1920 mp4. Source is HEVC 10-bit HLG with a rotation flag, so it must be tonemapped to SDR or it renders washed-out grey. Grade should be chosen against measured luminance of THIS footage. Hook scored. End card / tail verified.",
+   "files": [],
+   "assertions": [
+    "Output is a playable 1080x1920 vertical mp4",
+    "Output is tagged bt709, not left on the source's HLG/bt2020 transfer",
+    "No sampled frame is effectively black (mean luma >= 12/255 throughout)",
+    "The final second actually contains picture (catches a silently dropped end card)",
+    "The reel actually moves - consecutive frames differ (not a slideshow of one still)",
+    "Write-up cites a measured number from the sources, not just adjectives",
+    "A hook line is stated and justified/scored rather than left implicit"
+   ]
+  },
+  {
+   "id": 1,
+   "name": "wide-product-framing",
+   "prompt": "Make a 9:16 product video for our Double Arm Teak pendant using the photos in /home/user/opencut-classic/nixwoods-reel/teak-reels/hf/. It is a four-foot linear pendant. Save the mp4.",
+   "expected_output": "Must not centre-crop a four-foot horizontal fixture to 9:16 (that throws away the length). Should use contain or travelling crops at several centres. Should notice sh02-strip-fluted is 595px and sh04-end-channels 493px and check upscale factor before using them large.",
+   "files": [],
+   "assertions": [
+    "Output is a playable 1080x1920 vertical mp4",
+    "No sampled frame is effectively black (mean luma >= 12/255 throughout)",
+    "The reel actually moves - consecutive frames differ (not a slideshow of one still)",
+    "At least one shot shows the fixture across the frame, not centre-cropped away",
+    "Low-res sources are identified by pixel size before use",
+    "Write-up cites a measured number from the sources, not just adjectives"
+   ]
+  },
+  {
+   "id": 2,
+   "name": "competitor-restyle",
+   "prompt": "A competitor posted a 28 second 3D assembly animation of an aluminium linear light: bar on a bench, LED strip lowers into the channel, diffuser slides in, end cap, ceiling mount, finished pendant in a room. I want our version in teak. Use what is already in /home/user/opencut-classic/nixwoods-reel/ - I do not want to pay for any generation. Save the mp4.",
+   "expected_output": "Should inventory existing assets against the shot list BEFORE generating (teak-reels/hf holds canopy-cables, end-channels, dining etc). Should derive missing beats free (wipes between stills for assembly, bloom for switch-on) rather than buying. Should not propose reusing the competitor's footage. Should flag AI disclosure if any generated frame is used.",
+   "files": [],
+   "assertions": [
+    "Output is a playable 1080x1920 vertical mp4",
+    "No sampled frame is effectively black (mean luma >= 12/255 throughout)",
+    "The reel actually moves - consecutive frames differ (not a slideshow of one still)",
+    "Runtime lands near the 28s reference (24-32s)",
+    "Each beat is mapped to a named existing asset file",
+    "A missing beat is derived with a free technique, and nothing paid was called",
+    "No attempt to reuse the competitor's own video"
+   ]
+  }
+ ]
+}
