@@ -1,0 +1,17 @@
+== /home/user/opencut-classic/.claude/skills/ecom-product-video-workspace/iteration-1/competitor-restyle/with_skill/outputs/reel.mp4  30.7 MB
+   Duration: 00:00:26.30, start: 0.000000, bitrate: 9324 kb/s
+   Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920 [SAR 1:1 DAR 9:16], 9172 kb/s, 25 fps, 25 tbr, 12800 tbn (default)
+   Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 165 kb/s (default)
+   decoded frames: 656  -> 26.24 s at 25 fps
+   frame-diff cuts (>12.9): [10.68, 14.96, 15.08, 18.44, 18.64, 19.24, 19.44, 19.64, 19.84, 20.04, 20.08, 20.12, 20.16, 20.2, 20.24, 20.28, 20.32, 20.36, 20.4, 20.44, 20.48, 20.52, 20.56, 20.6, 20.64, 20.68, 20.84, 21.04, 21.44, 21.64, 21.8]
+   last frame: mean lum 5.2, ink pixels (>200) 1.90%  -> end card present: True
+   t=  6.5s  R  85.9 G  67.3 B  51.4   warm(R>G>B): True
+   t= 12.0s  R 130.9 G 114.2 B  94.5   warm(R>G>B): True
+   t= 17.0s  R  10.2 G   5.7 B   3.8   warm(R>G>B): True
+   t= 23.0s  R 125.0 G 112.1 B  95.8   warm(R>G>B): True
+   contact sheet -> /home/user/opencut-classic/.claude/skills/ecom-product-video-workspace/iteration-1/competitor-restyle/with_skill/outputs/contact-sheet.jpg
+   audio: 26.26 s decoded vs 26.24 s of video
+   audio RMS per second: 0.201 0.221 0.225 0.198 0.223 0.233 0.234 0.210 0.223 0.220 0.206 0.201 0.206 0.214 0.211 0.222 0.223 0.212 0.124 0.176 0.209 0.201 0.227 0.233 0.220 0.135
+   last 4 s audible (RMS > 0.005): True
+   dark-frame centre column: 39 distinct levels over 1920 px (low numbers = banding)
+   size 30.7 MB  under 50 MB ceiling: True

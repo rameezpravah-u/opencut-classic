@@ -1,0 +1,14 @@
+{
+ "eval_id": 2,
+ "eval_name": "competitor-restyle",
+ "prompt": "A competitor posted a 28 second 3D assembly animation of an aluminium linear light: bar on a bench, LED strip lowers into the channel, diffuser slides in, end cap, ceiling mount, finished pendant in a room. I want our version in teak. Use what is already in /home/user/opencut-classic/nixwoods-reel/ - I do not want to pay for any generation. Save the mp4.",
+ "assertions": [
+  "Output is a playable 1080x1920 vertical mp4",
+  "No sampled frame is effectively black (mean luma >= 12/255 throughout)",
+  "The reel actually moves - consecutive frames differ (not a slideshow of one still)",
+  "Runtime lands near the 28s reference (24-32s)",
+  "Each beat is mapped to a named existing asset file",
+  "A missing beat is derived with a free technique, and nothing paid was called",
+  "No attempt to reuse the competitor's own video"
+ ]
+}
