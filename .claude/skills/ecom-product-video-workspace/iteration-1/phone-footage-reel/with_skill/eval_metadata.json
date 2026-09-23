@@ -1,0 +1,14 @@
+{
+ "eval_id": 0,
+ "eval_name": "phone-footage-reel",
+ "prompt": "Cut me a short vertical reel of the floating light shelf using the phone clips in /home/user/opencut-classic/nixwoods-reel/shelf-reels/src/ (IMG_7745, IMG_7747, IMG_7749). Dark and stylish. Save the finished mp4 and tell me what you did.",
+ "assertions": [
+  "Output is a playable 1080x1920 vertical mp4",
+  "Output is tagged bt709, not left on the source's HLG/bt2020 transfer",
+  "No sampled frame is effectively black (mean luma >= 12/255 throughout)",
+  "The final second actually contains picture (catches a silently dropped end card)",
+  "The reel actually moves - consecutive frames differ (not a slideshow of one still)",
+  "Write-up cites a measured number from the sources, not just adjectives",
+  "A hook line is stated and justified/scored rather than left implicit"
+ ]
+}

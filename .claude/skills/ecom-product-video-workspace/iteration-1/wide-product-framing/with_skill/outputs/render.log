@@ -1,0 +1,14 @@
+segment                                                           dur  upscale
+hook · dark, two lines, ends out of frame  [sh03-dark-two-lines.jpg · cover]  3.00s    1.81x
+proof · lit underside, twin channels, other end of the bar  [sh01-underside-twin.jpg · cover]  3.00s    1.65x
+macro · the end cap, both channels open  [sh04-end-channels.webp · contain]  1.92s    2.19x  ! soft
+mount · one teak canopy, two cables  [sh05-canopy-cables.jpg · contain]  2.28s    1.32x
+payoff · pull back, the whole 49 in over the table  [sh00-marble-dining.jpg · contain]  3.80s    0.86x
+end card                                                        2.40s    1.00x
+
+360 frames · 14.40s @ 25 fps · 1080x1920
+wrote /home/user/opencut-classic/.claude/skills/ecom-product-video-workspace/iteration-1/wide-product-framing/with_skill/outputs/reel.mp4 3.44 MB
+
+real	1m39.434s
+user	1m5.399s
+sys	0m5.245s

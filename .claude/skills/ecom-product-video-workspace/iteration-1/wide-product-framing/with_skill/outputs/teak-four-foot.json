@@ -1,0 +1,36 @@
+{
+  "name": "teak-four-foot",
+  "mechanism": "quickcut",
+  "product": "teak",
+  "style": "design",
+  "style_overrides": { "transition": "dissolve", "headline_size": 58 },
+  "cut": 1.2,
+  "transition": "dissolve",
+  "cover_t": 11.5,
+  "card_dur": 2.4,
+  "music_gain_db": -5,
+  "tags": ["room", "detail"],
+  "pillar": "Hero Product",
+  "channel": "organic + ads",
+  "copy": {
+    "hook": "How many lines do you see?",
+    "turn": "Two. Cut into one piece of teak.",
+    "cta_line": "Two lines. One piece of teak.",
+    "cta": "nixwoods.com",
+    "kicker": "solid teak · 3000K · 49 in"
+  },
+  "shots": [
+    { "still": "backlit", "beats": 2.4, "fit": "cover", "crop_cx": 0.38, "cam": "push" },
+    { "still": "flatlay", "beats": 2.4, "fit": "cover", "crop_cx": 0.62, "cam": "drift_back" },
+    { "still": "macro",   "beats": 1.6, "fit": "contain", "cam": "push_hard" },
+    { "still": "unbox",   "beats": 1.6, "fit": "contain", "cam": "tilt_down" },
+    { "still": "hero",    "beats": 3.0, "fit": "contain", "cam": "pull" }
+  ],
+  "lines": [
+    { "at": 0, "text": "How many lines do you see?", "wrap": 16, "size": 58, "pad": 0.1, "fade": 0.25, "box": false },
+    { "at": 1, "text": "Two. Cut into one piece of teak.", "wrap": 17, "size": 54, "pad": 0.35, "box": false },
+    { "at": 3, "text": "One teak canopy. Two cables.", "wrap": 18, "size": 46, "pad": 0.3, "box": false },
+    { "at": 4, "text": "49 inches, right over the table.", "wrap": 18, "size": 52, "pad": 0.5, "box": false }
+  ],
+  "notes": "Wide-product framing pass: all six PDP stills are square, so a 9:16 cover crop keeps only 56% of the width and would cut the ends off a 49-inch bar. Four tight cover/contain beats at different scales, then one deliberate contain pull-back on the bright dining frame as the payoff."
+}

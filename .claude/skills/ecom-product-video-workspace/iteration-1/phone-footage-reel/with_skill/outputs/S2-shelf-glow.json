@@ -1,0 +1,110 @@
+{
+ "name": "S2-shelf-glow",
+ "mechanism": "quickcut",
+ "product": "shelf",
+ "style": "noir",
+ "tags": [
+  "dark",
+  "quick-cut",
+  "real-footage",
+  "workshop",
+  "made-in-india"
+ ],
+ "pillar": "Craft",
+ "channel": "organic",
+ "music": "audio/music7-noir.mp3",
+ "music_gain_db": -3,
+ "cut": 1.16,
+ "cover_t": 6.2,
+ "card_dur": 2.0,
+ "grade": "curves=all='0/0.05 0.3/0.27 0.75/0.80 1/1',eq=brightness=-0.10:contrast=1.25:saturation=1.08,colorbalance=rh=0.06:bh=-0.06,vignette=angle=PI/3.8:mode=forward",
+ "shots": [
+  {
+   "clip": "polish",
+   "ss": 0.3,
+   "beats": 1.5,
+   "cam": "pull"
+  },
+  {
+   "clip": "polish",
+   "ss": 2.1,
+   "beats": 1.0,
+   "cam": "push_hard"
+  },
+  {
+   "clip": "polish",
+   "ss": 4.7,
+   "beats": 0.5,
+   "cam": "hold"
+  },
+  {
+   "clip": "track",
+   "ss": 0.2,
+   "beats": 1.0,
+   "cam": "push"
+  },
+  {
+   "clip": "three",
+   "ss": 0.15,
+   "beats": 0.75,
+   "cam": "pull"
+  },
+  {
+   "clip": "track",
+   "ss": 1.6,
+   "beats": 0.5,
+   "cam": "push_hard"
+  },
+  {
+   "clip": "track",
+   "ss": 2.3,
+   "beats": 0.5,
+   "cam": "drift_back"
+  },
+  {
+   "clip": "three",
+   "ss": 1.6,
+   "beats": 1.25,
+   "cam": "pull"
+  },
+  {
+   "still": "wall_9x16",
+   "beats": 2.25,
+   "cam": "push"
+  }
+ ],
+ "lines": [
+  {
+   "at": 0,
+   "text": "watch this plank turn into a wall light.",
+   "size": 54,
+   "wrap": 17,
+   "box": false
+  },
+  {
+   "at": 3,
+   "text": "there it is.",
+   "size": 52,
+   "wrap": 16,
+   "box": false
+  },
+  {
+   "at": 8,
+   "text": "three on one wall.",
+   "size": 52,
+   "wrap": 18,
+   "box": false
+  }
+ ],
+ "whoosh_at": [
+  3.48,
+  8.12
+ ],
+ "copy": {
+  "hook": "watch this plank turn into a wall light.",
+  "turn": "there it is.",
+  "cta_line": "made by hand. lit by a line.",
+  "cta": "solid wood lighting · nixwoods.com"
+ },
+ "notes": "Short dark cut of the floating light shelf from Rameez's own phone clips (IMG_7745 polish / IMG_7747 track / IMG_7749 three). Story: unlit plank -> the line comes on -> three lit -> three on a wall. Hook 'watch this plank turn into a wall light.' scores 11/12 (gap/truth/pull all pass). Grade is the measured S1 override, not the noir style default: this footage sits at p5=32-60 luma, so the style's brightness -0.30 / contrast 1.50 crush buries the plank; this lifts the toe with a curve and keeps the dark look with contrast + vignette. Closing shot is the approved AI-generated wall render (hf/gen-three-on-wall-a-9x16.jpg) - the only frame showing the product installed; paid placement needs Meta's AI disclosure. Slow-motion dropped from the closing pull: minterpolate (mci/aobmc) was the dominant render cost on a 4-core box and the shot reads fine at speed."
+}

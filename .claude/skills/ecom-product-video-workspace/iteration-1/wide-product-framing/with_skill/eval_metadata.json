@@ -1,0 +1,13 @@
+{
+ "eval_id": 1,
+ "eval_name": "wide-product-framing",
+ "prompt": "Make a 9:16 product video for our Double Arm Teak pendant using the photos in /home/user/opencut-classic/nixwoods-reel/teak-reels/hf/. It is a four-foot linear pendant. Save the mp4.",
+ "assertions": [
+  "Output is a playable 1080x1920 vertical mp4",
+  "No sampled frame is effectively black (mean luma >= 12/255 throughout)",
+  "The reel actually moves - consecutive frames differ (not a slideshow of one still)",
+  "At least one shot shows the fixture across the frame, not centre-cropped away",
+  "Low-res sources are identified by pixel size before use",
+  "Write-up cites a measured number from the sources, not just adjectives"
+ ]
+}
