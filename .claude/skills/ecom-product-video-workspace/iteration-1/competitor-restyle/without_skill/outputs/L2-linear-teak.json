@@ -1,0 +1,142 @@
+{
+ "mechanism": "quickcut",
+ "product": "linear",
+ "style": "noir",
+ "tags": [
+  "assembly",
+  "teak",
+  "competitor-structure",
+  "made-in-india"
+ ],
+ "pillar": "Brand",
+ "channel": "organic",
+ "music": "audio/music7-noir.mp3",
+ "music_gain_db": -3,
+ "cut": 1.0,
+ "cover_t": 20.0,
+ "card_dur": 2.0,
+ "transition": "dissolve",
+ "grade": "curves=all='0/0.02 0.3/0.29 0.75/0.80 1/1',eq=brightness=-0.04:contrast=1.16:saturation=1.06,colorbalance=rh=0.05:bh=-0.05,vignette=angle=PI/4.0",
+ "shots": [
+  {
+   "still": "t_channel",
+   "cam": "pull",
+   "beats": 2.5
+  },
+  {
+   "wipe": [
+    "t_channel",
+    "t_led"
+   ],
+   "beats": 2.2,
+   "wipe_start": 0.5,
+   "wipe_dur": 1.3
+  },
+  {
+   "wipe": [
+    "t_led",
+    "t_diffuser"
+   ],
+   "beats": 1.7,
+   "wipe_start": 0.3,
+   "wipe_dur": 1.0
+  },
+  {
+   "wipe": [
+    "t_diffuser",
+    "t_lit"
+   ],
+   "beats": 1.7,
+   "wipe_start": 0.3,
+   "wipe_dur": 0.9
+  },
+  {
+   "still": "t_underside",
+   "cam": "push_hard",
+   "beats": 0.4,
+   "fit": "cover",
+   "crop_cx": 0.32
+  },
+  {
+   "still": "t_underside",
+   "cam": "drift",
+   "beats": 3.1
+  },
+  {
+   "still": "t_dark",
+   "cam": "push",
+   "beats": 1.5
+  },
+  {
+   "still": "t_canopy",
+   "cam": "tilt_down",
+   "beats": 4.5
+  },
+  {
+   "still": "t_dark",
+   "cam": "pull",
+   "beats": 3.7
+  },
+  {
+   "clip": "polish",
+   "ss": 2.1,
+   "cam": "pull",
+   "beats": 3.7,
+   "post": "eq=brightness=-0.12:contrast=1.06"
+  },
+  {
+   "still": "t_underside",
+   "cam": "hold",
+   "beats": 0.6,
+   "fit": "cover",
+   "crop_cx": 0.7
+  },
+  {
+   "still": "t_dining",
+   "cam": "pull",
+   "beats": 2.9
+  }
+ ],
+ "lines": [
+  {
+   "at": 0,
+   "text": "this one is not aluminium.",
+   "size": 50,
+   "wrap": 18,
+   "box": false
+  },
+  {
+   "at": 3,
+   "text": "this one is teak.",
+   "size": 52,
+   "wrap": 16,
+   "box": false
+  },
+  {
+   "at": 7,
+   "text": "same fitting. same light.",
+   "size": 46,
+   "wrap": 20,
+   "box": false
+  },
+  {
+   "at": 9,
+   "text": "we make it ourselves.",
+   "size": 50,
+   "wrap": 18,
+   "box": false
+  }
+ ],
+ "whoosh_at": [
+  8.1,
+  13.1
+ ],
+ "copy": {
+  "hook": "this one is not aluminium.",
+  "turn": "this one is teak.",
+  "cta_line": "teak. not aluminium.",
+  "cta": "solid wood lighting · nixwoods.com"
+ },
+ "notes": "Rameez: take instagram.com/reel/DbVnOOksf-c (alumaetg, aluminium linear-profile maker, 28.5s) and change the linear's material to TEAK, keeping the rest as it was. Their cut points were measured off the source at 10 fps: 8.1 / 0.4 / 3.1 / 1.5 / 11.9 / 0.6 / 2.9 s. THIS BRIEF MATCHES THAT STRUCTURE AND THOSE DURATIONS, with `cut: 1.0` so `beats` are literal seconds. Their 8.1s single assembly take is rebuilt as 2.5 + 2.2 + 1.7 + 1.7 of wipes, so the assembly happens inside the take exactly as theirs does. Their 11.9s ceiling-install take becomes canopy 4.5 + dark lines 3.7 + real workshop footage 3.7 (the craftsman, which is where 'we make it ourselves' lands). NONE OF THEIR FOOTAGE IS USED — only their shot list and timings, which are not theirs to own. Every frame is NixWoods: four teak stages (recoloured from our own generated rosewood renders, target sampled from our own teak photography) and six real teak product photographs already in teak-reels/hf/. Zero generation cost. The source-overrun guard caught a first attempt that asked 3.9s of a 3.1s clip — it would have silently truncated everything after it, exactly the fault that cost the shelf reel its end card. Hook: 'everyone makes these in aluminium.' scored 4/12 (no gap, no pull) — it states the category instead of withholding something. 'this one is not aluminium.' scores 8/12: the gap is what it IS, and the assembly answers it. Source resolution checked against the frame before shipping: t_endcap is 493px and t_strip 595px, 2.2x and 1.8x upscaled under `contain` and visibly soft. Both replaced with t_underside (1254px) and t_dark (1170px), which need 1.5x and 1.6x. Structure and durations unchanged — only the source behind three short shots.",
+ "name": "L2-linear-teak"
+}
