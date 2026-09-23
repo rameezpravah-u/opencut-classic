@@ -1,0 +1,115 @@
+{
+  "name": "SHELF-noir-phone",
+  "mechanism": "quickcut",
+  "product": "shelf",
+  "style": "noir",
+  "tags": [
+    "dark",
+    "quick-cut",
+    "real-footage",
+    "workshop",
+    "phone-footage"
+  ],
+  "pillar": "Craft",
+  "channel": "organic",
+  "music": "audio/music7-noir.mp3",
+  "music_gain_db": -3,
+  "cut": 1.16,
+  "cover_t": 0.9,
+  "card_dur": 2.0,
+  "grade": "curves=all='0/0 0.22/0.07 0.5/0.24 0.78/0.62 1/1',eq=brightness=-0.02:contrast=1.12:saturation=1.10,colorbalance=rm=0.05:bm=-0.05:rh=0.05:bh=-0.07,vignette=angle=PI/3.4:mode=forward",
+  "shots": [
+    {
+      "clip": "track",
+      "ss": 0.15,
+      "beats": 1.3,
+      "cam": "push_hard"
+    },
+    {
+      "clip": "track",
+      "ss": 1.45,
+      "beats": 0.75,
+      "cam": "drift"
+    },
+    {
+      "clip": "three",
+      "ss": 0.1,
+      "beats": 1.0,
+      "cam": "push"
+    },
+    {
+      "clip": "polish",
+      "ss": 0.35,
+      "beats": 1.25,
+      "cam": "pull",
+      "post": "eq=brightness=0.05:contrast=0.98"
+    },
+    {
+      "clip": "polish",
+      "ss": 2.15,
+      "beats": 0.5,
+      "cam": "push_hard",
+      "post": "eq=brightness=0.05:contrast=0.98"
+    },
+    {
+      "clip": "polish",
+      "ss": 4.35,
+      "beats": 0.75,
+      "cam": "hold",
+      "post": "eq=brightness=0.04:contrast=1.00"
+    },
+    {
+      "clip": "track",
+      "ss": 2.2,
+      "beats": 0.75,
+      "cam": "drift_back"
+    },
+    {
+      "clip": "three",
+      "ss": 0.8,
+      "beats": 1.0,
+      "cam": "push_hard"
+    },
+    {
+      "clip": "three",
+      "ss": 1.5,
+      "beats": 1.75,
+      "cam": "pull",
+      "slow": 1.3
+    }
+  ],
+  "lines": [
+    {
+      "at": 0,
+      "text": "no bulb. no lamp. look at the wood.",
+      "size": 54,
+      "wrap": 17,
+      "box": false
+    },
+    {
+      "at": 3,
+      "text": "every plank is finished by hand.",
+      "size": 50,
+      "wrap": 18,
+      "box": false
+    },
+    {
+      "at": 8,
+      "text": "three of them. one line each.",
+      "size": 52,
+      "wrap": 17,
+      "box": false
+    }
+  ],
+  "whoosh_at": [
+    3.54,
+    8.47
+  ],
+  "copy": {
+    "hook": "no bulb. no lamp. look at the wood.",
+    "turn": "every plank is finished by hand.",
+    "cta_line": "made by hand. lit by a line.",
+    "cta": "solid wood lighting · nixwoods.com"
+  },
+  "notes": "Short dark-and-stylish cut of the floating light shelf from Rameez's three phone clips only (IMG_7745 polish, IMG_7747 track, IMG_7749 three). No AI stills, so no Meta AI disclosure is needed on this one. The source is a bright daylight workshop (measured grey means 117/132/144, p5 28/60/61), so the stock `noir` grade (brightness -0.30, contrast 1.50) would have crushed the craftsman and the plank to black. This brief overrides it with a midtone-crushing curve that leaves the highlight knee alone: the room falls away, the inset LED line stays hot, and the polish clip is lifted back +0.05 per shot because it has no LED to carry it. Structure is light -> hand -> three: open on the glowing channel (the strongest frame in the footage), cut to the maker, pay off on the three lit shelves. Hook scores 10/12 on hooks.py, all three gates. No claim is made that the shelves are on a wall, because the footage shows them on a workshop table."
+}
