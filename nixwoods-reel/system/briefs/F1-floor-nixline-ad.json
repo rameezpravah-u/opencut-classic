@@ -1,0 +1,147 @@
+{
+ "name": "F1-floor-nixline-ad",
+ "mechanism": "quickcut",
+ "product": "floor",
+ "style": "noir",
+ "tags": [
+  "floor-lamp",
+  "teak",
+  "handcrafted",
+  "ad",
+  "cold-traffic"
+ ],
+ "pillar": "Product",
+ "channel": "ads",
+ "music": "audio/music3-design.mp3",
+ "music_gain_db": -4,
+ "cut": 1.0,
+ "cover_t": 0.6,
+ "card_dur": 3.0,
+ "transition": "cut",
+ "grade": "curves=all='0/0.00 0.25/0.19 0.70/0.73 1/1',eq=brightness=-0.05:contrast=1.20:saturation=1.06,colorbalance=rh=0.04:bh=-0.04,vignette=angle=PI/4.2",
+ "shots": [
+  {
+   "clip": "forest",
+   "ss": 0.0,
+   "beats": 2.5,
+   "cam": "push"
+  },
+  {
+   "clip": "hero",
+   "ss": 1.6,
+   "beats": 2.8,
+   "cam": "hold"
+  },
+  {
+   "clip": "hero",
+   "ss": 3.0,
+   "beats": 2.4,
+   "cam": "push"
+  },
+  {
+   "clip": "hero",
+   "ss": 4.8,
+   "beats": 2.4,
+   "cam": "drift"
+  },
+  {
+   "clip": "floorpan",
+   "ss": 0.4,
+   "beats": 2.8,
+   "cam": "drift"
+  },
+  {
+   "clip": "hero",
+   "ss": 6.4,
+   "beats": 2.8,
+   "cam": "pull"
+  },
+  {
+   "clip": "upright",
+   "ss": 0.6,
+   "beats": 2.7,
+   "cam": "push"
+  },
+  {
+   "clip": "row",
+   "ss": 0.3,
+   "beats": 2.8,
+   "cam": "drift"
+  },
+  {
+   "clip": "floorpan",
+   "ss": 2.6,
+   "beats": 2.0,
+   "cam": "hold"
+  }
+ ],
+ "lines": [
+  {
+   "at": 0.1,
+   "text": "stop buying metal floor lamps.",
+   "size": 50,
+   "wrap": 17,
+   "box": false
+  },
+  {
+   "at": 2.7,
+   "text": "solid teak. warm led.",
+   "size": 50,
+   "wrap": 16,
+   "box": false
+  },
+  {
+   "at": 7.9,
+   "text": "no mdf. no veneer.",
+   "size": 50,
+   "wrap": 16,
+   "box": false
+  },
+  {
+   "at": 10.4,
+   "text": "warm light. 2700-3000k.",
+   "size": 46,
+   "wrap": 18,
+   "box": false
+  },
+  {
+   "at": 13.3,
+   "text": "handcrafted in uttar pradesh.",
+   "size": 44,
+   "wrap": 19,
+   "box": false
+  },
+  {
+   "at": 16.2,
+   "text": "plug in. no assembly.",
+   "size": 48,
+   "wrap": 17,
+   "box": false
+  },
+  {
+   "at": 19.0,
+   "text": "30 inches. fits any corner.",
+   "size": 46,
+   "wrap": 18,
+   "box": false
+  },
+  {
+   "at": 21.8,
+   "text": "3 years on the wood.",
+   "size": 48,
+   "wrap": 17,
+   "box": false
+  }
+ ],
+ "whoosh_at": [
+  2.5,
+  13.1
+ ],
+ "copy": {
+  "hook": "stop buying metal floor lamps.",
+  "turn": "solid teak. warm led.",
+  "cta_line": "teak. not metal.",
+  "cta": "solid wood lighting · nixwoods.com"
+ },
+ "notes": "NixLine Solid Teakwood Floor Lamp AD cut, 23 Sep, 26s. Length is deliberate: presets.ads_engine.ad_length records 27.7s reels landing in the Medium bucket at 4.54x vs 0.98x for Short, so ads get 25-30s and organic gets 12-20s. A 13.4s organic cut of the same footage was built first and kept. Every claim quoted from the PDP: solid teak / no MDF / no veneer, warm LED 2700-3000K, plug-in no assembly, handcrafted in Uttar Pradesh, 3 years on the wood. NO PRICE on screen - Shopify lists 999 INR against 6999-9999 for the other floor lamps and Rameez has not confirmed it. Hook scores 9/12, all three gates; 'why is your floor lamp made of plastic?' scored 10/12 but asserts something about the viewer's own lamp that we cannot know. 'one piece of teak' is NOT used - the PDP says solid teak with no MDF or veneer, which is not a single-piece claim. Source footage: all five clips are Rameez's own, HLG HEVC tonemapped to bt709; no AI frames, so no Meta AI disclosure. hero clip carries a burned-in caption 0.5-1.3s and a burned-in end card from ~9.3s, so nothing is cut outside 1.45-9.2s. Grade lifts rather than crushes - this footage is mid-bright (mean 121-153, p5 51-79), unlike the night footage the stock noir grade was tuned on; the vignette pushes the workshop clutter down while keeping the LED line hot."
+}
