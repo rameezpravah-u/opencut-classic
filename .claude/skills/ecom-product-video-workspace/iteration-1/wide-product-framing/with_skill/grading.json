@@ -1,0 +1,37 @@
+{
+ "eval_name": "wide-product-framing",
+ "mp4": "wide-product-framing/with_skill/outputs/reel.mp4",
+ "expectations": [
+  {
+   "text": "Output is a playable 1080x1920 vertical mp4",
+   "passed": true,
+   "evidence": "1080x1920, 58 frames decoded"
+  },
+  {
+   "text": "No sustained dead stretch in the body (dark AND flat - a dark end card is not dead)",
+   "passed": true,
+   "evidence": "longest dead stretch 0.00s; darkest frame mean 14.9 at spatial std 30.9"
+  },
+  {
+   "text": "The reel actually moves - consecutive frames differ (not a slideshow of one still)",
+   "passed": true,
+   "evidence": "88% of frame pairs differ by >1/255"
+  },
+  {
+   "text": "At least one shot shows the fixture across the frame, not centre-cropped away",
+   "passed": true,
+   "evidence": "widest lit extent 100% of frame width (frame 0)"
+  },
+  {
+   "text": "Low-res sources are identified by pixel size before use",
+   "passed": true,
+   "evidence": "source pixel dimensions cited"
+  },
+  {
+   "text": "Write-up cites a measured number from the sources, not just adjectives",
+   "passed": true,
+   "evidence": "matched 5 of 5 evidence patterns"
+  }
+ ],
+ "pass_rate": 1.0
+}

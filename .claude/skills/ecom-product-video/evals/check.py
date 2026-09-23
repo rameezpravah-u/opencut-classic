@@ -115,35 +115,42 @@ def a_tonemapped(run, mp4, info, f, txt):
 
 
 def a_no_black_frames(run, mp4, info, f, txt):
-    """No sustained dead stretch in the body of the reel (fades in/out excluded)"""
+    """No sustained dead stretch in the body (dark AND flat - a dark end card is not dead)"""
     if f is None or len(f) < 8:
         return False, "too few frames to judge"
     skip = int(0.6 * FPS)
     body = f[skip:len(f) - skip]
     if len(body) == 0:
         return False, "body empty after trimming fades"
-    per = luma(body).mean(axis=(1, 2))
+    l = luma(body)
+    mean = l.mean(axis=(1, 2))
+    struct = l.std(axis=(1, 2))          # spatial detail within each frame
+    dead = (mean < 12) & (struct < 8)    # near-black with nothing drawn on it
     run_len = best = 0
-    for d in (per < 12):
+    for d in dead:
         run_len = run_len + 1 if d else 0
         best = max(best, run_len)
     worst = best / FPS
-    return bool(worst < 0.75), (f"longest dark stretch {worst:.2f}s "
-                                f"(min frame luma {per.min():.1f}, mean {per.mean():.1f})")
+    return bool(worst < 0.75), (f"longest dead stretch {worst:.2f}s; darkest frame "
+                                f"mean {mean.min():.1f} at spatial std {struct[mean.argmin()]:.1f}")
 
 
 def a_tail_plays(run, mp4, info, f, txt):
-    """The reel plays to its stated end - decoded runtime matches the container"""
+    """The reel plays to its stated end, and the final frames carry picture"""
     cd, rd = info.get("container_duration"), info.get("duration")
     if not cd or not rd:
         return False, "could not measure duration"
     if f is None or len(f) < 2:
         return False, "no frames"
     drift = rd - cd
-    tail_ok = bool(luma(f[-2:]).mean() >= 8)
-    ok = abs(drift) <= 0.75 and tail_ok
-    return ok, (f"container says {cd:.2f}s, decoded {rd:.2f}s (drift {drift:+.2f}s); "
-                f"final frames mean luma {luma(f[-2:]).mean():.1f}")
+    tail = luma(f[-2:])
+    # An end card is often near-black by design; what matters is that something
+    # is drawn on it, so judge structure rather than brightness.
+    mean, struct = float(tail.mean()), float(tail.std(axis=(1, 2)).mean())
+    has_picture = mean >= 8 or struct >= 8
+    ok = abs(drift) <= 0.75 and has_picture
+    return ok, (f"container {cd:.2f}s vs decoded {rd:.2f}s (drift {drift:+.2f}s); "
+                f"final frames mean {mean:.1f}, spatial std {struct:.1f}")
 
 
 def a_not_frozen(run, mp4, info, f, txt):

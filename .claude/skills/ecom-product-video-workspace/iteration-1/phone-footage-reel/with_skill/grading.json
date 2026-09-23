@@ -1,0 +1,42 @@
+{
+ "eval_name": "phone-footage-reel",
+ "mp4": "phone-footage-reel/with_skill/outputs/reel.mp4",
+ "expectations": [
+  {
+   "text": "Output is a playable 1080x1920 vertical mp4",
+   "passed": true,
+   "evidence": "1080x1920, 49 frames decoded"
+  },
+  {
+   "text": "Output is tagged bt709, not left on the source's HLG/bt2020 transfer",
+   "passed": true,
+   "evidence": "colour tags: tv, bt709/unknown/unknown, progressive"
+  },
+  {
+   "text": "No sustained dead stretch in the body (dark AND flat - a dark end card is not dead)",
+   "passed": true,
+   "evidence": "longest dead stretch 0.00s; darkest frame mean 4.3 at spatial std 28.3"
+  },
+  {
+   "text": "The reel plays to its stated end, and the final frames carry picture",
+   "passed": true,
+   "evidence": "container 12.33s vs decoded 12.32s (drift -0.01s); final frames mean 5.1, spatial std 30.8"
+  },
+  {
+   "text": "The reel actually moves - consecutive frames differ (not a slideshow of one still)",
+   "passed": true,
+   "evidence": "96% of frame pairs differ by >1/255"
+  },
+  {
+   "text": "Write-up cites a measured number from the sources, not just adjectives",
+   "passed": true,
+   "evidence": "matched 3 of 5 evidence patterns"
+  },
+  {
+   "text": "A hook line is stated and justified/scored rather than left implicit",
+   "passed": true,
+   "evidence": "hook mentioned=True, gated/scored=True"
+  }
+ ],
+ "pass_rate": 1.0
+}

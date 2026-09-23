@@ -1,0 +1,42 @@
+{
+ "eval_name": "competitor-restyle",
+ "mp4": "competitor-restyle/with_skill/outputs/reel.mp4",
+ "expectations": [
+  {
+   "text": "Output is a playable 1080x1920 vertical mp4",
+   "passed": true,
+   "evidence": "1080x1920, 105 frames decoded"
+  },
+  {
+   "text": "No sustained dead stretch in the body (dark AND flat - a dark end card is not dead)",
+   "passed": true,
+   "evidence": "longest dead stretch 0.00s; darkest frame mean 4.5 at spatial std 29.0"
+  },
+  {
+   "text": "The reel actually moves - consecutive frames differ (not a slideshow of one still)",
+   "passed": true,
+   "evidence": "96% of frame pairs differ by >1/255"
+  },
+  {
+   "text": "Runtime lands near the 28s reference (24-32s)",
+   "passed": true,
+   "evidence": "decoded runtime 26.24s (container said 26.3)"
+  },
+  {
+   "text": "Each beat is mapped to a named existing asset file",
+   "passed": true,
+   "evidence": "named 5 existing assets: ['sh00-marble-dining', 'sh01-underside-twin', 'sh03-dark-two-lines', 'sh04-end-channels', 'sh05-canopy-cables']"
+  },
+  {
+   "text": "A missing beat is derived with a free technique, and nothing paid was called",
+   "passed": true,
+   "evidence": "derivation technique named=True, paid-generation evidence=False"
+  },
+  {
+   "text": "No attempt to reuse the competitor's own video",
+   "passed": true,
+   "evidence": "no competitor-footage reuse found"
+  }
+ ],
+ "pass_rate": 1.0
+}
