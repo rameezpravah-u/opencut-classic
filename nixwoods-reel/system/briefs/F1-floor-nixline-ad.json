@@ -77,56 +77,56 @@
  ],
  "lines": [
   {
-   "at": 0.1,
+   "at": 0,
    "text": "stop buying metal floor lamps.",
    "size": 50,
    "wrap": 17,
    "box": false
   },
   {
-   "at": 2.7,
+   "at": 1,
    "text": "solid teak. warm led.",
    "size": 50,
    "wrap": 16,
    "box": false
   },
   {
-   "at": 7.9,
+   "at": 3,
    "text": "no mdf. no veneer.",
    "size": 50,
    "wrap": 16,
    "box": false
   },
   {
-   "at": 10.4,
+   "at": 4,
    "text": "warm light. 2700-3000k.",
    "size": 46,
    "wrap": 18,
    "box": false
   },
   {
-   "at": 13.3,
+   "at": 5,
    "text": "handcrafted in uttar pradesh.",
    "size": 44,
    "wrap": 19,
    "box": false
   },
   {
-   "at": 16.2,
+   "at": 6,
    "text": "plug in. no assembly.",
    "size": 48,
    "wrap": 17,
    "box": false
   },
   {
-   "at": 19.0,
+   "at": 7,
    "text": "30 inches. fits any corner.",
    "size": 46,
    "wrap": 18,
    "box": false
   },
   {
-   "at": 21.8,
+   "at": 8,
    "text": "3 years on the wood.",
    "size": 48,
    "wrap": 17,
@@ -143,5 +143,5 @@
   "cta_line": "teak. not metal.",
   "cta": "solid wood lighting · nixwoods.com"
  },
- "notes": "NixLine Solid Teakwood Floor Lamp AD cut, 23 Sep, 26s. Length is deliberate: presets.ads_engine.ad_length records 27.7s reels landing in the Medium bucket at 4.54x vs 0.98x for Short, so ads get 25-30s and organic gets 12-20s. A 13.4s organic cut of the same footage was built first and kept. Every claim quoted from the PDP: solid teak / no MDF / no veneer, warm LED 2700-3000K, plug-in no assembly, handcrafted in Uttar Pradesh, 3 years on the wood. NO PRICE on screen - Shopify lists 999 INR against 6999-9999 for the other floor lamps and Rameez has not confirmed it. Hook scores 9/12, all three gates; 'why is your floor lamp made of plastic?' scored 10/12 but asserts something about the viewer's own lamp that we cannot know. 'one piece of teak' is NOT used - the PDP says solid teak with no MDF or veneer, which is not a single-piece claim. Source footage: all five clips are Rameez's own, HLG HEVC tonemapped to bt709; no AI frames, so no Meta AI disclosure. hero clip carries a burned-in caption 0.5-1.3s and a burned-in end card from ~9.3s, so nothing is cut outside 1.45-9.2s. Grade lifts rather than crushes - this footage is mid-bright (mean 121-153, p5 51-79), unlike the night footage the stock noir grade was tuned on; the vignette pushes the workshop clutter down while keeping the LED line hot."
+ "notes": "NixLine Solid Teakwood Floor Lamp AD cut, 23 Sep, 26s. Length is deliberate: presets.ads_engine.ad_length records 27.7s reels landing in the Medium bucket at 4.54x vs 0.98x for Short, so ads get 25-30s and organic gets 12-20s. A 13.4s organic cut of the same footage was built first and kept. Every claim quoted from the PDP: solid teak / no MDF / no veneer, warm LED 2700-3000K, plug-in no assembly, handcrafted in Uttar Pradesh, 3 years on the wood. NO PRICE on screen - Shopify lists 999 INR against 6999-9999 for the other floor lamps and Rameez has not confirmed it. Hook scores 9/12, all three gates; 'why is your floor lamp made of plastic?' scored 10/12 but asserts something about the viewer's own lamp that we cannot know. 'one piece of teak' is NOT used - the PDP says solid teak with no MDF or veneer, which is not a single-piece claim. Source footage: all five clips are Rameez's own, HLG HEVC tonemapped to bt709; no AI frames, so no Meta AI disclosure. hero clip carries a burned-in caption 0.5-1.3s and a burned-in end card from ~9.3s, so nothing is cut outside 1.45-9.2s. Grade lifts rather than crushes - this footage is mid-bright (mean 121-153, p5 51-79), unlike the night footage the stock noir grade was tuned on; the vignette pushes the workshop clutter down while keeping the LED line hot. CUE TIMING: lines[].at is a SHOT INDEX, not seconds - mechanisms.py does shots[int(at)] clamped to the last shot. The first build put cues at 0.1/2.7/7.9/10.4/13.3/16.2/19.0/21.8 expecting seconds; five of the eight clamped onto the final shot and rendered stacked on top of each other, illegible. Caught by pulling the lower third at full resolution, not by any automated check - the pre-flight passed it."
 }
