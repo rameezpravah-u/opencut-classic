@@ -117,13 +117,13 @@ def kick(text, col=INK): return word_img(text.upper(), KICK, col, track=5, shado
 
 class Card:
     """Step number plus one or two lines, rising in with a stagger."""
-    def __init__(self, num, lines, y=330):
+    def __init__(self, num, lines, y=330, x=96):
         self.items = []
         if num:
-            self.items.append((W_(num, NUM, WOOD), 96, y))
+            self.items.append((W_(num, NUM, WOOD), x, y))
             y += 128
         for ln in lines:
-            self.items.append((W_(ln, TXT, INK), 96, y)); y += 74
+            self.items.append((W_(ln, TXT, INK), x, y)); y += 74
     def draw(self, f, t, t_in, t_out=None):
         for i, ((img, pad, asc), x, y) in enumerate(self.items):
             p = out_cubic(prog(t, t_in + i * .07, .4)); a = p; dy = (1 - p) * 26
@@ -138,7 +138,8 @@ CARDS = {
     "B1": Card("03", ["fix the canopy."], y=1150),
     "B2": Card("", ["check it sits level."], y=1150 + 128 + 74),
     "C1": Card("04", ["fit the suspension", "wire."], y=1150),
-    "C2": Card("05", ["seat the 2-in-1", "wire."], y=1150),
+    # x=220: the left wire's screen path through this band, measured over the dolly, ends at x=179
+    "C2": Card("05", ["seat the 2-in-1", "wire."], y=1150, x=220),
     "D1": Card("06", ["your electrician", "connects the supply."], y=960),
     "D2": Card("07", ["set both wires to", "the same length."], y=960),
     "E1": Card("08", ["power on. the remote", "is already paired."], y=1150),
