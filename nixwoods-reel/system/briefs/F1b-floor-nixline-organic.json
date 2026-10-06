@@ -1,0 +1,114 @@
+{
+ "name": "F1b-floor-nixline-organic",
+ "mechanism": "quickcut",
+ "product": "floor",
+ "style": "noir",
+ "tags": [
+  "floor-lamp",
+  "teak",
+  "handcrafted",
+  "organic"
+ ],
+ "pillar": "Product",
+ "channel": "organic",
+ "music": "audio/music3-design.mp3",
+ "music_gain_db": -4,
+ "cut": 1.0,
+ "cover_t": 0.6,
+ "card_dur": 2.2,
+ "transition": "cut",
+ "grade": "curves=all='0/0.00 0.25/0.19 0.70/0.73 1/1',eq=brightness=-0.05:contrast=1.20:saturation=1.06,colorbalance=rh=0.04:bh=-0.04,vignette=angle=PI/4.2",
+ "shots": [
+  {
+   "clip": "forest",
+   "ss": 0.1,
+   "beats": 2.2,
+   "cam": "push"
+  },
+  {
+   "clip": "hero",
+   "ss": 1.6,
+   "beats": 2.0,
+   "cam": "hold"
+  },
+  {
+   "clip": "hero",
+   "ss": 4.8,
+   "beats": 1.8,
+   "cam": "push"
+  },
+  {
+   "clip": "hero",
+   "ss": 6.4,
+   "beats": 2.0,
+   "cam": "drift"
+  },
+  {
+   "clip": "upright",
+   "ss": 1.0,
+   "beats": 1.8,
+   "cam": "pull"
+  },
+  {
+   "clip": "row",
+   "ss": 0.3,
+   "beats": 1.8,
+   "cam": "drift"
+  }
+ ],
+ "lines": [
+  {
+   "at": 0,
+   "text": "stop buying metal floor lamps.",
+   "size": 50,
+   "wrap": 17,
+   "box": false
+  },
+  {
+   "at": 1,
+   "text": "solid teak. warm led.",
+   "size": 50,
+   "wrap": 16,
+   "box": false
+  },
+  {
+   "at": 2,
+   "text": "no mdf. no veneer.",
+   "size": 50,
+   "wrap": 16,
+   "box": false
+  },
+  {
+   "at": 3,
+   "text": "handcrafted in uttar pradesh.",
+   "size": 44,
+   "wrap": 19,
+   "box": false
+  },
+  {
+   "at": 4,
+   "text": "plug in. no assembly.",
+   "size": 48,
+   "wrap": 17,
+   "box": false
+  },
+  {
+   "at": 5,
+   "text": "3 years on the wood.",
+   "size": 48,
+   "wrap": 17,
+   "box": false
+  }
+ ],
+ "whoosh_at": [
+  2.2,
+  6.0
+ ],
+ "copy": {
+  "hook": "stop buying metal floor lamps.",
+  "turn": "solid teak. warm led.",
+  "cta_line": "teak. not metal.",
+  "cta": "solid wood lighting · nixwoods.com"
+ },
+ "notes": "NixLine organic cut, 13-14s, rebuilt 6 Oct. The 23 Sep file was copied mid-render and shipped without a moov atom; Instagram rejected it on 5 Oct with 'Video Transcoding Fatal'. Same shots as the original organic brief; cues fixed to shot indices (lines[].at is a SHOT INDEX) - the original had them in seconds, which would have stacked three on the last shot. Own name so it can never be written over by the F1 ad render."
+}

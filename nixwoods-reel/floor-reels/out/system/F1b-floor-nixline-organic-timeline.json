@@ -1,0 +1,237 @@
+{
+ "name": "F1b-floor-nixline-organic",
+ "mechanism": "quickcut",
+ "style": "noir",
+ "duration": 13.4,
+ "shots": [
+  {
+   "kind": "video",
+   "src": "src/nx03-7926.mp4",
+   "ss": 0.1,
+   "start": 0.0,
+   "end": 2.2,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/nx00-hero.mp4",
+   "ss": 1.6,
+   "start": 2.2,
+   "end": 4.2,
+   "xfade": null,
+   "cam": {
+    "z0": 1.08,
+    "z1": 1.08
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/nx00-hero.mp4",
+   "ss": 4.8,
+   "start": 4.2,
+   "end": 6.0,
+   "xfade": null,
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.12
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/nx00-hero.mp4",
+   "ss": 6.4,
+   "start": 6.0,
+   "end": 8.0,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": -0.3,
+    "px1": 0.3
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/nx04-7930.mp4",
+   "ss": 1.0,
+   "start": 8.0,
+   "end": 9.8,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.0
+   }
+  },
+  {
+   "kind": "video",
+   "src": "src/nx01-7923.mp4",
+   "ss": 0.3,
+   "start": 9.8,
+   "end": 11.6,
+   "xfade": null,
+   "cam": {
+    "z0": 1.12,
+    "z1": 1.12,
+    "px0": -0.3,
+    "px1": 0.3
+   }
+  },
+  {
+   "kind": "still",
+   "src": "out/system/F1b-floor-nixline-organic-end.png",
+   "ss": 0,
+   "start": 11.2,
+   "end": 13.4,
+   "xfade": [
+    "fade",
+    0.4
+   ],
+   "cam": null
+  }
+ ],
+ "cues": [
+  {
+   "png": "F1b-floor-nixline-organic-c00.png",
+   "start": 0.12,
+   "end": 2.08
+  },
+  {
+   "png": "F1b-floor-nixline-organic-c01.png",
+   "start": 2.32,
+   "end": 4.08
+  },
+  {
+   "png": "F1b-floor-nixline-organic-c02.png",
+   "start": 4.32,
+   "end": 5.88
+  },
+  {
+   "png": "F1b-floor-nixline-organic-c03.png",
+   "start": 6.12,
+   "end": 7.88
+  },
+  {
+   "png": "F1b-floor-nixline-organic-c04.png",
+   "start": 8.12,
+   "end": 9.68
+  },
+  {
+   "png": "F1b-floor-nixline-organic-c05.png",
+   "start": 9.92,
+   "end": 11.48
+  }
+ ],
+ "audio": [
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 2.0,
+   "gain": -10,
+   "music": false
+  },
+  {
+   "src": "sfx-whoosh.mp3",
+   "start": 5.8,
+   "gain": -10,
+   "music": false
+  },
+  {
+   "src": "music3-design.mp3",
+   "start": 0.0,
+   "gain": -4.0,
+   "music": true
+  }
+ ],
+ "lint": [],
+ "warnings": [],
+ "checks": [],
+ "tags": [
+  "floor-lamp",
+  "teak",
+  "handcrafted",
+  "organic"
+ ],
+ "preflight": {
+  "ad_name": "COM | Floor | Broad | Sales | Oct06",
+  "hook_score": {
+   "hook": "stop buying metal floor lamps.",
+   "words": 5,
+   "gates": {
+    "gap": true,
+    "truth": true,
+    "pull": true
+   },
+   "brevity": 3,
+   "specificity": 1,
+   "family": 2,
+   "families": [
+    "pattern-interrupt"
+   ],
+   "score": 9,
+   "out_of": 12,
+   "trademark": [],
+   "passes": true
+  },
+  "uses_generated_frames": false,
+  "colours": [
+   "n/a"
+  ],
+  "hypothesis": [],
+  "category_focus": "new money and new creative go to wall lights and pendants first; Rubik's keeps its old campaign; the Sep03 Rubik's campaign stays off. Rubik's reels are organic-first until the focus window ends.",
+  "rows": [
+   {
+    "check": "rules · at least two colours shown",
+    "ok": true,
+    "detail": "not applicable — single-temperature fixture"
+   },
+   {
+    "check": "rules · no dispatch-time claim while backlogged",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "facts · banned words / numbers in PDP facts",
+    "ok": true,
+    "detail": "hook truth gate pass"
+   },
+   {
+    "check": "landing = the product shown, .nw-pdp template, stock visible",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "visual confirmation (watch the mp4, not the sheet)",
+    "ok": null,
+    "detail": "manual"
+   },
+   {
+    "check": "named control in the same ad set",
+    "ok": null,
+    "detail": "none on record"
+   },
+   {
+    "check": "kill threshold written on the ad",
+    "ok": null,
+    "detail": "₹1,500 spend with 0 purchases, or 7d ROAS below the ad-set average after ≥₹3,000"
+   },
+   {
+    "check": "AI disclosure ticked in Ads Manager",
+    "ok": true,
+    "detail": "no generated frames"
+   },
+   {
+    "check": "hook on screen by 0.3 s, holds 1.2 s; all text in the safe zone",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "check": "length · 25–30 s cut exists for ads (Medium bucket 4.54x vs 0.98x Short)",
+    "ok": null,
+    "detail": "13.4 s — render again with \"stretch\" for the ad cut"
+   }
+  ]
+ }
+}
