@@ -19,6 +19,18 @@ egress-proxy CA), so it cannot run in Auto mode: switch to "Accept edits", appro
 | 6 | — | — | "Stop making pretty ads that flop in Ads Manager" |
 | 7 | — | — | Share / follow CTA |
 
+**Three NixLine statics built from this post were rejected by Rameez on 7 Oct ("the shittiest").**
+Why, so it is not repeated:
+- The lesson was applied as decoration (caption boxes, then a sticky note) pasted onto whatever frame
+  was at hand. In the good ads the *photo itself* sells; the text is part of the scene.
+- "Native" was read as "messy". The good ads are phone photos, but clean and product-first: you know
+  instantly what the product is. The workshop frames show a lit stick over a dirty floor, plastic
+  bags and cables — nobody can tell it is a floor lamp or picture it at home.
+- A marker font on a pink square is not a sticky note. The reference note is physically in the photo.
+- It was rendered before the concept was agreed with Rameez.
+The real gap: there is no real photo of NixLine standing lit in a room. Get that shot (with a real
+note in it) or agree a generated concept first; do not paper over the gap with overlays.
+
 What the good ads have in common: a **real** photo; **one** claim; the claim is written **onto the
 scene by hand** (sticky note, marker on skin), not set in a designer font; proof is a **real**
 review with a name. The first NixLine "native" attempt (7 Oct) copied only slide 1's surface.
