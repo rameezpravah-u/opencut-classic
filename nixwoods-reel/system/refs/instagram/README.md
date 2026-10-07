@@ -32,11 +32,12 @@ comment-to-DM bait that drove 1.2K comments. Account is labelled "AI content".
 | # | Tool | Slide claim | Checked 7 Oct |
 |---|---|---|---|
 | 2 | Steve AI | free text-to-video, scripts, avatars | free plan is watermarked; no watermark from $19/mo. Animated explainers, no product fidelity |
-| 3 | Wireflo(w) | no card, no watermark, no cap | wireflow.ai: multi-model canvas (12 video models), "free to build", no watermark on free. Needs a free account |
+| 3 | Wireflo(w) | no card, no watermark, no cap | wireflow.ai: multi-model canvas; the free account only **builds** workflows — running video models needs a paid plan's credits |
 | 4 | D-ID Studio | photo-to-video, talking avatars, lip-sync | trial only: ~5 min/month, **watermarked, commercial use excluded** |
-| 5 | ZSky AI | no card, no watermark, no cap | zsky.ai: free account, no watermark, "unlimited" image + HD video with audio on the free tier. Needs a free account |
+| 5 | ZSky AI | no card, no watermark, no cap | zsky.ai: unlimited on a free account, but free output carries a "MADE WITH / zsky.ai" wordmark (Pro $19 removes it); API only on Max $99 |
 | 6–7 | Pictory | text-to-video, summaries, drafts | trial: 3 projects, **watermarked**; paid from ~$19–25/mo |
 
-Usable for NixWoods free: **ZSky AI** and **Wireflow** (both need a free account set up by the
-person; no login is ever done on their behalf). Not usable for ads: D-ID and Pictory (watermark,
-D-ID bars commercial use), Steve AI (watermark, cartoon style).
+None of the five is free *and* clean enough for a paid ad: ZSky watermarks free output, Wireflow
+needs paid credits to generate, D-ID/Pictory/Steve AI watermark (D-ID also bars commercial use).
+First pass on 7 Oct read only the search snippets and called ZSky and Wireflow usable; their own
+pages corrected that. Full table: `system/FREE-TOOLS.md`.

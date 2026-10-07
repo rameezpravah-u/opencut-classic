@@ -45,6 +45,7 @@ No flags needed. `--root` only for assets outside a declared product folder.
   so it never exits, and a second one matches the first. Two of these span silently on 9 Sep while
   the render they were watching had already finished. If a wait is genuinely needed, wait on a
   condition that cannot match the watcher (a file appearing, a marker written by the job itself).
+- **Free tools and reference posts**: `system/FREE-TOOLS.md` says which generators are really free (checked on their own pages) and how to read a reference carousel or reel slide by slide.
 - **Copy rules are enforced, not advisory**: banned words, 12 words a screen, no fabricated testimonials, no dispatch claims while backlogged, two colours minimum on the cube lamp, AI disclosure on generated frames in paid ads.
 - Ads Engine, creative learnings and the decision ledger live in the `Code` repo, branch `claude/nixwoods-funnel-audit-hg4dk9`.
 - **Drive** (root `nixwoods`): downloads work up to 10 MB a file, so photographs and short edits are fetchable but the 18 raw shoot clips (19–25 MB) are not. Reel photography comes from the public Shopify product CDN. Map, naming, download recipe and the do-not-use watermarked set: `DRIVE-MAP.md`.
