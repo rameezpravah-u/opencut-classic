@@ -32,6 +32,15 @@ CARDS = {
         "boxes": [["stop buying metal", "floor lamps."], ["solid teak.", "no veneer.", "handmade."]],
         "box_x": [540, None],          # None = beside the lamp, so the lit end stays clear
     },
+    # Fully generated (Higgsfield gpt_image_2_5, 7 Oct, reference = the real PDP marble-corner photo).
+    # Lamp matches the reference; it reads taller than its real 30 in, so this card carries no size claim.
+    # Meta AI disclosure must be ticked if this runs paid; isAiGenerated true if posted organically.
+    "gen": {
+        "src": ("hf/nx-gen-native-bedroom.jpg",),
+        "boxes": [["stop buying metal", "floor lamps."], ["solid teak.", "warm light.", "plug in."]],
+        "box_x": [430, 330],
+        "formats": ["4x5"],
+    },
     "back": {
         "src": ("src/nx06-7921.mp4", 0.25),
         "boxes": [["flip it.", "still solid teak."], ["no mdf. no veneer."]],
@@ -40,13 +49,16 @@ CARDS = {
 }
 # per format: output size, crop window into the 1080x1920 frame (y0), box anchor y for each box (top edge)
 FORMATS = {
-    "4x5":  {"size": (1080, 1350), "y0": {"lit": 430, "back": 300}, "box_y": {"lit": [70, 860], "back": [80, 1060]}, "beside_x": 870},
+    "4x5":  {"size": (1080, 1350), "y0": {"lit": 430, "back": 300, "gen": 0}, "box_y": {"lit": [70, 860], "back": [80, 1060], "gen": [120, 560]}, "beside_x": 870},
     "9x16": {"size": (1080, 1920), "y0": {"lit": 0,   "back": 0},   "box_y": {"lit": [260, 1130], "back": [280, 1330]}, "beside_x": 790},
 }
 SAFE_9x16 = (230, 1500)        # presets.json safe zone: y 230-1500, x 70-950 (Reels / Stories UI)
 
 
-def grab(clip, t):
+def grab(clip, t=None):
+    if clip.startswith("hf/"):                    # a generated still, already 4:5 - scale to the frame width
+        im = Image.open(os.path.join(ROOT, clip)).convert("RGB")
+        return im.resize((1080, round(im.height * 1080 / im.width)), Image.LANCZOS)
     p = subprocess.run([FF, "-nostdin", "-v", "error", "-ss", f"{t:.3f}", "-i", os.path.join(ROOT, clip),
                         "-frames:v", "1", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
                        capture_output=True, stdin=subprocess.DEVNULL, check=True)
@@ -105,6 +117,6 @@ def render(card, fmt):
 
 if __name__ == "__main__":
     for card in CARDS:
-        for fmt in FORMATS:
+        for fmt in CARDS[card].get("formats", FORMATS):
             out, words = render(card, fmt)
             print(f"{os.path.relpath(out, ROOT)}  {words} words")

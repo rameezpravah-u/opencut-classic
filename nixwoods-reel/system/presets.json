@@ -1500,7 +1500,9 @@
    "shopify_handle": "nix-line-solid-wood-floor-lamp",
    "shopify_gid": "gid://shopify/Product/8487666319495",
    "assets": {
-    "stills": {},
+    "stills": {
+     "native_bedroom": "hf/nx-gen-native-bedroom.jpg"
+    },
     "clips": {
      "hero": "src/nx00-hero.mp4",
      "row": "src/nx01-7923.mp4",
@@ -1515,8 +1517,12 @@
     "fit": {},
     "crops": {},
     "slots": {},
-    "ai_generated": [],
-    "status": {},
+    "ai_generated": [
+     "native_bedroom"
+    ],
+    "status": {
+     "native_bedroom": "approved 7 Oct — Higgsfield gpt_image_2_5, reference = pdp/p0-marble-corner.jpg. Lamp matches the reference (slim square teak bar, leaning, glow washing the wall behind it). Reads taller than the real 30 in beside the bed: no size claim on or with this image. AI-generated: Meta AI disclosure must be ticked for paid; isAiGenerated true for organic."
+    },
     "clip_status": {
      "hero": "approved — Rameez's own footage, 23 Sep. HLG HEVC original tonemapped to bt709. Burned-in caption 0.5-1.3s: do not cut before 1.45s.",
      "row": "approved — Rameez's own footage, 23 Sep. 4K60 HLG original, tonemapped and conformed to 1080x1920/30.",
