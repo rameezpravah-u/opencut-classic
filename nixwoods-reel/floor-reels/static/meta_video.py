@@ -34,6 +34,11 @@ BEAT, OFF = 0.8357, 0.396
 T_OFF, T_ON, T_DUSK, T_END, DUR = 2 * BEAT, 3 * BEAT, 7 * BEAT, 9 * BEAT, 12 * BEAT
 AUD = os.path.join(m.ROOT, "audio")
 OUT = os.path.join(m.OUT, "NX-META-V1-tubelight-to-teak-9x16.mp4")
+# hook test (ab-hook-tester, 7 Oct): A = recognition (the default), B = anticipation; nothing else changes
+HOOKS = {"A": ["Still lit by", "one tubelight?"], "B": ["Watch this corner.", "Wait for the switch."]}
+VARIANT = sys.argv[1] if len(sys.argv) > 1 else None
+if VARIANT and VARIANT != "A":
+    OUT = OUT.replace(".mp4", f"-hook{VARIANT}.mp4")
 
 
 def ease(t):
@@ -102,7 +107,7 @@ def main():
     endcard = endcard_layer()
     top = scrim_layer("top", 0.62, 0.42)
 
-    hook = text_layer(lambda d, l: (l.alpha_composite(top), m.headline(d, W // 2, 330, ["Still lit by", "one tubelight?"], 96, anchor="ma")))
+    hook = text_layer(lambda d, l: (l.alpha_composite(top), m.headline(d, W // 2, 330, HOOKS[VARIANT or "A"], 96 if not VARIANT or VARIANT == "A" else 84, anchor="ma")))
     warm = text_layer(lambda d, l: m.headline(d, W // 2, 330, ["Not brighter.", "Warmer."], 104, fill=m.CREAM, anchor="ma"))
     teak = text_layer(lambda d, l: (l.alpha_composite(top), m.headline(d, 80, 330, ["Solid teak.", "Made by hand."], 88)))
 

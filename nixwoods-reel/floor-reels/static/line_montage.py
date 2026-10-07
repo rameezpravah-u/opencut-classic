@@ -39,6 +39,13 @@ GAP = 84                    # half the space left for the line between words (wi
 SAFE_BOTTOM = 1250
 SRC = os.path.join(m.ROOT, "concepts", "meta-set", "line-src")
 OUT = os.path.join(m.OUT, "NX-META-V2-one-line-9x16.mp4")
+# hook test variants (ab-hook-tester, 7 Oct): only the first 12 cuts' text changes; everything after is identical
+HOOKS = {"A": (["Count", "the cuts."], ["The line", "won't move."]),        # a game: keeps eyes on the montage
+         "B": (["₹999.", "Solid teak."], ["One warm", "line."])}           # price first, the live winner's lever
+HOOK_SLOTS = 12
+VARIANT = sys.argv[1] if len(sys.argv) > 1 else None
+if VARIANT:
+    OUT = OUT.replace(".mp4", f"-hook{VARIANT}.mp4")
 
 
 def axis(im):
@@ -148,6 +155,16 @@ def main():
     order[0] = next(p for p in gen if "A-diwali" in p)          # first frame = the thumbnail
     mark = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     split(ImageDraw.Draw(mark), 300, "one line", "of light.", m.font("Fraunces-500-i.ttf", 64))
+    hookmark = mark
+    if VARIANT:
+        hookmark = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        hd, hf, hg = ImageDraw.Draw(hookmark), m.SERIF(56), 140     # wider gap: clears the whole bar on close-ups
+        left, right = HOOKS[VARIANT]
+        for i, (l, r) in enumerate(zip(left, right)):
+            assert hf.getlength(l) <= CX - hg - 65 and hf.getlength(r) <= CX - hg - 65, (l, r)
+            y = 300 + i * 64
+            m.text(hd, (CX - hg, y), l, hf, m.AMBER if l.startswith("₹") else m.CREAM, anchor="ra")
+            m.text(hd, (CX + hg, y), r, hf, m.CREAM, anchor="la")
     end = endcard(frames[next(p for p in gen if "A-diwali" in p)])
 
     dur = (MONTAGE_BEATS + END_BEATS) * BEAT
@@ -163,9 +180,10 @@ def main():
         k = int(t / SIX)
         if k < slots:
             key = order[k]
-            if key not in cache:
-                f = frames[key].convert("RGBA"); f.alpha_composite(mark); cache[key] = f.convert("RGB")
-            f = cache[key]
+            mk = hookmark if k < HOOK_SLOTS else mark
+            if (key, id(mk)) not in cache:
+                f = frames[key].convert("RGBA"); f.alpha_composite(mk); cache[key, id(mk)] = f.convert("RGB")
+            f = cache[key, id(mk)]
         else:
             f = end
         proc.stdin.write(f.tobytes())
