@@ -14,6 +14,8 @@ Ours: the clean 5 Aug 2026 studio shoot from Drive (NW-CREATIVE-IMG-20260805-*, 
 watermarked archive), each photo cropped twice (the room, and a close detail), all graded to one
 warm look on a deep teak ground, the NixWoods logo as the wordmark.
 
+Photos come from drive-pull/shoot-20260805/ (gitignored; pull the files named in crops.json from Drive).
+
     python3 brand-reels/mosaic/mosaic.py [crops.json] [out.mp4]
 """
 import json, os, random, subprocess, sys
@@ -40,14 +42,18 @@ T_DROP0, T_DROP1 = 112, 150     # tiles drop out
 N = 192                         # 6.4 s
 
 
+# frames that are the same room from nearly the same spot count as one scene, so they never sit side by side
+SCENE = {"AC4I9665": "dining", "AC4I9728": "dining", "AC4I9736": "dining"}
+
+
 def grade(im):
     """One warm, slightly soft look for every tile, whatever time of day it was shot."""
     a = np.asarray(im).astype(np.float32) / 255
     luma = a @ np.array([0.2126, 0.7152, 0.0722], np.float32)
-    a = a * 0.82 + luma[..., None] * 0.18                  # take the edge off the colour
-    a = np.clip(a, 0, 1) ** 1.08                          # a touch deeper in the mids
-    a *= np.array([1.07, 1.0, 0.86], np.float32)          # warm: white walls become cream
-    a = 0.03 + a * 0.95                                   # lift the blacks a little, film-like
+    a = a * 0.80 + luma[..., None] * 0.20                  # take the edge off the colour
+    a = np.clip(a * 0.88, 0, 1) ** 1.35                   # deeper: bright walls settle, the glow stays
+    a *= np.array([1.10, 1.0, 0.80], np.float32)          # warm: white walls become amber-cream
+    a = 0.02 + a * 0.97                                   # keep a little air in the blacks
     return Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8))
 
 
@@ -93,12 +99,14 @@ def logo_layer():
 def url_layer(y):
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    f = ImageFont.truetype(os.path.join(ROOT, "assets", "Inter-400.ttf"), 34)
-    d.text((W // 2, y + 70), "solid-wood lighting  ·  nixwoods.com", font=f, fill=CREAM + (215,), anchor="ma")
+    f = ImageFont.truetype(os.path.join(ROOT, "assets", "Inter-400.ttf"), 44)
+    d.text((W // 2, y + 70), "solid-wood lighting", font=f, fill=CREAM + (225,), anchor="ma")
+    f2 = ImageFont.truetype(os.path.join(ROOT, "assets", "Inter-600.ttf"), 44)
+    d.text((W // 2, y + 128), "nixwoods.com", font=f2, fill=(232, 162, 74, 255), anchor="ma")
     return layer
 
 
-def schedule(pool, rng):
+def schedule(pool, photo, rng):
     """For every frame, what each of the 12 cells shows: a tile index, or None for the ground."""
     cells = list(range(COLS * ROWS))
     fill_order = cells[:]; rng.shuffle(fill_order)
@@ -106,14 +114,20 @@ def schedule(pool, rng):
     deck = list(range(len(pool))); rng.shuffle(deck)
     used = 0
 
+    state = [None] * len(cells)
+
     def draw():
+        """Next tile from the shuffled deck whose photo is not already on screen."""
         nonlocal used, deck
-        if used >= len(deck):
-            deck = list(range(len(pool))); rng.shuffle(deck); used = 0
-        used += 1
+        on = {photo[t] for t in state if t is not None}
+        for _ in range(2 * len(pool)):
+            if used >= len(deck):
+                deck = list(range(len(pool))); rng.shuffle(deck); used = 0
+            used += 1
+            if photo[deck[used - 1]] not in on:
+                return deck[used - 1]
         return deck[used - 1]
 
-    state = [None] * len(cells)
     blink = {}                                      # cell -> frame it comes back
     frames = []
     fill_step = (T_FILL1 - T_FILL0) / (len(cells) - 1)
@@ -141,13 +155,13 @@ def schedule(pool, rng):
 
 def main():
     crops = json.load(open(sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "crops.json")))
-    out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "NW-BRAND-mosaic-9x16.mp4")
-    pool = []
+    out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "NW-CREATIVE-VID-20261007-nixwoods-mosaic-grid-v1.mp4")
+    pool, photo = [], []
     for name, boxes in crops.items():
         for b in boxes:
-            pool.append(tile(os.path.join(SRC, name), b))
+            pool.append(tile(os.path.join(SRC, name), b)); photo.append(SCENE.get(name[-15:-7], name))
     rng = random.Random(20261007)
-    sched = schedule(pool, rng)
+    sched = schedule(pool, photo, rng)
     base = ground()
     logo, logo_bottom = logo_layer()
     url = url_layer(logo_bottom)
