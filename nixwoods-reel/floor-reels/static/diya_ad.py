@@ -2,8 +2,8 @@
 """NixLine — "The tallest diya in the family." A quirky Diwali static, 4:5 and 9:16.
 
 The lamp stands at the end of a row of clay diyas like their tall big sibling. Every claim is true:
-no oil, no refills, LED rated 25,000+ hours (PDP FAQ), solid teak, Rs 999 / Rs 1,599 (as on the live
-13.6x ad — confirm MRP), COD, free delivery. Scene generated (AI disclosure in Ads Manager); lamp
+no oil, no refills, LED rated 25,000+ hours (PDP FAQ), solid teak, Rs 999 / Rs 1,599 (nixwoods.com compare-at, set 7 Oct; same as the
+Rs 1,599 on the Shopdeck .in ad), COD, free delivery. Scene generated (AI disclosure in Ads Manager); lamp
 checked against floor-reels/ref/AC4I9815: upright on its teak block, channel on the front face.
 
     python3 floor-reels/static/diya_ad.py   # -> concepts/meta-set/NX-META-G-tallest-diya-{4x5,9x16}.jpg

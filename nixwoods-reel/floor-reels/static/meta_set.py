@@ -25,7 +25,7 @@ SCN = os.path.join(ROOT, "concepts", "meta-set", "scenes")
 OUT = os.path.join(ROOT, "concepts", "meta-set")
 W, H = 1080, 1350
 
-PRICE, WAS = "₹999", "₹1,599"            # as on the live winning ad — confirm against the landing page
+PRICE, WAS = "₹999", "₹1,599"            # nixwoods.com price / compare-at (compare-at set to 1,599 on 7 Oct; ads run for .com only)
 CREAM, AMBER, MUTED = (246, 239, 228), (232, 162, 74), (200, 190, 178)
 
 

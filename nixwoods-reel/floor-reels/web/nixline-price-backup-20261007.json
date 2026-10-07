@@ -1,0 +1,5 @@
+{"note": "Before changing NixLine compare-at on nixwoods.com, 7 Oct 2026 (requested by Rameez). Restore by setting compareAtPrice back to 1399.00.",
+ "product": "gid://shopify/Product/8487666319495", "handle": "nix-line-solid-wood-floor-lamp",
+ "variant": "gid://shopify/ProductVariant/44120606769287",
+ "before": {"price": "999.00", "compareAtPrice": "1399.00"},
+ "after":  {"price": "999.00", "compareAtPrice": "1599.00"}}
