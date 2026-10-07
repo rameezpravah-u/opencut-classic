@@ -37,3 +37,6 @@ __pycache__/
 
 # Eval workspace: keep deliverables and write-ups, drop render intermediates
 .claude/skills/*-workspace/iteration-*/*/*/outputs/build/
+
+# scratch pulls from Google Drive (re-fetchable; mixed rights, some AI/third-party)
+nixwoods-reel/drive-pull/
