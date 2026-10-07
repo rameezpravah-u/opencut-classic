@@ -2,18 +2,20 @@
 
 Written 7 Oct 2026 with the `paid-social-brief` skill.
 
-**Status, 7 Oct: built and paused, 6 of 10 ads.** Nothing has spent.
+**Status, 7 Oct: built and paused, all 10 ads.** Nothing has spent.
 - Campaign `120251841620130275` "COM | NixLine | Diwali creative test | Oct07": Sales, Advantage+
   campaign budget ₹3,500 a day (set by Rameez), PAUSED.
 - Ad set `120251841624240275` "Broad IN 25-65 | Purchase": pixel `1018384867031221`, Purchase.
-- Ads: S-G `120251841632630275`, S-A `120251841633000275`, S-B `120251841633170275`,
-  S-C `120251841633860275`, S-D `120251841634600275`, S-F `120251841634980275`. Each has 4:5 for
-  Feed and 9:16 for Stories and Reels, and the AI label is declared on every one.
-- **Not built: the 4 videos (V1A, V1B, V2A, V2B).** Meta has not enabled video upload through the
-  connector for this account yet. Add them by hand from the build sheet below, or re-run once the
-  upload is enabled.
-- **Before publishing:** set Instagram to @nix_woods on each ad. The connector cannot see the
-  Instagram account, so as built the ads would run on Facebook only.
+- Ads, each with Facebook and Instagram (@nix_woods, `17841470815671852`) and the AI label declared:
+  V1A `120251841889860275`, V1B `120251841890390275`, V2A `120251841891080275`,
+  V2B `120251841891510275`, S-G `120251841891980275`, S-A `120251841892410275`,
+  S-B `120251841892970275`, S-C `120251841894220275`, S-D `120251841894550275`,
+  S-F `120251841894950275`. The statics have 4:5 for Feed and 9:16 for Stories and Reels.
+- How the videos got in: the Meta connector can't upload video to this account yet, so Adspirer
+  (connected to the same account) uploaded them. The final ads were then built with the Meta
+  connector, because Adspirer cannot set the AI label. The intermediate ads, plus a first set of
+  statics without Instagram, were deleted unrun.
+- To launch: publish the campaign in Ads Manager after the ads pass review.
 
 ## 1. Foundation (all checked 7 Oct)
 
