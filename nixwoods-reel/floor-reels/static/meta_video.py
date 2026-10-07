@@ -61,6 +61,28 @@ def text_layer(draw_fn):
     return layer
 
 
+def scrim_layer(side, strength, extent):
+    """A transparent-to-dark gradient as its own layer, so it can fade with the text it supports."""
+    base = Image.new("RGB", (W, H), (0, 0, 0))
+    dark = m.scrim(base.copy().point(lambda _: 255), side, strength, extent)   # white image, darkened
+    alpha = Image.eval(dark.convert("L"), lambda p: 255 - p)
+    layer = Image.new("RGBA", (W, H), (12, 8, 6, 0))
+    layer.putalpha(alpha)
+    return layer
+
+
+def endcard_layer():
+    """Concept A's type, on a transparent layer, at the same coordinates as the 9:16 static."""
+    layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    layer.alpha_composite(scrim_layer("left", 0.70, 0.66))
+    d = ImageDraw.Draw(layer)
+    y = m.pill(d, 80, 300, "Diwali price drop")
+    y = m.headline(d, 80, y + 44, ["Light up", "the corner."], 104)
+    y = m.price_block(d, 80, y + 40)
+    m.chips(d, 80, y + 20, ["Solid teak", "COD", "Free delivery"])
+    return layer
+
+
 def over(frame, layer, a):
     if a <= 0:
         return frame
@@ -77,12 +99,12 @@ def main():
     dark = ImageEnhance.Brightness(before).enhance(0.10)
     dark = Image.blend(dark, Image.new("RGB", dark.size, (6, 9, 18)), 0.35)
     dusk = big(f"{m.SCN}/A-diwali-dusk.jpg", 0.30)
-    endcard, _, _ = v.a()                                  # the 9:16 concept A, already composed
-    endcard = endcard.convert("RGB")
+    endcard = endcard_layer()
+    top = scrim_layer("top", 0.62, 0.42)
 
-    hook = text_layer(lambda d, l: m.headline(d, W // 2, 330, ["Still lit by", "one tubelight?"], 96, anchor="ma"))
+    hook = text_layer(lambda d, l: (l.alpha_composite(top), m.headline(d, W // 2, 330, ["Still lit by", "one tubelight?"], 96, anchor="ma")))
     warm = text_layer(lambda d, l: m.headline(d, W // 2, 330, ["Not brighter.", "Warmer."], 104, fill=m.CREAM, anchor="ma"))
-    teak = text_layer(lambda d, l: m.headline(d, 80, 330, ["Solid teak.", "Made by hand."], 96))
+    teak = text_layer(lambda d, l: (l.alpha_composite(top), m.headline(d, 80, 330, ["Solid teak.", "Made by hand."], 88)))
 
     n = round(DUR * FPS)
     tmp = OUT + ".video.mp4"
@@ -103,14 +125,11 @@ def main():
             d0 = push(dark, k / (T_DUSK - T_ON), 0.82, 0.62, 0.78, 0.62)
             f = Image.blend(d0, a, ease(k / 0.30))          # 0.3 s warm-up, like an LED driver
             f = over(f, warm, ease((k - 0.35) / 0.25))
-        elif t < T_END:                                     # 4. dusk living room
-            k = (t - T_DUSK) / (T_END - T_DUSK)
-            f = push(dusk, k, 0.84, 0.76, 0.60, 0.45)
-            f = over(f, teak, ease((t - T_DUSK - 0.10) / 0.25))
-        else:                                               # 5. end card, held
-            k = (t - T_END) / (DUR - T_END)
-            prev = push(dusk, 1.0, 0.84, 0.76, 0.60, 0.45)
-            f = Image.blend(prev, endcard, ease((t - T_END) / 0.25))
+        else:                                               # 4-5. dusk room, one continuous push;
+            k = (t - T_DUSK) / (DUR - T_DUSK)               #      the end card's type fades in over it
+            f = push(dusk, k, 0.86, 0.74, 0.30, 0.45)
+            f = over(f, teak, ease((t - T_DUSK - 0.10) / 0.25) * (1 - ease((t - T_END + 0.20) / 0.20)))
+            f = over(f, endcard, ease((t - T_END) / 0.30))
         proc.stdin.write(f.tobytes())
     proc.stdin.close(); proc.wait()
 
