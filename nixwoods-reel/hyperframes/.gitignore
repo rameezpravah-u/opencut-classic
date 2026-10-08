@@ -1,0 +1,3 @@
+projects/*/renders/
+projects/*/.hyperframes/
+*.mp4

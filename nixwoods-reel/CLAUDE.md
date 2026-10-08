@@ -4,6 +4,32 @@ Creative system for NixWoods (solid-wood lighting, India). Turns a `brief.json` 
 
 Invoke the `nixwoods-reels` skill, or read `system/PLAYBOOK.md` then `system/README.md`.
 
+## Motion design system (read first)
+
+Before designing, generating or animating anything, read MOTION.md in full.
+
+Every colour, font, timing and motion value comes from that file.
+
+The file sets the look, not the ambition. When I say go all out, go all out.
+
+If something I ask for is not covered there, ask me rather than choosing for yourself.
+
+When you have finished, check your own frames against MOTION.md, fix what fails, and only then show me.
+
+Whenever I paste a component prompt or third-party component code (21st.dev or anywhere else), treat it
+as a structural donor only. Keep its engineering. Replace its demo copy with my real copy, and translate
+every colour, border, shadow, font and timing to MOTION.md.
+
+`brand.md` holds who we are, the offer and the never-list. Motion skills are installed in
+`.claude/skills/` at the repo root:
+- HyperFrames: the HTML-to-video renderer. Start with `/hyperframes`.
+- Charlie Hills' motion-graphics pack: `brand-intake`, `motion-effects`, `reel-export` and others.
+- Emil Kowalski's `apple-design`, `review-animations` and `improve-animations`.
+
+Which skill to use for what, and how to run HyperFrames in a cloud session, is in
+`system/FREE-TOOLS.md` under "Motion skills". New HyperFrames projects start from
+`hyperframes/new.sh <name>`.
+
 ## Layout
 
 ```

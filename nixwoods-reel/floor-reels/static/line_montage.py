@@ -15,7 +15,7 @@ a cut on every sixteenth (0.1509 s) for 12 beats, then a 4-beat end card with pr
 All frames are graded to one warm exposure so the cuts flicker without strobing.
 Generated scenes are in the mix: tick Meta's AI disclosure.
 
-    python3 floor-reels/static/line_montage.py   # -> concepts/meta-set/NX-META-V2-one-line-9x16.mp4
+    python3 floor-reels/static/line_montage.py [A|B]   # -> concepts/meta-set/NX-META-V2-one-line-9x16-r2[-hookA|B].mp4
 """
 import glob, json, os, subprocess, sys
 import numpy as np
@@ -38,7 +38,7 @@ CX, CY = W // 2, 930        # where the channel's centre always sits
 GAP = 84                    # half the space left for the line between words (widest channel: 58 px)
 SAFE_BOTTOM = 1250
 SRC = os.path.join(m.ROOT, "concepts", "meta-set", "line-src")
-OUT = os.path.join(m.OUT, "NX-META-V2-one-line-9x16.mp4")
+OUT = os.path.join(m.OUT, "NX-META-V2-one-line-9x16-r2.mp4")   # r1 (shipped 7 Oct) stays as it was
 # hook test variants (ab-hook-tester, 7 Oct): only the first 12 cuts' text changes; everything after is identical
 HOOKS = {"A": (["Count", "the cuts."], ["The line", "won't move."]),        # a game: keeps eyes on the montage
          "B": (["₹999.", "Solid teak."], ["One warm", "line."])}           # price first, the live winner's lever
@@ -71,14 +71,29 @@ def axis(im):
     return c / s, float(np.degrees(np.arctan2(ax[0], ax[1]))), L / s
 
 
-def grade(im, mask_keep=None):
-    """One warm exposure for every source: mean luma toward ~0.30, a gentle amber balance."""
+# r2 (8 Oct, apple-design critique): r1 matched exposure only, so the montage flickered in colour:
+# phone footage sat at R/G 1.3, B/G 0.7 (grey) and the generated rooms at R/G 2.3, B/G 0.2 (deep
+# orange), swapping ~3 times a second. Now each source keeps only part of its own colour
+# (KEEP) and takes the rest from one shared warm tint, the mosaic's approach; then the whole frame
+# lands on one mean luma. (Gray-world gains were tried first: they turned the close-ups neon.)
+KEEP, TINT, ROOM_LUMA = 0.35, (1.30, 1.0, 0.66), 0.31
+
+
+def grade(im):
+    """One warm look for every source: most of each source's colour swapped for one shared tint."""
     a = np.asarray(im).astype(np.float32) / 255
-    luma = (a @ [0.2126, 0.7152, 0.0722]).mean()
-    g = np.log(0.30) / np.log(max(min(luma, 0.95), 0.05))
-    a = np.clip(a, 1e-4, 1) ** g
-    a *= [1.06, 1.0, 0.86]
-    return Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8))
+    Yw = np.array([0.2126, 0.7152, 0.0722], np.float32)
+    tint = np.array(TINT, np.float32); tint /= tint @ Yw            # a tint with luma 1
+    y = (a @ Yw)[..., None]
+    w = np.clip((y - 0.80) / 0.18, 0, 1)                             # the lit channel keeps a cream core
+    core = np.array([1.0, 0.97, 0.86], np.float32) * y
+    a = KEEP * a + (1 - KEEP) * ((1 - w) * y * tint + w * core)
+    a = np.clip(a, 1e-4, 1)
+    lo, hi = 0.3, 3.0                                                 # gamma so the frame's mean luma = ROOM_LUMA
+    for _ in range(30):
+        gm = (lo + hi) / 2
+        lo, hi = (gm, hi) if ((a ** gm) @ Yw).mean() > ROOM_LUMA else (lo, gm)
+    return Image.fromarray((np.clip(a ** gm, 0, 1) * 255).astype(np.uint8))
 
 
 def place(path):
@@ -182,7 +197,7 @@ def main():
             key = order[k]
             mk = hookmark if k < HOOK_SLOTS else mark
             if (key, id(mk)) not in cache:
-                f = frames[key].convert("RGBA"); f.alpha_composite(mk); cache[key, id(mk)] = f.convert("RGB")
+                f = m.scrim(frames[key], "top", 0.55, 0.26).convert("RGBA"); f.alpha_composite(mk); cache[key, id(mk)] = f.convert("RGB")
             f = cache[key, id(mk)]
         else:
             f = end

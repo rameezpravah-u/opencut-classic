@@ -1,0 +1,66 @@
+<!doctype html>
+<!--
+  NixWoods starter: the Dusk end card from MOTION.md (sections 1-5). 1080x1920, 30 fps, 3.5 s.
+  Every colour, size and timing below is a MOTION.md value; change MOTION.md first, not this file.
+  GSAP is local because the render browser cannot load from a CDN in a cloud session.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap-3.14.2.min.js"></script>
+    <style>
+      @font-face { font-family: Fraunces; src: url(fonts/Fraunces-600.ttf); font-weight: 600; }
+      @font-face { font-family: Fraunces; src: url(fonts/Fraunces-500-i.ttf); font-weight: 500; font-style: italic; }
+      @font-face { font-family: Inter; src: url(fonts/Inter-400.ttf); font-weight: 400; }
+      @font-face { font-family: Inter; src: url(fonts/Inter-600.ttf); font-weight: 600; }
+      :root {
+        --cream: #f6efe4; --amber: #e8a24a; --ground: #2e1e14; --core: #ffeed2; --muted-dark: #c8beb2;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 100%; height: 100%;
+              background: radial-gradient(ellipse 75% 60% at 50% 50%, #33221a 0%, var(--ground) 60%, #1f140d 100%); }
+      /* the glowing line: cream core, amber halo (MOTION.md 5) */
+      #line { position: absolute; left: 538px; top: 520px; width: 4px; height: 900px; background: var(--core);
+              border-radius: 2px; transform-origin: 50% 100%;
+              box-shadow: 0 0 18px 6px rgba(232, 162, 74, .55), 0 0 64px 20px rgba(232, 162, 74, .25); }
+      #headline { position: absolute; left: 70px; right: 70px; top: 300px; text-align: center;
+                  font: 600 92px/1.05 Fraunces; letter-spacing: -0.02em; color: var(--cream); }
+      #headline em { font-weight: 500; font-style: italic; color: var(--amber); }
+      /* price block left of the line, chips right of it (V2 end card) */
+      #price { position: absolute; right: 610px; top: 1000px; text-align: right; }
+      #price .now { font: 600 112px/1 Inter; color: var(--amber); }
+      #price .was { font: 400 46px/1 Inter; color: var(--muted-dark); text-decoration: line-through; margin-top: 18px; }
+      #chips { position: absolute; left: 600px; top: 1010px; display: flex; flex-direction: column; gap: 16px; }
+      #chips span { font: 600 32px/1 Inter; color: var(--cream); border: 2px solid rgba(246, 239, 228, .7);
+                    border-radius: 999px; padding: 12px 22px; width: max-content; }
+      #url { position: absolute; left: 0; right: 0; top: 1440px; text-align: center; font: 600 44px Inter; color: var(--cream); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="3.5" data-fps="30"
+         data-width="1080" data-height="1920">
+      <div id="line" class="clip" data-start="0" data-duration="3.5" data-track-index="0"></div>
+      <h1 id="headline" class="clip" data-start="0" data-duration="3.5" data-track-index="1">One <em>warm</em> line.</h1>
+      <div id="price" class="clip" data-start="0" data-duration="3.5" data-track-index="2">
+        <div class="now">₹999</div><div class="was">₹1,599</div>
+      </div>
+      <div id="chips" class="clip" data-start="0" data-duration="3.5" data-track-index="3">
+        <span>Solid teak</span><span>Cash on delivery</span><span>Free delivery</span>
+      </div>
+      <div id="url" class="clip" data-start="0" data-duration="3.5" data-track-index="4">nixwoods.com</div>
+    </div>
+    <script>
+      // MOTION.md 4-5: expo-out for a drawing line, smoothstep-like power2.inOut for fades,
+      // text up and readable fast, no bounce, nothing leaves after the end card lands.
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#line", { scaleY: 0 }, { scaleY: 1, duration: 1.0, ease: "expo.out" }, 0.0);
+      tl.fromTo("#headline", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.inOut" }, 0.15);
+      tl.fromTo(["#price", "#chips"], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.inOut" }, 0.6);
+      tl.fromTo("#url", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.inOut" }, 0.9);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
