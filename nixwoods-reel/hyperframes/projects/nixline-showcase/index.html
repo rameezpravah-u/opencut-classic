@@ -1,0 +1,229 @@
+<!doctype html>
+<!--
+  NixLine — "Follow the line", the first reel built with the HyperFrames setup (8 Oct 2026).
+  1080x1920, 30 fps, 12 beats of music6-corners (beat 0.8357 s, from 0.396 s) = 10.03 s.
+  Every colour, size and timing is a MOTION.md value. Real photo only (5 Aug shoot, AC4I9815): no AI label.
+
+  b0  Paper ground, cool (tubelight) warming to cream. "Follow the line." The line draws in from the left.
+  b2  "Solid Indian teak. / No MDF. No veneer."
+  b4  The line turns and rises 30 inches; a counter keeps pace with it, a tick per inch. 2700–3000K.
+  b6  Match cut: the real room wipes open from the line, which lands exactly on the lamp's lit channel.
+  b8  The room dims away from the line (Dusk). Price, chips, nixwoods.com. Holds 4 beats.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap-3.14.2.min.js"></script>
+    <style>
+      @font-face { font-family: Fraunces; src: url(fonts/Fraunces-600.ttf); font-weight: 600; }
+      @font-face { font-family: Fraunces; src: url(fonts/Fraunces-500-i.ttf); font-weight: 500; font-style: italic; }
+      @font-face { font-family: Inter; src: url(fonts/Inter-400.ttf); font-weight: 400; }
+      @font-face { font-family: Inter; src: url(fonts/Inter-600.ttf); font-weight: 600; }
+      @font-face { font-family: Gochi; src: url(fonts/GochiHand-400.ttf); font-weight: 400; }
+      :root {
+        --cream: #f6efe4; --teak: #3a2618; --amber: #e8a24a; --amber-dark: #b06828; --core: #ffeed2;
+        --muted-light: #7c6452; --muted-dark: #c8beb2; --cool: #e9edf0;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--cool); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+      .layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+      /* the room, the drawn line and the ticks share one stage, pushed in around the channel */
+      #stage { transform-origin: 543px 1008px; }
+      #ground { background: var(--cool); }
+      #photo { width: 1080px; height: 1920px; object-fit: cover; display: block; }
+      #photo-wrap { clip-path: inset(0 50% 0 50%); }
+      /* only the line stays lit: an oval of light around the lamp, the room dims away from it */
+      #dim { background: #140d08; opacity: 0;
+             -webkit-mask-image: radial-gradient(ellipse 150px 720px at 543px 1030px, transparent 0, rgba(0,0,0,.35) 55%, #000 100%);
+                     mask-image: radial-gradient(ellipse 150px 720px at 543px 1030px, transparent 0, rgba(0,0,0,.35) 55%, #000 100%); }
+      svg { overflow: visible; }
+      .halo { stroke: var(--amber); stroke-opacity: .42; stroke-width: 40; filter: url(#blur-wide); }
+      .glow { stroke: var(--amber); stroke-opacity: .9; stroke-width: 13; filter: url(#blur-near); }
+      .core { stroke: var(--core); stroke-width: 5; }
+      .draw { fill: none; stroke-linecap: round; }
+      .tick { position: absolute; height: 3px; background: var(--muted-light); border-radius: 2px; transform-origin: 100% 50%; }
+
+      /* type: MOTION.md 2 */
+      .serif { font-family: Fraunces; font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; }
+      .mask { display: block; overflow: hidden; padding-bottom: .08em; }
+      .mask > span { display: inline-block; }
+      #h-follow { position: absolute; left: 70px; right: 70px; top: 300px; text-align: center; font-size: 96px; color: var(--teak); }
+      #h-note { position: absolute; left: 0; right: 0; top: 440px; text-align: center; font: 400 48px Gochi; color: var(--amber-dark); }
+      #f-teak { position: absolute; left: 70px; right: 70px; top: 300px; text-align: center; }
+      #f-teak .serif { font-size: 92px; color: var(--teak); }
+      #f-teak .sub { font: 400 44px Inter; color: var(--muted-light); margin-top: 22px; }
+
+      #inch { position: absolute; right: 610px; top: 560px; text-align: right; color: var(--teak); }
+      /* the count: one number per inch, each shown exactly while the line passes it */
+      #count { position: relative; width: 300px; height: 230px; margin-left: auto; }
+      #count div { position: absolute; right: 0; top: 0; font-family: Fraunces; font-weight: 600; font-size: 230px;
+                   line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; opacity: 0; }
+      #inch .unit { font-size: 86px; margin-top: 8px; }
+      #kelvin { position: absolute; left: 610px; top: 640px; color: var(--teak); }
+      #kelvin .k { font: 600 46px Inter; }
+      #kelvin .sub { font: 400 40px Inter; color: var(--muted-light); margin-top: 10px; }
+      #kelvin .scale { width: 300px; height: 14px; border-radius: 7px; margin-top: 26px;
+                       background: linear-gradient(to right, #cfe0f0, #f4f1ea 45%, #f2c27c 80%, #e8a24a); }
+      #kelvin .marker { width: 22px; height: 22px; border-radius: 50%; background: var(--teak);
+                        border: 4px solid var(--cream); margin-top: -18px; }
+
+      #h-end { position: absolute; left: 70px; top: 300px; width: 420px; font-size: 84px; color: var(--teak); }
+      #price { position: absolute; right: 610px; top: 1010px; text-align: right; }
+      #price .now { font: 600 112px/1 Inter; color: var(--amber); }
+      #price .was { font: 400 46px/1 Inter; color: var(--muted-dark); text-decoration: line-through; margin-top: 18px; }
+      #price .url { font: 600 40px Inter; color: var(--cream); margin-top: 40px; }
+      #chips { position: absolute; left: 610px; top: 1020px; display: flex; flex-direction: column; gap: 16px; }
+      #chips span { display: block; font: 600 32px/1 Inter; color: var(--cream); border: 2px solid rgba(246, 239, 228, .7);
+                    border-radius: 999px; padding: 12px 22px; width: max-content; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10.03" data-fps="30"
+         data-width="1080" data-height="1920">
+
+      <div id="world" class="clip layer" data-start="0" data-duration="10.03" data-track-index="0">
+        <div id="stage" class="layer">
+          <div id="ground" class="layer"></div>
+          <div id="photo-wrap" class="layer"><img id="photo" src="assets/nixline-corner.jpg" alt="" /></div>
+          <div id="ticks" class="layer"></div>
+          <svg id="line" class="layer" width="1080" height="1920" viewBox="0 0 1080 1920">
+            <defs>
+              <filter id="blur-wide" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14" /></filter>
+              <filter id="blur-near" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" /></filter>
+            </defs>
+            <g id="meander">
+              <path class="draw halo" d="M -20 820 C 330 700 470 1110 300 1330 C 170 1500 400 1760 552 1603" />
+              <path class="draw glow" d="M -20 820 C 330 700 470 1110 300 1330 C 170 1500 400 1760 552 1603" />
+              <path class="draw core" d="M -20 820 C 330 700 470 1110 300 1330 C 170 1500 400 1760 552 1603" />
+            </g>
+            <!-- the rise: exactly the lamp's channel in the photo (x 552 -> 535, y 1603 -> 413, 0.82 deg) -->
+            <g id="rise">
+              <path class="draw halo" d="M 552 1603 L 535 413" />
+              <path class="draw glow" d="M 552 1603 L 535 413" />
+              <path class="draw core" d="M 552 1603 L 535 413" />
+            </g>
+          </svg>
+        </div>
+        <div id="dim" class="layer"></div>
+      </div>
+
+      <div id="t-open" class="clip" data-start="0" data-duration="10.03" data-track-index="1">
+        <h1 id="h-follow" class="serif">
+          <span class="mask"><span>Follow</span> <span>the</span> <span>line.</span></span>
+        </h1>
+        <div id="h-note">it ends somewhere warm</div>
+      </div>
+
+      <div id="t-teak" class="clip" data-start="0" data-duration="10.03" data-track-index="2">
+        <div id="f-teak">
+          <div class="serif mask"><span>Solid Indian teak.</span></div>
+          <div class="sub">No MDF. No veneer.</div>
+        </div>
+      </div>
+
+      <div id="t-inch" class="clip" data-start="0" data-duration="10.03" data-track-index="3">
+        <div id="inch">
+          <div id="count"></div>
+          <div class="serif unit">inches</div>
+        </div>
+        <div id="kelvin">
+          <div class="k">2700–3000K</div>
+          <div class="sub">warm, not white</div>
+          <div class="scale"></div>
+          <div class="marker"></div>
+        </div>
+      </div>
+
+      <div id="t-end" class="clip" data-start="0" data-duration="10.03" data-track-index="4">
+        <h2 id="h-end" class="serif">
+          <span class="mask"><span>It ends</span></span>
+          <span class="mask"><span>in a <em style="font-weight:500">warm</em></span></span>
+          <span class="mask"><span>corner.</span></span>
+        </h2>
+        <div id="price"><div class="now">₹999</div><div class="was">₹1,599</div><div class="url">nixwoods.com</div></div>
+        <div id="chips"><span>Solid teak</span><span>Cash on delivery</span><span>Free delivery</span></div>
+      </div>
+
+      <audio id="music" src="assets/music6-corners.mp3" data-start="0" data-duration="10.03" data-media-start="0.396"
+             data-track-index="8" data-volume="0.85"
+             data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.25,"v":0.85},{"t":9.33,"v":0.85},{"t":10.03,"v":0}]}]}'></audio>
+      <audio id="sfx-turn" src="assets/sfx-turn.mp3" data-start="4.85" data-duration="2.5" data-track-index="9" data-volume="0.45"
+             data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0.45},{"t":2.0,"v":0.45},{"t":2.5,"v":0}]}]}'></audio>
+    </div>
+
+    <script>
+      // ---- the beat grid (MOTION.md 4): music6-corners, 0.8357 s a beat ----
+      const B = 0.8357, b = (n) => +(n * B).toFixed(3);
+      const OUT = "power3.out", IN_OUT = "power2.inOut";          // entrances ease out (review-animations); moves in-out
+
+      const count = document.getElementById("count");
+      for (let i = 0; i <= 30; i++) { const d = document.createElement("div"); d.textContent = i; count.appendChild(d); }
+      // 30 tick marks along the channel, every inch, every fifth one longer
+      const ticks = document.getElementById("ticks");
+      for (let i = 1; i <= 30; i++) {
+        const t = document.createElement("div"); t.className = "tick";
+        const f = i / 30, y = 1603 - f * 1190, x = 552 - f * 17;   // the channel's own line
+        const w = i % 5 === 0 ? 34 : 18;
+        Object.assign(t.style, { left: `${x - 22 - w}px`, top: `${y - 1.5}px`, width: `${w}px` });
+        ticks.appendChild(t);
+      }
+
+      const tl = gsap.timeline({ paused: true });
+      // draw a path on: dash = its real length (GSAP rounds px values, so a normalised 1 -> 0 offset would snap)
+      const draw = (sel, vars, at) => document.querySelectorAll(sel).forEach((p) => {
+        const L = Math.ceil(p.getTotalLength()); p.style.strokeDasharray = `${L} ${L}`;
+        tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, ...vars }, at);
+      });
+
+      // ---- b0: the opening (readable by ~0.2 s) ----
+      tl.fromTo("#h-follow .mask > span", { yPercent: 105 }, { yPercent: 0, duration: 0.32, ease: OUT, stagger: 0.06 }, 0.0);
+      tl.fromTo("#h-note", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: OUT }, 0.5);
+      tl.to("#ground", { backgroundColor: "#f6efe4", duration: b(6), ease: "sine.inOut" }, 0);   // the line warms the room
+      draw("#meander .draw", { duration: b(4), ease: "sine.out" }, 0);
+
+      // ---- b2: teak ----
+      tl.to("#h-follow, #h-note", { opacity: 0, y: -16, duration: 0.2, ease: "power2.out" }, b(2) - 0.12);
+      tl.fromTo("#f-teak .mask > span", { yPercent: 105 }, { yPercent: 0, duration: 0.32, ease: OUT }, b(2));
+      tl.fromTo("#f-teak .sub", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: OUT }, b(2) + 0.12);
+
+      // ---- b4: the rise, 30 inches; counter, ticks and line share one curve so they agree ----
+      const R0 = b(4), RD = b(6) - b(4) - 0.55, RISE = "power2.out";   // lands on 30 and holds ~0.5 s before the cut
+      const tAt = (v) => R0 + RD * (1 - Math.sqrt(1 - v / 30));   // power2.out inverted: when the count passes v
+      tl.to("#f-teak", { opacity: 0, y: -16, duration: 0.2, ease: "power2.out" }, R0 - 0.12);
+      draw("#rise .draw", { duration: RD, ease: RISE }, R0);
+      tl.fromTo("#inch", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: OUT }, R0);
+      const nums = count.children;                                  // n is on screen while the line is within half an inch of n
+      for (let n = 0; n <= 30; n++) {
+        tl.set(nums[n], { opacity: 1 }, n === 0 ? R0 : tAt(n - 0.5));
+        if (n < 30) tl.set(nums[n], { opacity: 0 }, tAt(n + 0.5));
+      }
+      document.querySelectorAll(".tick").forEach((el, i) =>
+        tl.fromTo(el, { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: OUT }, tAt(i + 1) - 0.04));
+      tl.fromTo("#kelvin", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: OUT }, R0 + 0.25);
+      tl.fromTo("#kelvin .marker", { x: 0 }, { x: 260, duration: 1.0, ease: IN_OUT }, R0 + 0.45);
+
+      // ---- b6: match cut into the real room, wiping open from the line ----
+      const C = b(6);
+      tl.to("#inch, #kelvin, #ticks", { opacity: 0, duration: 0.2, ease: "power2.out" }, C - 0.1);
+      tl.to("#photo-wrap", { clipPath: "inset(0% 0% 0% 0%)", duration: 0.7, ease: "expo.out" }, C);
+      tl.to("#meander", { opacity: 0, duration: 0.25, ease: "power2.out" }, C - 0.1);
+      tl.to("#rise", { opacity: 0, duration: 0.6, ease: IN_OUT }, C + 0.35);   // the real LED takes over
+      tl.fromTo("#stage", { scale: 1 }, { scale: 1.05, duration: 10.03 - C, ease: "sine.inOut" }, C);
+      tl.fromTo("#h-end .mask > span", { yPercent: 105 }, { yPercent: 0, duration: 0.32, ease: OUT, stagger: 0.06 }, C + 0.25);
+
+      // ---- b8: only the line stays lit; the end card (holds 4 beats) ----
+      const E = b(8);
+      tl.to("#dim", { opacity: 0.66, duration: 0.6, ease: IN_OUT }, E);
+      tl.to("#h-end", { color: "#f6efe4", duration: 0.6, ease: IN_OUT }, E);
+      tl.to("#h-end em", { color: "#e8a24a", duration: 0.6, ease: IN_OUT }, E);
+      tl.fromTo("#price > div", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: OUT, stagger: 0.06 }, E + 0.25);
+      tl.fromTo("#chips span", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.3, ease: OUT, stagger: 0.06 }, E + 0.35);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -23,8 +23,12 @@ entrances, staggered groups, cohesion, delete what has no purpose).
 - **V2: Block → Approve as r2.** The feel-breaking colour flicker is gone and the text is readable.
   The r1 files stay as they were: they are what is scheduled for Sat 10 Oct and inside the paused
   Meta ads V2A/V2B.
-  - Swapping in r2 means two changes, both Rameez's call: replacing the media of Metricool post
-    390211045, and uploading r2 as new video creatives for V2A/V2B.
+  - Rameez approved the swap (8 Oct).
+  - **Saturday's Metricool post now carries r2** (no-hook version, commit `5417b02`). Updating the
+    post changed its id from 390211045 to **391213873** (uuid unchanged, -975991933635575715).
+    Metricool's re-hosted file is byte-identical to the repo's r2 (md5 5004f788…).
+  - **V2A/V2B in Meta: not swapped yet.** This session's safety check blocked the r2 video upload.
+    The ads still carry r1.
 - **V1: Approve.** One flagged judgement call (the black beat).
 - **Mosaic: Approve.** One flagged note for paid use.
 

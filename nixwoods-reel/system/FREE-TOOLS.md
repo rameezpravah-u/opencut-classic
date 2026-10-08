@@ -68,3 +68,10 @@ in `/opt/pw-browsers`; the CLI's own Chrome download is blocked here. Start a pr
 - Measured on 8 Oct: a 3.5 s 1080×1920 composition renders in about 10 s on the fast `beginframe`
   path. Nothing is uploaded.
 - `publish` and `cloud` send files to HeyGen. Do not use them without Rameez's go-ahead.
+
+**HyperFrames gotchas found building the first reel** (`floor-reels/concepts/showcase/README.md`):
+- GSAP rounds px values, so draw SVG lines with the path's real length (`getTotalLength()`), not
+  `pathLength="1"`.
+- Flex columns shrink their children. A rolling digit strip needs `flex: none`, and a counter placed
+  per value with `tl.set` is safer than a rolling one.
+- `tl.set` and `fromTo` are seek-safe. Do not drive visuals from `onUpdate` callbacks.
