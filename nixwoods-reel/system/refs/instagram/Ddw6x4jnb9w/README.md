@@ -15,5 +15,6 @@
 
 Why it works: the swipe itself is the entertainment, so dwell time goes up and Instagram pushes it.
 
-Used for: `floor-reels/static/follow_line.py` (format 3) — the NixLine is itself a line of light, so
+Used for: `floor-reels/static/reveal.py` (format 6, with the hold-the-dots note of format 4) and
+`floor-reels/static/follow_line.py` (format 3) — the NixLine is itself a line of light, so
 one warm line crosses six slides and ends as the lit channel of the real lamp.
