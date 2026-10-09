@@ -1,0 +1,92 @@
+{
+ "_note": "Crops of the clean 5 Aug 2026 shoot (drive-pull/shoot-20260805, never the watermarked archive). box = [cx, cy, h] as fractions of the photo; width follows 9:16. kind: 'isolated' = product on the white wall (logo + caption shown), 'bleed' = full-frame texture (no type). lab: optional overlay ('dish' circle, 'scale' ruler).",
+ "P1": {
+  "photo": "AC4I9815",
+  "box": [
+   0.74,
+   0.7,
+   0.56
+  ],
+  "kind": "isolated",
+  "label": "NixLine · solid teak floor lamp"
+ },
+ "P2": {
+  "photo": "AC4I9873",
+  "box": [
+   0.55,
+   0.68,
+   0.34
+  ],
+  "kind": "isolated",
+  "lab": "dish",
+  "label": "Edison bulb · brass dimmer"
+ },
+ "P3": {
+  "photo": "AC4I9706",
+  "box": [
+   0.26,
+   0.62,
+   0.66
+  ],
+  "kind": "isolated",
+  "lab": "scale",
+  "label": "Wooden floor lamp · teak"
+ },
+ "P4": {
+  "photo": "AC4I9751",
+  "box": [
+   0.32,
+   0.62,
+   0.62
+  ],
+  "kind": "isolated",
+  "label": "Spiral lamp · sheesham"
+ },
+ "P5": {
+  "photo": "AC4I9861",
+  "box": [
+   0.72,
+   0.74,
+   0.36
+  ],
+  "kind": "isolated",
+  "label": "Edison dimmer lamp · rosewood"
+ },
+ "P6": {
+  "photo": "AC4I9661",
+  "box": [
+   0.48,
+   0.42,
+   0.22
+  ],
+  "kind": "bleed"
+ },
+ "P7": {
+  "photo": "AC4I9882",
+  "box": [
+   0.55,
+   0.58,
+   0.36
+  ],
+  "kind": "bleed"
+ },
+ "P8": {
+  "photo": "AC4I9861",
+  "box": [
+   0.835,
+   0.855,
+   0.11
+  ],
+  "kind": "bleed"
+ },
+ "P9": {
+  "photo": "AC4I9652",
+  "box": [
+   0.55,
+   0.36,
+   0.4
+  ],
+  "kind": "isolated",
+  "label": "Vertical wall light · teak"
+ }
+}
