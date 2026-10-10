@@ -141,7 +141,7 @@ def main(ref):
             # the room's light level around the sconce sets how bright the wood reads
             ring = f[int(max(y0 - 40, 0)):int(min(y1 + 40, SH)), int(max(x0 - 60, 0)):int(min(x1 + 60, SW))]
             lvl = np.clip(ring.mean() / 255 / 0.45, 0.35, 1.0)
-            rgb = nb[..., :3] * 255 * np.array([1.0, 0.86, 0.70], np.float32) * 0.62 * lvl
+            rgb = nb[..., :3] * 255 * np.array([1.0, 0.88, 0.74], np.float32) * 0.90 * lvl
             al = nb[..., 3:4]
             # light along the edges: the LED washes the wall behind the bar
             glow = np.zeros((SH, SW), np.float32)
@@ -149,15 +149,19 @@ def main(ref):
             sub = al[(ys.start - by0):(ys.stop - by0), (xs.start - bx0):(xs.stop - bx0), 0]
             glow[ys, xs] = sub
             halo = gaussian_filter(glow, max(4, nb.shape[1] * 0.45)) * 0.9 + gaussian_filter(glow, nb.shape[1] * 1.8) * 1.2
-            out = out + (halo / max(halo.max(), 1e-3))[..., None] * np.array([255, 170, 90], np.float32) * 0.55
+            out = out + (halo / max(halo.max(), 1e-3))[..., None] * np.array([255, 170, 90], np.float32) * 0.80
             reg = out[ys, xs]
             sub_rgb = rgb[(ys.start - by0):(ys.stop - by0), (xs.start - bx0):(xs.stop - bx0)]
             sub_al = al[(ys.start - by0):(ys.stop - by0), (xs.start - bx0):(xs.stop - bx0)]
-            edge = np.clip(sub_al - gaussian_filter(sub_al, (0, 2.0, 0)), 0, 1) * 1.6          # lit side edges
-            reg = reg * (1 - sub_al) + sub_rgb * sub_al + edge * np.array([255, 200, 140], np.float32) * 0.6
+            edge = np.clip((sub_al - gaussian_filter(sub_al, (0, 2.5, 0))) * 2.2, 0, 1)        # the LED along both long edges
+            reg = reg * (1 - sub_al) + sub_rgb * sub_al
+            reg = reg * (1 - edge * 0.85) + edge * 0.85 * np.array([255, 238, 210], np.float32)
             out[ys, xs] = reg
             # their words back on top
-            tm = gaussian_filter(text_mask(fr[k]), 0.6)[..., None]
+            tm = text_mask(fr[k])
+            tx0, ty0, tx1, ty1 = box_at(fit, k, grow=(0.15, 0.10))           # not the old sconce's glass
+            tm[int(max(ty0, 0)):int(min(ty1, SH)), int(max(tx0, 0)):int(min(tx1, SW))] = 0
+            tm = gaussian_filter(tm, 0.6)[..., None]
             out = out * (1 - tm) + f * tm
             img = Image.fromarray(np.clip(out, 0, 255).astype(np.uint8)).resize((W, H), Image.LANCZOS)
             proc.stdin.write(img.tobytes())
