@@ -1,0 +1,134 @@
+<!doctype html>
+<!--
+  NixLine: One line of light. 9:16, 30 fps, 10.03 s (12 beats of music6-corners from its first beat).
+  OpenMontage hybrid pipeline, HyperFrames atelier composition. Every value comes from nixwoods-reel/MOTION.md.
+
+  The line holds still on x 540 while the real shots cut around it (prep.py aligns every lit channel there):
+    0     - 1.667  s1  bare teak bar; the hook is up by 0.17 s; on beat 1 a line of light draws down the bar
+    1.667 - 3.333  s2  the bar flipped: its real channel stands where the drawn line was
+    3.333 - 4.167  s3  a bundle of lit bars
+    4.167 - 5.000  s4  one bar standing upright
+    5.000 - 6.700  corner  NixLine in a real room (AC4I9815), 5% push
+    6.700 - 10.033 end card: the Dusk ground covers the room and the lamp's channel becomes the brand line
+  Footage is real (Rameez's phone clips and the 5 Aug shoot). Nothing generated, so no AI label.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap-3.14.2.min.js"></script>
+    <style>
+      @font-face { font-family: Fraunces; src: url(fonts/Fraunces-600.ttf); font-weight: 600; }
+      @font-face { font-family: Fraunces; src: url(fonts/Fraunces-500-i.ttf); font-weight: 500; font-style: italic; }
+      @font-face { font-family: Inter; src: url(fonts/Inter-400.ttf); font-weight: 400; }
+      @font-face { font-family: Inter; src: url(fonts/Inter-600.ttf); font-weight: 600; }
+      :root { --cream: #f6efe4; --amber: #e8a24a; --ground: #2e1e14; --core: #ffeed2; --muted-dark: #c8beb2; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+      .full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      #corner { transform-origin: 543px 1008px; }                 /* push about the lamp's channel */
+
+      /* the drawn line: cream core, amber halo (MOTION.md 5), sized to the real channel it hands off to */
+      .line { position: absolute; background: var(--core); transform-origin: 50% 0; }
+      #line1 { left: 482px; width: 116px; top: 600px; height: 1320px; border-radius: 58px; mix-blend-mode: screen;
+               background: linear-gradient(90deg, rgba(255,238,210,0) 0%, rgba(255,238,210,.85) 24%, #ffeed2 50%,
+                                           rgba(255,238,210,.85) 76%, rgba(255,238,210,0) 100%);
+               box-shadow: 0 0 40px 12px rgba(232,162,74,.55), 0 0 140px 44px rgba(232,162,74,.25); }
+      #line2 { left: 533px; width: 14px; top: 680px; height: 780px; border-radius: 7px;
+               box-shadow: 0 0 18px 6px rgba(232,162,74,.55), 0 0 64px 20px rgba(232,162,74,.25); }
+
+      /* text over footage sits on a dark gradient that fades with it (MOTION.md 6), never a box */
+      .scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 760px;
+               background: linear-gradient(180deg, rgba(24,14,8,.62) 0%, rgba(24,14,8,.38) 55%, rgba(24,14,8,0) 100%); }
+      .hl { position: absolute; font: 600 92px/1.05 Fraunces; letter-spacing: -0.02em; color: var(--cream); }
+      .hl em { font-weight: 500; font-style: italic; color: var(--amber); }
+      #t1 { left: 70px; right: 70px; top: 250px; text-align: center; }
+      /* s2: split either side of the lit channel, 140 px clear of its centre on a close-up (MOTION.md 3) */
+      #t2a { right: 680px; top: 270px; text-align: right; font-size: 72px; }
+      #t2b { left: 680px; top: 270px; text-align: left; font-size: 72px; }
+      #t5 { left: 70px; right: 70px; top: 240px; text-align: center; font-size: 64px; }   /* one line: clear of the lamp's cap all through the push */
+
+      /* end card (MOTION.md 2-3; the starter's V2 layout: price left of the line, chips right) */
+      #logo { position: absolute; left: 280px; top: 236px; width: 520px;
+              filter: drop-shadow(4px 8px 14px rgba(0,0,0,.45)); }
+      #name { position: absolute; right: 624px; top: 800px; text-align: right; font: 600 72px/1.05 Fraunces;
+              letter-spacing: -0.02em; color: var(--cream); }
+      #price { position: absolute; right: 624px; top: 905px; text-align: right; }
+      #price .now { font: 600 112px/1 Inter; color: var(--amber); }
+      #price .was { font: 400 46px/1 Inter; color: var(--muted-dark); text-decoration: line-through; margin-top: 18px; }
+      #chips { position: absolute; left: 624px; top: 812px; display: flex; flex-direction: column; gap: 16px; }
+      #chips span { font: 600 32px/1 Inter; color: var(--cream); border: 2px solid rgba(246,239,228,.7);
+                    border-radius: 999px; padding: 12px 22px; width: max-content; }
+      #url { position: absolute; left: 624px; top: 1100px; font: 600 40px Inter; color: var(--cream); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10.0333" data-fps="30"
+         data-width="1080" data-height="1920">
+      <video id="v1" class="clip full" src="assets/s1.mp4" muted playsinline data-start="0" data-duration="1.6667" data-track-index="0"></video>
+      <video id="v2" class="clip full" src="assets/s2.mp4" muted playsinline data-start="1.6667" data-duration="1.6667" data-track-index="0"></video>
+      <video id="v3" class="clip full" src="assets/s3.mp4" muted playsinline data-start="3.3333" data-duration="0.8334" data-track-index="0"></video>
+      <video id="v4" class="clip full" src="assets/s4.mp4" muted playsinline data-start="4.1667" data-duration="0.8333" data-track-index="0"></video>
+      <img id="corner" class="clip full" src="assets/corner.jpg" alt="" data-start="5" data-duration="5.0333" data-track-index="1" />
+      <img id="ground" class="clip full" src="assets/ground.png" alt="" data-start="6.7" data-duration="3.3333" data-track-index="2" />
+
+      <div id="line1" class="clip line" data-start="0" data-duration="1.6667" data-track-index="3"></div>
+      <div id="line2" class="clip line" data-start="6.7" data-duration="3.3333" data-track-index="3"></div>
+
+      <div id="s1-scrim" class="clip scrim" data-start="0" data-duration="1.6667" data-track-index="4"></div>
+      <h1 id="t1" class="clip hl" data-start="0" data-duration="1.6667" data-track-index="5">It starts as<br />one line.</h1>
+      <div id="s2-scrim" class="clip scrim" data-start="1.6667" data-duration="1.6667" data-track-index="4"></div>
+      <h1 id="t2a" class="clip hl" data-start="1.6667" data-duration="1.6667" data-track-index="5">Solid<br />teak.</h1>
+      <h1 id="t2b" class="clip hl" data-start="1.6667" data-duration="1.6667" data-track-index="6">Made by<br />hand.</h1>
+      <div id="s5-scrim" class="clip scrim" data-start="5" data-duration="1.7" data-track-index="4"></div>
+      <h1 id="t5" class="clip hl" data-start="5" data-duration="1.7" data-track-index="5">Then it warms the <em>corner.</em></h1>
+
+      <img id="logo" class="clip" src="assets/logo-cream.png" alt="nixwoods" data-start="6.7" data-duration="3.3333" data-track-index="5" />
+      <div id="name" class="clip" data-start="6.7" data-duration="3.3333" data-track-index="6">NixLine.</div>
+      <div id="price" class="clip" data-start="6.7" data-duration="3.3333" data-track-index="7">
+        <div class="now">₹999</div><div class="was">₹1,599</div>
+      </div>
+      <div id="chips" class="clip" data-start="6.7" data-duration="3.3333" data-track-index="8">
+        <span>Solid teak</span><span>Cash on delivery</span><span>Free delivery</span>
+      </div>
+      <div id="url" class="clip" data-start="6.7" data-duration="3.3333" data-track-index="9">nixwoods.com</div>
+
+      <audio id="music" src="assets/music6-corners.mp3" data-start="0" data-duration="10.0333" data-media-start="0.396"
+             data-track-index="10" data-volume="0.85"
+             data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0.85},{"t":9.2333,"v":0.85},{"t":10.0333,"v":0}]}]}'></audio>
+    </div>
+    <script>
+      // MOTION.md 4-5. Smoothstep-like sine.inOut for fades and the push, expo.out for the line drawing itself.
+      // No bounce or overshoot. Scenes leave on the cut; only the end card fades in, and nothing leaves after it.
+      const B = 0.8357, ease = "sine.inOut";
+      const tl = gsap.timeline({ paused: true });
+
+      // s1: hook readable by 0.17 s; the line warms up (0.30 s) as it draws down the bar on beat 1
+      tl.fromTo(["#s1-scrim", "#t1"], { opacity: 0 }, { opacity: 1, duration: 0.12, ease }, 0.05);
+      tl.fromTo("#line1", { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "expo.out" }, B);
+      tl.fromTo("#line1", { opacity: 0 }, { opacity: 1, duration: 0.3, ease, immediateRender: false }, B);
+
+      // s2: words either side of the real channel
+      tl.fromTo(["#s2-scrim", "#t2a", "#t2b"], { opacity: 0 }, { opacity: 1, duration: 0.25, ease }, 1.7);
+
+      // corner: one slow push over the whole shot and into the end card (5% hold, MOTION.md 5)
+      tl.fromTo("#corner", { scale: 1.0 }, { scale: 1.05, duration: 2.0, ease }, 5.0);
+      tl.fromTo(["#s5-scrim", "#t5"], { opacity: 0 }, { opacity: 1, duration: 0.25, ease }, 5.05);
+      tl.to(["#s5-scrim", "#t5"], { opacity: 0, duration: 0.25, ease }, 6.45);
+
+      // end card: the ground covers the room while the line appears exactly on the lamp's channel,
+      // then the line glides to its end-card length; logo, price and chips follow
+      tl.fromTo("#ground", { opacity: 0 }, { opacity: 1, duration: 0.3, ease }, 6.7);
+      tl.fromTo("#line2", { opacity: 0 }, { opacity: 1, duration: 0.3, ease, immediateRender: false }, 6.7);
+      // starts on the lamp's channel (y 385-1631 at the push's 1.0475) and settles at y 680-1460
+      tl.fromTo("#line2", { y: -295, scaleY: 1246 / 780 }, { y: 0, scaleY: 1, duration: 0.85, ease: "expo.out" }, 6.7);
+      tl.fromTo("#logo", { opacity: 0 }, { opacity: 1, duration: 0.3, ease }, 6.95);   // once the ground has covered the lamp
+      tl.fromTo(["#name", "#price", "#chips"], { opacity: 0 }, { opacity: 1, duration: 0.3, ease }, 7.0);
+      tl.fromTo("#url", { opacity: 0 }, { opacity: 1, duration: 0.3, ease }, 7.05);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

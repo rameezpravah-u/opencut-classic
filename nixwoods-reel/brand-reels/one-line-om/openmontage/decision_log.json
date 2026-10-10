@@ -1,0 +1,216 @@
+{
+  "version": "1.0",
+  "project_id": "nixline-one-line-of-light",
+  "decisions": [
+    {
+      "decision_id": "d-001",
+      "stage": "idea",
+      "category": "pipeline_selection",
+      "subject": "Pipeline",
+      "options_considered": [
+        {
+          "option_id": "hybrid",
+          "label": "hybrid",
+          "score": 0.9,
+          "reason": "real footage anchor + designed line/type support"
+        },
+        {
+          "option_id": "cinematic",
+          "label": "cinematic",
+          "score": 0.6,
+          "reason": "mood edit, but built around generated clips",
+          "rejected_because": "no video generation available"
+        },
+        {
+          "option_id": "documentary-montage",
+          "label": "documentary-montage",
+          "score": 0.4,
+          "reason": "stock-corpus montage",
+          "rejected_because": "our own footage, not stock"
+        }
+      ],
+      "selected": "hybrid",
+      "reason": "Footage-led with one support layer (the line) and quiet type.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.85
+    },
+    {
+      "decision_id": "d-002",
+      "stage": "idea",
+      "category": "concept_selection",
+      "subject": "Concept",
+      "options_considered": [
+        {
+          "option_id": "one-line",
+          "label": "One line of light",
+          "score": 0.9,
+          "reason": "the brand's own moving element as the idea"
+        },
+        {
+          "option_id": "tubelight",
+          "label": "Tubelight vs teak",
+          "score": 0.7,
+          "reason": "proven V1 story",
+          "rejected_because": "user picked One line of light"
+        },
+        {
+          "option_id": "five-cuts",
+          "label": "Made by hand, in 5 cuts",
+          "score": 0.6,
+          "reason": "honest process",
+          "rejected_because": "user picked One line of light"
+        }
+      ],
+      "selected": "one-line",
+      "reason": "User choice.",
+      "user_visible": true,
+      "user_approved": true,
+      "confidence": 0.9
+    },
+    {
+      "decision_id": "d-003",
+      "stage": "idea",
+      "category": "render_runtime_selection",
+      "subject": "Composition runtime",
+      "options_considered": [
+        {
+          "option_id": "hyperframes",
+          "label": "HyperFrames",
+          "score": 0.85,
+          "reason": "GSAP line drawing and kinetic type in our fonts; footage as <video class=clip>"
+        },
+        {
+          "option_id": "remotion",
+          "label": "Remotion",
+          "score": 0.7,
+          "reason": "React + OffthreadVideo, word captions",
+          "rejected_because": "user picked HyperFrames; springs risk bounce"
+        },
+        {
+          "option_id": "ffmpeg",
+          "label": "FFmpeg",
+          "score": 0.3,
+          "reason": "cuts only",
+          "rejected_because": "cannot draw the line or set type"
+        }
+      ],
+      "selected": "hyperframes",
+      "reason": "User choice; best fit for a self-drawing line.",
+      "user_visible": true,
+      "user_approved": true,
+      "confidence": 0.85
+    },
+    {
+      "decision_id": "d-004",
+      "stage": "idea",
+      "category": "composition_mode",
+      "subject": "Authoring mode",
+      "options_considered": [
+        {
+          "option_id": "atelier",
+          "label": "Atelier (hand-authored)",
+          "score": 0.9,
+          "reason": "brand hero piece; MOTION.md look"
+        },
+        {
+          "option_id": "templated",
+          "label": "Templated scene types",
+          "score": 0.4,
+          "reason": "fast",
+          "rejected_because": "stock look, off-brand"
+        }
+      ],
+      "selected": "atelier",
+      "reason": "Brand hero work; every value comes from MOTION.md.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.85
+    },
+    {
+      "decision_id": "d-005",
+      "stage": "idea",
+      "category": "voice_selection",
+      "subject": "Narration",
+      "options_considered": [
+        {
+          "option_id": "none",
+          "label": "No voice, music only",
+          "score": 0.9,
+          "reason": "matches shipped NixWoods reels"
+        },
+        {
+          "option_id": "piper",
+          "label": "Piper TTS",
+          "score": 0.4,
+          "reason": "free offline",
+          "rejected_because": "user chose music only; synthetic sound"
+        }
+      ],
+      "selected": "none",
+      "reason": "User choice.",
+      "user_visible": true,
+      "user_approved": true,
+      "confidence": 0.9
+    },
+    {
+      "decision_id": "d-006",
+      "stage": "idea",
+      "category": "music_source",
+      "subject": "Music track",
+      "options_considered": [
+        {
+          "option_id": "music6",
+          "label": "music6-corners (our library, cleared for paid)",
+          "score": 0.85,
+          "reason": "calm, 71.8 bpm, beat 0.8357 s; 12 beats = 10.03 s"
+        },
+        {
+          "option_id": "music3",
+          "label": "music3-design (our library)",
+          "score": 0.6,
+          "reason": "99.4 bpm with a drop",
+          "rejected_because": "busier than the calm brief"
+        },
+        {
+          "option_id": "pixabay",
+          "label": "Pixabay search",
+          "score": 0.3,
+          "reason": "free",
+          "rejected_because": "unmeasured, licence per track"
+        }
+      ],
+      "selected": "music6",
+      "reason": "Calm tempo fits a line that warms up; already measured and cleared.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.8
+    },
+    {
+      "decision_id": "d-007",
+      "stage": "script",
+      "category": "approval_policy",
+      "subject": "Remaining approval gates",
+      "options_considered": [
+        {
+          "option_id": "run-through",
+          "label": "Approve and run scene_plan, assets, edit, compose without stopping",
+          "score": 0.9,
+          "reason": "user choice"
+        },
+        {
+          "option_id": "every-gate",
+          "label": "Stop at scene_plan and assets",
+          "score": 0.6,
+          "reason": "default",
+          "rejected_because": "user chose to run through"
+        }
+      ],
+      "selected": "run-through",
+      "reason": "User: 'Approve, run the rest'.",
+      "user_visible": true,
+      "user_approved": true,
+      "confidence": 1.0
+    }
+  ]
+}

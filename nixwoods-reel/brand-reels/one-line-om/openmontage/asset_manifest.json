@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "assets": [
+    {
+      "id": "s1",
+      "type": "video",
+      "path": "/home/user/OpenMontage/projects/nixline-one-line-of-light/hyperframes/assets/s1.mp4",
+      "source_tool": "prep.py (nixwoods-reel/brand-reels/one-line-om)",
+      "scene_id": "sc1",
+      "cost_usd": 0,
+      "subtype": "source-derived",
+      "generation_summary": "nx06-7921 3.60 s, 50 frames, bar axis to x 540, montage grade",
+      "provider": "source",
+      "license": "NixWoods own footage",
+      "duration_seconds": 1.6667,
+      "resolution": "1080x1920",
+      "format": "mp4"
+    },
+    {
+      "id": "s2",
+      "type": "video",
+      "path": "/home/user/OpenMontage/projects/nixline-one-line-of-light/hyperframes/assets/s2.mp4",
+      "source_tool": "prep.py (nixwoods-reel/brand-reels/one-line-om)",
+      "scene_id": "sc2",
+      "cost_usd": 0,
+      "subtype": "source-derived",
+      "generation_summary": "nx06-7921 6.60 s, 50 frames, channel to x 540, montage grade",
+      "provider": "source",
+      "license": "NixWoods own footage",
+      "duration_seconds": 1.6665999999999999,
+      "resolution": "1080x1920",
+      "format": "mp4"
+    },
+    {
+      "id": "s3",
+      "type": "video",
+      "path": "/home/user/OpenMontage/projects/nixline-one-line-of-light/hyperframes/assets/s3.mp4",
+      "source_tool": "prep.py (nixwoods-reel/brand-reels/one-line-om)",
+      "scene_id": "sc3",
+      "cost_usd": 0,
+      "subtype": "source-derived",
+      "generation_summary": "nx03-7926 0.40 s, 25 frames, montage grade",
+      "provider": "source",
+      "license": "NixWoods own footage",
+      "duration_seconds": 0.8333999999999997,
+      "resolution": "1080x1920",
+      "format": "mp4"
+    },
+    {
+      "id": "s4",
+      "type": "video",
+      "path": "/home/user/OpenMontage/projects/nixline-one-line-of-light/hyperframes/assets/s4.mp4",
+      "source_tool": "prep.py (nixwoods-reel/brand-reels/one-line-om)",
+      "scene_id": "sc4",
+      "cost_usd": 0,
+      "subtype": "source-derived",
+      "generation_summary": "nx04-7930 1.30 s, 25 frames, channel to x 540, montage grade",
+      "provider": "source",
+      "license": "NixWoods own footage",
+      "duration_seconds": 0.8333000000000004,
+      "resolution": "1080x1920",
+      "format": "mp4"
+    },
+    {
+      "id": "corner",
+      "type": "image",
+      "path": "/home/user/OpenMontage/projects/nixline-one-line-of-light/hyperframes/assets/corner.jpg",
+      "source_tool": "prep.py (nixwoods-reel/brand-reels/one-line-om)",
+      "scene_id": "sc5",
+      "cost_usd": 0,
+      "subtype": "source-derived",
+      "generation_summary": "AC4I9815 at 1.25x, channel on x 540, montage grade",
+      "provider": "source",
+      "license": "NixWoods own footage"
+    },
+    {
+      "id": "ground",
+      "type": "image",
+      "path": "/home/user/OpenMontage/projects/nixline-one-line-of-light/hyperframes/assets/ground.png",
+      "source_tool": "prep.py (nixwoods-reel/brand-reels/one-line-om)",
+      "scene_id": "sc6",
+      "cost_usd": 0,
+      "subtype": "designed",
+      "generation_summary": "Dusk ground #2E1E14, vignette, grain sigma 2.2",
+      "provider": "source",
+      "license": "NixWoods own footage"
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "path": "/home/user/OpenMontage/projects/nixline-one-line-of-light/hyperframes/assets/logo-cream.png",
+      "source_tool": "prep.py (nixwoods-reel/brand-reels/one-line-om)",
+      "scene_id": "sc6",
+      "cost_usd": 0,
+      "subtype": "provided",
+      "generation_summary": "assets/logo.png tinted cream",
+      "provider": "source",
+      "license": "NixWoods own footage"
+    },
+    {
+      "id": "music",
+      "type": "music",
+      "path": "/home/user/OpenMontage/projects/nixline-one-line-of-light/hyperframes/assets/music6-corners.mp3",
+      "source_tool": "library",
+      "scene_id": "all",
+      "cost_usd": 0,
+      "provider": "nixwoods library",
+      "license": "cleared for paid (brand.md)",
+      "generation_summary": "music6-corners from 0.396 s (first beat), 71.8 bpm"
+    }
+  ]
+}

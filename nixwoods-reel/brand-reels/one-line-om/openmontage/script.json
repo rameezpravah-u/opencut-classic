@@ -1,0 +1,96 @@
+{
+  "version": "1.0",
+  "title": "NixLine: One line of light",
+  "total_duration_seconds": 10.028,
+  "sections": [
+    {
+      "id": "s1",
+      "label": "hook / unlit teak",
+      "text": "It starts as / one line.",
+      "start_seconds": 0,
+      "end_seconds": 1.671,
+      "speaker_directions": "on-screen only; Fraunces 600 96 px cream on a top scrim, readable by 0.17 s",
+      "enhancement_cues": [
+        {
+          "type": "animation",
+          "description": "glowing line draws down the unlit bar, expo-out over 0.6 s, from beat 1",
+          "timestamp_seconds": 0.836
+        }
+      ],
+      "source_ref": "footage nx06-7921 @4.8 s"
+    },
+    {
+      "id": "s2",
+      "label": "the line is real light",
+      "text": "Solid teak. / Made by hand.",
+      "start_seconds": 1.671,
+      "end_seconds": 3.343,
+      "speaker_directions": "on-screen only; Fraunces 600 88 px, split either side of the lit channel",
+      "enhancement_cues": [
+        {
+          "type": "animation",
+          "description": "drawn line hands off to the real lit channel on the cut",
+          "timestamp_seconds": 1.671
+        }
+      ],
+      "source_ref": "brand.md: solid teak, handmade in Uttar Pradesh"
+    },
+    {
+      "id": "s3",
+      "label": "many lines",
+      "text": "",
+      "start_seconds": 3.343,
+      "end_seconds": 4.178,
+      "speaker_directions": "no text; one beat",
+      "source_ref": "footage nx03-7926"
+    },
+    {
+      "id": "s4",
+      "label": "one line again",
+      "text": "",
+      "start_seconds": 4.178,
+      "end_seconds": 5.014,
+      "speaker_directions": "no text; one beat",
+      "source_ref": "footage nx04-7930 (lit bar standing upright), swapped in at the user's approval"
+    },
+    {
+      "id": "s5",
+      "label": "the corner",
+      "text": "Then it warms / the corner.",
+      "start_seconds": 5.014,
+      "end_seconds": 6.686,
+      "speaker_directions": "on-screen only; 'corner.' in Fraunces 500 italic amber; slow push into the lamp",
+      "source_ref": "photo AC4I9815"
+    },
+    {
+      "id": "s6",
+      "label": "end card",
+      "text": "NixLine. \u20b9999 \u20b91,599 \u00b7 Solid teak \u00b7 COD \u00b7 Free delivery",
+      "start_seconds": 6.686,
+      "end_seconds": 10.028,
+      "speaker_directions": "logo 520 px, price Inter 600 112 px amber, was-price struck, chips; holds 4 beats; music fades last 0.8 s",
+      "source_ref": "brand.md: \u20b9999 (compare-at \u20b91,599), COD, free delivery"
+    }
+  ],
+  "metadata": {
+    "anchor_sections": [
+      "s1",
+      "s2",
+      "s3",
+      "s4",
+      "s5"
+    ],
+    "support_sections": [
+      "s1 line draw",
+      "s6 end card"
+    ],
+    "narration_sections": [],
+    "required_support_assets": [
+      "Fraunces/Inter fonts (nixwoods-reel/assets)",
+      "logo.png",
+      "music6-corners.mp3"
+    ],
+    "beat_grid": "music6-corners from 0.396 s; beat n at n*0.8357 s; cuts on beats 2, 4, 5, 6, 8",
+    "words_per_screen_max": 12
+  }
+}
