@@ -20,6 +20,9 @@ Whenever I paste a component prompt or third-party component code (21st.dev or a
 as a structural donor only. Keep its engineering. Replace its demo copy with my real copy, and translate
 every colour, border, shadow, font and timing to MOTION.md.
 
+**Before naming a product, identify it with `PRODUCT-ID.md`** (a tell per product, from the live catalogue).
+If the tell is not visible or two products fit, ask. Never call a lit wooden line "NixLine" by default.
+
 `brand.md` holds who we are, the offer and the never-list. Motion skills are installed in
 `.claude/skills/` at the repo root:
 - HyperFrames: the HTML-to-video renderer. Start with `/hyperframes`.

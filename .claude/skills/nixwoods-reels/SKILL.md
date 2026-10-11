@@ -36,6 +36,7 @@ No `--root` needed: each product declares its asset folder in `system/presets.js
 
 ## Hard rules — do not work around these
 
+- **Identify the product before naming it.** Match footage to `nixwoods-reel/PRODUCT-ID.md` (one visible tell per product, from the live catalogue). If no tell is visible or two products fit, ask the owner. A lit wooden line is not automatically the NixLine.
 - **Never invent a product's appearance.** Compare every generated still and clip against `ref/` and record the verdict in `presets.json` (`assets.status`, `assets.clip_status`). Anything marked `rejected` is refused at render time and falls back to real footage. A packshot alone is not enough reference for a hands shot; supply a real frame of the gesture too.
 - **Never fabricate a testimonial.** The `testimonial` mechanism refuses to render without a real quote and a real name.
 - **Never claim a dispatch time** while orders are backlogged, and no lumens or CRI figures without a datasheet.
