@@ -100,6 +100,11 @@ nothing as far as the OS is concerned; the weekly health check lists it as an "o
 5. **Handed off** — a TASK_LEDGER row plus a HANDOFF line naming the consumers:
    `next: SOCIAL (Mac social engine) · ADS (Decision Pass creative pipeline) · PIN (pinterest-engine) · EMAIL (EMAIL tab)`.
 
+6. **Listed for the social tab (D-081)**: append a row for the new asset (ID, what it is, length) to the
+   inventory table in nixwoods-os `00-OS/NW-OPS-DOC-20261011-creative-to-social-handoff-prompt-v1.md` §3.
+   The social media tab uses that standing prompt to find and use everything this tab makes; the
+   register wins if the two ever differ.
+
 Consumers read the registry, never this chat: the Mac social engine takes `READY` rows for the
 weekly calendar, the .com Decision Pass (Thursday step 10) proposes ad tests from `READY` 9:16/4:5
 rows whose `usable-for` contains ADS, pinterest-engine takes 2:3/9:16, the EMAIL tab takes heroes.
