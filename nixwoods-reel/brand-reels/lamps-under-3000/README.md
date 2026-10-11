@@ -1,5 +1,16 @@
 # "Lamps under ₹3,000." (four NixWoods lamps, one list reel)
 
+**v2 (`…-v2.mp4`, `lamps_under_3000_copy.py`) is the one to use.** The owner asked for an exact copy of the
+reference's style, so v2 copies its look, measured off its frames: Liberation Sans Bold (Helvetica metrics) with
+very tight tracking, pale lime-yellow RGB (237, 243, 150), the "LAMPS / UNDER / Rs. 3000" hook with dripping
+letters, lowercase "rs." prices under each name, the heavy amber grade, its text positions, and its shot lengths
+(3.25, 2.15, 2.8, 3.67 s; 11.87 s). For this one piece it deliberately does not follow MOTION.md (font, colour,
+safe zones, 10 s limit). Music: music1-aesthetic (the reference uses a trending song, added in-app if wanted).
+
+v1 below is the first take in the house style.
+
+## v1
+
 After @scoopedfriday's "Lamps under Rs. 1500" (instagram.com/reel/Dc6DAC5zsGH, 14.7 s, 169k views, 2.3k comments):
 a big hook over the first lamp, then one lamp per shot in a dim warm room, its name fading in and its price just after.
 Ours is four NixWoods lamps, all real footage, 9:16, 30 fps, 10.03 s on the music6-corners beat grid, so every
