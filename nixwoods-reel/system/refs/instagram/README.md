@@ -53,3 +53,16 @@ None of the five is free *and* clean enough for a paid ad: ZSky watermarks free 
 needs paid credits to generate, D-ID/Pictory/Steve AI watermark (D-ID also bars commercial use).
 First pass on 7 Oct read only the search snippets and called ZSky and Wireflow usable; their own
 pages corrected that. Full table: `system/FREE-TOOLS.md`.
+
+## DeUFGDJE7kb: @suraj.dsgn, "Claude Motion: Designer's Resource Guide" (7 slides, captured 11 Oct)
+
+Dark grain cover with a peach glow, then one website screenshot a slide, then a "follow and comment Claude"
+slide that sells an eBook. Five resources, none an installable free tool:
+
+| # | Resource | What it is | Checked 11 Oct |
+|---|---|---|---|
+| 2 | Prompt Motion | gallery of motion videos made with Claude, with the prompt or skill behind each | website; nothing to install. Reference library |
+| 3 | Promptslove | `/promptslove-motion-gfx` Claude skill: questions, storyboard, 1080p video with beat-synced music | **paid**, $49 one-time (said to rise to $99), account needed; renderer not named. Not installed (free-first) |
+| 4 | AI × Leaders | free prompt wall for Claude and ChatGPT motion graphics, no account | website; nothing to install |
+| 5 | Claude Code Club | guide "Three levels of motion graphics with Claude Design" (build a motion system from a reference video) | article plus a paid club ($9/month); the method is what `brand-intake` and `MOTION.md` already do |
+| 6 | Promptcat | 161 Opus 5.5 animation prompts: Lottie UI, procedural, product films | website; nothing to install. Lottie output is covered by the HyperFrames Lottie adapter |
