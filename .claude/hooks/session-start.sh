@@ -83,3 +83,45 @@ if [ -n "${CLAUDE_ENV_FILE:-}" ]; then
 fi
 
 echo "OpenMontage ready at $OM_DIR (commit ${OM_COMMIT:0:7}, Piper voice $VOICE, Chrome trusts sandbox CAs). Log: $LOG" >&3
+
+# 6. MoneyPrinterTurbo (github.com/harry0703/MoneyPrinterTurbo, MIT): Edge TTS voices (Hindi, Indian English),
+#    caption timing and assembly for the voice-over reels in nixwoods-reel/brand-reels/mpt-voice/.
+#    Pinned commit, its own Python 3.11 venv, beside this repo. Edge TTS verifies TLS against certifi only,
+#    so the sandbox CAs are appended to the venv's certifi bundle (verification stays on).
+MPT_COMMIT="4204d0f39afa8ada6f3edc31604141f959fe254e"                  # tested 11 Oct 2026
+MPT_DIR="${MPT_DIR:-$(dirname "$PROJECT_DIR")/MoneyPrinterTurbo}"
+{
+  mkdir -p "$MPT_DIR"
+  if [ ! -d "$MPT_DIR/.git" ]; then
+    git -C "$MPT_DIR" init -q && git -C "$MPT_DIR" remote add origin https://github.com/harry0703/MoneyPrinterTurbo.git
+  fi
+  if [ "$(git -C "$MPT_DIR" rev-parse HEAD 2>/dev/null || true)" != "$MPT_COMMIT" ]; then
+    git -C "$MPT_DIR" fetch -q --depth 1 origin "$MPT_COMMIT" && git -C "$MPT_DIR" checkout -q --force FETCH_HEAD
+  fi
+  if [ ! -x "$MPT_DIR/.venv/bin/python" ] || ! "$MPT_DIR/.venv/bin/python" -c "import moviepy, edge_tts" 2>/dev/null; then
+    python3.11 -m venv "$MPT_DIR/.venv"
+    "$MPT_DIR/.venv/bin/pip" install -q -r "$MPT_DIR/requirements.txt"
+  fi
+  [ -f "$MPT_DIR/config.toml" ] || cp "$MPT_DIR/config.example.toml" "$MPT_DIR/config.toml"
+  certs=$("$MPT_DIR/.venv/bin/python" -c "import certifi; print(certifi.where())")
+  if [ -f "$CA_BUNDLE" ] && ! grep -q "sandbox egress CAs" "$certs"; then
+    printf '\n# sandbox egress CAs (cloud session only)\n' >> "$certs"
+    python3 - "$CA_BUNDLE" "$certs" <<'PY'
+import re, subprocess, sys
+pems = re.findall(r"-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----", open(sys.argv[1]).read(), re.S)
+have = open(sys.argv[2]).read()
+with open(sys.argv[2], "a") as f:
+    for p in pems:
+        s = subprocess.run(["openssl", "x509", "-noout", "-subject"], input=p, capture_output=True, text=True).stdout
+        if "Anthropic" in s and p not in have:
+            f.write(f"# {s.strip()}\n{p}\n")
+PY
+  fi
+  cp "$PROJECT_DIR/nixwoods-reel/assets/Inter-600.ttf" "$PROJECT_DIR/nixwoods-reel/assets/Hind-SemiBold.ttf" "$MPT_DIR/resource/fonts/"
+  mkdir -p "$MPT_DIR/storage/bgm"
+  cp "$PROJECT_DIR/nixwoods-reel/floor-reels/audio/music6-corners.mp3" "$MPT_DIR/storage/bgm/"
+} || echo "MoneyPrinterTurbo setup failed; see $LOG" >&3
+if [ -n "${CLAUDE_ENV_FILE:-}" ]; then
+  echo "export MPT_DIR=\"$MPT_DIR\"" >> "$CLAUDE_ENV_FILE"
+fi
+echo "MoneyPrinterTurbo ready at $MPT_DIR (commit ${MPT_COMMIT:0:7}, Edge TTS trusts sandbox CAs)." >&3
