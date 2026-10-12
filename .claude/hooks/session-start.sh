@@ -125,3 +125,14 @@ if [ -n "${CLAUDE_ENV_FILE:-}" ]; then
   echo "export MPT_DIR=\"$MPT_DIR\"" >> "$CLAUDE_ENV_FILE"
 fi
 echo "MoneyPrinterTurbo ready at $MPT_DIR (commit ${MPT_COMMIT:0:7}, Edge TTS trusts sandbox CAs)." >&3
+
+# 7. NixWoods OS: what the social tab is waiting on, and what it has asked this tab for (D-086).
+#    Best effort: fast-forwards ../nixwoods-os when it is there and clean, never clones, never fails the session.
+NW_OS="${NIXWOODS_OS:-$(dirname "$PROJECT_DIR")/nixwoods-os}"
+if [ -f "$NW_OS/40-Content/scripts/creative_index.py" ]; then
+  { git -C "$NW_OS" fetch -q origin main && git -C "$NW_OS" merge -q --ff-only origin/main; } || true
+  python3 "$NW_OS/40-Content/scripts/creative_index.py" --check --renders "$PROJECT_DIR" >&3 2>&1 || true
+  echo "D-086: deliver every REQUEST above and mark its heading in 00-OS/HANDOFF-FOR-CLAUDE-CODE.md '— DONE <date>: <IDs>'; every render you commit must be registered before you stop (the Stop hook checks)." >&3
+else
+  echo "nixwoods-os is not cloned at $NW_OS: attach rameezpravah-u/nixwoods-os (add_repo) and clone it there before filing any asset (D-081, D-086)." >&3
+fi

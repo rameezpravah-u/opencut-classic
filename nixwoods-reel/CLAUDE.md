@@ -81,7 +81,7 @@ No flags needed. `--root` only for assets outside a declared product folder.
 
 ## NixWoods OS contract (OPERATING_MANUAL §6b / §6c — standing, no need to be asked)
 
-Nothing produced here is finished until all five are true. A session that skips a step has produced
+Nothing produced here is finished until every step below is true. A session that skips a step has produced
 nothing as far as the OS is concerned; the weekly health check lists it as an "orphan producer".
 
 1. **Filed** — the render lives in the tree, not only in a scratch folder or a branch. Text
@@ -103,16 +103,23 @@ nothing as far as the OS is concerned; the weekly health check lists it as an "o
 5. **Handed off** — a TASK_LEDGER row plus a HANDOFF line naming the consumers:
    `next: SOCIAL (Mac social engine) · ADS (Decision Pass creative pipeline) · PIN (pinterest-engine) · EMAIL (EMAIL tab)`.
 
-6. **Listed for the social tab (D-081)**: append a row for the new asset (ID, what it is, length) to the
-   inventory table in nixwoods-os `00-OS/NW-OPS-DOC-20261011-creative-to-social-handoff-prompt-v1.md` §3.
-   The social media tab uses that standing prompt to find and use everything this tab makes; the
-   register wins if the two ever differ.
+6. **Listed for the social tab (D-081, D-086)**: nothing to hand-write. Once steps 1–5 are done the asset appears in
+   nixwoods-os `30-Creative/CREATIVE-INDEX.md` under "Waiting for the social tab", and the social tab queues it for
+   approval at the start of its next run. (The §3 table in the handoff prompt is retired; do not add rows to it.)
 
 7. **Indexed and audited**: in nixwoods-os run
    `python3 40-Content/scripts/creative_index.py --renders ../opencut-classic`. It rebuilds
    `30-Creative/CREATIVE-INDEX.md` (every asset grouped by READY / CHECK / HOLD / DO-NOT-USE …) and fails if
    any committed render is neither registered nor listed in `30-Creative/creative-not-registered.tsv`.
    Record use decisions (hold, superseded, a claim to confirm) in `30-Creative/creative-status.tsv`.
+   **Enforced (D-086):** the Stop hook `.claude/hooks/os-audit.sh` runs this check (writing nothing) at the end of
+   every turn and hands back any committed render that is not registered. Register it, or list it in
+   `30-Creative/creative-not-registered.tsv` with the reason. Never weaken the check to get past it.
+
+8. **Requests from the social tab**: the session-start hook prints every open request (`## … to `tab:viral-reel` …`
+   in nixwoods-os `00-OS/HANDOFF-FOR-CLAUDE-CODE.md`). Deliver them before new work unless the owner says
+   otherwise, then mark the heading "— DONE <date>: <asset IDs>". A request that cannot be met gets "— BLOCKED
+   <date>: <reason>" plus a line to the owner (it stays listed until DONE).
 
 Consumers read the registry, never this chat: the Mac social engine takes `READY` rows for the
 weekly calendar, the .com Decision Pass (Thursday step 10) proposes ad tests from `READY` 9:16/4:5
