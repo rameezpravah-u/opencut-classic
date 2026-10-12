@@ -43,12 +43,38 @@ SHOTS = [("01-bare-teak", 1, "clip", "floor-reels/src/nx06-7921.mp4", 2.70),
          ("10-lit-hand", 7, "clip", "floor-reels/src/nx06-7921.mp4", 7.90)]
 # Not the 5 Aug photo AC4I9815: whether it shows the NixLine or the corner floor lamp is still an open owner check, and
 # a ₹999 price must not sit on a lamp that might be the ₹6,999 one.
-CAP = {"07-price-hand": 1.5}       # nx07 swings to a diagonal after 1.5 s: keep only the upright part
-SLOW = {"07-price-hand"}           # ...played slower (0.55x) to fill its line instead of freezing
+CAP = {"07-price-hand": 1.2}       # nx07 swings off vertical at 1.3 s (measured): keep only the upright part
+SLOW = {"07-price-hand"}           # ...played slower (0.45x) to fill its line instead of freezing
 PAD_IN, PAD_OUT = 0.06, 0.10
 MAX_LEN = 15.0
 SR = 48000
 NAME = f"NW-CREATIVE-VID-20261012-nix-line-solid-wood-floor-lamp-voiceover-{LANG}-ad-cut-v1"
+
+
+def upright(frames):
+    """never leaning: rotate each frame by its lit channel's measured angle (smoothed), zoomed to cover"""
+    from PIL import Image
+    from line_montage import axis
+    angs = []
+    for f in frames:
+        try:
+            _, a, L = axis(Image.fromarray(f))
+            angs.append(a if L > 400 else None)
+        except Exception:
+            angs.append(None)
+    if all(a is None for a in angs):
+        return frames
+    known = [a for a in angs if a is not None]
+    angs = [a if a is not None else float(np.median(known)) for a in angs]
+    sm = np.convolve(np.pad(angs, 7, mode="edge"), np.ones(15) / 15, "valid")
+    out = []
+    for f, a in zip(frames, sm):
+        th = np.radians(abs(a))
+        zc = np.cos(th) + (H / W) * np.sin(th)
+        im = Image.fromarray(f).rotate(-a, resample=Image.BICUBIC)
+        cw, ch = W / zc, H / zc
+        out.append(np.asarray(im.resize((W, H), Image.LANCZOS, box=((W - cw) / 2, (H - ch) / 2, (W + cw) / 2, (H + ch) / 2))))
+    return out
 
 
 def srt(path):
@@ -108,8 +134,9 @@ def main():
     for (name, _, kind, src, arg), a, b in zip(SHOTS, edges[:-1], edges[1:]):
         n = round(b * FPS) - round(a * FPS)
         if kind == "clip":
-            bm.MIN_SPEED = 0.55 if name in SLOW else 0.7
+            bm.MIN_SPEED = 0.44 if name in SLOW else 0.7
             fr, speed, _ = bm.clip_frames(src, arg, n, CAP.get(name, bm.MAXSRC.get(name)))
+            fr = upright(fr)
         else:
             fr = bm.photo_frames(arg, n, 0.06 if arg is None else 0.05)
         frames += fr
