@@ -108,6 +108,12 @@ nothing as far as the OS is concerned; the weekly health check lists it as an "o
    The social media tab uses that standing prompt to find and use everything this tab makes; the
    register wins if the two ever differ.
 
+7. **Indexed and audited**: in nixwoods-os run
+   `python3 40-Content/scripts/creative_index.py --renders ../opencut-classic`. It rebuilds
+   `30-Creative/CREATIVE-INDEX.md` (every asset grouped by READY / CHECK / HOLD / DO-NOT-USE …) and fails if
+   any committed render is neither registered nor listed in `30-Creative/creative-not-registered.tsv`.
+   Record use decisions (hold, superseded, a claim to confirm) in `30-Creative/creative-status.tsv`.
+
 Consumers read the registry, never this chat: the Mac social engine takes `READY` rows for the
 weekly calendar, the .com Decision Pass (Thursday step 10) proposes ad tests from `READY` 9:16/4:5
 rows whose `usable-for` contains ADS, pinterest-engine takes 2:3/9:16, the EMAIL tab takes heroes.
