@@ -9,7 +9,7 @@ fades with the text (MOTION.md 6), above y 1250 for paid placements (MOTION.md 3
 
 Type: Inter 600 for English, Hind SemiBold for Hindi (Devanagari; OFL, assets/Hind-OFL.txt), cream #F6EFE4,
 the price in amber #E8A24A. Timing comes from the voice-over's own caption file (timing-<lang>.srt).
-    python3 brand-reels/mpt-voice/burn_captions.py en|hi <in.mp4> <out.mp4>
+    python3 brand-reels/mpt-voice/burn_captions.py en|hi|en-ad|hi-ad <in.mp4> <out.mp4>
 """
 import os, re, subprocess, sys
 import numpy as np
@@ -25,13 +25,14 @@ from line_montage import axis                                          # noqa: E
 
 FF = imageio_ffmpeg.get_ffmpeg_exe()
 W, H, FPS = 1080, 1920, 30
-FONT = os.path.join(ROOT, "assets", "Inter-600.ttf" if LANG == "en" else "Hind-SemiBold.ttf")
-SIZE = 58 if LANG == "en" else 62
+BASE = LANG.split("-")[0]                # "en-ad" / "hi-ad" are the ad cut-downs (ad_cut.py)
+FONT = os.path.join(ROOT, "assets", "Inter-600.ttf" if BASE == "en" else "Hind-SemiBold.ttf")
+SIZE = 58 if BASE == "en" else 62
 CREAM, AMBER = (246, 239, 228), (232, 162, 74)
 X0, X1 = 70, 1010                       # screen edges the column may use (right UI strip is ~130 px)
 GAP = 140                               # clear of the channel's centre on close-ups
 YC = 1010                               # caption block centre; the block stays inside y 760-1250
-SHOT_STARTS = [1, 2, 4, 5, 6, 7, 8, 10]  # caption index each shot starts on (build_materials.SHOTS)
+SHOT_STARTS = [1, 2, 3, 4, 5, 6, 7] if LANG.endswith("-ad") else [1, 2, 4, 5, 6, 7, 8, 10]  # caption index each shot starts on
 
 
 def srt(path):
