@@ -1,0 +1,147 @@
+<!doctype html>
+<!--
+  Luma Pillar — the "Claude made it" method (owner, 13 Oct, after instagram.com/p/DeZh4eFAAGV):
+  brand files in, hook written first, an ElevenLabs voice, every word synced on screen, motion described
+  rather than keyframed, then sound and render.
+  1080x1920, 30 fps, 22.0 s. Real footage (the owner's styling clip, cut by prep.py into assets/bed.mp4);
+  the voice is synthetic (ElevenLabs, Koyal). Word times come from a local transcription of that take.
+
+  0–3.3   "Books. Candle. Cute mat."            the corner gets styled
+  3.3–6   "And it still looks… off?"            the lamp is set down, unlit
+  6–8.9   "That's because it's missing light…"  close on the dark slot; it switches on at "light"
+  8.9–16  "Meet the Luma Pillar. Solid wood…"   lit, smoke through the glow, the grain
+  16–19.7 "Just ₹1,599. On nixwoods.com."       price on a colour block
+  19.7–22 end card: Dusk, logo, price, prepaid code, URL
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap-3.14.2.min.js"></script>
+    <style>
+      @font-face { font-family: Fraunces; src: url(fonts/Fraunces-600.ttf); font-weight: 600; }
+      @font-face { font-family: Fraunces; src: url(fonts/Fraunces-500-i.ttf); font-weight: 500; font-style: italic; }
+      @font-face { font-family: Inter; src: url(fonts/Inter-400.ttf); font-weight: 400; }
+      @font-face { font-family: Inter; src: url(fonts/Inter-600.ttf); font-weight: 600; }
+      :root {
+        --cream: #f6efe4; --ink: #3a2618; --amber: #e8a24a; --dusk: #31211a;
+        /* colours lifted from the props on the dresser (owner: "play with colours") */
+        --coral: #e25c48; --marigold: #f0a834; --green: #34846e; --plum: #803860;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--dusk); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+      .layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      #bed { width: 1080px; height: 1920px; object-fit: cover; display: block; }
+
+      /* the words: one phrase at a time, the spoken word on a colour block */
+      #caps { position: absolute; left: 70px; right: 70px; top: 1020px; height: 240px; }
+      .grp { position: absolute; left: 0; right: 0; top: 0; text-align: center; opacity: 0; }
+      .w { display: inline-block; position: relative; margin: 0 10px; padding: 4px 16px 10px;
+           font: 600 84px/1.1 Fraunces; letter-spacing: -0.02em; color: var(--cream);
+           text-shadow: 0 3px 18px rgba(0, 0, 0, .55); isolation: isolate; }
+      .w.on-light { color: var(--ink); text-shadow: none; }
+      .w .bg { position: absolute; inset: 0; border-radius: 16px; transform: scaleX(0); transform-origin: 0 50%; z-index: -1; }
+      .w.price { font: 600 104px/1.1 Inter; letter-spacing: -0.01em; }
+
+      #end { background: var(--dusk); opacity: 0; }
+      #strip { position: absolute; left: 90px; right: 90px; top: 250px; display: flex; gap: 18px; }
+      #strip i { flex: 1; height: 18px; border-radius: 9px; transform: scaleX(0); transform-origin: 0 50%; }
+      #logo { position: absolute; left: 390px; top: 360px; width: 300px; height: 212px;
+              background: var(--cream); -webkit-mask: url(logo.png) center / contain no-repeat; mask: url(logo.png) center / contain no-repeat; }
+      #e-name { position: absolute; left: 0; right: 0; top: 660px; text-align: center; font: 600 96px Fraunces; color: var(--cream); letter-spacing: -0.02em; }
+      #e-price { position: absolute; left: 0; right: 0; top: 800px; text-align: center; font: 600 128px Inter; color: var(--amber); }
+      #e-code-row { position: absolute; left: 0; right: 0; top: 1000px; display: flex; justify-content: center; }
+      #e-code { white-space: nowrap; font: 600 36px Inter; color: var(--cream); background: var(--coral);
+                border-radius: 37px; padding: 16px 32px; }
+      #e-url { position: absolute; left: 0; right: 0; top: 1120px; text-align: center; font: 600 48px Inter; color: var(--amber); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="22" data-fps="30"
+         data-width="1080" data-height="1920">
+
+      <video id="bed" class="clip layer" src="assets/bed.mp4" muted playsinline
+             data-start="0" data-duration="19.75" data-track-index="0"></video>
+
+      <div id="captions" class="clip layer" data-start="0" data-duration="19.75" data-track-index="1">
+        <div id="caps"></div>
+      </div>
+
+      <div id="endcard" class="clip layer" data-start="19.6" data-duration="2.4" data-track-index="2">
+        <div id="end" class="layer">
+          <div id="strip"><i style="background:var(--coral)"></i><i style="background:var(--marigold)"></i><i style="background:var(--green)"></i><i style="background:var(--plum)"></i></div>
+          <div id="logo"></div>
+          <div id="e-name">Luma Pillar</div>
+          <div id="e-price">₹1,599</div>
+          <div id="e-code-row"><div id="e-code">₹100 off prepaid · code FLY100</div></div>
+          <div id="e-url">nixwoods.com</div>
+        </div>
+      </div>
+
+      <audio id="vo" src="assets/vo.mp3" data-start="0" data-duration="19.72" data-track-index="8" data-volume="1"></audio>
+      <audio id="music" src="assets/music1.mp3" data-start="0" data-duration="22" data-track-index="9" data-volume="0.22"
+             data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0.22},{"t":19.5,"v":0.22},{"t":19.9,"v":0.6},{"t":21.2,"v":0.6},{"t":22,"v":0}]}]}'></audio>
+    </div>
+
+    <script>
+      // Spoken words and their onsets (s) in the voice take; each group is one caption card.
+      // c: the colour block under that word while it is spoken (key words only; others get a soft cream bar).
+      const G = [
+        [["Books.", 0.01, "coral"]],
+        [["Candle.", 1.00, "marigold"]],
+        [["Cute", 1.99], ["mat.", 2.28, "green"]],
+        [["And", 3.32], ["it", 3.48], ["still", 3.64]],
+        [["looks…", 3.96], ["off?", 5.04, "coral"]],
+        [["That's", 6.05], ["because", 6.38]],
+        [["it's", 6.64], ["missing", 7.06], ["light", 7.42, "marigold"]],
+        [["at", 7.78], ["eye", 8.10], ["level.", 8.42]],
+        [["Meet", 9.22], ["the", 9.50]],
+        [["Luma", 9.82, "plum"], ["Pillar.", 10.28, "plum"]],
+        [["Solid", 11.18], ["wood,", 11.46, "green"]],
+        [["a", 12.14], ["soft,", 12.26], ["warm", 12.70, "marigold"], ["glow,", 13.04]],
+        [["and", 13.80], ["grain", 13.96, "green"]],
+        [["no", 14.28], ["one", 14.80], ["else", 15.02]],
+        [["will", 15.24], ["have.", 15.44]],
+        [["Just", 16.23], ["₹1,599.", 16.48, "coral", "price"]],
+        [["on", 18.05], ["nixwoods.com", 18.18, "plum"]],
+      ];
+      const END = 19.65;
+      const caps = document.getElementById("caps");
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "power3.out";
+
+      G.forEach((grp, gi) => {
+        const el = document.createElement("div"); el.className = "grp";
+        grp.forEach(([txt, , c, cls]) => {
+          const w = document.createElement("span"); w.className = "w" + (cls ? " " + cls : "") + (c === "marigold" ? " on-light" : "");
+          const bg = document.createElement("span"); bg.className = "bg";
+          bg.style.background = c ? `var(--${c})` : "rgba(246,239,228,.18)";
+          w.appendChild(bg); w.appendChild(document.createTextNode(txt)); el.appendChild(w);
+        });
+        caps.appendChild(el);
+        const t0 = grp[0][1], t1 = gi + 1 < G.length ? G[gi + 1][0][1] : END;
+        // the card arrives with its first word and leaves as the next card's first word lands
+        tl.fromTo(el, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.14, ease: OUT }, Math.max(0, t0 - 0.04));
+        tl.set(el, { opacity: 0 }, t1 - 0.01);
+        // every word pops on its own onset; its block sweeps in under it
+        el.querySelectorAll(".w").forEach((w, wi) => {
+          const at = grp[wi][1];
+          tl.fromTo(w, { scale: 0.86, opacity: 0.35 }, { scale: 1, opacity: 1, duration: 0.16, ease: "back.out(2.2)" }, at);
+          tl.fromTo(w.querySelector(".bg"), { scaleX: 0 }, { scaleX: 1, duration: 0.18, ease: OUT }, at);
+        });
+      });
+
+      // the end card: Dusk rises, the colour strip draws, then name, price, code, URL
+      const E = 19.6;
+      tl.fromTo("#end", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.inOut" }, E);
+      tl.fromTo("#strip i", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: OUT, stagger: 0.07 }, E + 0.15);
+      tl.fromTo("#logo", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: OUT }, E + 0.2);
+      tl.fromTo("#e-name, #e-price, #e-url", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.32, ease: OUT, stagger: 0.08 }, E + 0.35);
+      tl.fromTo("#e-code", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, E + 0.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
