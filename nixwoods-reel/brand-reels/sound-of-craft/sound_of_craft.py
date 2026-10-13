@@ -54,7 +54,7 @@ SHOTS = [("IMG_7698.mov", 0.00, .5, False),                     # CNC router cut
          ("NW-RAW-20261011-unknown-3c4db763.mov", 1.50, .5, False),       # a long bar lit on test
          ("aurora-dimming-9x16.mp4", 0.10, .5, False)]          # the Aurora on a wall coming on (no sound: a click)
 assert len(SHOTS) == len(CUTS) - 1
-WORDS = [("THE", 690, 380), ("SOUND OF", 80, 780), ("CRAFT", 690, 1180)]
+WORDS = [("THE", 760, 470), ("SOUND OF", 80, 820), ("CRAFT", 760, 1180)]    # clear of the Aurora bar
 
 
 def clip_audio(path, t0, dur):
