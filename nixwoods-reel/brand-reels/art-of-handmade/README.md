@@ -13,8 +13,9 @@ music and pattern".
 - **Timing kept here:** this cut uses the reference's cut times to the frame (`CUTS` in `handmade_cut.py`).
 
 ## This cut
-- **Footage:** real Aurora workshop footage only, with no faces. The clips are on Drive and listed in
-  `../festive-ad-cuts/README.md`; they are not committed.
+- **Footage:** real Aurora workshop footage only, with no faces. The clips are Drive copies in
+  `../festive-ad-cuts/src/` and are not committed. Most are listed in `../festive-ad-cuts/README.md`; IMG_7653 (strips
+  in sawdust) and IMG_7992 (bars lit, second angle) are not in that list yet.
 - **Order:**
   1. teak planks, cut strips in sawdust, routed bars, black-finish bars;
   2. the bars lit on test, held for the long beat;

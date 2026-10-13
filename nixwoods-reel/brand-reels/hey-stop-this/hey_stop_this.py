@@ -64,15 +64,15 @@ EDIT = [
     (0.875, still(CUBE, 25, 6.6), "Stop!", 730, 520, 56),
     (1.250, still(CUBE, 25, 10.2), "Stop!", None, 600, 64),
     (1.750, still(CUBE, 25, 7.4), "Look at", None, 600, 50),
-    (2.167, clip(S(R("floor-reels/src/nx06-7921.mp4"), 30, 7.9, straight=True, t_src=1.7)), "This", None, 760, 54),
+    (2.167, clip(S(R("floor-reels/src/nx06-7921.mp4"), 30, 7.9, straight=True, t_src=1.7)), "This", 150, 760, 54),
     (2.700, photo("AC4I9751", 1300, 3100, 2600), "This", 560, 330, 54),
     (3.400, photo("AC4I9665", 1824, 2600, 3078), "This", 720, 330, 54),
     (3.933, photo("AC4I9644", 1800, 2300, 2500), "This", None, 480, 54),
     (4.433, photo("AC4I9861", 2450, 3950, 1900), "This", 140, 330, 54),
-    (5.033, clip(S(SRC("aurora-dimming-9x16.mp4"), 30, 2.4, t_src=1.3)), "This", 130, 1150, 54),
+    (5.033, clip(S(SRC("aurora-dimming-9x16.mp4"), 30, 0.6)), "This", 130, 1150, 54),
     (5.667, photo("AC4I9777", 1500, 3300, 2600), "This", None, 330, 54),
     (6.367, clip(S(CUBE, 25, 13.55), keep=0.8), "Aaaaaaaand", None, 420, 58),
-    (7.667, photo("AC4I9882", 2060, 2900, 3000, push=0.03), "This", None, 330, 58),
+    (7.667, photo("AC4I9882", 2060, 2900, 3000, push=0.03), "This", 150, 330, 58),
 ]
 HEY = [(0.00, "H"), (0.12, "Hee"), (0.25, "Heeeee"), (0.40, "Heeeeeeee")]
 
