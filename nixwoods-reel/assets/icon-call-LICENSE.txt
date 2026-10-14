@@ -1,0 +1,3 @@
+icon-call.png: the "call" icon from Google's Material Icons (https://github.com/google/material-design-icons),
+rasterised at 512 px in white on transparent. Licensed under the Apache License 2.0
+(https://www.apache.org/licenses/LICENSE-2.0).

@@ -73,3 +73,20 @@ cross-section or the badge; otherwise ask.
 ## Mistakes already made (do not repeat)
 - 11 Oct 2026: an owner clip of the **Minimalist Wooden Floor Lamp** (round cylindrical base, a lit rod as tall as a
   mirror) was cut as a NixLine reel. The NixLine is a 30 in teak bar on a small block and stands about hip height.
+- 14 Oct 2026: several filenames in the clean 5 Aug shoot (`drive-pull/shoot-20260805/`) name the wrong product.
+  Use the table below, not the filename.
+
+## The 5 Aug 2026 shoot, photo by photo (confirmed 14 Oct)
+| Photo | Product | How it was settled |
+|---|---|---|
+| AC4I9815 | NixLine floor lamp, ₹999 | Tell: a short teak bar on its own small block |
+| AC4I9658, AC4I9661 | NixLine 30 in wall light, from ₹1,799 | Tell: a slim pine plank mounted on the wall |
+| AC4I9861 | Bedside dimmer lamp, ₹2,499 | Tell: an oblong tube bulb |
+| AC4I9873 | **Globe Edison table lamp**, ₹2,999 (filename says bedside dimmer lamp) | Tell: a round globe bulb |
+| AC4I9629, AC4I9644, AC4I9649 | **Compact wall light**, from ₹4,999 (9649's filename says Aurora) | Owner, 14 Oct |
+| AC4I9652 | **30 in wall sconce**, ₹2,500 (filename says vertical wooden wall light) | Owner, 14 Oct |
+| AC4I9736 | Rosewood hollow pendant, ₹7,999 | Owner, 14 Oct |
+| AC4I9706, AC4I9776, AC4I9777 | Minimalist wooden floor lamp, from ₹6,999 | Tell: a lit rod on a round base |
+| AC4I9751, AC4I9882 | Sculpted Glow floor lamp, ₹9,999 | Tell: an LED rope looping through a frame |
+| AC4I9771 | Sleek cylindrical floor lamp | Unlisted on Shopify (13 Oct): do not use |
+| AC4I9641, 9665, 9686, 9728, 9738, 9798 ("linear-pendant") | Not settled | Ask before naming |
