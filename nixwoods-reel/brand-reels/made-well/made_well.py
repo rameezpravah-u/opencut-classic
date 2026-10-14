@@ -37,7 +37,8 @@ DUR = 29.2
 SR = 48000
 LOGO_ON, BLACK_ON = 27.75, 28.55
 
-# (cut-in, source, in-point, frame-x for landscape sources, speed; < 1 is motion-interpolated slow motion)
+# (cut-in, source, in-point, frame-x for landscape sources, speed; < 1 is motion-interpolated slow motion[, the grade's
+# mean luma when not 0.30])
 SHOTS = [
     (0.000, SRC("FBB4C770-C6F4-4B5A-8DF5-F9199E630A62.MP4"), 1.20, .5, 0.55),  # teak planks (clean span 1.2-2.6 s)
     (2.625, SRC("IMG_7698.mov"), 0.40, .5, 1.0),                               # the CNC router in the cut
@@ -49,10 +50,10 @@ SHOTS = [
     (15.750, SRC("NW-RAW-20261011-unknown-0e06e8d3.mov"), 1.40, .5, 1.0),      # a bar lit, standing
     (17.042, SRC("IMG_7991.mov"), 0.10, .5, 1.0),                              # a bar switched on, on test
     (18.042, SRC("IMG_7992.mov"), 0.60, .5, 1.0),                              # a lit bar over the black bars
-    (19.083, R("floor-reels/src/nx01-7923.mp4"), 0.30, .5, 1.0),               # a lit bar on the floor
+    (19.083, SRC("NW-RAW-20261011-unknown-e23f692e.mov"), 1.80, .5, 1.0),      # a lit bar on the floor, diagonal
     (21.083, R("floor-reels/src/nx07-7922.mp4"), 0.30, .5, 1.0),               # a lit bar in the hand
     # the Aurora on a wall coming on: source 0-1.95 s only, before the clip's own zoom transition
-    (22.833, SRC("aurora-dimming-9x16.mp4"), 0.00, .5, 0.45),
+    (22.833, SRC("aurora-dimming-9x16.mp4"), 0.00, .5, 0.45, 0.17),
     (27.167, None, 0, 0, 0),                                                   # wood, soft light, the logo, black
 ]
 
@@ -99,13 +100,15 @@ def caption(text):
     tw = sum(widths) + track * (len(text) - 1)
     x, y = (W - tw) / 2, 960 - 15
     sh = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    for d, fill, dy in ((sh, (0, 0, 0, 110), 2), (None, (255, 255, 255, 255), 0)):
+    # a firm soft shadow and a thin dark edge keep the white legible where a phrase crosses a lit bar
+    for d, fill, dy in ((sh, (0, 0, 0, 160), 2), (None, (255, 255, 255, 255), 0)):
         if d is None:
-            lay = sh.filter(ImageFilter.GaussianBlur(4))
+            lay = sh.filter(ImageFilter.GaussianBlur(5))
             d = lay
         xx = x
         for c, w in zip(text, widths):
-            ImageDraw.Draw(d).text((xx, y + dy), c, font=f, fill=fill, anchor="ls")
+            ImageDraw.Draw(d).text((xx, y + dy), c, font=f, fill=fill, anchor="ls", stroke_width=2,
+                                   stroke_fill=(30, 20, 12, 190))
             xx += w + track
     return np.asarray(lay, np.float32) / 255
 
@@ -151,9 +154,10 @@ def wood_end(secs):
     out = []
     for k in range(n):
         t = k / FPS
-        z = 1.0 + 0.03 * t / secs
+        z = 1.2 + 0.03 * t / secs                                       # 1.2: the packing cloth at the left edge stays out
         cw, ch = W / z, H / z
-        im = np.asarray(base.resize((W, H), Image.LANCZOS, box=((W - cw) / 2, (H - ch) / 2, (W + cw) / 2,
+        cx = W / 2 + 80                                                 # and the crop sits right of centre
+        im = np.asarray(base.resize((W, H), Image.LANCZOS, box=(cx - cw / 2, (H - ch) / 2, cx + cw / 2,
                                                               (H + ch) / 2)), np.float32) / 255
         im = im * 0.62
         for cx, cy, rx, ry in ((420 + 18 * t, 1010, 70, 140), (510 + 18 * t, 1180, 75, 150)):
@@ -186,12 +190,12 @@ def wav(path, src=None, start=0.0, gain_db=0.0):
         w.writeframes((m * 32767).astype(np.int16).tobytes())
 
 
-def encoder(wavp, path):
+def encoder(wavp, path, crf=17):
     return subprocess.Popen([FF, "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r",
                              str(FPS), "-i", "-", "-i", wavp, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-crf",
-                             "17", "-preset", "slow", "-pix_fmt", "yuv420p", "-color_primaries", "bt709", "-color_trc",
-                             "bt709", "-colorspace", "bt709", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags",
-                             "+faststart", path], stdin=subprocess.PIPE)
+                             str(crf), "-preset", "slow", "-pix_fmt", "yuv420p", "-color_primaries", "bt709",
+                             "-color_trc", "bt709", "-colorspace", "bt709", "-c:a", "aac", "-b:a", "192k", "-shortest",
+                             "-movflags", "+faststart", path], stdin=subprocess.PIPE)
 
 
 def main():
@@ -211,13 +215,13 @@ def main():
     encs = []
     for wp, src, g, path in jobs:
         wav(wp, src, 0.0, g)
-        encs.append(encoder(wp, path))
+        encs.append(encoder(wp, path, crf=23))                          # 29 s: CRF 23 keeps it under ~21 MB
     mids, done = [], 0
     ends = [s[0] for s in SHOTS[1:]] + [DUR]
-    for (t0, src, t_in, xf, sp), t1 in zip(SHOTS, ends):
+    for (t0, src, t_in, xf, sp, *tg), t1 in zip(SHOTS, ends):
         n = round(t1 * FPS) - round(t0 * FPS)
         fr = wood_end(n / FPS) if src is None else grade_shot(footage(src, t_in, xf, sp, n / FPS), keep=0.55,
-                                                              target=0.30)
+                                                              target=tg[0] if tg else 0.30)
         for k, f in enumerate(fr):
             t = (round(t0 * FPS) + k) / FPS
             o = f.astype(np.float32) / 255
@@ -242,7 +246,7 @@ def main():
     for i, im in enumerate(mids):
         sh.paste(Image.fromarray(im).resize((270, 480)), (270 * (i % 7), 480 * (i // 7)))
     sh.save(os.path.join(OUT, f"{NAME}-sheet.jpg"), quality=88)
-    print("wrote", len(frames), "frames")
+    print("wrote", done, "frames")
 
 
 if __name__ == "__main__":
