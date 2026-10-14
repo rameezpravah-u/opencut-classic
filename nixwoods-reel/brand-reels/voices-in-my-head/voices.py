@@ -67,19 +67,19 @@ def level(seg, target, most=12):
 
 
 def soundtrack():
-    """music under the line, cut dead on the drop; then each shop shot with its own recorded sound (levelled to
-    -18 dB RMS, quiet handling lifted at most 12 dB, 15 ms crossfades); then a quiet room tone under the held shot,
-    from a lamp-lit room clip (IMG_7664), fading out"""
+    """music under the line (soft, -23 dB RMS, so the drop lands), cut dead on the drop; then each shop shot with its
+    own recorded sound (levelled to -14 dB RMS, quiet handling lifted at most 20 dB, 15 ms crossfades); then a quiet
+    room tone under the held shot, from a lamp-lit room clip (IMG_7664), fading out"""
     n = int(DUR * SR)
     mix = np.zeros((n, 2), np.float32)
-    mus = level(clip_audio(R("aurora-reels/audio/music1-aesthetic.mp3"), 0.0, DROP), -17, 30)
+    mus = level(clip_audio(R("aurora-reels/audio/music1-aesthetic.mp3"), 0.0, DROP), -23, 30)
     mus *= np.clip(np.arange(len(mus)) / (0.03 * SR), 0, 1)[:, None]
     mus[-int(0.012 * SR):] *= np.linspace(1, 0, int(0.012 * SR))[:, None]
     mix[:len(mus)] += mus
     xf = int(0.015 * SR)
     ends = [s[0] for s in SHOP[1:]] + [HELD]
     for (a, clip, t_in, _), b in zip(SHOP, ends):
-        seg = level(clip_audio(SRC(clip), t_in, b - a + 0.015), -18)
+        seg = level(clip_audio(SRC(clip), t_in, b - a + 0.015), -14, 20)
         ramp = np.ones(len(seg), np.float32)
         ramp[:xf] = np.linspace(0, 1, xf)
         ramp[-xf:] = np.linspace(1, 0, xf)

@@ -26,8 +26,10 @@
    6. a bar switched on, on test (its click);
    7. a lit bar.
 
-   **Levelling:** each shot is levelled to −18 dB RMS, with quiet handling lifted at most 12 dB, and 15 ms crossfades
-   at the cuts.
+   **Levelling:**
+   - each shot is levelled to −14 dB RMS, with quiet handling lifted at most 20 dB;
+   - the music under the line sits at −23 dB, so the drop lands;
+   - 15 ms crossfades at the cuts.
 3. **6.9–12.7 s:** the lamp held, with smoke drifting through the glow in slow motion.
    - **Text:** "the sound / of handmade…", then "handmade lighting" with "NixWoods · India".
    - **Sound:** a quiet room tone from a lamp-lit room clip (IMG_7664).
