@@ -29,6 +29,16 @@ NW-CREATIVE-VID-{YYYYMMDD}-{product-handle}-{shot description}-{ratio}-v{n}.mp4
 
 **Never pull from it.** No watermark removal is needed or wanted: a clean original of every frame already exists under the sorted product folders — match on the frame number (`AC4I9835` → `NW-CREATIVE-IMG-20260805-rubiks-cube-table-lamp-sheesham-wood-AC4I9835-v1.JPG`). If a frame ever turns out to exist *only* watermarked, that is a rights question for the photographer, not an editing task — ask before using it.
 
+## Update, 16 Oct 2026: every file is reachable
+
+The 10 MB cap below applies to the session's built-in Google Drive connector only. The **Composio Google Drive**
+connection, authorised by the owner on 16 Oct, downloads any file at full size. A 24.3 MB raw shoot clip was
+checked: its md5 matched Drive's.
+
+The whole `nixwoods` tree is indexed, 6,707 files and 32 GB, in the private nixwoods-os repo at
+`30-Creative/library/INDEX.tsv`. How to fetch, and the rules: `library/README.md`. The section below is kept for
+history.
+
 ## What a session can and cannot pull from Drive (corrected 7 Sep)
 
 **Files up to 10 MB download fine.** `download_file_content` returns base64; when the result is
