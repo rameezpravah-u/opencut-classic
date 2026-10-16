@@ -1,7 +1,8 @@
 # Which NixWoods product is this? (identification guide)
 
 Read this before naming a product in any reel, caption, end card or register row. Built 11 Oct 2026 from the
-live Shopify catalogue (39 active products) after a floor-lamp clip was wrongly called the NixLine.
+live Shopify catalogue (39 active products) after a floor-lamp clip was wrongly called the NixLine. On 16 Oct 38 are
+active (Duo Glow is a draft). What each page lets a reel claim is in `PRODUCT-FACTS.md`.
 Contact sheets of every product's main photo: `system/refs/catalog/catalog1-4.jpg` (slug and price on each tile);
 the photo URLs are in `system/refs/catalog/featured-images.tsv`. Slugs match nixwoods-os `40-Content/PRODUCT-SLUGS.tsv`.
 
@@ -59,7 +60,7 @@ cross-section or the badge; otherwise ask.
 | vertical-curved-wall-light | Vertical curved wall light, ₹6,999 | A tall **vertical** wall bar with rounded ends and a lit slot in its face. |
 | wall-sconce-30 | 30 in wall sconce, ₹2,500 | A vertical round-ended bar on a small **back mount block**, washing the wall on both sides. |
 | compact-wall-light | Compact wall light, from ₹4,999 (24 or 40 in) | A horizontal sheesham bar, light down, or up and down. |
-| duo-glow | Duo Glow, from ₹4,999 | A horizontal sheesham bar with **two parallel LED lines** underneath. |
+| duo-glow | Duo Glow, from ₹4,999 (draft on 16 Oct: not on sale) | A horizontal sheesham bar with **two parallel LED lines** underneath. |
 | timber-wall-light | Timber wall light, from ₹2,999 | A horizontal teak bar with rounded ends, glowing up and down. |
 | aure | Aure wall sconce, ₹1,599 | A deep **curved U-profile** teak piece, light out of the bottom edge. |
 | arden | Arden 14 in, ₹1,599 | A **short** rosewood box, up and down glow. |
