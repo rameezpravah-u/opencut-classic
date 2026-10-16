@@ -409,7 +409,7 @@ class Doodle:
         heart = [(180 + 46 * 16 * math.sin(a) ** 3 / 16, 1040 - 46 * (13 * math.cos(a) - 5 * math.cos(2 * a)
                   - 2 * math.cos(3 * a) - math.cos(4 * a)) / 16) for a in np.linspace(0, 2 * math.pi, 40)]
         out.append((jit(heart), CORAL, 7))
-        ring = [(540 + 300 * math.cos(a) + 12 * math.sin(5 * a), 930 + 520 * math.sin(a)) for a in
+        ring = [(540 + 250 * math.cos(a) + 12 * math.sin(5 * a), 930 + 520 * math.sin(a)) for a in
                 np.linspace(0.3, 2 * math.pi + 0.6, 70)]
         out.append((jit(ring, 7), CREAM, 6))
         arrow = [(860, 700), (800, 760), (730, 820), (690, 850)]
@@ -433,7 +433,7 @@ class Doodle:
                 dd.line(pts[:n], fill=tuple(col) + (255,), width=wdt, joint="curve")
             if t > 0.3:
                 r = np.random.default_rng(j + 7)
-                dd.text((830 + r.uniform(-3, 3), 640 + r.uniform(-3, 3)), "₹1,599!", font=self.hand,
+                dd.text((870 + r.uniform(-3, 3), 640 + r.uniform(-3, 3)), "₹1,599!", font=self.hand,
                         fill=MARIGOLD + (255,), anchor="ms")
             if t > 0.55:
                 r = np.random.default_rng(j + 9)
@@ -687,8 +687,8 @@ def tag_layer(i):
         t = f"{i + 1:02d} / 09 · {NAMES[i]}"
         fnt = font("Space_Grotesk-700.ttf", 30)
         tw = fnt.getlength(t)
-        d.rounded_rectangle((48, 150, 48 + tw + 44, 206), 28, fill=(20, 20, 20, 170))
-        d.text((70, 189), t, font=fnt, fill=(241, 248, 17, 255), anchor="ls")
+        d.rounded_rectangle((48, 1724, 48 + tw + 44, 1780), 28, fill=(20, 20, 20, 170))       # low, clear of the
+        d.text((70, 1763), t, font=fnt, fill=(241, 248, 17, 255), anchor="ls")                 # content
     return layer(dr)
 
 
