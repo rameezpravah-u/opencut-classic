@@ -19,7 +19,7 @@ the photo URLs are in `system/refs/catalog/featured-images.tsv`. Slugs match nix
 |---|---|---|
 | minimalist-floor-lamp | Minimalist Wooden Floor Lamp, solid rosewood. ₹6,999 (Compact 44 in), ₹9,999 (Tall 60 in) | A thin lit rod (light along its whole length) rising from a **round, cylindrical wooden base**, 5–6 in across. No frame. Dimmable, remote. |
 | corner-floor-lamp | "Unique Wood Floor Lamps" (corner lamp), ₹6,999 | The same thin lit rod, but on a **square cube** wooden base with an NX badge. |
-| nixline-floor-lamp | NixLine solid teak floor lamp, ₹999 (was ₹1,599), COD, free delivery | A **short** 30 in square teak bar (1.5 x 1.5 in), LED strip on one face, standing on its own small teak block. Reaches about hip height, not head height. |
+| nixline-floor-lamp | NixLine solid teak floor lamp, ₹999 (was ₹1,599), COD, free delivery | One **honey-coloured** teak bar (27 in, 1.5 x 1.5 in) with rounded ends and a **frosted LED strip down its whole front face**. **No separate base: it leans in a corner**, cord from its foot. Owner clips `floor-reels/src/nx00`–`nx08`. (Corrected 19 Oct: it does not stand on a block.) |
 | teak-linear-floor-lamp | Scandinavian Teak Linear Floor Lamp, ₹5,999 | A 1150 mm teak column with a lit channel, on a flat **brushed-silver metal** square base. The metal base is the tell. |
 | tall-teak-floor-lamp | Tall Teak Wood Floor Lamp, ₹8,999 | An **open rectangular teak frame** (40 in) lit inside, on a flat rectangular teak plinth, with a foot switch. |
 | spiral-floor-lamp | Sculpted Glow rosewood floor lamp, ₹9,999 | A rosewood frame with a **white LED rope looping in an S-spiral** through it. |
@@ -74,13 +74,16 @@ cross-section or the badge; otherwise ask.
 ## Mistakes already made (do not repeat)
 - 11 Oct 2026: an owner clip of the **Minimalist Wooden Floor Lamp** (round cylindrical base, a lit rod as tall as a
   mirror) was cut as a NixLine reel. The NixLine is a 30 in teak bar on a small block and stands about hip height.
+- 19 Oct 2026: the 5 Aug photo AC4I9815 (a lit rod on a square block) was used as "the real NixLine" in several
+  reels and as the reference for the first CCTV heist frames. The owner: wrong product. The NixLine is the honey-teak
+  bar that leans in a corner (owner clips nx00–nx08, live page photos).
 - 14 Oct 2026: several filenames in the clean 5 Aug shoot (`drive-pull/shoot-20260805/`) name the wrong product.
   Use the table below, not the filename.
 
 ## The 5 Aug 2026 shoot, photo by photo (confirmed 14 Oct)
 | Photo | Product | How it was settled |
 |---|---|---|
-| AC4I9815 | NixLine floor lamp, ₹999 | Tell: a short teak bar on its own small block |
+| AC4I9815 | **Not the NixLine** (owner, 19 Oct). A lit rod on a square block: the corner floor lamp's tell, filed as such in nixwoods-os | Owner, 19 Oct |
 | AC4I9658, AC4I9661 | NixLine 30 in wall light, from ₹1,799 | Tell: a slim pine plank mounted on the wall |
 | AC4I9861 | Bedside dimmer lamp, ₹2,499 | Tell: an oblong tube bulb |
 | AC4I9873 | **Globe Edison table lamp**, ₹2,999 (filename says bedside dimmer lamp) | Tell: a round globe bulb |

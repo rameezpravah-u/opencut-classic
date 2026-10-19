@@ -5,8 +5,9 @@ Workshop CCTV at night. A masked thief creeps past the open cash box and every t
 takes only the NixLine floor lamp and walks out with it lit. In the grey CCTV grade the lamp's warm light is the only
 colour. Then a hard cut to the real lamp in a real room: "Nobody steals a tubelight."
 
-The skit is AI-generated (Higgsfield: Nano Banana 2.1 start frames from the real NixLine photo, Kling 3.0 Turbo clips)
-and says so on every AI frame. The end shot is the real 5 Aug shoot photo (AC4I9815). Clips live in gen/.
+Everything is AI-generated (Higgsfield: Nano Banana 2.1 frames referenced on the owner's own NixLine clip nx04 and the
+product page photo, Kling 3.0 Turbo clips) and says so on every frame. v1 used the 5 Aug photo AC4I9815, which the owner
+says is not the NixLine (19 Oct); v2 is in gen2/.
 
     python3 brand-reels/cctv-heist/cctv_heist.py
 """
@@ -22,14 +23,14 @@ sys.path.insert(0, os.path.join(ROOT, "brand-reels", "made-well"))
 from festive_cuts import FF, FPS, H, W, font, sstep     # noqa: E402
 from made_well import encoder                           # noqa: E402
 
-GEN = os.path.join(HERE, "gen")
+GEN = os.path.join(HERE, "gen2")
 OUT = os.path.join(HERE, "out")
-NAME = "NW-CREATIVE-VID-20261019-nix-line-solid-wood-floor-lamp-cctv-heist-v1-AI"
-REAL = os.path.join(ROOT, "floor-reels", "ref", "AC4I9815-real-nixline-upright.jpg")
+NAME = "NW-CREATIVE-VID-20261019-nix-line-solid-wood-floor-lamp-cctv-heist-v2-AI"
+HERO = os.path.join(GEN, "hero.jpg")                # the aesthetic NixLine still, generated 19 Oct
 SR = 48000
 
 # (clip, in-point s, length s) on the timeline, in order; the lamp lights between B and C
-SHOTS = [("A", 0.2, 4.4), ("B", 0.5, 3.2), ("C", 0.3, 3.8), ("D", 0.6, 2.8)]
+SHOTS = [("A", 0.2, 4.4), ("B", 0.4, 3.2), ("C", 1.1, 3.8), ("D", 0.0, 2.8)]
 END = 3.4                                     # the real lamp and the end card
 CUTS = np.cumsum([0] + [s[2] for s in SHOTS])  # 0, 4.4, 7.6, 11.4, 14.2
 DUR = float(CUTS[-1] + END)
@@ -131,7 +132,7 @@ def caption(text):
 def ai_label(on_light=False):
     def draw(d, _):
         f = font("Inter-400.ttf", 30)
-        t = "Skit made with AI. The lamp is real."
+        t = "Skit and photo made with AI."
         tw = f.getlength(t)
         if on_light:
             d.rounded_rectangle((70, 1426, 70 + tw + 40, 1480), 12, fill=CREAM + (236,))
@@ -143,39 +144,37 @@ def ai_label(on_light=False):
 
 
 def end_card():
+    """cream type in the dark wall space above the chair, clear of the lamp's glow"""
     def draw(d, _):
-        f = font("Fraunces-600.ttf", 82)
-        # cream cards keep the copy clear of the painting and the plant in the real photo
-        d.rounded_rectangle((60, 300, 120 + f.getlength("Nobody steals"), 548), 22, fill=CREAM + (236,))
-        d.rounded_rectangle((60, 958, 560, 1272), 22, fill=CREAM + (236,))
-        d.text((90, 330), "Nobody steals", font=f, fill=INK + (255,))
-        d.text((90, 425), "a tubelight.", font=f, fill=INK + (255,))
+        f = font("Fraunces-600.ttf", 84)
+        d.text((90, 330), "Nobody steals", font=f, fill=CREAM + (255,))
+        d.text((90, 428), "a tubelight.", font=f, fill=CREAM + (255,))
         g = font("Inter-600.ttf", 42)
-        d.text((90, 980), "NixLine floor lamp", font=g, fill=INK + (255,))
-        d.text((90, 1036), "solid teak", font=font("Inter-400.ttf", 38), fill=MUTED_L + (255,))
+        d.text((90, 600), "NixLine floor lamp", font=g, fill=CREAM + (255,))
+        d.text((90, 656), "solid teak", font=font("Inter-400.ttf", 38), fill=(214, 196, 172, 255))
         p = font("Inter-600.ttf", 64)
-        d.text((90, 1100), "₹999", font=p, fill=AMBER_D + (255,))
+        d.text((90, 720), "₹999", font=p, fill=(232, 162, 74, 255))
         w = p.getlength("₹999")
         q = font("Inter-400.ttf", 38)
         x = 90 + w + 24
-        d.text((x, 1122), "₹1,599", font=q, fill=MUTED_L + (255,))
+        d.text((x, 742), "₹1,599", font=q, fill=(190, 170, 148, 255))
         lw = q.getlength("₹1,599")
-        d.line((x, 1145, x + lw, 1145), fill=MUTED_L + (255,), width=3)
-        d.text((90, 1200), "nixwoods.com", font=font("Inter-600.ttf", 40), fill=INK + (255,))
+        d.line((x, 765, x + lw, 765), fill=(190, 170, 148, 255), width=3)
+        d.text((90, 820), "nixwoods.com", font=font("Inter-600.ttf", 40), fill=CREAM + (255,))
     return layer(draw)
 
 
 def real_frames(n):
-    """the real 5 Aug photo, 9:16 crop with the lamp on the right, a slow push in"""
-    im = Image.open(REAL).convert("RGB")
-    w, h = im.size
-    cw = round(h * W / H)
-    base = im.crop((w - cw, 0, w, h))
+    """the hero still, cropped to 9:16, a slow push in towards the lamp"""
+    base = Image.open(HERO).convert("RGB")
+    w, h = base.size
+    cw = min(w, round(h * W / H))
+    base = base.crop(((w - cw) // 2, 0, (w - cw) // 2 + cw, h))
     out = []
     for i in range(n):
         z = 1 + 0.06 * sstep(i / max(n - 1, 1))
         bw, bh = base.width / z, base.height / z
-        cx, cy = base.width * 0.78, base.height * 0.58            # towards the lamp
+        cx, cy = base.width * 0.80, base.height * 0.55            # towards the lamp
         x0 = min(max(cx - bw / 2, 0), base.width - bw)
         y0 = min(max(cy - bh / 2, 0), base.height - bh)
         out.append(np.asarray(base.crop((x0, y0, x0 + bw, y0 + bh)).resize((W, H), Image.LANCZOS),
@@ -249,7 +248,7 @@ def main():
         if j < 2:
             x = np.clip(x + 0.5 * (1 - j / 2), 0, 1)                # the CCTV feed cuts to the real room
         x = over(x, card, sstep((j / FPS - 0.25) / 0.4))
-        x = over(x, lab_light)
+        x = over(x, lab)
         px = (np.clip(x, 0, 1) * 255 + 0.5).astype(np.uint8)
         enc.stdin.write(px.tobytes())
         if j == round(END * FPS) - 10:

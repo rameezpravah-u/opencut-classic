@@ -1509,10 +1509,10 @@
      "floorpan": "src/nx02-7925.mp4",
      "forest": "src/nx03-7926.mp4",
      "upright": "src/nx04-7930.mp4",
-     "heist_a": "../brand-reels/cctv-heist/gen/A.mp4",
-     "heist_b": "../brand-reels/cctv-heist/gen/B.mp4",
-     "heist_c": "../brand-reels/cctv-heist/gen/C.mp4",
-     "heist_d": "../brand-reels/cctv-heist/gen/D.mp4"
+     "heist_a": "../brand-reels/cctv-heist/gen2/A.mp4",
+     "heist_b": "../brand-reels/cctv-heist/gen2/B.mp4",
+     "heist_c": "../brand-reels/cctv-heist/gen2/C.mp4",
+     "heist_d": "../brand-reels/cctv-heist/gen2/D.mp4"
     },
     "sfx": {
      "whoosh": "audio/sfx-whoosh.mp3",
@@ -1530,12 +1530,17 @@
     ],
     "status": {
      "native_bedroom": "approved 7 Oct — Higgsfield gpt_image_2_5, reference = pdp/p0-marble-corner.jpg. Lamp matches the reference (slim square teak bar, leaning, glow washing the wall behind it). Reads taller than the real 30 in beside the bed: no size claim on or with this image. AI-generated: Meta AI disclosure must be ticked for paid; isAiGenerated true for organic.",
-     "heist_start_a": "approved 19 Oct — gen/A-start.jpg: masked thief entering, watchman asleep, NixLine upright on its block. Nano Banana 2.1, 9:16, 1.5 credits, 19 Oct, reference = brand-reels/cctv-heist/refs/nixline-real-crop.jpg (from AC4I9815). Start frame for the CCTV heist skit only; deliberately not in stills, so no mechanism picks it up.",
-     "heist_start_b": "approved 19 Oct — gen/B-start.jpg: watchman hands up, thief shh. Nano Banana 2.1, 9:16, 1.5 credits, 19 Oct, reference = brand-reels/cctv-heist/refs/nixline-real-crop.jpg (from AC4I9815). Start frame for the CCTV heist skit only; deliberately not in stills, so no mechanism picks it up.",
-     "heist_start_c_v1": "rejected 19 Oct — gen/C-start-rejected-too-tall.jpg: the lamp drawn far taller than hip height. Regenerated once with 'about 75 cm'. Nano Banana 2.1, 9:16, 1.5 credits, 19 Oct, reference = brand-reels/cctv-heist/refs/nixline-real-crop.jpg (from AC4I9815). Start frame for the CCTV heist skit only; deliberately not in stills, so no mechanism picks it up.",
-     "heist_start_c": "approved 19 Oct — gen/C-start.jpg: the lit NixLine held upright, hip height, square block. Nano Banana 2.1, 9:16, 1.5 credits, 19 Oct, reference = brand-reels/cctv-heist/refs/nixline-real-crop.jpg (from AC4I9815). Start frame for the CCTV heist skit only; deliberately not in stills, so no mechanism picks it up.",
-     "heist_start_d_v1": "rejected 19 Oct — gen/D-start-rejected-too-tall.jpg: lamp too tall again. Regenerated once with 'about 75 cm'. Nano Banana 2.1, 9:16, 1.5 credits, 19 Oct, reference = brand-reels/cctv-heist/refs/nixline-real-crop.jpg (from AC4I9815). Start frame for the CCTV heist skit only; deliberately not in stills, so no mechanism picks it up.",
-     "heist_start_d": "approved 19 Oct — gen/D-start.jpg: thief at the door with the lamp under his arm. Nano Banana 2.1, 9:16, 1.5 credits, 19 Oct, reference = brand-reels/cctv-heist/refs/nixline-real-crop.jpg (from AC4I9815). Start frame for the CCTV heist skit only; deliberately not in stills, so no mechanism picks it up."
+     "heist_start_a": "rejected 19 Oct (owner): wrong product. Generated from photo AC4I9815, which is not the NixLine (a lit rod on a square block). Removed from the repo; v2 in gen2/.",
+     "heist_start_b": "rejected 19 Oct (owner): wrong product. Generated from photo AC4I9815, which is not the NixLine (a lit rod on a square block). Removed from the repo; v2 in gen2/.",
+     "heist_start_c_v1": "rejected 19 Oct (owner): wrong product. Generated from photo AC4I9815, which is not the NixLine (a lit rod on a square block). Removed from the repo; v2 in gen2/.",
+     "heist_start_c": "rejected 19 Oct (owner): wrong product. Generated from photo AC4I9815, which is not the NixLine (a lit rod on a square block). Removed from the repo; v2 in gen2/.",
+     "heist_start_d_v1": "rejected 19 Oct (owner): wrong product. Generated from photo AC4I9815, which is not the NixLine (a lit rod on a square block). Removed from the repo; v2 in gen2/.",
+     "heist_start_d": "rejected 19 Oct (owner): wrong product. Generated from photo AC4I9815, which is not the NixLine (a lit rod on a square block). Removed from the repo; v2 in gen2/.",
+     "heist_v2_start_a": "approved 19 Oct — gen2/A-start.jpg, 1k, 1.5 credits: the NixLine as a honey-teak bar with a frosted strip and no base. Nano Banana 2.1, references = brand-reels/cctv-heist/refs/nixline-owner-clip-nx04.jpg (owner clip) + nixline-pdp-marble-corner.jpg (live page). Not in stills, so no mechanism picks it up.",
+     "heist_v2_start_b": "approved 19 Oct — gen2/B-start.jpg, 1k, 1.5 credits: the NixLine as a honey-teak bar with a frosted strip and no base. Nano Banana 2.1, references = brand-reels/cctv-heist/refs/nixline-owner-clip-nx04.jpg (owner clip) + nixline-pdp-marble-corner.jpg (live page). Not in stills, so no mechanism picks it up.",
+     "heist_v2_start_c": "approved 19 Oct — gen2/C-start.jpg, 1k, 1.5 credits: the NixLine as a honey-teak bar with a frosted strip and no base. Nano Banana 2.1, references = brand-reels/cctv-heist/refs/nixline-owner-clip-nx04.jpg (owner clip) + nixline-pdp-marble-corner.jpg (live page). Not in stills, so no mechanism picks it up.",
+     "heist_v2_start_d": "approved 19 Oct — gen2/D-start.jpg, 1k, 1.5 credits: the NixLine as a honey-teak bar with a frosted strip and no base. Nano Banana 2.1, references = brand-reels/cctv-heist/refs/nixline-owner-clip-nx04.jpg (owner clip) + nixline-pdp-marble-corner.jpg (live page). Not in stills, so no mechanism picks it up.",
+     "heist_v2_hero": "approved 19 Oct — gen2/hero.jpg, 2k, 2 credits: the owner asked for 'an image that is sexy and aesthetic'. Moody corner, the NixLine leaning and lit. AI-generated: label it. Its length reads a little over the page's 27 in: no size claim with it. Nano Banana 2.1, references = brand-reels/cctv-heist/refs/nixline-owner-clip-nx04.jpg (owner clip) + nixline-pdp-marble-corner.jpg (live page). Not in stills, so no mechanism picks it up."
     },
     "clip_status": {
      "hero": "approved — Rameez's own footage, 23 Sep. HLG HEVC original tonemapped to bt709. Burned-in caption 0.5-1.3s: do not cut before 1.45s.",
@@ -1543,10 +1548,14 @@
      "floorpan": "approved — Rameez's own footage, 23 Sep. HLG original, tonemapped.",
      "forest": "approved — Rameez's own footage, 23 Sep. HLG original, tonemapped.",
      "upright": "approved — Rameez's own footage, 23 Sep. HLG original, tonemapped.",
-     "heist_a": "approved 19 Oct — thief tiptoes in past the sleeping watchman; the unlit NixLine stands upright by the wall on its square block. Kling 3.0 Turbo image-to-video, 5 s 720p, 7.5 credits, 19 Oct. Fixed high-corner CCTV camera, night workshop. No weapon; thief masked, watchman synthetic. AI-generated: label on every frame, Meta AI disclosure for paid, isAiGenerated for organic. Only for the CCTV heist skit (brand-reels/cctv-heist), never as product footage.",
-     "heist_b": "approved 19 Oct — watchman wakes, hands up; the thief shushes him and points at the lamp. Kling 3.0 Turbo image-to-video, 5 s 720p, 7.5 credits, 19 Oct. Fixed high-corner CCTV camera, night workshop. No weapon; thief masked, watchman synthetic. AI-generated: label on every frame, Meta AI disclosure for paid, isAiGenerated for organic. Only for the CCTV heist skit (brand-reels/cctv-heist), never as product footage.",
-     "heist_c": "approved 19 Oct — the thief holds the lit NixLine upright: square teak bar, warm LED on the front face, square teak block; hand covers the middle of the bar. Kling 3.0 Turbo image-to-video, 5 s 720p, 7.5 credits, 19 Oct. Fixed high-corner CCTV camera, night workshop. No weapon; thief masked, watchman synthetic. AI-generated: label on every frame, Meta AI disclosure for paid, isAiGenerated for organic. Only for the CCTV heist skit (brand-reels/cctv-heist), never as product footage.",
-     "heist_d": "approved 19 Oct — the thief leaves with the lamp; the watchman lowers his hands and shrugs. Kling 3.0 Turbo image-to-video, 5 s 720p, 7.5 credits, 19 Oct. Fixed high-corner CCTV camera, night workshop. No weapon; thief masked, watchman synthetic. AI-generated: label on every frame, Meta AI disclosure for paid, isAiGenerated for organic. Only for the CCTV heist skit (brand-reels/cctv-heist), never as product footage."
+     "heist_a_v1": "rejected 19 Oct (owner): wrong product. Generated from photo AC4I9815, which is not the NixLine (a lit rod on a square block). Removed from the repo; v2 in gen2/.",
+     "heist_b_v1": "rejected 19 Oct (owner): wrong product. Generated from photo AC4I9815, which is not the NixLine (a lit rod on a square block). Removed from the repo; v2 in gen2/.",
+     "heist_c_v1": "rejected 19 Oct (owner): wrong product. Generated from photo AC4I9815, which is not the NixLine (a lit rod on a square block). Removed from the repo; v2 in gen2/.",
+     "heist_d_v1": "rejected 19 Oct (owner): wrong product. Generated from photo AC4I9815, which is not the NixLine (a lit rod on a square block). Removed from the repo; v2 in gen2/.",
+     "heist_a": "approved 19 Oct (v2) — thief tiptoes in; the NixLine (honey-teak bar, frosted strip, no base) leans unlit in the far corner. Kling 3.0 Turbo image-to-video, 5 s 720p, 7.5 credits, 19 Oct. Fixed CCTV camera. No weapon; thief masked, watchman synthetic. AI-generated: label on every frame, Meta AI disclosure for paid. Only for the CCTV heist skit, never as product footage.",
+     "heist_b": "approved 19 Oct (v2) — watchman hands up, thief shh; the lamp still in its corner. Kling 3.0 Turbo image-to-video, 5 s 720p, 7.5 credits, 19 Oct. Fixed CCTV camera. No weapon; thief masked, watchman synthetic. AI-generated: label on every frame, Meta AI disclosure for paid. Only for the CCTV heist skit, never as product footage.",
+     "heist_c": "approved 19 Oct (v2) — the thief raises the lit NixLine upright by 1.1 s and admires it; use from 1.1 s (before that he holds it diagonally). Kling 3.0 Turbo image-to-video, 5 s 720p, 7.5 credits, 19 Oct. Fixed CCTV camera. No weapon; thief masked, watchman synthetic. AI-generated: label on every frame, Meta AI disclosure for paid. Only for the CCTV heist skit, never as product footage.",
+     "heist_d": "approved 19 Oct (v2) — he walks out with the lit bar on his shoulder; the room is empty after 2.6 s. Kling 3.0 Turbo image-to-video, 5 s 720p, 7.5 credits, 19 Oct. Fixed CCTV camera. No weapon; thief masked, watchman synthetic. AI-generated: label on every frame, Meta AI disclosure for paid. Only for the CCTV heist skit, never as product footage."
     },
     "clip_colours": {},
     "_note": "NixLine floor lamp. All five clips are real owner footage - no AI-generated frames, so no Meta AI disclosure needed. Sources were HEVC Main 10 bt2020/arib-std-b67 with rotation -90; normalise.sh tonemapped them to bt709 1080x1920. NO in-room/styled footage exists: everything is workshop floor. PDP states no single-piece claim, so do not say 'one piece of teak'."

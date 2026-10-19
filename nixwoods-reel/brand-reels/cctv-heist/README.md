@@ -1,125 +1,118 @@
-# NixWoods "CAM 02": the NixLine heist (AI skit, real lamp)
+# NixWoods "CAM 02": the NixLine heist (AI skit)
 
-**The idea:** the owner sent instagram.com/reel/DekLWdWN6eH on 17 Oct. It is a breakdown of a restaurant ad that got
-13.8M views:
-- high-angle CCTV of a kitchen;
-- a hooded man walks in and the staff put their hands up;
-- he ignores the till and everything else, and cooks the burger.
+**The idea:** the owner sent instagram.com/reel/DekLWdWN6eH on 17 Oct: a breakdown of a 13.8M-view restaurant ad. In
+high-angle CCTV of a kitchen, a hooded man walks in, the staff put their hands up, and he ignores the till and cooks
+the burger. It works because it does not look like an ad, and the product is the centre of the scene the whole time.
 
-It works because it does not look like an ad, and the product is the centre of the scene the whole time. The ask:
-"This is the robbery ad you need to plan for nixwoods and then execute."
+The ask: "This is the robbery ad you need to plan for nixwoods and then execute." On 17 Oct the owner chose AI
+footage and the NixLine floor lamp. The plan was approved on 19 Oct.
 
-**Owner's choices (17 Oct):**
-- footage: AI-generate it;
-- product: the NixLine floor lamp.
+## v2 (current) and why v1 was withdrawn
 
-The plan was approved on 19 Oct.
+**v1 showed the wrong product.** It was generated from the 5 Aug photo AC4I9815, which our notes called "the real
+NixLine". The owner's verdict on 19 Oct: "you have got the wrong product, get the original NixLine." That photo
+shows a lit rod on a square block, and nixwoods-os already files it as the corner floor lamp. The v1 clips and
+render have been taken out of the repo. `floor-reels/ref/REFERENCE.md` and `PRODUCT-ID.md` are corrected.
 
-**Ours:** 17.6 s, 9:16, workshop CCTV at night. Every tool sits on the bench and the cash box lies open; the thief takes only the lamp.
+**The NixLine, as on nixwoods.com/products/nix-line-solid-wood-floor-lamp and in the owner's own clips nx00–nx08:**
+- one honey-coloured solid teak bar, 27 in, 1.5 x 1.5 in;
+- softly rounded ends;
+- a frosted LED strip down nearly its whole front face;
+- no separate base: it leans in a corner, with the cord leaving from its foot.
+
+**The end shot:** the owner then asked to "generate an image that is sexy and aesthetic and use that". `gen2/hero.jpg`
+is a moody night corner: the NixLine leaning and lit, a boucle chair, a glass of wine on travertine.
+
+## The reel
+
+17.6 s, 9:16. Workshop CCTV at night. Every tool is on the bench and the cash box is open; the thief takes only the lamp.
 
 | Time | Shot | On screen |
 |---|---|---|
-| 0.0–4.4 | A: the thief tiptoes in past the sleeping watchman | "CAM 02 caught this at 2:47 AM" |
-| 4.4–7.6 | B: the watchman wakes, hands up; the thief goes "shh" and points at the lamp | |
+| 0.0–4.4 | A: the thief tiptoes in past the sleeping watchman; the NixLine leans unlit in the far corner | "CAM 02 caught this at 2:47 AM" |
+| 4.4–7.6 | B: the watchman wakes, hands up; the thief goes "shh" | |
 | 7.6–11.4 | C: a click, a warm flash, and he holds up the lit NixLine. Its light is the only colour in the grey frame | "He skipped the cash." |
-| 11.4–14.2 | D: he leaves with it; the watchman shrugs | "Took the ₹999 lamp." |
-| 14.2–17.6 | Hard cut out of CCTV to the real lamp in a real room (photo AC4I9815, 5 Aug shoot) | "Nobody steals a tubelight." · NixLine floor lamp · solid teak · ₹999 ~~₹1,599~~ · nixwoods.com |
+| 11.4–14.2 | D: he walks out with it on his shoulder; the watchman shrugs | "Took the ₹999 lamp." |
+| 14.2–17.6 | Cut out of CCTV to the hero still | "Nobody steals a tubelight." · NixLine floor lamp · solid teak · ₹999 ~~₹1,599~~ · nixwoods.com |
 
 **AI disclosure:**
-- "Skit made with AI. The lamp is real." sits on every frame, including the end card.
-- Instagram's "Made with AI" toggle must be on when it goes up, and Meta's AI disclosure must be ticked if it runs as an ad.
-- The end shot is a real photograph, so the product as bought is never AI.
+- Every frame, the end shot included, is AI-generated. "Skit and photo made with AI." sits on every frame.
+- Turn on Instagram's "Made with AI" toggle when it goes up.
+- As a Meta ad, tick Meta's AI disclosure as well.
 
-**Guardrails held:**
-- no weapon anywhere, and no aggression beyond the hands-up gag;
-- the thief is masked; the watchman is a synthetic face on AI-labelled frames;
-- no "BREAKING NEWS" strap, real place or real date: the HUD reads "CAM 02 · NIXWOODS CCTV", so it cannot be taken
-  for a real crime report;
-- claims: ₹999 (was ₹1,599) and solid teak only (`PRODUCT-FACTS.md`). No COD, length, dimmer or switch claim.
+**Guardrails:**
+- no weapon, and no aggression beyond the hands-up gag;
+- in C, the shot starts at 1.1 s, after he has raised the bar upright, so it never reads as a bat;
+- the thief is masked, and the watchman's face is synthetic;
+- the HUD reads "CAM 02 · NIXWOODS CCTV": no news strap, no real place, no real date;
+- claims: ₹999 (was ₹1,599) and solid teak only (`PRODUCT-FACTS.md`). No COD, length, dimmer or switch claim. The
+  hero reads a little longer than 27 in, so make no size claim with it.
 
 ## Generation (Higgsfield, 19 Oct)
 
-**Reference:** `refs/nixline-real-crop.jpg`, cropped from AC4I9815 (`refs/nixline-real.jpg`): an upright square teak
-bar with an LED channel down its front face, on a square teak block.
+**References:**
+- `refs/nixline-owner-clip-nx04.jpg`: the owner's own clip nx04 at 1.2 s, the whole lamp from end to end;
+- `refs/nixline-pdp-marble-corner.jpg`: the live product page's marble-corner photo.
 
-**Start frames:** Nano Banana 2.1, 9:16, 1k, 1.5 credits each.
-- A was made from the reference alone.
-- B, C and D were made from A plus the reference, so the room and camera stay the same.
+**Stills:** Nano Banana 2.1, 9:16.
+- `gen2/A-start.jpg` was made from both references.
+- B, C and D were made from A plus the clip reference, so the room and camera stay the same.
+- `gen2/hero.jpg` was made at 2k from both references. A second hero variant failed on Higgsfield's side and was refunded.
 
-| Frame | Verdict |
-|---|---|
-| `gen/A-start.jpg` | approved: thief entering, watchman asleep, NixLine upright on its block |
-| `gen/B-start.jpg` | approved: hands up, "shh" |
-| `gen/C-start-rejected-too-tall.jpg` | **rejected**: the lamp drawn far taller than hip height |
-| `gen/C-start.jpg` | approved after one retry that fixed the height in the prompt (no size claim is made in the reel) |
-| `gen/D-start-rejected-too-tall.jpg` | **rejected**: too tall again |
-| `gen/D-start.jpg` | approved after one retry |
+**Clips:** Kling 3.0 Turbo image-to-video, 5 s, 720p.
+- Every frame was viewed.
+- All four are approved: the lamp keeps its shape, the camera does not move, and there is no weapon.
+- The verdicts are in `system/presets.json` → `products.floor.assets` (`clip_status.heist_*`, `status.heist_v2_*`).
+- The v1 entries are marked rejected (wrong product).
 
-**Clips:** Kling 3.0 Turbo image-to-video, 5 s, 720p, 7.5 credits each. All four were approved after watching every frame:
-- the lamp keeps its shape;
-- there is no camera move;
-- there is no weapon.
+**Credits:**
 
-The verdicts are recorded in `system/presets.json` → `products.floor.assets`:
-- `clip_status.heist_a`–`heist_d` for the clips;
-- `status.heist_start_*` for the start frames.
+| Round | What | Credits |
+|---|---|---|
+| v1 | 6 frames × 1.5, 4 clips × 7.5 | 39 |
+| v2 | hero 2, 4 frames × 1.5, 4 clips × 7.5 | 38 |
+| **Total** | | **77**, against the cap of 80 |
 
-The start frames are deliberately not in `stills`, so no mechanism cuts them into an ordinary floor-lamp reel.
+<details><summary>v2 prompts</summary>
 
-**Credits:** 6 frames × 1.5 = 9, plus 4 clips × 7.5 = 30, so 39 in total, against a plan cap of 80.
+**Hero:** Sultry, moody editorial interior photograph at night, shot for a design magazine. The only light in the
+room comes from one floor lamp that is EXACTLY the lamp in the reference images: a single slim straight bar of
+honey-coloured solid teak with visible grain, square cross-section about 4 cm with softly rounded ends, about 70 cm
+long, with a frosted white LED diffuser strip running almost its full length down its front face, glowing warm 3000K.
+It has no base: the bar leans casually into the corner of the room, its foot on the floor and its top against the
+wall, a thin black cord trailing from its bottom end. Its warm light pours up and across the textured lime-plaster
+corner walls in a soft gradient, falling off into deep warm shadow. Around it, minimal and sensual: a low boucle lounge
+chair half in shadow, a linen throw draped over it, a ceramic vase with a single dried branch, a glass of red wine on
+a small travertine side table catching the glow. Rich chiaroscuro, deep shadows, warm amber and cream tones, shallow
+depth of field, 50mm lens, slightly low camera angle, the lamp sharp and centre-right in the frame, generous dark
+negative space in the upper left. No people, no text, no logos.
 
-<details><summary>Prompts</summary>
+**A:** CCTV still, camera high in a corner of a small Indian woodworking workshop at night, wide-angle with slight
+fisheye, low-light and grainy; one weak tube light by the door. A workbench with hand planes, clamps, a drill, stacked
+teak planks and an open grey cash box showing banknotes. In the far corner, on its own, the lamp from the references
+(a slim straight honey-teak bar with rounded ends, about 70 cm, frosted white strip down its front face, no base,
+leaning in the corner), switched OFF. A night watchman asleep on a plastic chair by the door. A thief in a black
+hoodie and balaclava creeping in, crouched. No weapons. No text, no logos, no timestamp.
 
-**A (start frame).** Security camera (CCTV) still, camera mounted high in a corner of a small Indian woodworking
-workshop at night, looking down diagonally across the room, wide-angle lens with slight fisheye distortion, low-light
-surveillance quality, slightly soft and grainy. The room is dim: one weak tube light near the door on the right.
-Concrete floor with sawdust. Along the left wall a long wooden workbench with hand planes, clamps, a power drill,
-stacked teak planks, and a small grey metal cash box with its lid open showing banknotes. Near the back wall, standing
-alone on the floor, one floor lamp that is EXACTLY the lamp in the reference image: a slim straight square bar of solid
-teak, about hip height, standing perfectly upright on its own small square teak block, with a long narrow light channel
-down its front face; the lamp is switched OFF. A night watchman in a plain shirt sits asleep on a plastic chair by the
-door, chin on his chest, face not visible. A thief in a black hoodie and black balaclava is creeping in through the open
-door, crouched, tiptoeing. No weapons. No text, no logos, no timestamp.
+**B, C, D:** "The exact same CCTV security camera view … as the first reference image", then:
+- **B:** the watchman jolts awake, hands up; the thief faces him with a finger to his lips.
+- **C:** the thief in the corner holds the lamp in front of him with both hands like a trophy, switched ON, glowing
+  warm along its length; the watchman's hands still up.
+- **D:** the thief steps out of the door carrying the lit lamp over his shoulder, cord dangling; the corner is empty;
+  the watchman lowers his hands and shrugs.
 
-**B (start frame).** The exact same CCTV security camera view of the same workshop as the first reference image: same
-high corner angle, same fisheye lens, same room, same workbench with the open cash box full of banknotes, same lamp
-standing upright on its square block by the back wall (switched OFF, matching the second reference image exactly). A
-moment later: the night watchman has jolted awake on his plastic chair and raises both hands in surprise. The thief in
-the black hoodie and black balaclava now stands in the middle of the room facing him, holding one finger to his lips in
-a 'shhh' gesture. No weapons. Low-light grainy surveillance look. No text, no logos, no timestamp.
+Each ends: "No weapons. Low-light grainy surveillance look. No text, no logos, no timestamp."
 
-**C (start frame, the retry that was approved).** The exact same CCTV security camera view … same workbench with the
-open cash box full of banknotes left untouched. The thief in the black hoodie and black balaclava stands by the back
-wall holding the small floor lamp from the second reference image upright in front of his belly with both hands, like
-holding a trophy. The lamp is SHORT: only about 75 cm tall in total (a 70 cm slim square solid teak bar on a small
-square teak block about 12 cm wide) - held at his waist, its top only reaches his chest. It is switched ON, its narrow
-front light channel glowing warm white, casting a warm glow on the wall and on the thief. The night watchman sits on
-his plastic chair by the door with both hands still raised, staring. No weapons. Low-light grainy surveillance look. No
-text, no logos, no timestamp.
+**Clips:** each starts with "Fixed security camera, absolutely no camera movement, no zoom. Grainy night CCTV
+footage.", then:
+- **A:** he tiptoes in past the sleeping watchman; the lamp stays leaning in the corner.
+- **B:** "shh", then he points.
+- **C:** he gently raises the glowing lamp straight upright and admires it, nodding; he does not swing it; the lamp
+  keeps its exact shape.
+- **D:** he walks out with the lamp on his shoulder; the watchman shrugs, glances at the untouched cash box and shakes
+  his head.
 
-**D (start frame, the retry that was approved).** The exact same CCTV security camera view … the open cash box full of
-banknotes still untouched. The thief in the black hoodie and black balaclava is stepping out through the open door on
-the right, hugging the small floor lamp from the second reference image upright against his chest with both arms. The
-lamp is SHORT: only about 75 cm tall in total (a 70 cm slim square solid teak bar on a small square teak block) - it
-spans only from his waist to his chin. Its narrow front light channel glows warm. The empty spot by the back wall where
-the lamp stood. The night watchman on his plastic chair lowers his hands and shrugs. No weapons. Low-light grainy
-surveillance look. No text, no logos, no timestamp.
-
-**Clips:** every prompt starts with "Fixed security camera, absolutely no camera movement, no zoom. Grainy night CCTV
-footage." and continues:
-- **A:** "The thief in the black hoodie and balaclava slowly tiptoes in through the door and sneaks past the sleeping
-  watchman toward the middle of the room, crouched, looking left and right. The watchman stays asleep. Everything else
-  in the room stays still. No weapons."
-- **B:** "The startled watchman keeps both hands raised in the air. The masked thief keeps one finger on his lips
-  saying shhh, then slowly turns his head toward the wooden floor lamp standing by the back wall and points at it. The
-  lamp stays exactly as it is. No weapons."
-- **C:** "The masked thief holds the small glowing wooden floor lamp upright in front of him and admires it, tilting
-  his head and nodding slowly, the warm light glowing on the wall. The lamp keeps its exact shape and size: a short
-  slim square teak bar on a small square block with a glowing front channel. The watchman keeps his hands up and
-  stares. No weapons."
-- **D:** "The masked thief hurries out through the open door hugging the small glowing wooden lamp and disappears into
-  the dark doorway. The watchman lowers his hands, shrugs, glances at the untouched cash box full of money on the bench
-  and shakes his head. No weapons."
+Each clip prompt ends with "No weapons."
 
 </details>
 
@@ -127,24 +120,24 @@ footage." and continues:
 
 **Grade:** night CCTV.
 - green-grey and crushed, with a vignette, scanlines and coarse grain;
-- held to 15 fps, as a CCTV feed records (this also keeps the file at 13 MB);
+- held to 15 fps, as a CCTV feed records (this also keeps the file near 14 MB);
 - a selective-colour mask keeps only warm light, pushed to a 3000K cream, so the lamp is the one colour in the frame;
-- a band-slip glitch on the first three frames after each cut, and a warm flash as the lamp comes on.
+- a band-slip glitch after each cut, and a warm flash as the lamp comes on.
 
 **HUD:** REC dot, "CAM 02 · NIXWOODS CCTV" and a ticking 02:47 AM clock in Space Grotesk.
 
 **Captions and end card:**
 - captions in Inter 600 on dark bars;
-- end card in Fraunces and Inter on cream cards, clear of the painting and the plant in the photo.
+- end card in Fraunces and Inter, cream type in the dark space above the chair.
 
 **Sound:** all ours.
-- music7-noir creeps under the CCTV, over a 50/100 Hz room hum;
+- music7-noir over a room hum;
 - a switch click, and the noir cuts out at the lamp;
-- music1 warms the real shot.
+- music1 warms the hero.
 
-The reference's audio is never used: that reel is a commentary.
+The reference's audio is never used.
 
-**Before it runs as an ad:** the owner approves it, and Meta's AI disclosure is ticked. Ads go to .com only.
+**Before it goes up:** the owner approves it. As an ad, tick Meta's AI disclosure; ads go to .com only.
 
 ```bash
 python3 brand-reels/cctv-heist/cctv_heist.py
