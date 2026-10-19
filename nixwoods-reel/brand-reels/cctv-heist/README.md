@@ -7,7 +7,7 @@ the burger. It works because it does not look like an ad, and the product is the
 The ask: "This is the robbery ad you need to plan for nixwoods and then execute." On 17 Oct the owner chose AI
 footage and the NixLine floor lamp. The plan was approved on 19 Oct.
 
-## v2 (current) and why v1 was withdrawn
+## v3 (current), v2 and why v1 was withdrawn
 
 **v1 showed the wrong product.** It was generated from the 5 Aug photo AC4I9815, which our notes called "the real
 NixLine". The owner's verdict on 19 Oct: "you have got the wrong product, get the original NixLine." That photo
@@ -36,9 +36,14 @@ is a moody night corner: the NixLine leaning and lit, a boucle chair, a glass of
 | 14.2–17.6 | Cut out of CCTV to the hero still | "Nobody steals a tubelight." · NixLine floor lamp · solid teak · ₹999 ~~₹1,599~~ · nixwoods.com |
 
 **AI disclosure:**
-- Every frame, the end shot included, is AI-generated. "Skit and photo made with AI." sits on every frame.
-- Turn on Instagram's "Made with AI" toggle when it goes up.
-- As a Meta ad, tick Meta's AI disclosure as well.
+- Every frame, the end shot included, is AI-generated.
+- v2 carried "Skit and photo made with AI." on every frame. The owner asked on 19 Oct for that text to be removed,
+  so v3 has no on-screen label.
+- The disclosure is now off-frame, and it is required:
+  - Instagram's "Made with AI" toggle when it goes up;
+  - Meta's AI disclosure if it runs as an ad;
+  - the caption's last line, "This reel and its photo are made with AI."
+- Our paid-ad rule asks for on-frame disclosure. The owner has been told and made the call.
 
 **Guardrails:**
 - no weapon, and no aggression beyond the hands-up gag;
@@ -137,7 +142,7 @@ Each clip prompt ends with "No weapons."
 
 The reference's audio is never used.
 
-**Before it goes up:** the owner approves it. As an ad, tick Meta's AI disclosure; ads go to .com only.
+**Before it goes up:** the owner approves it. Turn on "Made with AI"; as an ad, tick Meta's AI disclosure. Ads go to .com only.
 
 ```bash
 python3 brand-reels/cctv-heist/cctv_heist.py

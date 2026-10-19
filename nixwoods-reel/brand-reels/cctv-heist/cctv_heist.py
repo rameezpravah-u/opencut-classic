@@ -3,11 +3,12 @@ instagram.com/reel/DekLWdWN6eH). Plan, prompts, credits and verdicts: README.md 
 
 Workshop CCTV at night. A masked thief creeps past the open cash box and every tool, wakes the watchman, shushes him,
 takes only the NixLine floor lamp and walks out with it lit. In the grey CCTV grade the lamp's warm light is the only
-colour. Then a hard cut to the real lamp in a real room: "Nobody steals a tubelight."
+colour. Then a cut to a moody still of the lamp in a corner: "Nobody steals a tubelight."
 
 Everything is AI-generated (Higgsfield: Nano Banana 2.1 frames referenced on the owner's own NixLine clip nx04 and the
-product page photo, Kling 3.0 Turbo clips) and says so on every frame. v1 used the 5 Aug photo AC4I9815, which the owner
-says is not the NixLine (19 Oct); v2 is in gen2/.
+product page photo, Kling 3.0 Turbo clips, in gen2/). There is no on-screen AI label (owner, 19 Oct); disclosure is
+Instagram's "Made with AI" toggle, Meta's AI disclosure for ads, and the caption. v1 used the 5 Aug photo AC4I9815,
+which the owner says is not the NixLine (19 Oct).
 
     python3 brand-reels/cctv-heist/cctv_heist.py
 """
@@ -25,7 +26,7 @@ from made_well import encoder                           # noqa: E402
 
 GEN = os.path.join(HERE, "gen2")
 OUT = os.path.join(HERE, "out")
-NAME = "NW-CREATIVE-VID-20261019-nix-line-solid-wood-floor-lamp-cctv-heist-v2-AI"
+NAME = "NW-CREATIVE-VID-20261019-nix-line-solid-wood-floor-lamp-cctv-heist-v3-AI"
 HERO = os.path.join(GEN, "hero.jpg")                # the aesthetic NixLine still, generated 19 Oct
 SR = 48000
 
@@ -129,20 +130,6 @@ def caption(text):
     return layer(draw)
 
 
-def ai_label(on_light=False):
-    def draw(d, _):
-        f = font("Inter-400.ttf", 30)
-        t = "Skit and photo made with AI."
-        tw = f.getlength(t)
-        if on_light:
-            d.rounded_rectangle((70, 1426, 70 + tw + 40, 1480), 12, fill=CREAM + (236,))
-            d.text((90, 1437), t, font=f, fill=INK + (255,))
-        else:
-            d.rounded_rectangle((70, 1426, 70 + tw + 40, 1480), 12, fill=(0, 0, 0, 150))
-            d.text((90, 1437), t, font=f, fill=(235, 235, 230, 235))
-    return layer(draw)
-
-
 def end_card():
     """cream type in the dark wall space above the chair, clear of the lamp's glow"""
     def draw(d, _):
@@ -223,7 +210,7 @@ def main():
     audio(wavp)
     enc = encoder(wavp, os.path.join(OUT, f"{NAME}.mp4"), crf=23)
     caps = [(a, b, caption(s)) for a, b, s in CAPS]
-    lab, lab_light, card = ai_label(), ai_label(True), end_card()
+    card = end_card()
     keep, i = {}, 0
     for k, (name, t_in, secs) in enumerate(SHOTS):
         for j, f in enumerate(clip(name, t_in, secs)):
@@ -237,7 +224,6 @@ def main():
             for a, b, c in caps:
                 if a <= t < b:
                     x = over(x, c, sstep((t - a) / 0.12))
-            x = over(x, lab)
             px = (x * 255 + 0.5).astype(np.uint8)
             enc.stdin.write(px.tobytes())
             if j == round(secs * FPS) // 2:
@@ -248,7 +234,6 @@ def main():
         if j < 2:
             x = np.clip(x + 0.5 * (1 - j / 2), 0, 1)                # the CCTV feed cuts to the real room
         x = over(x, card, sstep((j / FPS - 0.25) / 0.4))
-        x = over(x, lab)
         px = (np.clip(x, 0, 1) * 255 + 0.5).astype(np.uint8)
         enc.stdin.write(px.tobytes())
         if j == round(END * FPS) - 10:
