@@ -104,8 +104,9 @@ def over(base, lay, a=1.0):
     return base * (1 - lay[..., 3:] * a) + lay[..., :3] * lay[..., 3:] * a
 
 
-def hud(t, rec_on):
-    """REC dot, camera name and a ticking clock, top of the safe zone"""
+def hud(t, rec_on, spec=None):
+    """REC dot, camera name and a ticking clock, top of the safe zone; spec = an optional CCTV-style metadata line
+    under the clock (the ad cut puts the product specs there, so they are on frame 1)"""
     def draw(d, _):
         f = font("Space_Grotesk-700.ttf", 34)
         g = font("Space_Grotesk-500.ttf", 30)
@@ -117,6 +118,8 @@ def hud(t, rec_on):
         s = 13 + int(t)
         clock = f"02:47:{s:02d} AM"
         d.text((80, 300), clock, font=g, fill=(240, 240, 236, 215))
+        if spec:
+            d.text((80, 344), spec, font=g, fill=(240, 240, 236, 215))
     return layer(draw)
 
 

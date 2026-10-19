@@ -147,3 +147,31 @@ The reference's audio is never used.
 ```bash
 python3 brand-reels/cctv-heist/cctv_heist.py
 ```
+
+## Ad cut (`cctv_heist_ad.py`, 27.5 s)
+
+The owner said on 19 Oct to "turn this into an ad now". The cut follows the ads engine's rules (`system/presets.json` → `engine`).
+
+**Length:** 27.5 s. Ads land best at 25–30 s.
+
+**Specs and price on frame 1:** a CCTV-style metadata line under the clock reads `NIXLINE · SOLID TEAK · 3000K · ₹999`. The price shows again in a caption at 13.4 s.
+
+**Skit:** the same AI clips, run slightly longer, plus one new caption over B: "Cash box open. Tools on the bench."
+
+**Proof beat (16.1–22.1 s):** real footage from the owner's own NixLine workshop clips:
+- nx05: the grain, "Solid Indian teak. No MDF.";
+- nx03: rows of finished bars, "Made by hand in Uttar Pradesh.";
+- nx04: one lamp standing, lit, "Warm 3000K. Plug in and place."
+
+All three captions are claims from the product page.
+
+**End:** the hero still and end card, 5.4 s.
+
+**Before it runs:**
+- Meta's AI disclosure must be ticked, because the skit and the hero are AI and there is no on-screen label.
+- The ad sends people to nixwoods.com.
+
+```bash
+python3 brand-reels/cctv-heist/cctv_heist_ad.py
+```
+
