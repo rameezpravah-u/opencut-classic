@@ -1199,7 +1199,13 @@
      "t_detail": "inherited — teak 'flatlay', approved 6 Sep",
      "w_macro": "inherited — rosewood 'macro', approved 6 Sep"
     },
-    "clip_status": {},
+    "clip_status": {
+      "picc_a": "approved 24 Oct — gen/A.mp4: dusk drone over London toward Piccadilly Circus, slow push-in; screen stays green. Kling 3.0 Turbo image-to-video from a Nano Banana 2.1 2k still (2 + 7.5 credits), 24 Oct, screen generated chroma green and replaced in post with our real lamp film. AI: Made with AI toggle; Meta AI disclosure if paid. For brand-reels/piccadilly-billboard only, never as product footage.",
+      "picc_b": "approved 24 Oct — gen/B.mp4: dusk street level under the curved screen, a man walks toward camera (synthetic face); screen stays green. Kling 3.0 Turbo image-to-video from a Nano Banana 2.1 2k still (2 + 7.5 credits), 24 Oct, screen generated chroma green and replaced in post with our real lamp film. AI: Made with AI toggle; Meta AI disclosure if paid. For brand-reels/piccadilly-billboard only, never as product footage.",
+      "picc_c": "approved 24 Oct — gen/C.mp4: night low angle, slow tilt up to the screen; Boots-style roundel and two signs blurred in the still before animating. Kling 3.0 Turbo image-to-video from a Nano Banana 2.1 2k still (2 + 7.5 credits), 24 Oct, screen generated chroma green and replaced in post with our real lamp film. AI: Made with AI toggle; Meta AI disclosure if paid. For brand-reels/piccadilly-billboard only, never as product footage.",
+      "picc_d": "approved 24 Oct, use 0–4.5 s only (white specks appear on the screen after 4.5 s) — gen/D.mp4: night, wet pavement, silhouettes watching; a large lettered sign blurred in the still. Kling 3.0 Turbo image-to-video from a Nano Banana 2.1 2k still (2 + 7.5 credits), 24 Oct, screen generated chroma green and replaced in post with our real lamp film. AI: Made with AI toggle; Meta AI disclosure if paid. For brand-reels/piccadilly-billboard only, never as product footage.",
+      "picc_e": "approved 24 Oct — gen/E.mp4: night drone over the dark city, the screen small and bright. Kling 3.0 Turbo image-to-video from a Nano Banana 2.1 2k still (2 + 7.5 credits), 24 Oct, screen generated chroma green and replaced in post with our real lamp film. AI: Made with AI toggle; Meta AI disclosure if paid. For brand-reels/piccadilly-billboard only, never as product footage."
+    },
     "clip_colours": {},
     "_note": "brand-level product: every still is a relative path into another product's folder, so brand-reels/ holds no photography of its own. Add a corner by pointing at <product>-reels/hf/<file> and copying that product's fit rule."
    }
