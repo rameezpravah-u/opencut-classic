@@ -1,0 +1,141 @@
+<!doctype html>
+<!--
+  brush-reveal: the NixLine painted in, on our beat grid (Claude motion tip 1: open-source effects, p5.js + p5.brush;
+  tip 2: the reveal lands on the music's downbeats; tip 3: every colour is from MOTION.md).
+  Render: python3 motion-libs/render.py motion-libs/templates/brush-reveal/index.html out.mp4 --dur 6 \
+            --audio brand-reels/audio/music3-design.mp3 --beats beats.json
+  Seek-safe: renderAt(t) repaints the whole frame from a fixed seed, so any frame can be rendered alone.
+-->
+<html><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: Fraunces; src: url(../../../assets/Fraunces-600.ttf); }
+  @font-face { font-family: Inter; src: url(../../../assets/Inter-400.ttf); }
+  @font-face { font-family: InterSemi; src: url(../../../assets/Inter-600.ttf); }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #F6EFE4; }
+  canvas { position: absolute; left: 0; top: 0; }
+  #title, #mark { z-index: 2; }
+  #title { position: absolute; left: 0; width: 1080px; top: 1372px; text-align: center; color: #3A2618;
+           opacity: 0; transform-origin: 50% 50%; }
+  #title h1 { font: 128px/1 Fraunces; margin: 0; letter-spacing: -1px; }
+  #title p { font: 40px/1.3 Inter; margin: 22px 0 0; color: #7C6452; }
+  #title b { font-family: InterSemi; font-weight: normal; color: #B06828; }
+  #mark { position: absolute; width: 1080px; top: 1660px; text-align: center; font: 26px InterSemi;
+          letter-spacing: 9px; color: #7C6452; opacity: 0; }
+</style>
+<script src="../../vendor/p5-2.3.4/p5.min.js"></script>
+<script src="../../vendor/p5.brush-2.2.3/p5.brush.js"></script>
+</head><body>
+<div id="title"><h1>NixLine</h1><p>floor lamp · solid teak · <b>₹999</b></p></div>
+<div id="mark">NIXWOODS.COM</div>
+<script>
+const W = 1080, H = 1920;
+const C = { ink: '#3A2618', amber: '#E8A24A', amberD: '#B06828', core: '#FFEED2', pill: '#F0D6B2', muted: '#7C6452' };
+// beat grid from beats.py (window.BEATS, set by render.py); a fallback grid at 99.4 bpm so the page also opens alone
+const B = window.BEATS || { beat: 0.6037, downbeats: [1.068, 3.483, 5.898], beats: [] };
+const beat = B.beat, D1 = B.downbeats[0], D2 = B.downbeats[1];
+const smooth = (a, b, t) => { const u = Math.min(1, Math.max(0, (t - a) / (b - a))); return u * u * (3 - 2 * u); };
+const lerp = (a, b, u) => a + (b - a) * u;
+
+// the lamp: one teak bar leaning a little, foot at the floor, top on the wall (WEBGL: origin at the centre, y down)
+const FOOT = [-28, 330], TOP = [58, -520], HALF = 30;
+function barQuad(u) {                       // the bar from its foot up to fraction u of its length
+  const dx = TOP[0] - FOOT[0], dy = TOP[1] - FOOT[1], L = Math.hypot(dx, dy), nx = -dy / L * HALF, ny = dx / L * HALF;
+  const tx = FOOT[0] + dx * u, ty = FOOT[1] + dy * u;
+  return [[FOOT[0] - nx, FOOT[1] - ny], [FOOT[0] + nx, FOOT[1] + ny], [tx + nx, ty + ny], [tx - nx, ty - ny]];
+}
+function along(u, off = 0) { return [lerp(FOOT[0], TOP[0], u) + off, lerp(FOOT[1], TOP[1], u)]; }
+
+let P, paper;
+window.ready = new Promise(res => {
+  new p5(p => {
+    brush.instance(p);
+    p.setup = async () => {
+      p.createCanvas(W, H, p.WEBGL);
+      p.pixelDensity(1);
+      paper = await p.loadImage('paper.jpg');
+      brush.scaleBrushes(3.2);
+      p.noLoop();
+      P = p;
+      res();
+    };
+    p.draw = () => frame(p, window._t || 0);
+  });
+});
+
+function frame(p, t) {
+  p.randomSeed(7); p.noiseSeed(7);
+  p.image(paper, -W / 2, -H / 2, W, H);
+  brush.noFill();
+  // 1. before the first downbeat: a pencil sketch of the bar draws itself
+  const s = smooth(0.15, D1 - 0.05, t);
+  if (s > 0) {
+    brush.set('HB', C.ink, 1.1);
+    const q = barQuad(1);
+    const edges = [[q[0], q[3]], [q[1], q[2]], [q[3], q[2]], [q[0], q[1]]];
+    edges.forEach(([a, b], i) => {
+      const u = Math.min(1, Math.max(0, s * 4 - i));
+      if (u > 0) brush.line(a[0], a[1], lerp(a[0], b[0], u), lerp(a[1], b[1], u));
+    });
+  }
+  // 2. on the first downbeat: an amber watercolour glow blooms on the wall behind it (the hero reveal)
+  const g = smooth(D1, D1 + 2 * beat, t);
+  if (g > 0) {
+    brush.noStroke();
+    brush.fill(C.amber, 70);
+    brush.fillBleed(0.35, 'out');
+    brush.fillTexture(0.55, 0.6);
+    const c = along(0.55, 40), r = lerp(40, 340, g);
+    const pts = [];
+    for (let k = 0; k < 14; k++) {
+      const a = k / 14 * Math.PI * 2;
+      pts.push([c[0] + Math.cos(a) * r * 0.82, c[1] + Math.sin(a) * r * 1.35]);
+    }
+    brush.polygon(pts);
+  }
+  // 3. a beat later: the honey-teak wash fills the bar from the foot up
+  const f = smooth(D1 + beat, D1 + 3 * beat, t);
+  if (f > 0) {
+    brush.noStroke();
+    brush.fill(C.amberD, 220);
+    brush.fillBleed(0, 'out');
+    brush.fillTexture(0.3, 0.3);
+    brush.polygon(barQuad(Math.max(0.02, f)));
+  }
+  // 4. two beats after the downbeat: the frosted light line runs up the bar's face
+  const l = smooth(D1 + 2 * beat, D1 + 3.5 * beat, t);
+  if (l > 0) {
+    const a = along(0.06), b = along(lerp(0.06, 0.94, l));
+    const dx = TOP[0] - FOOT[0], dy = TOP[1] - FOOT[1], L = Math.hypot(dx, dy), nx = -dy / L * 10, ny = dx / L * 10;
+    brush.noStroke();
+    brush.fill(C.core, 245);
+    brush.fillBleed(0.01, 'out');
+    brush.fillTexture(0.1, 0.15);
+    brush.polygon([[a[0] - nx, a[1] - ny], [a[0] + nx, a[1] + ny], [b[0] + nx, b[1] + ny], [b[0] - nx, b[1] - ny]]);
+    brush.noFill();
+    brush.set('pen', C.pill, 0.7);
+    brush.line(a[0] + nx * 1.4, a[1] + ny * 1.4, b[0] + nx * 1.4, b[1] + ny * 1.4);
+  }
+  // 5. the cord at the foot, in pen
+  const k = smooth(D1 + 3 * beat, D1 + 4 * beat, t);
+  if (k > 0) {
+    brush.noFill();
+    brush.set('pen', C.ink, 0.9);
+    const pts = [[FOOT[0] + 4, FOOT[1] - 4], [FOOT[0] + 70, FOOT[1] + 30], [FOOT[0] + 190, FOOT[1] + 18], [FOOT[0] + 360, FOOT[1] + 40]];
+    const n = Math.max(2, Math.ceil(k * pts.length));
+    brush.spline(pts.slice(0, n).map(q => [q[0], q[1], 1]), 0.5);
+  }
+  // 6. the crisp title on the second downbeat (HTML, so the type stays sharp), the site line after it
+  const ti = smooth(D2, D2 + 0.28, t);
+  const el = document.getElementById('title');
+  el.style.opacity = ti;
+  el.style.transform = `translateY(${lerp(18, 0, ti)}px) scale(${lerp(1.04, 1, ti)})`;
+  document.getElementById('mark').style.opacity = smooth(D2 + beat, D2 + beat + 0.3, t);
+}
+
+window.renderAt = async t => {
+  window._t = t;
+  await P.redraw();
+  await new Promise(r => requestAnimationFrame(() => r()));
+};
+</script>
+</body></html>

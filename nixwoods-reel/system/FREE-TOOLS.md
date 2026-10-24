@@ -42,6 +42,40 @@ Copied from pinned commits and read before installing. None of them auto-posts o
 | github.com/heygen-com/hyperframes | `188475a`, Apache-2.0 | core: `hyperframes` (entry point), `hyperframes-core`, `-cli`, `-animation`, `-keyframes`, `-creative`, `-audio`, `-registry`, `-studio`, `media-use`; workflows: `motion-graphics`, `general-video`, `music-to-video` |
 | github.com/charlie947/motion-graphics-skills | `4cd156a`, MIT | `brand-intake`, `motion-brief-writer`, `motion-effects`, `animated-chart`, `milestone-reveal`, `launch-video`, `title-sequence-3d`, `newsletter-promo`, `model-showdown`, `loop-cover`, `apple-launch-film`, `reel-export`, `vox-explainer` |
 | github.com/emilkowalski/skills | `e8a175d`, MIT | `apple-design`, `review-animations`, `improve-animations`, `animation-vocabulary` |
+| github.com/Vibha-Ramprakash/claude-video-effects (added 24 Oct, owner's ask from instagram.com/reel/DezSAGzt1iB) | `77e0044`, MIT | `effects`: 36 effects driven by `/effects <name>` |
+
+**`effects` (24 Oct).**
+- **Audit:** read in full before installing. It calls only ffmpeg and ffprobe, with no network calls. It ships its
+  own models: `yunet.onnx` (OpenCV) and `selfie_segmenter.tflite` (MediaPipe). Its one `exec` loads an optional
+  `fx_private.py`, which is not shipped and is ignored by `.gitignore`.
+- **Setup:** `bash .claude/skills/effects/scripts/setup.sh` builds `.venv` inside the skill folder (not committed)
+  and printed READY here on 24 Oct.
+- **Not yet done:** on 24 Oct the session's safety check blocked running `fx.py`. A test on our footage needs the
+  owner to allow it.
+- **Built for a person on camera:** most effects track a face or cut the speaker out (orbit, locked-on, spotlight,
+  lean-in, backdrop-word, glass-widgets, todo, checklist). Use them only on owner, staff or creator footage with a
+  release.
+- **For faceless product clips,** try the effects that need no face: moody, swipe, dot-reveal, rabbit-hole,
+  reject-stamp, countdown-flip, comment-box, tap, reel-frame, uninstall. Check every frame.
+- **Still ours:**
+  - restyle `text`, `color` and `font` to MOTION.md;
+  - add our own sound and captions, because it adds neither;
+  - follow the AI-label rules;
+  - the "Edited by Claude" pill in glass-widgets needs the owner's OK;
+  - never use it to copy another creator's branding.
+
+**`nixwoods-reel/motion-libs/` (24 Oct, Ian Tang's "Claude Motion Tips", instagram.com/reel/DeWzv0mMi8_).**
+- **What it is:** p5.js with p5.brush, Rough.js, Matter.js, Anime.js, PixiJS and pixi-filters, pinned and vendored
+  with their licences.
+- **`beats.py`:** beats and downbeats from our music.
+- **`render.py`:** renders any seek-safe HTML sketch to video in the pre-installed Chromium.
+- **A template:** `brush-reveal`, the NixLine painted in on the beat.
+- **More:** a brand-file prompt template is in `motion-libs/README.md`.
+
+**Free product cut-outs:** use rembg 2.0.67 (MIT, `isnet-general-use`) in a throwaway venv, with
+`SSL_CERT_FILE=/root/.ccr/ca-bundle.crt` for the one-time model download (179 MB from GitHub releases). The recipe is
+in `brand-reels/lamps-from-999/make_cutouts.py`. A lit strip reads as background, so fill the holes back in. Use
+GrabCut where a dark base is lost.
 
 **Not installed:**
 - The other HyperFrames workflows: `embedded-captions`, `faceless-explainer`, `pr-to-video`,

@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+*.words.json
+.DS_Store
+scripts/fx_private.py
