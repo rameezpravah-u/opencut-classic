@@ -406,7 +406,7 @@ def main():
     audio(wavp)
     enc = subprocess.Popen([FF, "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r",
                             str(FPS), "-i", "-", "-i", wavp, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-crf",
-                            "17", "-preset", "slow", "-pix_fmt", "yuv420p", "-color_primaries", "bt709",
+                            "21", "-preset", "slow", "-pix_fmt", "yuv420p", "-color_primaries", "bt709",
                             "-color_trc", "bt709", "-colorspace", "bt709", "-c:a", "aac", "-b:a", "192k", "-shortest",
                             "-movflags", "+faststart", os.path.join(OUT, f"{NAME}.mp4")], stdin=subprocess.PIPE)
     n = round(DUR * FPS)

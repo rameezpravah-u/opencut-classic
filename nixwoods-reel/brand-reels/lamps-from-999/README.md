@@ -90,6 +90,11 @@ All colours still come from MOTION.md: the gold is amber and amber-dark, the wal
 - If this runs as an ad, tick Meta's AI disclosure.
 - The caption ends: "The clip on the tablet and the NixLine photo are made with AI."
 
+## Encode
+
+CRF 21, not MOTION.md's 17: at 17 the fine grain made a 26 MB file, over the ~21 MB ceiling. At 21 it is
+6.2 MB, with no visible loss in the full-resolution checks.
+
 ## Run
 
 ```bash
