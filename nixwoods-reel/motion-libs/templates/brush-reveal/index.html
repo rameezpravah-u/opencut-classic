@@ -92,28 +92,34 @@ function frame(p, t) {
     }
     brush.polygon(pts);
   }
-  // 3. a beat later: the honey-teak wash fills the bar from the foot up
+  // 3. a beat later: the honey-teak bar fills from the foot up. The product itself is drawn crisp with plain p5
+  //    shapes: a watercolour fill gives the bar a sawtooth edge, and the lamp must read true (MOTION.md: real lamp)
   const f = smooth(D1 + beat, D1 + 3 * beat, t);
   if (f > 0) {
-    brush.noStroke();
-    brush.fill(C.amberD, 220);
-    brush.fillBleed(0, 'out');
-    brush.fillTexture(0.3, 0.3);
-    brush.polygon(barQuad(Math.max(0.02, f)));
+    const q = barQuad(Math.max(0.02, f));
+    p.push(); p.noStroke();
+    p.fill(C.amberD); p.quad(...q[0], ...q[1], ...q[2], ...q[3]);
+    const dx = TOP[0] - FOOT[0], dy = TOP[1] - FOOT[1], L = Math.hypot(dx, dy);
+    const sx = -dy / L * HALF * 0.45, sy = dx / L * HALF * 0.45;           // a lighter grain band down one side
+    p.fill(200, 128, 60, 150);
+    p.quad(q[0][0] + sx * 0.2, q[0][1] + sy * 0.2, q[0][0] + sx, q[0][1] + sy, q[3][0] + sx, q[3][1] + sy,
+           q[3][0] + sx * 0.2, q[3][1] + sy * 0.2);
+    p.pop();
   }
-  // 4. two beats after the downbeat: the frosted light line runs up the bar's face
+  // 4. two beats after the downbeat: the frosted light line runs up the bar's face, cream core in an amber halo
   const l = smooth(D1 + 2 * beat, D1 + 3.5 * beat, t);
   if (l > 0) {
     const a = along(0.06), b = along(lerp(0.06, 0.94, l));
-    const dx = TOP[0] - FOOT[0], dy = TOP[1] - FOOT[1], L = Math.hypot(dx, dy), nx = -dy / L * 10, ny = dx / L * 10;
-    brush.noStroke();
-    brush.fill(C.core, 245);
-    brush.fillBleed(0.01, 'out');
-    brush.fillTexture(0.1, 0.15);
-    brush.polygon([[a[0] - nx, a[1] - ny], [a[0] + nx, a[1] + ny], [b[0] + nx, b[1] + ny], [b[0] - nx, b[1] - ny]]);
-    brush.noFill();
-    brush.set('pen', C.pill, 0.7);
-    brush.line(a[0] + nx * 1.4, a[1] + ny * 1.4, b[0] + nx * 1.4, b[1] + ny * 1.4);
+    const dx = TOP[0] - FOOT[0], dy = TOP[1] - FOOT[1], L = Math.hypot(dx, dy);
+    const strip = (w, col) => {
+      const nx = -dy / L * w, ny = dx / L * w;
+      p.fill(col); p.quad(a[0] - nx, a[1] - ny, a[0] + nx, a[1] + ny, b[0] + nx, b[1] + ny, b[0] - nx, b[1] - ny);
+    };
+    p.push(); p.noStroke();
+    strip(26, p.color(232, 162, 74, 60));                                  // halo, about 25%
+    strip(18, p.color(232, 162, 74, 140));                                 // halo, about 55%
+    strip(11, p.color(C.core));                                            // the cream core
+    p.pop();
   }
   // 5. the cord at the foot, in pen
   const k = smooth(D1 + 3 * beat, D1 + 4 * beat, t);

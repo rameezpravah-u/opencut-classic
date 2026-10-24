@@ -71,6 +71,10 @@ python3 motion-libs/render.py motion-libs/templates/brush-reveal/index.html out.
 
 All colours are MOTION.md tokens, and the claims are only the ones on the product page.
 
+**Brush and crisp shapes.** The sketch, the glow and the cord use the brush. The bar and its light line are
+drawn as crisp p5 shapes. A p5.brush watercolour fill gave the bar a sawtooth edge in the 24 Oct test render (6 s,
+decoded clean), and the lamp itself has to read true.
+
 ## Prompt template (tips 3 and 5)
 
 Paste this, then fill in the brackets:
