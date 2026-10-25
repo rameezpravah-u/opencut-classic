@@ -21,8 +21,7 @@ The owner sent this on 25 Oct (instagram.com/reel/De0xibcTMkE).
   it is cheap.
 
 ## Status
-- The executable (`npm i -g @hypit/hypit@0.3.1`) **has not been installed here.** On 25 Oct the session's safety
-  check blocked running externally fetched code, so it needs the owner's permission first. After that, run
-  `bash .claude/skills/hypit/setup.sh`.
-- Until then, our own stack does the same job: HyperFrames, the Python reel scripts, `motion-libs`, and
-  word-synced captions as in the E2 Luma reel.
+- **Installed on 25 Oct** (owner: "Install both"): `bash .claude/skills/hypit/setup.sh` installs
+  `@hypit/hypit@0.3.1` globally. Global npm does not persist, so re-run it in each new cloud session.
+- A project is a folder with a `package.json` carrying `"hypit": {"project": true}`. Run commands from there, or pass
+  `--project`.

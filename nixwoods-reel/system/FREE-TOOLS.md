@@ -118,7 +118,7 @@ The reel named three free tools. What we have from each:
 |---|---|---|
 | **Openverse API** (5M+ openly licensed sounds) | `system/sfx/openverse.py search "wood knock"` / `get <id>`. CC0/PDM only by default; `--allow-by` admits CC-BY, which then needs a credit in the caption. Never NC or ND. Every file used is logged in `brand-reels/audio/SFX-CREDITS.tsv`. | **Search yes, download no.** Most useful effects are on Freesound, and its CDN answers 403 to cloud machines (25 Oct). Download on the Mac, or use place.py's synthesized sounds. |
 | **"Real SFX"** (finds each moment that needs a sound, adds it at the exact frame) | Not published anywhere we could find, so we built our own: `system/sfx/place.py`. | **Yes.** No network, no models. |
-| **Earshot** (github.com/Leonxlnx/earshot, MIT): a bank of 252 sounds made in code, kits with measured sync points, and listening and critique | `.claude/skills/earshot/` (SKILL.md and `setup.sh`, pinned `591fa3e`) | **Not yet.** The session's safety check blocked running externally fetched code on 25 Oct, so the owner's permission is needed. The models are ~1.1 GB more, and optional. |
+| **Earshot** (github.com/Leonxlnx/earshot, MIT): a bank of 252 sounds made in code, kits with measured sync points, and listening and critique | `.claude/skills/earshot/` (SKILL.md and `setup.sh`, pinned `591fa3e`) | **Yes, since 25 Oct** (owner: "Install both"). Re-run `bash .claude/skills/earshot/setup.sh` each new cloud session (~3 min), then `~/.cache/earshot/.venv/bin/earshot doctor --fetch` for the listening models (~1.1 GB, Hugging Face works here). `place.py` uses its bank automatically when installed. |
 
 **How `place.py` works:**
 - It finds hard cuts by frame difference and reads the script's cue file (`text`, `set`, `light`, `end`, `tap`,
@@ -133,7 +133,31 @@ The reel named three free tools. What we have from each:
   music, if the mix would pass −1.5 dBFS.
 - It writes a cue sheet.
 
-**Proof on 25 Oct**, on the Piccadilly reel (scratchpad, not committed):
+**Earshot's bank in `place.py`** (`--sounds auto` picks it when installed; `--style calm` is the default):
+- cut → `swipe/glide`;
+- text → `ui_pop/soft`;
+- a lamp set down → `knock/wood`;
+- a light on → `fit/snap/switch_flip`, fitted from a real CC0 switch, plus our bloom;
+- the end card → `mallet/marimba` over `cut_hit/sub`;
+- a tap → `knock/desk`;
+- a snap zoom → `shutter/quick`.
+
+`--style crisp` swaps in brighter members. `--master -14` masters to web loudness (−14 LUFS, true peak ≤ −1 dBTP,
+two-pass linear, no pumping).
+
+**Earshot's verdict on the Piccadilly reel, 25 Oct** (`earshot critique`, against 7 professional launch films):
+
+| Version | Score | Notes |
+|---|---|---|
+| As shipped | 69%, "needs work" | Master 4 dB quiet; 7 of 10 picture changes had no sound |
+| Our synthesized effects | 82%, "close" | |
+| Earshot bank sounds | 87%, "close" | |
+| Earshot bank + taps on the screen's own content changes + `--master -14` | **92%, "launch-grade"** | 90% of picture changes get a sound, realness 0.85, −13.8 LUFS |
+
+What it still flags: "sparse" (1.8 onsets a second against the references' 2.5–8), which is our calm style working
+as meant, and "nearly mono".
+
+**First proof on 25 Oct, before Earshot,** on the Piccadilly reel (scratchpad, not committed):
 - The four cuts were found on their exact frames.
 - Seven effects were placed.
 - Loudness went from −18.1 to −17.6 LUFS, with no clipping.
@@ -158,4 +182,6 @@ reselling or hosting):
 - **What is in the repo:** the skill is copied unchanged into `.claude/skills/hypit/`. Our house rules are in
   `NIXWOODS.md` there: the code-only path, no hosted services or credentials, MOTION.md wins.
 - **The executable** (`@hypit/hypit`, Node 22.15+; we have 22.22) installs with `bash .claude/skills/hypit/setup.sh`.
-  It is not installed yet: it was blocked by the same safety check, and needs the owner's permission.
+  Installed on 25 Oct (owner: "Install both"). Re-run the setup each new cloud session, because global npm does
+  not persist. A project needs a `package.json` with `"hypit": {"project": true}`. Its own command reference is in
+  the skill folder.

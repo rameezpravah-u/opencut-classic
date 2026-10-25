@@ -192,7 +192,9 @@ brief.json  →  make_reel.py  →  out/<name>-music.mp4 + out/<name>-clean.mp4 
 A brief names the mechanism, product, style (audience), assets, copy lines and music. `make_reel.py` lints the copy (banned words, ≤12 words a screen), builds the mechanism, checks every text layer against the safe zone and the hook rule, renders music + clean versions, and writes a cover, a contact sheet and a timeline JSON for review. Fonts, palettes, slots, camera moves and product assets come from `system/presets.json`. Twelve example briefs, one per mechanism, are in `system/briefs/`; rendered demos are in `rubik-reels/out/system/`. Schema and how to add a product or a mechanism: `system/README.md`.
 
 **Sound pass, after every render (added 25 Oct):**
-1. Run `python3 system/sfx/place.py out.mp4 out-sfx.mp4 --cues cues.json`.
+1. Run `python3 system/sfx/place.py out.mp4 out-sfx.mp4 --cues cues.json --master -14`. It uses Earshot's bank when
+   installed. If the listening models are there, finish with `earshot critique out-sfx.mp4 --video out-sfx.mp4` and fix
+   what it flags.
    - The script detects cuts on its own, and `cues.json` carries the moments only the reel's script knows: text on, a
      lamp set down, a light switching on, the end card.
    - Each moment gets one effect on the exact frame, levelled 3–10 dB over the music.

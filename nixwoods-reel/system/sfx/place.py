@@ -145,9 +145,58 @@ def real(role):
     return y * fade / (np.abs(y).max() + 1e-9)
 
 
-def bank(style, rng):
+# Earshot's bank (github.com/Leonxlnx/earshot, MIT; installed by .claude/skills/earshot/setup.sh): sounds made in code
+# by its forge, measured and audited. Used first when installed; `--sounds synth` forces our own.
+EARSHOT = os.environ.get("EARSHOT_BIN", os.path.expanduser("~/.cache/earshot/.venv/bin/earshot"))
+EARSHOT_IDS = {
+    "calm":  {"cut": ["swipe/glide"], "text": ["ui_pop/soft"], "set": ["knock/wood"], "light": ["fit/snap/switch_flip"],
+              "end": ["mallet/marimba", "cut_hit/sub"], "tap": ["knock/desk"], "zoom": ["shutter/quick"]},
+    "crisp": {"cut": ["whoosh_fast/tight"], "text": ["ui_pop/step"], "set": ["knock/wood"],
+              "light": ["fit/snap/switch_flip"], "end": ["mallet/glock", "cut_hit/punch"], "tap": ["knock/snap"],
+              "zoom": ["shutter/dslr"]},
+}
+EARSHOT_CACHE = os.path.expanduser("~/.cache/nixwoods-sfx/earshot")
+
+
+def earshot_take(sid):
+    """render one bank sound by id (cached); None when Earshot is not installed or the render fails"""
+    if not os.path.exists(EARSHOT):
+        return None
+    os.makedirs(EARSHOT_CACHE, exist_ok=True)
+    path = os.path.join(EARSHOT_CACHE, sid.replace("/", "__") + ".wav")
+    if not os.path.exists(path):
+        r = subprocess.run([EARSHOT, "sfx", "render", sid, "-o", path], capture_output=True, text=True)
+        if r.returncode != 0 or not os.path.exists(path):
+            print(f"place: earshot could not render {sid}: {r.stderr.strip()[:200]}", file=sys.stderr)
+            return None
+    return load_audio(path).mean(1)
+
+
+def earshot_role(style, role):
+    parts = [earshot_take(sid) for sid in EARSHOT_IDS[style][role]]
+    if not parts or any(p is None for p in parts):
+        return None
+    z = np.zeros(max(len(p) for p in parts))
+    for k, p in enumerate(parts):                         # layers: the first leads, the rest sit under it
+        z[:len(p)] += p / (np.abs(p).max() + 1e-9) * (1.0 if k == 0 else 0.7)
+    return z
+
+
+def bank(style, rng, source="auto"):
     out = {}
     for role in ROLES:
+        y = earshot_role(style, role) if source in ("auto", "earshot") else None
+        if y is not None:
+            if role == "light":                            # the switch with our soft bloom under it
+                bloom = synth("light", rng)
+                z = np.zeros(max(len(y), len(bloom)))
+                z[:len(y)] += y / (np.abs(y).max() + 1e-9)
+                z[:len(bloom)] += bloom * 0.35
+                y = z
+            out[role] = (y / (np.abs(y).max() + 1e-9)).astype(np.float32)
+            continue
+        if source == "earshot":
+            raise SystemExit(f"place: Earshot is not installed (bash .claude/skills/earshot/setup.sh) or {role} failed")
         y = real(role) if role in REAL else None
         if role == "light":                                # the click (real, or made here) with a soft bloom under it
             if y is None:
@@ -219,6 +268,10 @@ def main():
     ap.add_argument("--style", default="calm", choices=["calm", "crisp"])
     ap.add_argument("--sheet")
     ap.add_argument("--gain", type=float, default=0.0, help="dB on every effect")
+    ap.add_argument("--master", type=float, help="master the result to this integrated loudness (e.g. -14 LUFS for "
+                    "web, Earshot's reference median), true peak at most -1 dBTP; two-pass linear, no pumping")
+    ap.add_argument("--sounds", default="auto", choices=["auto", "earshot", "synth"],
+                    help="auto: Earshot's bank when installed, else real CC0 recordings or our synthesis")
     a = ap.parse_args()
     rng = np.random.default_rng(7)
     cues = []
@@ -234,7 +287,7 @@ def main():
     cues.sort(key=lambda c: c["t"])
     bed = load_audio(a.video)
     n = len(bed)
-    sounds = bank(a.style, rng)
+    sounds = bank(a.style, rng, a.sounds)
     mix = bed.copy()
     last = {}
     rows = []
@@ -271,8 +324,17 @@ def main():
         w.setsampwidth(2)
         w.setframerate(SR)
         w.writeframes((np.clip(mix, -1, 1) * 32767).astype(np.int16).tobytes())
+    af = []
+    if a.master is not None:                               # measure, then one linear gain + true-peak ceiling
+        meas = subprocess.run([FF, "-hide_banner", "-nostats", "-i", wavp, "-af",
+                               f"loudnorm=I={a.master}:TP=-1:LRA=20:print_format=json", "-f", "null", "-"],
+                              capture_output=True, text=True).stderr
+        m = json.loads(meas[meas.rindex("{"):meas.rindex("}") + 1])
+        af = ["-af", f"loudnorm=I={a.master}:TP=-1:LRA=20:linear=true:measured_I={m['input_i']}:"
+                     f"measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:"
+                     f"offset={m['target_offset']},aresample={SR},apad"]
     subprocess.run([FF, "-v", "error", "-y", "-i", a.video, "-i", wavp, "-map", "0:v", "-map", "1:a", "-c:v", "copy",
-                    "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", a.out], check=True)
+                    *af, "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", a.out], check=True)
     os.remove(wavp)
     lines = ["# t_cue\tkind\tsource\tsound_start\tnote"]
     for c, st, note in rows:

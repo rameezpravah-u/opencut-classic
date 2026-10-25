@@ -13,8 +13,8 @@ always works, because its sounds are synthesized in our code, with real CC0 reco
 they can be fetched. Earshot raises the quality: a better bank, measured sync points, and a way to listen to the
 result.
 
-## Setup, once per cloud session (needs the owner's permission)
-On 25 Oct the session's safety check blocked installing or running externally fetched code. Once the owner allows it:
+## Setup, once per cloud session (owner approved the install on 25 Oct)
+`~/.cache` does not persist between cloud sessions, so re-run it in each one (about 3 minutes):
 
 ```bash
 bash .claude/skills/earshot/setup.sh          # clones 591fa3e into ~/.cache/earshot, CPU torch venv, `earshot doctor`
