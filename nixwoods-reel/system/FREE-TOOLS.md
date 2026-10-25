@@ -109,3 +109,53 @@ in `/opt/pw-browsers`; the CLI's own Chrome download is blocked here. Start a pr
 - Flex columns shrink their children. A rolling digit strip needs `flex: none`, and a counter placed
   per value with `tl.set` is safer than a rolling one.
 - `tl.set` and `fromTo` are seek-safe. Do not drive visuals from `onUpdate` callbacks.
+
+## Sound for reels (25 Oct; owner's ask from instagram.com/reel/De4XVvXPTWY)
+
+The reel named three free tools. What we have from each:
+
+| Tool from the reel | What we have | Works in a cloud session? |
+|---|---|---|
+| **Openverse API** (5M+ openly licensed sounds) | `system/sfx/openverse.py search "wood knock"` / `get <id>`. CC0/PDM only by default; `--allow-by` admits CC-BY, which then needs a credit in the caption. Never NC or ND. Every file used is logged in `brand-reels/audio/SFX-CREDITS.tsv`. | **Search yes, download no.** Most useful effects are on Freesound, and its CDN answers 403 to cloud machines (25 Oct). Download on the Mac, or use place.py's synthesized sounds. |
+| **"Real SFX"** (finds each moment that needs a sound, adds it at the exact frame) | Not published anywhere we could find, so we built our own: `system/sfx/place.py`. | **Yes.** No network, no models. |
+| **Earshot** (github.com/Leonxlnx/earshot, MIT): a bank of 252 sounds made in code, kits with measured sync points, and listening and critique | `.claude/skills/earshot/` (SKILL.md and `setup.sh`, pinned `591fa3e`) | **Not yet.** The session's safety check blocked running externally fetched code on 25 Oct, so the owner's permission is needed. The models are ~1.1 GB more, and optional. |
+
+**How `place.py` works:**
+- It finds hard cuts by frame difference and reads the script's cue file (`text`, `set`, `light`, `end`, `tap`,
+  `zoom`). It snaps every cue to the frame.
+- It gives each cue one effect, with Earshot's published offsets:
+  - a cut gets a whoosh sweeping left to right, peaking 37 ms after the cut;
+  - text on gets a rounded pop, 30 ms after;
+  - a lamp set down gets a wood knock, 40 ms before;
+  - a light coming on gets the lamp-switch click, 11 ms early, with a soft low bloom;
+  - the end card gets a sub hit with a warm mallet note.
+- It levels each effect 3–10 dB over the music's median level in the second before. It trims an effect, never the
+  music, if the mix would pass −1.5 dBFS.
+- It writes a cue sheet.
+
+**Proof on 25 Oct**, on the Piccadilly reel (scratchpad, not committed):
+- The four cuts were found on their exact frames.
+- Seven effects were placed.
+- Loudness went from −18.1 to −17.6 LUFS, with no clipping.
+- The spectrogram showed smooth sweeps.
+
+**Taste:**
+- One effect per beat.
+- No whoosh on a fade, no risers on product shots.
+- A real recording beats synthesis for a knock or a switch, so fetch CC0 ones on the Mac.
+- Never a reference creator's audio.
+
+## Reels as code, anchored to words (25 Oct; owner's asks from instagram.com/reel/De4LyfdP5sY and De0xibcTMkE)
+
+**Darius Mora's "unlimited reels as code" skill** is sent only by DM after a comment, and we never comment or log in
+for the owner. It is the same capability as Hypit's code-only path and our own stack: HyperFrames, the Python reel
+scripts and `motion-libs`.
+
+**Hypit** (github.com/hypit-ai/hypit, v0.3.1, `8efbac0`; modified Apache-2.0, free for our own commercial work, no
+reselling or hosting):
+- **What it does:** it rebuilds a working reel as a workflow anchored to the spoken words rather than to seconds.
+  Swap the hook, product, language or aspect ratio and the timing re-flows; one workflow makes many variants.
+- **What is in the repo:** the skill is copied unchanged into `.claude/skills/hypit/`. Our house rules are in
+  `NIXWOODS.md` there: the code-only path, no hosted services or credentials, MOTION.md wins.
+- **The executable** (`@hypit/hypit`, Node 22.15+; we have 22.22) installs with `bash .claude/skills/hypit/setup.sh`.
+  It is not installed yet: it was blocked by the same safety check, and needs the owner's permission.

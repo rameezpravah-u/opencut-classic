@@ -191,6 +191,16 @@ brief.json  →  make_reel.py  →  out/<name>-music.mp4 + out/<name>-clean.mp4 
 
 A brief names the mechanism, product, style (audience), assets, copy lines and music. `make_reel.py` lints the copy (banned words, ≤12 words a screen), builds the mechanism, checks every text layer against the safe zone and the hook rule, renders music + clean versions, and writes a cover, a contact sheet and a timeline JSON for review. Fonts, palettes, slots, camera moves and product assets come from `system/presets.json`. Twelve example briefs, one per mechanism, are in `system/briefs/`; rendered demos are in `rubik-reels/out/system/`. Schema and how to add a product or a mechanism: `system/README.md`.
 
+**Sound pass, after every render (added 25 Oct):**
+1. Run `python3 system/sfx/place.py out.mp4 out-sfx.mp4 --cues cues.json`.
+   - The script detects cuts on its own, and `cues.json` carries the moments only the reel's script knows: text on, a
+     lamp set down, a light switching on, the end card.
+   - Each moment gets one effect on the exact frame, levelled 3–10 dB over the music.
+2. Read the cue sheet it writes.
+3. Compare loudness before and after: the integrated level should stay within about 1 LU, and nothing should clip.
+
+FREE-TOOLS.md "Sound" has the taste and the tools.
+
 Weekly cadence (3–5 reels/week): Mon transformation · Wed mechanism of the week · Fri UGC/POV · plus one price/festive reel; re-cut the best performer after 7 days with a new hook, never a straight repost.
 
 Measure: hook rate (3-s views ÷ plays), hold (completion), shares, saves, then CTR and CPA. A reel that gets shares but no clicks becomes an ad with a price-reveal cut.
