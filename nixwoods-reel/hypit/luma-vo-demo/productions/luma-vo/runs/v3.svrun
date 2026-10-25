@@ -1,0 +1,15 @@
+<?svml using="@hypit/markup/run@1"?>
+<svrun version="1">
+  <author source="../reel-v3.svml"/>
+  <target output="final.video"/>
+  <!-- Product swap: same VO and Script, so keep v1's prepared VO and its word alignment.
+       New footage is normalized; every Clip re-flows onto the same word Windows. -->
+  <build-record id="v1-vo" build="bld_20261025T083529171Z_3F4E160111" output="vo-media.media"/>
+  <build-record id="v1-vo-domain" build="bld_20261025T083529171Z_3F4E160111" output="vo-media.domain"/>
+  <build-record id="v1-vo-extent" build="bld_20261025T083529171Z_3F4E160111" output="vo-media.extent"/>
+  <build-record id="v1-alignment" build="bld_20261025T083529171Z_3F4E160111" output="vo-alignment.alignment"/>
+  <satisfy output="vo-media.media" candidate="v1-vo"/>
+  <satisfy output="vo-media.domain" candidate="v1-vo-domain"/>
+  <satisfy output="vo-media.extent" candidate="v1-vo-extent"/>
+  <satisfy output="vo-alignment.alignment" candidate="v1-alignment"/>
+</svrun>

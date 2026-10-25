@@ -1,0 +1,30 @@
+{
+  "format": "hypit.runtime-local@1",
+  "dataRoot": ".hypit/runtimes/local",
+  "credentials": {},
+  "endpoints": {
+    "media.local": { "use": "@hypit/media-local" },
+    "html.local": {
+      "use": "@hypit/provider-html-local",
+      "config": {
+        "chromePath": "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+        "workers": 3
+      }
+    },
+    "whisperx.local": {
+      "use": "@hypit/provider-whisperx-local",
+      "config": {
+        "expectedModel": "small.en",
+        "expectedDevice": "cpu",
+        "expectedCompute": "int8",
+        "expectedBatchSize": 8,
+        "expectedServiceVersion": "0.1.0",
+        "expectedWhisperXVersion": "none (faster-whisper 1.2.1)",
+        "serviceCommand": ["/usr/local/bin/python3", "__PROJECT__/tools/fw_service.py"]
+      }
+    }
+  },
+  "bindings": {
+    "@hypit/whisperx@1#whisperx-alignment": "whisperx.local"
+  }
+}

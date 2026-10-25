@@ -1,0 +1,189 @@
+<?svml using="@hypit/markup@1"?>
+<svml>
+  <import as="audio" from="@hypit/audio-track@1"/>
+  <import as="visual" from="@hypit/visual-track@1"/>
+  <import from="@hypit/script@1"/>
+  <import as="whisperx" from="@hypit/whisperx@1"/>
+  <import as="semantic" from="@hypit/narrative-temporal@1"/>
+  <import as="narrative-caption" from="@hypit/narrative-caption@1"/>
+  <import as="caption" from="@hypit/caption@1"/>
+  <import as="caption-fine" from="@hypit/caption-fine@1"/>
+  <import as="mediaop" from="@hypit/media-operations@1"/>
+  <import as="media" from="@hypit/media@1"/>
+  <import as="time" from="@hypit/timeline-author@1"/>
+  <import as="space" from="@hypit/spatial@1"/>
+  <import as="typo" from="@hypit/text-fine@1"/>
+  <import as="film" from="@hypit/film@1"/>
+  <import as="html" from="@hypit/html-video@1"/>
+  <import as="look" source="./look.svs"/>
+
+  <!-- The VO's words are the only clock the edit knows. Each shot is a Selection named for the
+       words it covers. Every cut lands on the onset of the shot's first word (`@{/x~} @{y}`),
+       so a pause belongs to the outgoing picture. `hook` spans the opening list; `card` is the
+       Moment the end card answers (on the spoken URL; the short "On" is spoken but not captioned). -->
+  <script id="story">
+    <vo>@{~hook}@{~books}Books.@{/books~} @{candle}Candle.@{/candle~} || @{mat}Cute mat.@{/mat~}@{/hook~} ||
+      @{still}And it still looks…@{/still~} @{off}off?@{/off~} ||
+      @{missing}That's because it's missing@{/missing~} || @{light}light at eye level.@{/light~} ||
+      @{meet}Meet the Luma Pillar.@{/meet~} ||
+      @{wood}Solid wood, a soft, warm glow,@{/wood~} ||
+      @{grain}and grain no one else will have.@{/grain~} ||
+      @{price}Just fifteen ninety-nine. || <|On>@{/price~} @{card!}<nixwoods.com|nixwoods dot com>.</vo>
+  </script>
+
+  <space:Canvas id="canvas" width="1080" height="1920"/>
+  <time:Clock id="clock" frame-rate="30"/>
+  <space:Frame id="full" within={canvas.bounds} left="0%" top="0%" right="100%" bottom="100%"/>
+  <space:Frame id="hook-frame" within={canvas.bounds} left="6.5%" top="13%" right="94%" bottom="30%"/>
+  <space:Frame id="logo-frame" within={canvas.bounds} left="25.93%" top="27%" right="74.07%" bottom="46.17%"/>
+  <space:Frame id="product-frame" within={canvas.bounds} left="6.5%" top="49%" right="93.5%" bottom="57%"/>
+  <space:Frame id="url-frame" within={canvas.bounds} left="6.5%" top="58%" right="93.5%" bottom="63%"/>
+
+  <!-- Material: the same ElevenLabs VO; PRODUCT SWAP: NixLine floor-lamp footage replaces the
+       Luma clip. nx00 is used only between 2.5 s and 8.7 s (its head and tail carry burned-in text). -->
+  <media:Audio id="vo" src="../../assets/audio/luma-vo-koyal-elevenlabs.mp3"/>
+  <media:Video id="hero-file" src="../../assets/footage/nx00-hero.mp4"/>
+  <media:Video id="studio-file" src="../../assets/footage/nx04-7930.mp4"/>
+  <media:Image id="scrim-captions" src="../../assets/stills/scrim-captions.png"/>
+  <media:Image id="scrim-hook" src="../../assets/stills/scrim-hook.png"/>
+  <media:Image id="card-ground" src="../../assets/stills/endcard-ground.png"/>
+  <media:Image id="logo" src="../../assets/stills/logo-cream.png"/>
+  <space:Extent id="full-extent" width="1080" height="1920"/>
+  <space:Extent id="logo-extent" width="376" height="266"/>
+  <media:Font id="fraunces" src="../../assets/fonts/Fraunces-600.ttf" weight="600" style="normal"/>
+  <media:Font id="inter" src="../../assets/fonts/Inter-600.ttf" weight="600" style="normal"/>
+
+  <mediaop:Normalize id="vo-media" source={vo} clock={clock} video="none" audio="default" span-authority="audio"/>
+  <mediaop:Normalize id="hero" source={hero-file} clock={clock} video="primary-moving" audio="none" span-authority="video"/>
+  <mediaop:Normalize id="studio" source={studio-file} clock={clock} video="primary-moving" audio="none" span-authority="video"/>
+  <whisperx:Alignment id="vo-alignment" narrative={story} segment={story.segment.vo}
+    media={vo-media.media} domain={vo-media.domain} language="en"/>
+
+  <time:Timeline id="program" clock={clock} end="tail.end">
+    <time:Window id="speech" from="start" for={vo-media.extent}/>
+    <time:Window id="tail" from="speech.end" for="1500ms"/>
+  </time:Timeline>
+  <semantic:Projection id="story-time" narrative={story} timeline={program.timeline}>
+    <semantic:Map alignment={vo-alignment.alignment} domain={vo-media.domain} window={program.speech}/>
+  </semantic:Projection>
+
+  <!-- Word-anchored Windows: every cut and overlay below consumes one of these. -->
+  <semantic:Window id="w-hook" projection={story-time} during={story.selection.hook}/>
+  <semantic:Window id="w-books" projection={story-time} during={story.selection.books}/>
+  <semantic:Window id="w-candle" projection={story-time} during={story.selection.candle}/>
+  <semantic:Window id="w-mat" projection={story-time} during={story.selection.mat}/>
+  <semantic:Window id="w-still" projection={story-time} during={story.selection.still}/>
+  <semantic:Window id="w-off" projection={story-time} during={story.selection.off}/>
+  <semantic:Window id="w-missing" projection={story-time} during={story.selection.missing}/>
+  <semantic:Window id="w-light" projection={story-time} during={story.selection.light}/>
+  <semantic:Window id="w-meet" projection={story-time} during={story.selection.meet}/>
+  <semantic:Window id="w-wood" projection={story-time} during={story.selection.wood}/>
+  <semantic:Window id="w-grain" projection={story-time} during={story.selection.grain}/>
+  <semantic:Window id="w-price" projection={story-time} during={story.selection.price}/>
+  <semantic:Instant id="card" projection={story-time} at={story.moment.card}/>
+  <time:Window id="w-card" timeline={program.timeline} from={card} until={program.end}/>
+
+  <!-- MOTION.md: a slow ~5% push-in over each held shot; no whips, no bounce. -->
+  <visual:Motion id="push">
+    <visual:Pose at="start" scale="1" easing="ease-in-out"/>
+    <visual:Pose at="end" scale="1.05"/>
+  </visual:Motion>
+  <visual:Motion id="fade-in">
+    <visual:Pose at="start" opacity="0" easing="ease-in-out"/>
+    <visual:Pose at="8f" opacity="1"/>
+    <visual:Pose at="end" opacity="1"/>
+  </visual:Motion>
+
+  <!-- Picture: each Clip fits one source span (frames on the 30 fps source) across its word Window. -->
+  <visual:Track id="picture" timeline={program.timeline}>
+    <visual:Clip id="books" media={hero.media} during={w-books} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="180f" source-until="207f"/>
+    </visual:Clip>
+    <visual:Clip id="candle" media={hero.media} during={w-candle} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="210f" source-until="237f"/>
+    </visual:Clip>
+    <visual:Clip id="mat" media={studio.media} during={w-mat} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="15f" source-until="45f"/>
+    </visual:Clip>
+    <visual:Clip id="still" media={hero.media} during={w-still} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="75f" source-until="102f"/>
+    </visual:Clip>
+    <visual:Clip id="off" media={hero.media} during={w-off} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="105f" source-until="132f"/>
+    </visual:Clip>
+    <visual:Clip id="missing" media={studio.media} during={w-missing} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="45f" source-until="75f"/>
+    </visual:Clip>
+    <visual:Clip id="light" media={hero.media} during={w-light} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="135f" source-until="177f"/>
+    </visual:Clip>
+    <visual:Clip id="meet" media={studio.media} during={w-meet} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="75f" source-until="103f"/>
+    </visual:Clip>
+    <visual:Clip id="wood" media={hero.media} during={w-wood} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="75f" source-until="132f"/>
+    </visual:Clip>
+    <visual:Clip id="grain" media={hero.media} during={w-grain} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="144f" source-until="177f"/>
+    </visual:Clip>
+    <visual:Clip id="price" media={studio.media} during={w-price} frame={full} z="10" fit="cover" motion={push}>
+      <visual:Map source-from="15f" source-until="60f"/>
+    </visual:Clip>
+    <visual:Clip id="scrim-captions" image={scrim-captions} extent={full-extent} during={program.speech} frame={full} z="20" fit="cover"/>
+    <visual:Clip id="scrim-hook" image={scrim-hook} extent={full-extent} during={w-hook} frame={full} z="20" fit="cover"/>
+    <visual:Clip id="card-ground" image={card-ground} extent={full-extent} during={w-card} frame={full} z="50" fit="cover" motion={fade-in}/>
+  </visual:Track>
+  <!-- A Visual Track holds one Clip per Window, so the logo is its own Track. -->
+  <visual:Track id="card-logo" timeline={program.timeline}>
+    <visual:Clip id="logo" image={logo} extent={logo-extent} during={w-card} frame={logo-frame} z="51" fit="contain" motion={fade-in}/>
+  </visual:Track>
+
+  <audio:Track id="sound" timeline={program.timeline}>
+    <audio:Clip id="voice" source={vo-media.media} during={program.speech}/>
+  </audio:Track>
+
+  <!-- Captions: Inter 600 cream, each word turns amber as it is spoken (karaoke trail). -->
+  <caption-fine:Style id="caption-style" recipe={look.caption.words} font={inter}/>
+  <caption:Hidden id="hidden"/>
+  <narrative-caption:Timing id="story-captions" document={story.caption}
+    binding={story.caption-binding} projection={story-time}/>
+  <caption-fine:Caption id="captions" document={story.caption} timing={story-captions}
+    timeline={program.timeline} within={canvas.bounds}>
+    <caption-fine:Use style={caption-style}/>
+    <caption-fine:Use during={w-card} style={hidden}/>
+  </caption-fine:Caption>
+
+  <typo:Style id="hook-style" recipe={look.text.hook} font={fraunces}>
+    <typo:Fill color="#F6EFE4"/>
+  </typo:Style>
+  <typo:Style id="product-style" recipe={look.text.product} font={fraunces}>
+    <typo:Fill color="#F6EFE4"/>
+  </typo:Style>
+  <typo:Style id="url-style" recipe={look.text.url} font={inter}>
+    <typo:Fill color="#E8A24A"/>
+  </typo:Style>
+  <typo:Motion id="text-in">
+    <typo:ItemKeyframe at="0" opacity="0" easing="ease-in-out"/>
+    <typo:ItemKeyframe at="6" opacity="1"/>
+  </typo:Motion>
+
+  <!-- HOOK LINE: the one on-screen line v2 changes. It lives for the first phrase (`hook`). -->
+  <typo:Flow id="hook-line" timeline={program.timeline} within={hook-frame} style={hook-style}
+    z="31" align="start" block-align="center" during={w-hook}>The corner checklist.</typo:Flow>
+
+  <typo:Flow id="card-product" timeline={program.timeline} within={product-frame} style={product-style}
+    z="52" align="center" block-align="center" wrap="none" overflow="shrink" minimum-scale="0.7" motion={text-in} during={w-card}>NixLine Floor Lamp</typo:Flow>
+  <typo:Flow id="card-url" timeline={program.timeline} within={url-frame} style={url-style}
+    z="52" align="center" block-align="center" motion={text-in} during={w-card}>nixwoods.com</typo:Flow>
+
+  <film:Film id="main" canvas={canvas.canvas} timeline={program.timeline} appearance={look.film.main}>
+    <film:Track source={picture.visual}/>
+    <film:Track source={card-logo.visual}/>
+    <film:Track source={sound.audio}/>
+    <film:Track source={captions.visual}/>
+    <film:Track source={hook-line.visual}/>
+    <film:Track source={card-product.visual}/>
+    <film:Track source={card-url.visual}/>
+  </film:Film>
+  <html:Video id="final" composition={main.composition} timeline={program.timeline}/>
+</svml>

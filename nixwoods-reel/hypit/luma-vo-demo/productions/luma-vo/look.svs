@@ -1,0 +1,22 @@
+<?svml using="@hypit/recipe@1"?>
+<sheet version="1">
+  film.main { background: #2E1E14; }
+
+  caption.words {
+    stack-order: 70;
+    x: 0.5; y: 0.646; width: 0.80; height: 0.22;
+    anchor-x: center; anchor-y: bottom;
+    align: center; block-align: end; inline-size: fixed;
+    wrap: word;
+    size: 72; line-height: 1.08; fill: #F6EFE4;
+    background: #00000000; padding: "0"; radius: 0;
+    karaoke: current; active-fill: #E8A24A;
+    atom-reveal: on-start;
+    cue-enter: none; cue-exit: none;
+    lead-frames: 2; tail-frames: 4; handoff: cut;
+  }
+
+  text.hook { size: 92; weight: 600; line-height: 1.05; tracking: -1.8; }
+  text.product { size: 96; weight: 600; line-height: 1.05; tracking: -1.9; }
+  text.url { size: 48; weight: 600; line-height: 1.1; }
+</sheet>

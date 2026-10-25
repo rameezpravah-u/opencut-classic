@@ -185,3 +185,13 @@ reselling or hosting):
   Installed on 25 Oct (owner: "Install both"). Re-run the setup each new cloud session, because global npm does
   not persist. A project needs a `package.json` with `"hypit": {"project": true}`. Its own command reference is in
   the skill folder.
+- **Proof on 25 Oct** (`nixwoods-reel/hypit/luma-vo-demo/`, rebuilt by `tools/setup.sh`): the E2 Luma voice-over reel
+  as a Hypit workflow, code-only. `hypit plan` showed every request as "local, no Provider charge".
+  - **v1:** each caption appears on its spoken word, and every cut is tied to a named word ("light" is the first lit
+    frame).
+  - **v2:** a hook swap changes only frames 0–98.
+  - **v3:** a product swap to NixLine footage keeps every cut on the same word frames.
+  - Builds take 1.5–2.5 min.
+- **Word timing:** `tools/fw_service.py` serves our cached faster-whisper (small.en) behind Hypit's local WhisperX
+  slot, with word edges corrected at silences. The real WhisperX needs several GB of torch and CUDA, so it is not
+  used. The Profile has no hosted endpoints and no credentials, and points at `/opt/pw-browsers` Chromium.
