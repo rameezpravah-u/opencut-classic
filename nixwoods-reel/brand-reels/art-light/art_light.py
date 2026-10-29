@@ -71,11 +71,11 @@ CUTS = {
 _cache = {}
 
 
-def clip_frames(clip, t_in, secs):
-    key = (clip, t_in, secs)
+def clip_frames(clip, t_in, secs, fps=FPS):
+    key = (clip, t_in, secs, fps)
     if key not in _cache:
         raw = subprocess.run([FF, "-v", "error", "-ss", f"{t_in:.3f}", "-i", SRC(clip), "-t", f"{secs + 0.1:.3f}",
-                              "-vf", f"{TM},fps={FPS},scale={W}:1920", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
+                              "-vf", f"{TM},fps={fps},scale={W}:1920", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
                              capture_output=True, check=True).stdout
         _cache[key] = np.frombuffer(raw, np.uint8).reshape(-1, 1920, W, 3)
     return _cache[key]
@@ -322,7 +322,11 @@ def grain(img, rng):
 
 
 def render(cut, h, path):
-    fn = social if cut == "social" else ad
+    render_with(social if cut == "social" else ad, h, path)
+
+
+def render_with(fn, h, path):
+    """fn(t, h) -> PIL image; writes the mp4 with the music bed (v2 renders through this too)"""
     rng = np.random.default_rng(29)
     wavp = path + ".wav"
     music_wav(wavp)

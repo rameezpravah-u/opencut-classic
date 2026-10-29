@@ -44,3 +44,34 @@ python3 system/sfx/place.py out/<ad>.mp4 <final>.mp4 --cues brand-reels/art-ligh
   sound-passed versions re-encoded at CRF 19 (about 11–15 MB). The audio is copied unchanged.
 - **Paid 9:16:** all ad text ends above y 1250. On the end card, the still is lifted by a 1.18× crop so the name,
   the price and "Shop at nixwoods.com" fit between the light and the CTA bar. The ad end cards carry no logo.
+
+## v2: day / night (29 Oct, the same day)
+The owner, on v1: "of all the videos I sent you, you worked on the most blurred… you created so basic". The owner
+pointed me to the Hook Master carousel (instagram.com/p/De8I3VcjtKq) to learn from.
+
+**What went wrong.** v1 was cut from a contact sheet whose tiles were squashed middle strips of vertical frames. Six
+clips read as "blank wall" and were skipped:
+- 8122 and 8123: the light switched off, with sharp flame grain; 8123 is 4K 60p.
+- 8117 and 8119: the lit holes, close.
+- 8120 and 8121: pulls back to the painting.
+
+v1 was built on the two softest tilts instead (8115 and 8116). The fix for next time is `system/clip_triage.py`,
+recorded in the PLAYBOOK.
+
+**v2 (`art_light_v2.py`)** uses the sharpest clips, scored by Laplacian variance at 2 fps and checked at native
+resolution:
+| Shot | Clip | Line |
+|---|---|---|
+| Day | 8123 at 0.6× from 60p (social) / 8122 (ad) | "By day, a piece of wood." (+ ₹3,999 chip on the ad) |
+| Switch, on the beat at 2.07 s | 8118 macro, the LEDs warming up over 0.3 s | "By night, this." |
+| Lit | 8117 | "Warm light, through every hole." + spec cards: wood natural grain · 20 W warm LED · 30 in |
+| Over the art | 8114, settled | "Save this styling tip / Hang it above your art. The glow becomes the frame." (ad: "3-year wood warranty") |
+| End card | 8114, last frame | name, facts or price + FLY100, nixwoods.com |
+
+**From the carousel:**
+- **Clear, then curious:** frame 1 shows and says what it is, and the line opens the gap the switch pays off.
+- **The six-viewer read**, done before the render.
+- **Its UI craft in our palette:** a glass DAY/NIGHT toggle that flips on the switch, small-caps amber labels on glass
+  spec cards, and a serif headline with one amber italic accent.
+
+**Sound:** `cues-v2-*.json`, with a lamp-switch click and bloom on the switch.

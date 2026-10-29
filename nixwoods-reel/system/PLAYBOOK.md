@@ -100,6 +100,32 @@ Each hook = text on frame 1 + a visual pattern interrupt + the first sound.
 | Listicle | 3 things | *3 moods. 1 turn.* · *3 reasons this isn't plastic.* |
 | Festive | occasion | *The gift they'll actually remember.* (Diwali / wedding season) |
 
+**Clear, then curious (added 29 Oct, from the "Hook Master" carousel, instagram.com/p/De8I3VcjtKq).**
+- **A hook has 2 jobs, in order.**
+  1. Frame 1 and the first words make the topic clear at once: what this is.
+  2. Then they open one gap.
+  - Example: day/night reel v2. "By day, a piece of wood." shows a wooden bar and says so; "By night, this."
+    pays it off on the switch at 2.1 s.
+- **Six viewers watch your first 3 seconds.** Before rendering, read the hook as each of them, and name the exact word
+  where each one would swipe:
+  - **doom-scroller:** swipes at any warm-up ("Let me tell you…");
+  - **sceptic:** swipes at an unearned claim;
+  - **"is this for me" buyer:** swipes when the product is not visible;
+  - **price-checker:** swipes when there is no sign of the price, in ads;
+  - **aesthete:** swipes at a soft or ugly first frame;
+  - **skimmer, sound off:** swipes when the text is not readable by 0.17 s.
+
+  Fix every swipe point you find.
+- **The carousel's two before/after formats:**
+  - "Don't do X. Do this instead." (*Don't hang art in the dark. Do this instead.*)
+  - the reframe diagnosis (*You don't have a dull wall. You have a lighting problem.*).
+
+  Both are clear first and curious second.
+- **Its sources:** Kallaway, Mina Lee, *Contagious*, *Made to Stick*, *Hook Point*, and Loewenstein (1994) on the
+  information gap. Our Gap / Truth / Pull gates already test the gap; the six-viewer read tests clarity.
+- **The skill itself** (github liamrjohnston/hook-master-skill) was not read: attaching an outside repository was
+  refused by the session's safety check. Read it only once the owner allows it.
+
 Lines already proven on the account or in organic (from the Ads Engine, the creative learnings, the Social Playbook), with their evidence, live in `presets.json → engine.hooks_proven`; `python3 hooks.py` scores them and any new line the same way (gates gap/truth/pull, then brevity, specificity and family match, out of 12). Failed framings to avoid: gifting/nostalgia as a static, an AI render as the hero, a single-colour cube, discount-led copy.
 
 ---
@@ -190,6 +216,14 @@ brief.json  →  make_reel.py  →  out/<name>-music.mp4 + out/<name>-clean.mp4 
 ```
 
 A brief names the mechanism, product, style (audience), assets, copy lines and music. `make_reel.py` lints the copy (banned words, ≤12 words a screen), builds the mechanism, checks every text layer against the safe zone and the hook rule, renders music + clean versions, and writes a cover, a contact sheet and a timeline JSON for review. Fonts, palettes, slots, camera moves and product assets come from `system/presets.json`. Twelve example briefs, one per mechanism, are in `system/briefs/`; rendered demos are in `rubik-reels/out/system/`. Schema and how to add a product or a mechanism: `system/README.md`.
+
+**Footage triage, before choosing any shot (added 29 Oct):**
+- Run `python3 system/clip_triage.py <folder of the owner's clips> --out triage.jpg`. Look at every strip at its true
+  orientation, and pick shots by their sharpness score against clips of the same subject.
+- **Never judge clips from a squashed or cropped contact sheet.** On 29 Oct, six clips read as "blank wall" that way.
+  They held the sharpest footage (the light switched off, 4K flame grain), and v1 was built on the two softest tilts
+  instead.
+- A switched-off product shot is a shot, not a reject. Off → on is one of our strongest reveals.
 
 **Sound pass, after every render (added 25 Oct):**
 1. Run `python3 system/sfx/place.py out.mp4 out-sfx.mp4 --cues cues.json --master -14`. It uses Earshot's bank when
