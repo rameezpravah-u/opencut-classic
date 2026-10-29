@@ -65,7 +65,7 @@ cross-section or the badge; otherwise ask.
 | aure | Aure wall sconce, ₹1,599 | A deep **curved U-profile** teak piece, light out of the bottom edge. |
 | arden | Arden 14 in, ₹1,599 | A **short** rosewood box, up and down glow. |
 | arcline | ArcLine 14 in, ₹1,699 | A short **half-round log** with a brass badge, light below. |
-| circular-hole-wall-light | Circular hole wall light, ₹2,999 | A 24 in bar with a **row of round holes** underneath (dotted light). |
+| circular-hole-wall-light | Circular hole wall light, ₹3,999 (30 in since 29 Oct) | A long bar with a **row of round holes** underneath (dotted light). |
 | pine-floating-shelf-light | Pine floating shelf light, from ₹2,999 | A pale pine shelf, square front, lit underneath. |
 | curve-pine-shelf-light | Curve pine shelf light, from ₹2,999 | A pale pine shelf with a **rounded front**, lit underneath. |
 | teak-shelf-wall-light | Teak shelf wall light, ₹5,999 | A mid-brown teak shelf, lit underneath. |

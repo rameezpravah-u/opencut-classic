@@ -25,9 +25,9 @@ Rules that apply to every product:
 | Power | Products |
 |---|---|
 | **Plug-in** (page says plug, plug & play or adapter) | Minimalist floor lamp, Corner floor lamp, NixLine floor lamp, Teak linear floor lamp, Tall teak floor lamp, Sculpted Glow spiral floor lamp, Compact hollow-rod table lamp, Luma, Globe Edison, Bedside dimmer (Classic Edison), Rubik's Cube |
-| **Hardwired** (page says hardwired or describes wiring to the mains) | 11 of the 12 pendants (every one except the Aura Drum): Double Arm, 360°, 3 ft vertical, Pine rectangular, Scandinavian round, Nordic, Hollow bowl, Teak ceiling light, Rosewood hollow curved, Rosewood 30" linear, Halo. Wall: NixLine 30" wall light, Aurora, Compact wall light, Pine floating shelf, Curve pine shelf, Rosewood floating shelf |
+| **Hardwired** (page says hardwired or describes wiring to the mains) | 11 of the 12 pendants (every one except the Aura Drum): Double Arm, 360°, 3 ft vertical, Pine rectangular, Scandinavian round, Nordic, Hollow bowl, Teak ceiling light, Rosewood hollow curved, Rosewood 30" linear, Halo. Wall: NixLine 30" wall light, Aurora, Circular hole wall light (since 29 Oct), Compact wall light, Pine floating shelf, Curve pine shelf, Rosewood floating shelf |
 | **Hardwired in effect** (page says it "wires/mounts to a standard wall point" with an electrician, without the word "hardwired") | Vertical curved wall light, Teak shelf wall light |
-| **Not stated** (do not say plug-in or hardwired) | Aura Drum pendant, Rosewood frame table lamp, 30" wall sconce, Timber wall light (both say "message us on WhatsApp for wiring"), Aure, Arden, ArcLine, Circular hole wall light |
+| **Not stated** (do not say plug-in or hardwired) | Aura Drum pendant, Rosewood frame table lamp, 30" wall sconce, Timber wall light (both say "message us on WhatsApp for wiring"), Aure, Arden, ArcLine |
 
 ---
 
@@ -450,15 +450,25 @@ Rules that apply to every product:
 - Image: https://cdn.shopify.com/s/files/1/0650/8488/3079/files/dd40edbd-1d3c-4ba4-a792-ba5d05eee9b9.jpg?v=1788722953
 
 ### Circular Hole Wall Light — 24-inch-circular-hole-wooden-wall-light
-- **Title:** Wooden Wall Lights: Circular Hole 24-Inch LED Wall Light · **Type:** Wooden Wall Light
-- **PRODUCT-ID:** `circular-hole-wall-light`. Tell: a 24 in bar with a **row of round holes** underneath (dotted light).
-- **Variants:** one, ₹2,999 (no compare-at)
-- **Wood:** "Material: Wood", natural wood finish. Neither the species nor "solid" is stated.
-- **Size:** 24 in; smooth rounded corners. **Light:** LED, 20 W, warm ambient, through a row of circular openings. Colour temp not stated.
-- **Direction:** not stated beyond "a patterned glow across the wall". **Power:** **not stated.** **Controls:** not stated.
-- **Mounting:** wall, indoor. **In the box:** not stated. **Warranty:** **not stated.** **Delivery:** not stated.
-- **Do not claim:** solid wood; a wood species; any warranty; dimmable; plug-in.
+- **Rechecked live 29 Oct 2026: the page changed.** The handle still says 24-inch, but the product is now 30 in at ₹3,999
+  with a new-format page. The 24 in / ₹2,999 entry below the line is the old one, kept for the record.
+- **Title:** Circular Hole 30-Inch Wooden Wall Light – Solid Wood LED · **Type:** Wooden Wall Light
+- **PRODUCT-ID:** `circular-hole-wall-light`. Tell: a long wooden bar with a **row of round lit holes** on its underside
+  (dotted light), here hung above a framed painting.
+- **Variants:** one, ₹3,999 (no compare-at). Trust block: "Save ₹100 prepaid with FLY100".
+- **Wood:** "Wood, natural grain, smooth finish"; "Real wood with natural grain — handcrafted in Khatauli". Only the
+  title says "Solid Wood"; the body never does. No species.
+- **Size:** 30 inches long, rounded corners. **Light:** integrated LED, warm ambient, 20 W, through a row of circular
+  openings plus soft ambient light around the bar. Colour temperature not stated.
+- **Mounting:** wall, **hardwired** ("hardwired to a standard wall point"), electrician fits it. Indoor, including
+  bathrooms away from the shower; not outdoor. **Controls:** standard on/off switch; **not dimmable** (page says do not
+  add a wall dimmer).
+- **Warranty:** 3 years on the wood, 1 year on LED and electricals. Damage-free promise (free replacement if it arrives
+  damaged). WhatsApp support +91 9286001060.
+- **Do not claim:** solid wood (until the body says it); a wood species; dimmable; plug-in; a colour temperature.
 - Image: https://cdn.shopify.com/s/files/1/0650/8488/3079/files/b0339141-74cf-48af-8198-3369d4fb2f32.jpg?v=1789858733
+- *Old entry (before 29 Oct):* "Wooden Wall Lights: Circular Hole 24-Inch LED Wall Light", 24 in, ₹2,999, no warranty
+  or power stated.
 
 ### Pine Floating Shelf Light — floating-wall-sconce-light
 - **Title:** Pine Solid Wood Floating Wall Light – Minimal Wall Sconce Shelf | NixWoods · **Type:** Wooden Wall Light
@@ -567,4 +577,4 @@ Rules that apply to every product:
 - **D23 · Teak ceiling light:** the title says "Ceiling Light", but it is a hanging pendant on adjustable wires. PRODUCT-ID describes "two rods".
 - **D24 · ArcLine:** PRODUCT-ID's tell is a half-round log with a brass badge. The page describes a "linear profile with rounded edges" and no badge. The same applies to the Rosewood 30" linear pendant's badge.
 - **D25 · Rubik's Cube:** the three hand-painted colours are stated for Candy and Ocean Glass ("both finishes"). The page does not say whether Bubble Glass has them.
-- **D26 · Older-format pages** (Arden, ArcLine, Aura Drum, Circular hole) have no trust block, delivery terms or care notes. Arden states only the wood warranty; Aura Drum and Circular hole state no warranty.
+- **D26 · Older-format pages** (Arden, ArcLine, Aura Drum) have no trust block, delivery terms or care notes. Arden states only the wood warranty; Aura Drum states no warranty. (Circular hole moved to the new format on 29 Oct.)
