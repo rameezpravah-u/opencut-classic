@@ -75,3 +75,25 @@ resolution:
   spec cards, and a serif headline with one amber italic accent.
 
 **Sound:** `cues-v2-*.json`, with a lamp-switch click and bloom on the switch.
+
+## Off / on film (30 Oct)
+**Reference:** instagram.com/reel/DfCN36XNLWO, Studio96's BiFROST table lamp (15.9 s, 35k views). The owner: "Do
+this". Its song has vocals and is licensed to them, so it is never used here.
+
+**Its shape:** the lamp off with slow drifts and a material close-up, then a hard cut to it lit in nearly the same
+frame at 7.4 s, a long lit hold, then off again and a fade to black. No text.
+
+**Ours (`off_on_film.py`):** the same beats on the owner's sharpest clips, on music1's grid, 15.88 s:
+| Time (s) | Beat | Clip |
+|---|---|---|
+| 0–3.5 | off hero | 8123, 4K 60p slowed |
+| 3.5–6.2 | off detail, the holes | 8122 |
+| 6.2–7.1 | off, the bar above the painting | 8123's end |
+| **7.06** | **the switch** | 8121, framed so the bar sits at y ≈ 700 in both; the LEDs warm up over 0.3 s, with a switch click |
+| 7.1–8.8 | on, same frame | 8121 |
+| 8.8–11.5 | lit macro | 8118 |
+| 11.5–13.7 | the long lit hold over the painting, pushed in slowly | 8115's settled last frame |
+| 13.7–14.6 | lit close | 8117 |
+| 14.6–15.9 | off again, then a fade to black | 8123's end |
+
+The only text is the name and nixwoods.com on the fade. The file is CRF 22 to stay under 21 MB.
