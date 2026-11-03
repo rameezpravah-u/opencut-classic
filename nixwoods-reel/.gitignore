@@ -9,3 +9,8 @@ __pycache__/
 *-before-after-ba.mp4
 *-triptych-tri.mp4
 *-triptych-tri2.mp4
+# wall-light-film: regenerable from build.py + the real catalogue photos in README.md;
+# kept out of git because .git is already past the size ceiling this README documents.
+brand-reels/wall-light-film/stills/
+brand-reels/wall-light-film/clips/
+brand-reels/wall-light-film/out/
