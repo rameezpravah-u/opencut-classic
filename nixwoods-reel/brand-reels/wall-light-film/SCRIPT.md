@@ -70,3 +70,42 @@ access to tick it).
 
 Built by `build_ads.py` (same folder). Media isn't committed — see the main `README.md`'s note on
 the repo's size ceiling.
+
+## Voiceover version
+
+`build_vo.py` adds narration to the base (non-ad) six-scene film — `out/NixWoods-Wall-Light-Film-VO.mp4`.
+Uses OpenMontage (`/home/user/OpenMontage`, already set up this session with Piper TTS) for both
+the voice and the mix:
+
+- **Voice**: Piper, `en_US-lessac-medium` (offline, no API key), `length_scale=1.08` and
+  `sentence_silence=0.35` for an unhurried, deliberate read rather than Piper's brisker default —
+  the closest this free local voice gets to a "classy" delivery. Honest caveat: Piper is clear and
+  warm, not an expressive/sultry voice-actor read — ElevenLabs (already wired into this session via
+  MCP) would get closer to a true "sexy" read if that matters more than staying free and offline.
+- **Script** (7 lines, timed to the film's own scene cuts — see delays in `build_vo.py`): short,
+  confident, no banned words, no claim beyond what the footage shows.
+  1. "Most rooms stop at the wall."
+  2. "We did not think that was good enough."
+  3. "So we built one that lives in the wood itself."
+  4. "No glare. No clutter. No excuse."
+  5. "Just the one thing every room was missing."
+  6. "Somewhere for the eye to rest."
+  7. "NixWoods. Solid wood lighting." (end card)
+- **Mix**: OpenMontage's `tools/audio/audio_mixer.py` `AudioMixer` (`operation: "duck"`) —
+  ffmpeg `sidechaincompress` using the narration as the key signal, music ducked 14dB under it,
+  120ms attack / 600ms release. The end-card dimmer-click SFX layers on top, same touch as the ad
+  cuts. Final mux upsamples to 48kHz stereo (Piper renders 22050Hz mono).
+- The base film's end card was extended from 3.0s to 3.6s (`build.py`'s `END_DUR`) so the closing
+  line has room to land before the film ends — rebuild the base film before re-running this if that
+  constant moves again.
+
+```
+python3 build_vo.py     # from this folder; needs vo/line*.wav (regenerate via Piper, see below) +
+                         # out/NixWoods-Wall-Light-Film.mp4 already built
+```
+
+To regenerate the narration lines from scratch:
+```
+/home/user/OpenMontage/.venv/bin/piper -m /home/user/OpenMontage/en_US-lessac-medium.onnx \
+  --length-scale 1.08 --sentence-silence 0.35 -f vo/lineN.wav <<< "line text"
+```

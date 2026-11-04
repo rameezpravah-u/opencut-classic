@@ -28,7 +28,7 @@ W, H = 1920, 1080
 FPS = 24
 XF = 0.8          # crossfade duration
 CLIP_DUR = 6.0417  # source clip duration
-END_DUR = 3.0
+END_DUR = 3.6   # held a touch longer than the silent cut so the VO closing line lands cleanly
 
 # the approved "aesthetic" cinematic grade from system/presets.json
 GRADE = "eq=contrast=0.97:brightness=0.015:saturation=0.94,vignette=angle=PI/4.6:mode=forward,noise=alls=5:allf=t+u"
