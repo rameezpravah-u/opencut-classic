@@ -75,6 +75,45 @@ All colours are MOTION.md tokens, and the claims are only the ones on the produc
 drawn as crisp p5 shapes. A p5.brush watercolour fill gave the bar a sawtooth edge in the 24 Oct test render (6 s,
 decoded clean), and the lamp itself has to read true.
 
+## Prompt libraries: look here before building a new motion piece
+
+**Added 13 Nov 2026.** The owner sent @ux.robin's carousel "100+ Claude Motion Prompts"
+(instagram.com/p/DfCG01WiB-Y, 28 Oct, 7 slides, all read) with "add these in your library for uses".
+Each site below was opened on 13 Nov and checked. All five are galleries of public videos made with Claude, and
+each video comes with the prompt or skill that made it.
+
+| Site | What is there (13 Nov) | Access | Best for us |
+|---|---|---|---|
+| **skillry.dev/ai-videos** | 418 videos, each shown next to a remake of it | Prompts free, no account. Paid Pro is only for its own skills. | Motion graphics (229), 3D scenes (56), explainers |
+| **prompt-motion.com** | 240 videos, sorted into **Prompt** (one video) and **Skill** (a whole style) | Free to browse and copy | Product UI, kinetic type, particles, charts, photos: closest to our code-built reels |
+| **claudevideo.org** | 1,276 videos from 1,007 creators; 457 come with the prompt | Free to read. Unofficial, not run by Anthropic. | The **Product & Ads** filter, which is our category |
+| **promptmotion.org** | 230 films, plus a library of 1,662 prompts | Appears open; Copy button on each | **Product launch** films and showreels |
+| **jasonzhu.ai/en/prompts** | About 2.8K Claude works, 642 with prompts; updated daily | Has a sign-in, and it doesn't say what that unlocks | A wide sweep when the others have nothing |
+
+**How to use them:**
+1. **Search before building.** For a new motion idea (a pop-up, a reveal, kinetic type, a 3D turn), search the
+   sites for the technique first: prompt-motion.com and claudevideo.org "Product & Ads", then promptmotion.org
+   "Product launch". Open the video and watch every frame, the same as any reference.
+2. **Take the technique, not the piece.** These are about *how* a move is built: the structure of the prompt, the
+   timing, the library it uses. Rewrite it with the prompt template above, so the colours, type and timing come
+   from MOTION.md and the copy from PRODUCT-FACTS.md.
+3. **Run it with what we have.** Anything that needs a library goes through `vendor/` and `render.py`, so it renders
+   offline, frame-exact, and on our beat grid. HyperFrames is the other option.
+4. **Credit the creator.** On every site, the videos and prompts belong to their creators, and none gives a reuse
+   licence. Never paste a creator's prompt word for word into anything published. Never use their footage,
+   images or audio. When a build closely follows one video, the build's README names it with the creator and a
+   link (claudevideo.org asks for this).
+5. **Our rules still win.** These sites don't change any NixWoods rule: the AI label on generated content,
+   product facts only from PRODUCT-FACTS.md, no faces without a release, and no banned words.
+
+**The post itself (for formats):**
+- **Slide layout:** a cover with a big two-tone headline and a lime highlight box; one slide per site, each a
+  browser-window screenshot with the URL in large type underneath; a last slide saying "Want all the links? Comment
+  Claude".
+- **Results:** 632 likes and 441 comments. The comments came from the comment-to-DM ask.
+- **For us:** that's a format we could use for a "5 ways to light a reading corner" save post. The DMs would be sent
+  by the owner or an approved tool, never by me.
+
 ## Prompt template (tips 3 and 5)
 
 Paste this, then fill in the brackets:

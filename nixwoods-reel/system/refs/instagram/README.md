@@ -66,3 +66,16 @@ slide that sells an eBook. Five resources, none an installable free tool:
 | 4 | AI × Leaders | free prompt wall for Claude and ChatGPT motion graphics, no account | website; nothing to install |
 | 5 | Claude Code Club | guide "Three levels of motion graphics with Claude Design" (build a motion system from a reference video) | article plus a paid club ($9/month); the method is what `brand-intake` and `MOTION.md` already do |
 | 6 | Promptcat | 161 Opus 5.5 animation prompts: Lottie UI, procedural, product films | website; nothing to install. Lottie output is covered by the HyperFrames Lottie adapter |
+
+## DfCG01WiB-Y: @ux.robin, "100+ Claude Motion Prompts" (7 slides, captured 13 Nov)
+
+Five libraries of Claude-made motion videos, each with its prompt:
+- skillry.dev/ai-videos
+- prompt-motion.com
+- claudevideo.org
+- promptmotion.org
+- jasonzhu.ai/en/prompts
+
+The owner asked for them to be added to the library. They are kept, checked and with the rules for using them, in
+`motion-libs/README.md` under "Prompt libraries". The slides aren't committed, because they are third-party and this
+repo is public.

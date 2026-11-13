@@ -20,6 +20,10 @@ Whenever I paste a component prompt or third-party component code (21st.dev or a
 as a structural donor only. Keep its engineering. Replace its demo copy with my real copy, and translate
 every colour, border, shadow, font and timing to MOTION.md.
 
+Before building a new motion move, search the five Claude motion-prompt libraries listed in `motion-libs/README.md`
+under "Prompt libraries" (added 13 Nov). Their prompts are structural donors under the rule above. Credit the
+creator, and never use their footage or audio.
+
 **Before naming a product, identify it with `PRODUCT-ID.md`** (a tell per product, from the live catalogue).
 If the tell is not visible or two products fit, ask. Never call a lit wooden line "NixLine" by default.
 
