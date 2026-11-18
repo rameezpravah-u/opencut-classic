@@ -35,3 +35,5 @@ nixwoods-reel/*-reels/out/**/*-end.png
 
 # render_reel.py output: regenerates from script + cut + cached VO at no cost
 nixwoods-reel/*-reels/out/render_reel/
+nixwoods-reel/*-reels/out/preview/
+nixwoods-reel/*-reels/out/render_carousel/
