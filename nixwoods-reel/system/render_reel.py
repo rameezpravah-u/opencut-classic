@@ -43,6 +43,38 @@ GRADE = "eq=contrast=1.05:saturation=1.06,vignette=angle=PI/5:mode=forward"
 STYLES = ("bone-serif", "amber-key", "quiet-bar")
 STOP = {"a", "an", "the", "and", "or", "of", "to", "in", "on", "it", "is", "so", "your", "you", "one", "two", "up", "down"}
 CTA_SECS = 1.8
+LOOKS = {
+    "standard": {"grade": GRADE, "xfade": 0.0, "before_after": False},
+    # warmer film grade, fine moving grain, soft vignette, 0.4 s dissolves that start on each beat boundary
+    "cinematic": {"grade": "eq=contrast=1.08:saturation=0.95,colorbalance=rs=0.04:gs=0.01:bs=-0.05,"
+                           "noise=alls=6:allf=t,vignette=angle=PI/4.5:mode=forward", "xfade": 0.4, "before_after": False},
+    # beat 1 wipes from a cold grade to the real warm shot (ad-formula style D, cold vs warm)
+    "before-after": {"grade": GRADE, "xfade": 0.0, "before_after": True},
+}
+
+
+def look_settings(name):
+    if name not in LOOKS:
+        raise ValueError(f"unknown look {name!r}; one of {tuple(LOOKS)}")
+    return LOOKS[name]
+
+
+def xfade_offsets(durs):
+    out, t = [], 0.0
+    for d in durs[:-1]:
+        t += d
+        out.append(t)
+    return out
+
+
+def segment_lengths(durs, d):
+    return [x + d for x in durs[:-1]] + [durs[-1]] if d else list(durs)
+
+
+def before_after_filter(dur):
+    off = round(dur * 0.3, 2)
+    return (f"[0]split[a][b];[a]colortemperature=temperature=9500,eq=brightness=-0.10:saturation=0.55[c];"
+            f"[b]trim=start={off},setpts=PTS-STARTPTS[w];[c][w]xfade=transition=wipeleft:duration=1.2:offset={off},format=yuv420p[v]")
 HOOK_AT = 0.3
 
 
@@ -310,7 +342,7 @@ def ff(*args):
     subprocess.run(["ffmpeg", "-v", "error", "-y", *args], check=True)
 
 
-def still_filter(opts, dur, iw, ih):
+def still_filter(opts, dur, iw, ih, grade=GRADE):
     """filter_complex for a still: optional crop, kept whole (contain) on a blurred fill, or filling the frame when
     it is already 9:16 or taller; slow push-in; optional cold-to-warm switch (ad-formula style D, a grade on a real photo)."""
     crop, cw, ch = "", float(iw), float(ih)
@@ -333,14 +365,14 @@ def still_filter(opts, dur, iw, ih):
     return (f"[0]{crop}split[a][b];"
             f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=30:2,eq=brightness=-0.12[bg];"
             f"[b]{fg_scale},zoompan=z='1+{z}*on/{n}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{fg_h}:fps={FPS}[fg];"
-            f"[bg][fg]overlay=0:(H-h)/2,fps={FPS},{GRADE}{eff},format=yuv420p")
+            f"[bg][fg]overlay=0:(H-h)/2,fps={FPS},{grade}{eff},format=yuv420p")
 
 
-def video_filter(opts, dur, clip_secs):
+def video_filter(opts, dur, clip_secs, grade=GRADE):
     speed, t_in, push = float(opts.get("speed", 1.0)), float(opts.get("in", 0.0)), opts.get("push", 0.0006)
     hold = ",tpad=stop_mode=clone:stop_duration=" + str(dur) if clip_secs - t_in < dur * speed - 0.02 else ""
     zp = f",zoompan=z='1+{push}*on':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{H}:fps={FPS}" if push else ""
-    return f"setpts=PTS/{speed},scale={W}:{H}:flags=lanczos,fps={FPS}{hold}{zp},{GRADE},format=yuv420p"
+    return f"setpts=PTS/{speed},scale={W}:{H}:flags=lanczos,fps={FPS}{hold}{zp},{grade},format=yuv420p"
 
 
 def _probe(path):
@@ -351,19 +383,35 @@ def _probe(path):
     return int(st["width"]), int(st["height"]), float(d.get("format", {}).get("duration") or 0)
 
 
-def cut_segments(script, cut, src, tmp):
+def cut_segments(script, cut, src, tmp, look="standard"):
+    L = look_settings(look)
+    durs = [float(b["secs"]) for b in script["beats"]]
+    lens = segment_lengths(durs, L["xfade"])
     paths = []
-    for i, (b, c) in enumerate(zip(script["beats"], cut["beats"])):
-        dur = float(b["secs"])
+    for i, (b, c, dur) in enumerate(zip(script["beats"], cut["beats"], lens)):
         clip = find_clip(src, c.get("clip") or b["clip"])
         out = tmp / f"s{i + 1}.mp4"
         iw, ih, secs = _probe(clip)
         if clip.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
-            ff("-loop", "1", "-t", str(dur), "-i", str(clip), "-filter_complex", still_filter(c, dur, iw, ih), "-t", str(dur), "-an", str(out))
+            ff("-loop", "1", "-t", str(dur), "-i", str(clip), "-filter_complex", still_filter(c, dur, iw, ih, L["grade"]), "-t", str(dur), "-an", str(out))
         else:
             speed, t_in = float(c.get("speed", 1.0)), float(c.get("in", 0.0))
-            ff("-ss", str(t_in), "-t", str(dur * speed), "-i", str(clip), "-vf", video_filter(c, dur, secs), "-an", "-t", str(dur), str(out))
+            ff("-ss", str(t_in), "-t", str(dur * speed), "-i", str(clip), "-vf", video_filter(c, dur, secs, L["grade"]), "-an", "-t", str(dur), str(out))
+        if i == 0 and L["before_after"]:
+            ba = tmp / "s1-ba.mp4"
+            ff("-i", str(out), "-filter_complex", before_after_filter(dur), "-map", "[v]", "-an", "-t", str(dur), str(ba))
+            ba.replace(out)
         paths.append(out)
+    if L["xfade"]:
+        inputs, fc, last = [], [], "0"
+        for p in paths:
+            inputs += ["-i", str(p)]
+        for k, off in enumerate(xfade_offsets(durs)):
+            fc.append(f"[{last}][{k + 1}]xfade=transition=fade:duration={L['xfade']}:offset={off}[x{k + 1}]")
+            last = f"x{k + 1}"
+        ff(*inputs, "-filter_complex", ";".join(fc) + f";[{last}]format=yuv420p[v]", "-map", "[v]", "-t", str(sum(durs)),
+           "-c:v", "libx264", "-preset", "medium", "-crf", "18", str(tmp / "base.mp4"))
+        return
     (tmp / "list.txt").write_text("".join(f"file '{p.name}'\n" for p in paths))
     ff("-f", "concat", "-safe", "0", "-i", str(tmp / "list.txt"), "-c", "copy", str(tmp / "base.mp4"))
 
@@ -456,11 +504,16 @@ def mix(tmp, frames, total, vo_files, music, out_mp4):
        "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", str(out_mp4))
 
 
-def render(script_path, style, out_dir=None):
+def out_name(name, style, look):
+    return f"{name}-{style}" + ("" if look == "standard" else f"-{look}")
+
+
+def render(script_path, style, out_dir=None, look="standard"):
     script = json.loads(pathlib.Path(script_path).read_text())
     check_renderable(script)
     if style not in STYLES:
         raise ValueError(f"unknown style {style!r}; one of {STYLES}")
+    look_settings(look)
     cut_path = next(ROOT.glob(f"*-reels/cuts/{script['id']}.json"), None)
     if not cut_path:
         raise FileNotFoundError(f"no cut file <product>-reels/cuts/{script['id']}.json")
@@ -469,13 +522,13 @@ def render(script_path, style, out_dir=None):
     if len(cut["beats"]) != len(script["beats"]):
         raise ValueError("cut file and script have a different number of beats")
     name = script.get("render_name") or script["id"].replace("NW-CREATIVE-SCRIPT-", "NW-CONTENT-RENDER-")
-    out = pathlib.Path(out_dir) if out_dir else pdir / "out" / "render_reel" / f"{name}-{style}"
+    out = pathlib.Path(out_dir) if out_dir else pdir / "out" / "render_reel" / out_name(name, style, look)
     tmp = out / "_build"
     tmp.mkdir(parents=True, exist_ok=True)
     vo_dir = pdir / "audio-vo" / script["id"]
     vo_dir.mkdir(parents=True, exist_ok=True)
     spent = []
-    cut_segments(script, cut, pdir / "src", tmp)
+    cut_segments(script, cut, pdir / "src", tmp, look)
     vo_files, captions = build_cues(script, cut, vo_dir, spent)
     frames, total = overlay_frames(script, captions, style, tmp)
     mix(tmp, frames, total, vo_files, None, out / "vo-only.mp4")
@@ -490,7 +543,8 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("script")
     ap.add_argument("--style", required=True, choices=STYLES)
+    ap.add_argument("--look", default="standard", choices=tuple(LOOKS))
     ap.add_argument("--out")
     a = ap.parse_args()
-    o, chars = render(a.script, a.style, a.out)
+    o, chars = render(a.script, a.style, a.out, a.look)
     print(f"{o}  (new voice characters spent: {chars})")

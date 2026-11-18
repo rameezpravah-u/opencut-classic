@@ -159,3 +159,37 @@ class HeadlineTests(unittest.TestCase):
     def test_two_sentence_hook_keeps_one_sentence_per_line(self):
         import render_reel as rr
         self.assertEqual(rr.headline_lines("Same bed. One bar of teak.", size=78), ["Same bed.", "One bar of teak."])
+
+
+class LookTests(unittest.TestCase):
+    def setUp(self):
+        import render_reel as rr
+        self.rr = rr
+
+    def test_unknown_look_is_refused(self):
+        with self.assertRaises(ValueError):
+            self.rr.look_settings("neon")
+
+    def test_cinematic_dissolves_start_on_each_beat_boundary(self):
+        self.assertEqual(self.rr.xfade_offsets([3, 4, 4, 4]), [3, 7, 11])
+
+    def test_cinematic_extends_every_segment_but_the_last_by_the_dissolve(self):
+        self.assertEqual(self.rr.segment_lengths([3, 4, 4, 4], 0.4), [3.4, 4.4, 4.4, 4])
+        self.assertEqual(self.rr.segment_lengths([3, 4, 4, 4], 0.0), [3, 4, 4, 4])
+
+    def test_cinematic_grade_adds_grain_and_warmth(self):
+        g = self.rr.look_settings("cinematic")["grade"]
+        self.assertIn("noise", g)
+        self.assertIn("colorbalance", g)
+
+    def test_before_after_wipes_the_first_beat_from_cold_to_warm(self):
+        f = self.rr.before_after_filter(3.0)
+        self.assertIn("xfade=transition=wipeleft", f)
+        self.assertIn("colortemperature", f)
+
+
+class OutNameTests(unittest.TestCase):
+    def test_out_name_adds_the_look_only_when_not_standard(self):
+        import render_reel as rr
+        self.assertEqual(rr.out_name("X", "bone-serif", "standard"), "X-bone-serif")
+        self.assertEqual(rr.out_name("X", "bone-serif", "cinematic"), "X-bone-serif-cinematic")
