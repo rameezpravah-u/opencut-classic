@@ -1,0 +1,13 @@
+{
+  "product_dir": "aurora-reels",
+  "beats": [
+    {"in": 1.8, "speed": 1.5, "push": 0.0},
+    {"in": 0.5, "push": 0.0008},
+    {},
+    {"in": 2.0, "push": 0.0004}
+  ],
+  "music": "audio/music2-meaning.mp3",
+  "speak": {"3000K": "three thousand K"},
+  "voice": "EXAVITQu4vr4xnSDxMaL",
+  "lead": 0.25
+}

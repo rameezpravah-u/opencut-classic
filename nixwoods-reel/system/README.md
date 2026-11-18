@@ -61,3 +61,9 @@ Decorate a function in `mechanisms.py` with `@mechanism(name, funnel, note)`; us
 - `sources.py <video> [--write rubik]`: finds the colour states of any product video and registers them.
 - `make_reel.py briefs --all --root <root>`: renders every brief and prints one summary line each (length, hook score, pre-flight counts, checks).
 - `rubik-reels/ref/REFERENCE.md`: the product's true form, the real reference frames, the campaign video record and how to get the file into the system.
+
+## render_reel.py — approved reel-engine script → reel (2026-11-18)
+
+`python3 system/render_reel.py <nixwoods-os script.json> --style bone-serif|amber-key|quiet-bar`
+
+Needs `<product>-reels/cuts/<script id>.json` (clip in-points, speed, push, music, spoken forms such as `"3000K": "three thousand K"`) and the clips in `<product>-reels/src/` named by clip id. Only an `APPROVED`/`RENDERED` script renders. Voice-over comes from ElevenLabs with word timestamps and is cached in `<product>-reels/audio-vo/<script id>/`; a re-render with unchanged lines spends nothing. Captions are timed word by word to the voice; one highlighted word per caption at most. Writes `out/render_reel/<name>-<style>/` with `vo-only.mp4` (post with a catalogue track), `music.mp4` (ads), `cover.jpg`, `sheet.jpg`. Tests: `python3 -m unittest system.test_render_reel`.
