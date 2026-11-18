@@ -1,0 +1,26 @@
+{
+  "product_dir": "nixline-reels",
+  "beats": [
+    {
+      "clip": "REAL-016",
+      "effect": "cold-to-warm",
+      "zoom": 0.04
+    },
+    {
+      "zoom": 0.06
+    },
+    {
+      "push": 0.0008
+    },
+    {
+      "zoom": 0.08
+    }
+  ],
+  "music": "audio/music2-meaning.mp3",
+  "speak": {
+    "3000K": "three thousand K"
+  },
+  "voice": "EXAVITQu4vr4xnSDxMaL",
+  "lead": 0.25,
+  "notes": "Beat 1 was needs-shoot (hand plugs the lamp in). Filled with the real plant-corner photo REAL-016 and a cold-to-warm grade switch (ad-formula style D); no AI. Beat 4 returns to the same corner as a bookend."
+}

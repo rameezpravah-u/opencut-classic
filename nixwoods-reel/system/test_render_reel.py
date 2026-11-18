@@ -117,3 +117,45 @@ class PlanTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SegmentFilterTests(unittest.TestCase):
+    """Cut options for stills and short clips (built 2026-11-18 for the NixLine/Rubik's renders)."""
+
+    def setUp(self):
+        import render_reel as rr
+        self.rr = rr
+
+    def test_still_contain_height_follows_the_image_aspect(self):
+        f = self.rr.still_filter({}, 4.0, 1080, 1920)        # a 9:16 photo fills the frame
+        self.assertIn("s=1080x1920", f)
+        f = self.rr.still_filter({}, 4.0, 1080, 1350)        # a 4:5 photo is contained
+        self.assertIn("s=1080x1350", f)
+
+    def test_still_crop_is_applied_before_scaling(self):
+        f = self.rr.still_filter({"crop": [0.5, 0.45, 0.78, 0.95]}, 4.0, 3324, 3324)
+        self.assertIn("crop=iw*0.28", f)
+        self.assertLess(f.index("crop=iw*0.28"), f.index("scale="))
+
+    def test_cold_to_warm_grade_changes_over_time(self):
+        f = self.rr.still_filter({"effect": "cold-to-warm"}, 3.0, 1080, 1920)
+        self.assertIn("colortemperature", f)
+        self.assertIn("enable=", f)
+
+    def test_short_video_holds_its_last_frame(self):
+        f = self.rr.video_filter({}, 3.0, clip_secs=1.0)
+        self.assertIn("tpad=stop_mode=clone", f)
+        f = self.rr.video_filter({}, 3.0, clip_secs=10.0)
+        self.assertNotIn("tpad", f)
+
+
+class HeadlineTests(unittest.TestCase):
+    def test_long_hook_wraps_inside_the_safe_width(self):
+        import render_reel as rr
+        lines = rr.headline_lines("Your dark corner needs one line.", size=78)
+        self.assertGreaterEqual(len(lines), 2)
+        self.assertTrue(all(rr.text_width(l, 78) <= rr.W - 160 for l in lines))
+
+    def test_two_sentence_hook_keeps_one_sentence_per_line(self):
+        import render_reel as rr
+        self.assertEqual(rr.headline_lines("Same bed. One bar of teak.", size=78), ["Same bed.", "One bar of teak."])

@@ -216,6 +216,29 @@ def scrim():
     return im
 
 
+def text_width(text, size, path=None):
+    from PIL import Image, ImageDraw
+    return ImageDraw.Draw(Image.new("L", (1, 1))).textlength(text, font=_font(path or F_HEAD, size))
+
+
+def headline_lines(text, size=78, max_w=W - 160):
+    """One sentence per line, and any line wider than the safe width wrapped by words."""
+    out = []
+    for sent in [x.strip() + "." for x in text.split(".") if x.strip()] or [text]:
+        cur = ""
+        for w in sent.split():
+            t = (cur + " " + w).strip()
+            if cur and text_width(t, size) > max_w:
+                out.append(cur)
+                cur = w
+            else:
+                cur = t
+        out.append(cur)
+    if text.strip() and not text.strip().endswith("."):
+        out[-1] = out[-1].rstrip(".")
+    return out
+
+
 def draw_headline(lines, size=78, y_top=1340, sub=None):
     from PIL import Image, ImageDraw
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -287,23 +310,59 @@ def ff(*args):
     subprocess.run(["ffmpeg", "-v", "error", "-y", *args], check=True)
 
 
+def still_filter(opts, dur, iw, ih):
+    """filter_complex for a still: optional crop, kept whole (contain) on a blurred fill, or filling the frame when
+    it is already 9:16 or taller; slow push-in; optional cold-to-warm switch (ad-formula style D, a grade on a real photo)."""
+    crop, cw, ch = "", float(iw), float(ih)
+    if opts.get("crop"):
+        x0, y0, x1, y1 = opts["crop"]
+        crop = f"crop=iw*{round(x1 - x0, 4)}:ih*{round(y1 - y0, 4)}:iw*{x0}:ih*{y0},"
+        cw, ch = iw * (x1 - x0), ih * (y1 - y0)
+    n = max(1, int(dur * FPS))
+    if ch / cw >= H / W - 1e-6:
+        fg_h, fg_scale = H, f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}"
+    else:
+        fg_h = int(round(W * ch / cw / 2) * 2)
+        fg_scale = f"scale={W}:{fg_h}"
+    z = opts.get("zoom", 0.05)
+    eff = ""
+    if opts.get("effect") == "cold-to-warm":
+        sw = round(dur * 0.45, 2)
+        eff = (f",colortemperature=temperature=9500:enable='lt(t,{sw})'"
+               f",eq=brightness=-0.10:saturation=0.55:enable='lt(t,{sw})'")
+    return (f"[0]{crop}split[a][b];"
+            f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=30:2,eq=brightness=-0.12[bg];"
+            f"[b]{fg_scale},zoompan=z='1+{z}*on/{n}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{fg_h}:fps={FPS}[fg];"
+            f"[bg][fg]overlay=0:(H-h)/2,fps={FPS},{GRADE}{eff},format=yuv420p")
+
+
+def video_filter(opts, dur, clip_secs):
+    speed, t_in, push = float(opts.get("speed", 1.0)), float(opts.get("in", 0.0)), opts.get("push", 0.0006)
+    hold = ",tpad=stop_mode=clone:stop_duration=" + str(dur) if clip_secs - t_in < dur * speed - 0.02 else ""
+    zp = f",zoompan=z='1+{push}*on':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{H}:fps={FPS}" if push else ""
+    return f"setpts=PTS/{speed},scale={W}:{H}:flags=lanczos,fps={FPS}{hold}{zp},{GRADE},format=yuv420p"
+
+
+def _probe(path):
+    out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height:format=duration",
+                          "-of", "json", str(path)], capture_output=True, text=True, check=True).stdout
+    d = json.loads(out)
+    st = d["streams"][0]
+    return int(st["width"]), int(st["height"]), float(d.get("format", {}).get("duration") or 0)
+
+
 def cut_segments(script, cut, src, tmp):
     paths = []
     for i, (b, c) in enumerate(zip(script["beats"], cut["beats"])):
-        dur, speed, t_in = float(b["secs"]), float(c.get("speed", 1.0)), float(c.get("in", 0.0))
-        clip = find_clip(src, b["clip"])
+        dur = float(b["secs"])
+        clip = find_clip(src, c.get("clip") or b["clip"])
         out = tmp / f"s{i + 1}.mp4"
-        push = c.get("push", 0.0006)
-        zp = (f"zoompan=z='1+{push}*on':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{H}:fps={FPS}")
-        if clip.suffix.lower() in (".jpg", ".jpeg", ".png"):
-            ff("-loop", "1", "-t", str(dur), "-i", str(clip), "-filter_complex",
-               f"[0]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=30:2,eq=brightness=-0.12[bg];"
-               f"[0]scale={W}:-1,zoompan=z='1+0.05*on/{int(dur * FPS)}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{H * 0 + 1350}:fps={FPS}[fg];"
-               f"[bg][fg]overlay=0:(H-h)/2,fps={FPS},{GRADE},format=yuv420p", "-t", str(dur), "-an", str(out))
+        iw, ih, secs = _probe(clip)
+        if clip.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
+            ff("-loop", "1", "-t", str(dur), "-i", str(clip), "-filter_complex", still_filter(c, dur, iw, ih), "-t", str(dur), "-an", str(out))
         else:
-            ff("-ss", str(t_in), "-t", str(dur * speed), "-i", str(clip), "-vf",
-               f"setpts=PTS/{speed},scale={W}:{H}:flags=lanczos,fps={FPS},{zp},{GRADE},format=yuv420p",
-               "-an", "-t", str(dur), str(out))
+            speed, t_in = float(c.get("speed", 1.0)), float(c.get("in", 0.0))
+            ff("-ss", str(t_in), "-t", str(dur * speed), "-i", str(clip), "-vf", video_filter(c, dur, secs), "-an", "-t", str(dur), str(out))
         paths.append(out)
     (tmp / "list.txt").write_text("".join(f"file '{p.name}'\n" for p in paths))
     ff("-f", "concat", "-safe", "0", "-i", str(tmp / "list.txt"), "-c", "copy", str(tmp / "base.mp4"))
@@ -333,7 +392,7 @@ def overlay_frames(script, captions, style, tmp):
     from PIL import Image
     total = sum(float(b["secs"]) for b in script["beats"])
     hook = script["hooks"][script.get("chosen_hook_index", 0)]["text"]
-    hook_lines = [s.strip() + "." for s in hook.split(".") if s.strip()] or [hook]
+    hook_lines = headline_lines(hook, size=78)
     end1 = beat_starts(script)[1] if len(script["beats"]) > 1 else total
     cta_at = total - CTA_SECS
     sc = scrim()
@@ -353,7 +412,8 @@ def overlay_frames(script, captions, style, tmp):
         if key not in cache:
             im = sc.copy()
             if key[0] == "cta":
-                im.alpha_composite(draw_headline(_split_cta(script["cta"]), size=62, y_top=1300, sub="nixwoods.com"))
+                cta = [l2 for l in _split_cta(script["cta"]) for l2 in headline_lines(l, size=62)]
+                im.alpha_composite(draw_headline(cta, size=62, y_top=1300, sub="nixwoods.com"))
             elif key[0] == "hook":
                 im.alpha_composite(draw_headline(hook_lines, size=78))
             elif key[0] == "cap":
