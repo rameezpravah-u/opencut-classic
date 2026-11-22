@@ -46,3 +46,19 @@ A reel that answers it is worth saving. Its payoff is the wall above the bar lig
 /usr/bin/python3 system/sfx/place.py out/<name>.mp4 <final>.mp4 --cues brand-reels/aurora-down-or-up/cues.json \
     --no-auto-cuts --style calm --master -14
 ```
+
+## Meta ad cut (22 Nov, `aurora_down_or_up_ad.py`)
+The owner: "make a meta ad version of this too". It has the same pictures and the same reveal, cut for paid use.
+
+- **Length:** 10.0 s. The grain shot is folded into the end card ("Solid teak").
+- **Price from frame 1:** an "Aurora Wall Light · from ₹1,999" chip sits under the headline from 0.4 s until the
+  rooms. The headline is moved up so all text ends above y 1250 on 9:16, clear of the CTA zone.
+- **End card:**
+  - Aurora Wall Light;
+  - solid teak · 30 or 48 inch · warm 3000K;
+  - **from ₹1,999**;
+  - "Free shipping on prepaid orders" (live page, 22 Nov; the old buy2 code is gone, so it is not used);
+  - "Shop at nixwoods.com".
+- **Formats:** 9:16, and 4:5, which is the top 1350 px of the 9:16 frame (bar, size labels and every line kept).
+- **Sound:** `cues-ad.json`.
+- **AI label:** "Made with AI" on in Ads Manager.
